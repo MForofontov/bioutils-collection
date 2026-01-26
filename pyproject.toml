@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61", "setuptools-scm>=8.0"]
+requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -64,9 +64,8 @@ dev = [
 [tool.setuptools]
 packages = { find = { where = ["."], include = ["bioutils_collection", "bioutils_collection.*"] } }
 
-[tool.setuptools_scm]
-write_to = "bioutils_collection/_version.py"
-write_to_template = "__version__ = '{version}'"
+[tool.setuptools.dynamic]
+version = {attr = "bioutils_collection._version.__version__"}
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
