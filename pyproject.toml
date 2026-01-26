@@ -1,0 +1,128 @@
+[build-system]
+requires = ["setuptools>=61", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bioutils-collection"
+dynamic = ["version"]
+description = "Comprehensive bioinformatics utilities for sequence analysis, alignment, annotation, and molecular biology workflows"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [
+    { name = "MForofontov", email = "your.email@example.com" }
+]
+keywords = [
+    "bioinformatics",
+    "genomics",
+    "sequence-analysis",
+    "alignment",
+    "fasta",
+    "dna",
+    "rna",
+    "protein",
+    "annotation",
+    "molecular-biology",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+
+dependencies = [
+    "numpy>=2.3.0",
+    "scipy>=1.15.0",
+    "scikit-learn>=1.7.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/MForofontov/bioutils-collection"
+Repository = "https://github.com/MForofontov/bioutils-collection"
+Issues = "https://github.com/MForofontov/bioutils-collection/issues"
+Documentation = "https://github.com/MForofontov/bioutils-collection#readme"
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.4.1",
+    "pytest-asyncio==1.1.0",
+    "pytest-cov==7.0.0",
+    "mypy==1.17.1",
+    "ruff",
+    "attrs==25.3.0",
+]
+
+[tool.setuptools]
+packages = { find = { where = ["."], include = ["bioutils_collection", "bioutils_collection.*"] } }
+
+[tool.setuptools_scm]
+write_to = "bioutils_collection/_version.py"
+write_to_template = "__version__ = '{version}'"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["pytest/unit"]
+markers = [
+    "unit: marks tests as unit tests",
+    "slow: marks tests as slow running tests",
+    "alignment: tests for sequence alignment functions",
+    "annotation: tests for annotation functions",
+    "clustering: tests for clustering functions",
+    "fasta: tests for FASTA file operations",
+    "gc_content: tests for GC content analysis",
+    "motif: tests for motif finding",
+    "repeat: tests for repeat analysis",
+    "restriction: tests for restriction enzyme functions",
+    "sequence_operations: tests for sequence manipulation",
+    "sequence_statistics: tests for sequence statistics",
+    "translation: tests for DNA/RNA/protein translation",
+    "validation: tests for data validation",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+extend-exclude = ["venv", ".venv", "dist", "build", ".mypy_cache", ".ruff_cache"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "TID"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["bioutils_collection"]
+
+[tool.ruff.format]
+# Ruff is the formatter
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+explicit_package_bases = true
+ignore_missing_imports = true
+warn_unused_ignores = true
+no_implicit_optional = true
+pretty = true
+cache_dir = ".mypy_cache"
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "*/tests/*",
+    "*/pytest/*",
+    "*/__pycache__/*",
+    "*/venv/*",
+    "*/.venv/*",
+    "*/build/*",
+    "*/dist/*",
+    "*/.eggs/*",
+    "*.egg-info/*",
+]
