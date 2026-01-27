@@ -141,7 +141,6 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 🔗 Related Projects
 
-- [pyutils-collection](https://github.com/MForofontov/pyutils-collection) - General Python utilities library
 - [BioPython](https://biopython.org/) - Comprehensive bioinformatics toolkit
 - [scikit-bio](http://scikit-bio.org/) - Scientific Python library for bioinformatics
 
