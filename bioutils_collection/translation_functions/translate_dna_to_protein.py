@@ -68,10 +68,11 @@ def translate_dna_to_protein(
     Raises
     ------
     TypeError
-        If seq is not a string or table is invalid type.
+        If seq is not a string
     ValueError
-        If seq contains invalid DNA bases, length not multiple of 3,
-        or table name/number is unrecognized.
+        If seq contains invalid DNA bases (not A, T, C, G)
+        If seq length is not a multiple of 3
+        If table name/number is unrecognized
 
     Examples
     --------

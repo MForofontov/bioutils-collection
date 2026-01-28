@@ -5,22 +5,10 @@ function to machine code, providing ~2.7x speedup over the default implementatio
 for sequences larger than 30K bases.
 """
 
-try:
-    from numba import njit
-    from numba.typed import Dict
-    import numba as nb
-    NUMBA_AVAILABLE = True
-except ImportError:
-    NUMBA_AVAILABLE = False
-    # Create a no-op decorator if numba is not available
-    def njit(*args, **kwargs):
-        def decorator(func):
-            return func
-        if len(args) == 1 and callable(args[0]):
-            return args[0]
-        return decorator
-
+from numba import njit
 from .genetic_code_tables import get_codon_table
+
+NUMBA_AVAILABLE = True
 
 
 def translate_dna_fast(
@@ -58,6 +46,14 @@ def translate_dna_fast(
     >>> translate_dna_fast('ATGGCC', table=2)  # Vertebrate mitochondrial
     'MA'
     
+    Raises
+    ------
+    TypeError
+        If dna_sequence is not a string
+    ValueError
+        If dna_sequence length is not a multiple of 3
+        If table name/number is unrecognized
+    
     Notes
     -----
     Requires: pip install numba
@@ -67,8 +63,15 @@ def translate_dna_fast(
     - Medium sequences (100-30K bases): ~1.8x faster (after JIT warmup)
     - Large sequences (>30K bases): ~2.7x faster than default
     """
+    # Input validation
+    if not isinstance(dna_sequence, str):
+        raise TypeError(f"dna_sequence must be str, got {type(dna_sequence).__name__}")
+    
     if not dna_sequence:
         return ""
+    
+    if len(dna_sequence) % 3 != 0:
+        raise ValueError("Sequence length must be a multiple of 3")
     
     # Get the codon table
     codon_table = get_codon_table(table)

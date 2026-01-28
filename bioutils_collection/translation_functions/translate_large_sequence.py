@@ -37,6 +37,17 @@ def translate_large_sequence(
     str
         Translated protein sequence
         
+    Raises
+    ------
+    TypeError
+        If sequence is not a string
+        If chunk_size or n_processes are not integers
+    ValueError
+        If sequence length is not a multiple of 3
+        If chunk_size is zero or negative
+        If n_processes is negative
+        If table name/number is unrecognized
+        
     Examples
     --------
     >>> # Translate a 50MB sequence using parallel processing
@@ -53,6 +64,22 @@ def translate_large_sequence(
     - For smaller sequences, use translate_dna_to_protein() or translate_dna_fast()
     - Set use_fast=True (default) for best performance with large chunks
     """
+    # Input validation
+    if not isinstance(sequence, str):
+        raise TypeError(f"sequence must be str, got {type(sequence).__name__}")
+    
+    if not isinstance(chunk_size, int):
+        raise TypeError(f"chunk_size must be int, got {type(chunk_size).__name__}")
+    
+    if chunk_size <= 0:
+        raise ValueError(f"chunk_size must be positive, got {chunk_size}")
+    
+    if n_processes is not None:
+        if not isinstance(n_processes, int):
+            raise TypeError(f"n_processes must be int, got {type(n_processes).__name__}")
+        if n_processes < 1:
+            raise ValueError(f"n_processes must be positive, got {n_processes}")
+    
     if not sequence:
         return ""
     
