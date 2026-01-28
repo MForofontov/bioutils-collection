@@ -199,46 +199,6 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 Star this repo if you find it useful!
 
-## Changelog
-
-### v0.2.0 (January 28, 2026)
-
-#### Removed - 5 Redundant Functions
-
-**Alignment Functions:**
-- **phylogenetic_distance** - Redundant with `hamming_distance(s1, s2) / len(s1)`
-  - Just a simple division wrapper, no added value
-
-**Sequence Statistics:**
-- **dinucleotide_frequency** - Redundant with `kmer_frequency(seq, 2)`
-  - Exact same functionality, just calls kmer_frequency internally
-- **nucleotide_frequency** - Redundant with `kmer_frequency(seq, 1)`
-  - Functionally identical output to kmer_frequency with k=1
-
-**Sequence Operations:**
-- **sequence_masking** - Incorrect implementation
-  - Only masked simple runs (AAAA→NNNN), didn't detect true low-complexity
-  - Users should use `remove_low_complexity_regions` (proper entropy-based)
-- **reverse_sequence** - Trivial one-liner
-  - Just `seq[::-1]`, no need for dedicated function
-
-#### Fixed - 2 Functions
-
-**blast_score_ratio:**
-- Added validation for negative target_score values
-- Added ValueError in docstring Raises section
-
-**restriction_site_finder:**
-- Added type checking for sequence (must be str)
-- Added type checking for sites (must be Sequence)
-- Added empty validation for both parameters
-- Updated docstring with TypeError and ValueError details
-
-#### Verified
-- All remaining ~70 functions verified as unique and non-redundant
-- 692 tests passing, 6 skipped
-- No broken dependencies or import errors
-
 ## Contributing
 
 Contributions are welcome! Please:
