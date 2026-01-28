@@ -197,13 +197,13 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-**⭐ Star this repo** if you find it useful!
+Star this repo if you find it useful!
 
-## 📋 Changelog
+## Changelog
 
 ### v0.2.0 (January 28, 2026)
 
-#### 🗑️ Removed - 5 Redundant Functions
+#### Removed - 5 Redundant Functions
 
 **Alignment Functions:**
 - **phylogenetic_distance** - Redundant with `hamming_distance(s1, s2) / len(s1)`
@@ -222,7 +222,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 - **reverse_sequence** - Trivial one-liner
   - Just `seq[::-1]`, no need for dedicated function
 
-#### 🔧 Fixed - 2 Functions
+#### Fixed - 2 Functions
 
 **blast_score_ratio:**
 - Added validation for negative target_score values
@@ -234,12 +234,12 @@ MIT License - see [LICENSE](LICENSE) for details.
 - Added empty validation for both parameters
 - Updated docstring with TypeError and ValueError details
 
-#### ✅ Verified
+#### Verified
 - All remaining ~70 functions verified as unique and non-redundant
 - 692 tests passing, 6 skipped
 - No broken dependencies or import errors
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please:
 1. Fork the repository
