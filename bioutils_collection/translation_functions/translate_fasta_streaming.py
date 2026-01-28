@@ -32,11 +32,36 @@ def translate_fasta_streaming(
     int
         Number of sequences translated
         
+    Raises
+    ------
+    TypeError
+        If fasta_file or output_file are not str or Path
+    FileNotFoundError
+        If input FASTA file does not exist
+    ValueError
+        If table name/number is unrecognized
+    OSError
+        If unable to read input file or write output file
+        
     Examples
     --------
     >>> n = translate_fasta_streaming('huge.fasta', 'proteins.fasta')
     >>> print(f"Translated {n} sequences")
+    
+    Notes
+    -----
+    - Memory-efficient: processes one sequence at a time
+    - Invalid sequences (not multiple of 3) will have ERROR in output
+    - Recommended for files larger than available RAM
+    - Set use_fast=True for 2.7x speedup on large sequences
     """
+    # Input validation
+    if not isinstance(fasta_file, (str, Path)):
+        raise TypeError(f"fasta_file must be str or Path, got {type(fasta_file).__name__}")
+    
+    if not isinstance(output_file, (str, Path)):
+        raise TypeError(f"output_file must be str or Path, got {type(output_file).__name__}")
+    
     fasta_file = Path(fasta_file)
     output_file = Path(output_file)
     
