@@ -10,7 +10,6 @@ from .alignment_functions.levenshtein_distance import levenshtein_distance
 from .alignment_functions.needleman_wunsch import needleman_wunsch
 from .alignment_functions.pairwise_identity import pairwise_identity
 from .alignment_functions.phylogenetic_distance import phylogenetic_distance
-from .alignment_functions.simple_alignment import simple_alignment
 from .alignment_functions.smith_waterman import smith_waterman
 from .annotation_functions.annotation_statistics import annotation_statistics
 from .annotation_functions.annotation_to_bed import annotation_to_bed
@@ -41,7 +40,6 @@ from .fasta_misc.write_fasta import write_fasta
 from .gc_functions.gc_content import gc_content
 from .gc_functions.gc_content_windows import gc_content_windows
 from .gc_functions.gc_skew import gc_skew
-from .gc_functions.sequence_gc_profile import sequence_gc_profile
 from .motif_functions.find_motif_positions import find_motif_positions
 from .motif_functions.generate_consensus_sequence import generate_consensus_sequence
 from .motif_functions.motif_search import motif_search
@@ -87,7 +85,6 @@ __all__ = [
     "needleman_wunsch",
     "pairwise_identity",
     "phylogenetic_distance",
-    "simple_alignment",
     "smith_waterman",
     # Clustering functions
     "motif_clustering",
@@ -113,7 +110,6 @@ __all__ = [
     "gc_content",
     "gc_content_windows",
     "gc_skew",
-    "sequence_gc_profile",
     # Motif functions
     "find_motif_positions",
     "generate_consensus_sequence",

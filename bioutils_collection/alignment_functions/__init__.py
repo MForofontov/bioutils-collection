@@ -8,7 +8,6 @@ from .levenshtein_distance import levenshtein_distance
 from .needleman_wunsch import needleman_wunsch
 from .pairwise_identity import pairwise_identity
 from .phylogenetic_distance import phylogenetic_distance
-from .simple_alignment import simple_alignment
 from .smith_waterman import smith_waterman
 
 __all__ = [
@@ -18,6 +17,5 @@ __all__ = [
     "needleman_wunsch",
     "pairwise_identity",
     "phylogenetic_distance",
-    "simple_alignment",
     "smith_waterman",
 ]
