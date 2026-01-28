@@ -197,9 +197,9 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-**⭐ Star this repo** if you find it useful!
+Star this repo if you find it useful!
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please:
 1. Fork the repository

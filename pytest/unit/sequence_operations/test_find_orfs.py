@@ -1,18 +1,10 @@
 import pytest
 
-try:
-    import numpy
-    from bioutils_collection.sequence_operations.find_orfs import find_orfs
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    find_orfs = None  # type: ignore
+from bioutils_collection.sequence_operations.find_orfs import find_orfs
 
 pytestmark = [
     pytest.mark.unit,
     pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
 ]
 
 
@@ -84,10 +76,23 @@ def test_find_orfs_invalid_base_error() -> None:
 
 def test_find_orfs_no_stop_codon() -> None:
     """
-    Test case 8: ORF starting but no stop codon (incomplete ORF).
+    Test case 8: ORF starting but no stop codon (now included in results).
     """
-    # ATG followed by codons but no stop codon
+    # ATG followed by codons but no stop codon - should now be included
     seq = "ATGAAACCCTTT"
     result = list(find_orfs(seq))
-    # Should return empty since no complete ORF (no stop codon)
-    assert result == []
+    # Should return the ORF reaching end without stop codon
+    assert len(result) == 1
+    assert result[0][0] == 0  # Start position
+    assert result[0][1] == 12  # End position (full sequence)
+    assert result[0][2] == "ATGAAACCCTTT"  # ORF sequence
+
+
+def test_find_orfs_with_stop_codon() -> None:
+    """
+    Test case 9: ORF with proper stop codon.
+    """
+    seq = "ATGAAATAA"  # ATG + AAA + TAA (stop)
+    result = list(find_orfs(seq))
+    assert len(result) == 1
+    assert result[0] == (0, 9, "ATGAAATAA")

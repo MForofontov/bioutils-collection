@@ -23,8 +23,12 @@ def restriction_site_finder(
 
     Raises
     ------
+    TypeError
+        If sequence is not a string.
+        If sites is not a sequence.
     ValueError
         If sites is empty.
+        If sequence is empty.
 
     Examples
     --------
@@ -35,6 +39,12 @@ def restriction_site_finder(
     ----------
     Time: O(n*m), Space: O(k)
     """
+    if not isinstance(sequence, str):
+        raise TypeError(f"sequence must be a string, got {type(sequence).__name__}")
+    if not isinstance(sites, Sequence) or isinstance(sites, str):
+        raise TypeError(f"sites must be a sequence (list/tuple), got {type(sites).__name__}")
+    if not sequence:
+        raise ValueError("sequence cannot be empty")
     if not sites:
         raise ValueError("sites cannot be empty")
 

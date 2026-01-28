@@ -23,6 +23,7 @@ def blast_score_ratio(reference_score: float, target_score: float) -> float:
         If scores are not floats or ints.
     ValueError
         If reference_score is zero or negative.
+        If target_score is negative.
 
     Examples
     --------
@@ -41,6 +42,8 @@ def blast_score_ratio(reference_score: float, target_score: float) -> float:
         )
     if reference_score <= 0:
         raise ValueError("reference_score must be positive and non-zero")
+    if target_score < 0:
+        raise ValueError("target_score must be non-negative")
     return target_score / reference_score
 
 
