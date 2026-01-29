@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_statistics.sequence_statistics import (
+    sequence_statistics,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_statistics.sequence_statistics import (
-        sequence_statistics,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    sequence_statistics = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_statistics]
 
 
 def test_sequence_statistics_basic() -> None:

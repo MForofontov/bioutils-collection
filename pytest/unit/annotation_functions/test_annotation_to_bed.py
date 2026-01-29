@@ -1,6 +1,6 @@
 import pytest
 
-pytestmark = [pytest.mark.unit, pytest.mark.bioinformatics]
+pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 from bioutils_collection.annotation_functions.annotation_to_bed import (
     annotation_to_bed,
 )

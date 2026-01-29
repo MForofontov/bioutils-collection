@@ -1,19 +1,8 @@
 import pytest
+import numpy
+from bioutils_collection.gc_functions.gc_skew import gc_skew
 
-try:
-    import numpy
-    from bioutils_collection.gc_functions.gc_skew import gc_skew
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    gc_skew = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.gc_functions]
 
 
 def test_gc_skew_equal_g_and_c() -> None:

@@ -1,19 +1,8 @@
 import pytest
+import numpy
+from bioutils_collection.fasta_misc.fasta_to_dict import fasta_to_dict
 
-try:
-    import numpy
-    from bioutils_collection.fasta_misc.fasta_to_dict import fasta_to_dict
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    fasta_to_dict = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.fasta]
 
 
 def test_fasta_to_dict_basic() -> None:

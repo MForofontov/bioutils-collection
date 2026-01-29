@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_operations.remove_low_complexity_regions import (
+    remove_low_complexity_regions,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_operations.remove_low_complexity_regions import (
-        remove_low_complexity_regions,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    remove_low_complexity_regions = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_operations]
 
 
 def test_remove_low_complexity_regions_repetitive() -> None:

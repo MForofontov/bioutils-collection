@@ -20,7 +20,7 @@ import pytest
 pytestmark = pytest.mark.skipif(
     not TRANSLATE_LARGE_AVAILABLE, reason="translate_large_sequence not available"
 )
-pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.bioinformatics]
+pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.translation]
 
 
 def test_translate_large_sequence_small() -> None:

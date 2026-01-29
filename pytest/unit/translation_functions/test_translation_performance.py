@@ -27,7 +27,7 @@ import pytest
 pytestmark = pytest.mark.skipif(
     not TRANSLATE_AVAILABLE, reason="translation functions not available"
 )
-pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.bioinformatics, pytest.mark.slow]
+pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.slow, pytest.mark.translation]
 
 
 def test_performance_small_sequence() -> None:

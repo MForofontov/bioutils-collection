@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_statistics.codon_usage_frequency import (
+    codon_usage_frequency,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_statistics.codon_usage_frequency import (
-        codon_usage_frequency,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    codon_usage_frequency = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_statistics]
 
 
 def test_codon_usage_frequency_basic() -> None:

@@ -2,7 +2,7 @@ from typing import Any
 
 import pytest
 
-pytestmark = [pytest.mark.unit, pytest.mark.bioinformatics]
+pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 from bioutils_collection.annotation_functions.merge_annotations import (
     merge_annotations,
 )

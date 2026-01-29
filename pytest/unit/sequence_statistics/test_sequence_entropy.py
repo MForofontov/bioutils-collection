@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_statistics.sequence_entropy import (
+    sequence_entropy,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_statistics.sequence_entropy import (
-        sequence_entropy,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    sequence_entropy = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_statistics]
 
 
 def test_sequence_entropy_uniform() -> None:

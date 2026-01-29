@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.motif_functions.sequence_pattern_match import (
+    sequence_pattern_match,
+)
 
-try:
-    import numpy
-    from bioutils_collection.motif_functions.sequence_pattern_match import (
-        sequence_pattern_match,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    sequence_pattern_match = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.motif]
 
 
 def test_sequence_pattern_match_literal() -> None:

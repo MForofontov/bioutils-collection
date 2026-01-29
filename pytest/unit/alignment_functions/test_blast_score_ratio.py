@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.alignment_functions.blast_score_ratio import (
+    blast_score_ratio,
+)
 
-try:
-    import numpy
-    from bioutils_collection.alignment_functions.blast_score_ratio import (
-        blast_score_ratio,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    blast_score_ratio = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.alignment]
 
 
 def test_blast_score_ratio_typical() -> None:

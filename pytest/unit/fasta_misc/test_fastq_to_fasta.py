@@ -1,19 +1,8 @@
 import pytest
+import numpy
+from bioutils_collection.fasta_misc.fastq_to_fasta import fastq_to_fasta
 
-try:
-    import numpy
-    from bioutils_collection.fasta_misc.fastq_to_fasta import fastq_to_fasta
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    fastq_to_fasta = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.fasta]
 
 
 def test_fastq_to_fasta_single_sequence() -> None:

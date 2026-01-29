@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.repeat_functions.tandem_repeat_finder import (
+    tandem_repeat_finder,
+)
 
-try:
-    import numpy
-    from bioutils_collection.repeat_functions.tandem_repeat_finder import (
-        tandem_repeat_finder,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    tandem_repeat_finder = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.repeat]
 
 
 def test_tandem_repeat_finder_basic() -> None:

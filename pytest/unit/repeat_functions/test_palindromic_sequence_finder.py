@@ -4,10 +4,7 @@ from bioutils_collection.repeat_functions.palindromic_sequence_finder import (
     palindromic_sequence_finder,
 )
 
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-]
+pytestmark = [pytest.mark.unit, pytest.mark.repeat]
 
 
 def test_palindromic_sequence_finder_basic() -> None:

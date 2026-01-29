@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_statistics.amino_acid_composition import (
+    amino_acid_composition,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_statistics.amino_acid_composition import (
-        amino_acid_composition,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    amino_acid_composition = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_statistics]
 
 
 def test_amino_acid_composition_balanced_composition() -> None:

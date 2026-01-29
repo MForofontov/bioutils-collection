@@ -1,19 +1,8 @@
 import pytest
+import numpy
+from bioutils_collection.motif_functions.motif_search import motif_search
 
-try:
-    import numpy
-    from bioutils_collection.motif_functions.motif_search import motif_search
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    motif_search = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.motif]
 
 
 def test_motif_search_exact_match() -> None:

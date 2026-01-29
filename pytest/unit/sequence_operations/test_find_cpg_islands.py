@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_operations.find_cpg_islands import (
+    find_cpg_islands,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_operations.find_cpg_islands import (
-        find_cpg_islands,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    find_cpg_islands = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_operations]
 
 
 def test_find_cpg_islands_high_cpg_content() -> None:

@@ -18,7 +18,7 @@ import pytest
 pytestmark = pytest.mark.skipif(
     not TRANSLATE_FAST_AVAILABLE, reason="translate_dna_fast not available"
 )
-pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.bioinformatics]
+pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.translation]
 
 
 def test_translate_dna_fast_basic() -> None:

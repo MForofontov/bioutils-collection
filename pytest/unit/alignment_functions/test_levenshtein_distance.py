@@ -1,19 +1,9 @@
 import pytest
+from bioutils_collection.alignment_functions.levenshtein_distance import (
+    levenshtein_distance,
+)
 
-try:
-    from bioutils_collection.alignment_functions.levenshtein_distance import (
-        levenshtein_distance,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    levenshtein_distance = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.alignment]
 
 
 def test_levenshtein_distance_identical() -> None:

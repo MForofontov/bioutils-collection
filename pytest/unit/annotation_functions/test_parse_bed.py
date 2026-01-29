@@ -3,7 +3,7 @@ import tempfile
 
 import pytest
 
-pytestmark = [pytest.mark.unit, pytest.mark.bioinformatics]
+pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 from bioutils_collection.annotation_functions.parse_bed import parse_bed
 
 

@@ -18,7 +18,7 @@ import pytest
 pytestmark = pytest.mark.skipif(
     not TRANSLATE_BATCH_AVAILABLE, reason="translate_batch not available"
 )
-pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.bioinformatics]
+pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.translation]
 
 
 def test_translate_batch_empty() -> None:

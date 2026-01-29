@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_operations.reverse_complement import (
+    reverse_complement,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_operations.reverse_complement import (
-        reverse_complement,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    reverse_complement = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_operations]
 
 
 def test_reverse_complement_basic() -> None:
