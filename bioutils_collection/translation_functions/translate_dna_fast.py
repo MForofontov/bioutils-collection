@@ -6,9 +6,8 @@ for sequences larger than 30K bases.
 """
 
 from numba import njit
-from .genetic_code_tables import get_codon_table
 
-NUMBA_AVAILABLE = True
+from .genetic_code_tables import get_codon_table
 
 
 def translate_dna_fast(
@@ -90,11 +89,11 @@ def translate_dna_fast(
             codon_to_aa[idx] = aa
     
     # Use the JIT-compiled function
-    return _translate_numba_core(seq_upper, codon_to_aa)
+    return _translate_numba_core(seq_upper, codon_to_aa)  # type: ignore[no-any-return]
 
 
-@njit
-def _translate_numba_core(sequence: str, codon_to_aa: list) -> str:
+@njit  # type: ignore[misc]
+def _translate_numba_core(sequence: str, codon_to_aa: list[str]) -> str:
     """
     JIT-compiled core translation function.
     
@@ -153,4 +152,4 @@ def _translate_numba_core(sequence: str, codon_to_aa: list) -> str:
     return ''.join(result)
 
 
-__all__ = ["translate_dna_fast", "NUMBA_AVAILABLE"]
+__all__ = ["translate_dna_fast"]

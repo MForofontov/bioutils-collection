@@ -1,17 +1,16 @@
 """Batch translation with multiprocessing support."""
 
-from typing import Optional
-from multiprocessing import Pool, cpu_count
 from functools import partial
+from multiprocessing import Pool, cpu_count
 
+from .translate_dna_fast import translate_dna_fast
 from .translate_dna_to_protein import translate_dna_to_protein
-from .translate_dna_fast import translate_dna_fast, NUMBA_AVAILABLE
 
 
 def translate_batch(
     sequences: list[str],
     table: str | int | dict[str, str] = "standard",
-    n_processes: Optional[int] = None,
+    n_processes: int | None = None,
     use_fast: bool = False,
 ) -> list[str]:
     """
@@ -76,11 +75,11 @@ def translate_batch(
     
     # For small batches, don't bother with multiprocessing
     if len(sequences) < 10 or n_processes == 1:
-        translate_func = translate_dna_fast if (use_fast and NUMBA_AVAILABLE) else translate_dna_to_protein
+        translate_func = translate_dna_fast if use_fast else translate_dna_to_protein
         return [translate_func(seq, table=table) for seq in sequences]
     
     # Multiprocessing for large batches
-    translate_func = translate_dna_fast if (use_fast and NUMBA_AVAILABLE) else translate_dna_to_protein
+    translate_func = translate_dna_fast if use_fast else translate_dna_to_protein
     # Use partial to bind the table parameter (works with custom dicts too)
     worker = partial(translate_func, table=table)
     

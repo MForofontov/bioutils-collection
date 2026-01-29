@@ -2,8 +2,8 @@
 
 from pathlib import Path
 
+from .translate_dna_fast import translate_dna_fast
 from .translate_dna_to_protein import translate_dna_to_protein
-from .translate_dna_fast import translate_dna_fast, NUMBA_AVAILABLE
 
 
 def translate_fasta_streaming(
@@ -68,13 +68,13 @@ def translate_fasta_streaming(
     if not fasta_file.exists():
         raise FileNotFoundError(f"FASTA file not found: {fasta_file}")
     
-    translate_func = translate_dna_fast if (use_fast and NUMBA_AVAILABLE) else translate_dna_to_protein
+    translate_func = translate_dna_fast if use_fast else translate_dna_to_protein
     
     count = 0
     current_id = None
-    current_seq = []
+    current_seq: list[str] = []
     
-    with open(fasta_file, 'r') as fin, open(output_file, 'w') as fout:
+    with open(fasta_file) as fin, open(output_file, 'w') as fout:
         for line in fin:
             line = line.strip()
             if not line:

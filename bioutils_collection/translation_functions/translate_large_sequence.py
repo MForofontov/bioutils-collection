@@ -1,7 +1,7 @@
 """Parallel translation of a single large sequence by splitting into chunks."""
 
-from typing import Optional
 from multiprocessing import cpu_count
+
 from .translate_batch import translate_batch
 
 
@@ -9,7 +9,7 @@ def translate_large_sequence(
     sequence: str,
     table: str | int | dict[str, str] = "standard",
     chunk_size: int = 1_000_000,
-    n_processes: Optional[int] = None,
+    n_processes: int | None = None,
     use_fast: bool = True,
 ) -> str:
     """
@@ -94,10 +94,10 @@ def translate_large_sequence(
     
     # If sequence is smaller than chunk_size, process directly
     if seq_len <= chunk_size:
+        from .translate_dna_fast import translate_dna_fast
         from .translate_dna_to_protein import translate_dna_to_protein
-        from .translate_dna_fast import translate_dna_fast, NUMBA_AVAILABLE
         
-        translate_func = translate_dna_fast if (use_fast and NUMBA_AVAILABLE) else translate_dna_to_protein
+        translate_func = translate_dna_fast if use_fast else translate_dna_to_protein
         return translate_func(sequence, table=table)
     
     # Split sequence into chunks

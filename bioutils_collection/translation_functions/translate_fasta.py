@@ -1,15 +1,14 @@
 """FASTA file translation with in-memory result storage."""
 
-from typing import Optional
 from pathlib import Path
 
+from .translate_dna_fast import translate_dna_fast
 from .translate_dna_to_protein import translate_dna_to_protein
-from .translate_dna_fast import translate_dna_fast, NUMBA_AVAILABLE
 
 
 def translate_fasta(
     fasta_file: str | Path,
-    output_file: Optional[str | Path] = None,
+    output_file: str | Path | None = None,
     table: str | int | dict[str, str] = "standard",
     use_fast: bool = False,
 ) -> dict[str, str]:
@@ -68,13 +67,13 @@ def translate_fasta(
     if not fasta_file.exists():
         raise FileNotFoundError(f"FASTA file not found: {fasta_file}")
     
-    translate_func = translate_dna_fast if (use_fast and NUMBA_AVAILABLE) else translate_dna_to_protein
+    translate_func = translate_dna_fast if use_fast else translate_dna_to_protein
     
     results = {}
     current_id = None
-    current_seq = []
+    current_seq: list[str] = []
     
-    with open(fasta_file, 'r') as f:
+    with open(fasta_file) as f:
         for line in f:
             line = line.strip()
             if not line:
