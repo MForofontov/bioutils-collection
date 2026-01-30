@@ -50,4 +50,4 @@ def test_annotation_statistics_type_error() -> None:
     Test case 4: TypeError for non-list/tuple input.
     """
     with pytest.raises(TypeError):
-        annotation_statistics("not a list")
+        annotation_statistics("not a list")  # type: ignore[arg-type]

@@ -56,10 +56,10 @@ def test_codon_adaptation_index_empty() -> None:
 def test_codon_adaptation_index_type_error() -> None:
     """Test case 8: Test TypeError for non-string input."""
     with pytest.raises(TypeError, match="seq must be a string"):
-        codon_adaptation_index(123)
+        codon_adaptation_index(123)  # type: ignore[arg-type]
 
 
 def test_codon_adaptation_index_weights_type_error() -> None:
     """Test case 9: Test TypeError for non-dict reference_weights."""
     with pytest.raises(TypeError, match="reference_weights must be a dict or None"):
-        codon_adaptation_index("ATGATG", reference_weights="not_a_dict")
+        codon_adaptation_index("ATGATG", reference_weights="not_a_dict")  # type: ignore[arg-type]

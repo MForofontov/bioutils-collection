@@ -1,24 +1,13 @@
 """Unit tests for translate_dna_fast function."""
 
-try:
-    from bioutils_collection.translation_functions import (
-        translate_dna_fast,
-        translate_dna_to_protein,
-        NUMBA_AVAILABLE,
-    )
-    TRANSLATE_FAST_AVAILABLE = True
-except ImportError:
-    TRANSLATE_FAST_AVAILABLE = False
-    translate_dna_fast = None  # type: ignore
-    translate_dna_to_protein = None  # type: ignore
-    NUMBA_AVAILABLE = False
+from bioutils_collection.translation_functions import (
+    translate_dna_fast,
+    translate_dna_to_protein,
+)
 
 import pytest
 
-pytestmark = pytest.mark.skipif(
-    not TRANSLATE_FAST_AVAILABLE, reason="translate_dna_fast not available"
-)
-pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.translation]
+pytestmark = [pytest.mark.unit, pytest.mark.translation]
 
 
 def test_translate_dna_fast_basic() -> None:
@@ -357,4 +346,4 @@ def test_translate_dna_fast_non_string_sequence() -> None:
 
     # Act & Assert
     with pytest.raises(TypeError, match="dna_sequence must be str"):
-        translate_dna_fast(seq)
+        translate_dna_fast(seq)  # type: ignore[arg-type]

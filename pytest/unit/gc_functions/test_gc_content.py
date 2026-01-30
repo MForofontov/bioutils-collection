@@ -47,7 +47,7 @@ def test_gc_content_type_error() -> None:
     Test case 5: TypeError for non-string input.
     """
     with pytest.raises(TypeError):
-        gc_content(123)
+        gc_content(123)  # type: ignore[arg-type]
 
 
 def test_gc_content_value_error() -> None:

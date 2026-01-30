@@ -57,8 +57,8 @@ def test_write_fasta_invalid_type_error() -> None:
     Test case 6: TypeError for invalid record format.
     """
     with pytest.raises(TypeError, match="Each record must be a \\(str, str\\) tuple"):
-        write_fasta([("seq1",)])
+        write_fasta([("seq1",)])  # type: ignore[list-item]
     with pytest.raises(TypeError, match="Each record must be a \\(str, str\\) tuple"):
-        write_fasta([(123, "ATGC")])
+        write_fasta([(123, "ATGC")])  # type: ignore[list-item]
     with pytest.raises(TypeError, match="Each record must be a \\(str, str\\) tuple"):
-        write_fasta(["seq1", "ATGC"])
+        write_fasta(["seq1", "ATGC"])  # type: ignore[list-item]

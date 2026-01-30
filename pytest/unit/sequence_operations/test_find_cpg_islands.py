@@ -137,12 +137,12 @@ def test_find_cpg_islands_type_error_seq_not_string() -> None:
     Test case 9: TypeError when seq is not a string.
     """
     # Arrange
-    invalid_seq = 12345  # type: ignore
+    invalid_seq = 12345
     expected_message = "seq must be str, got int"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        find_cpg_islands(invalid_seq)  # type: ignore
+        find_cpg_islands(invalid_seq)  # type: ignore[arg-type]
 
 
 def test_find_cpg_islands_type_error_window_not_int() -> None:
@@ -151,12 +151,12 @@ def test_find_cpg_islands_type_error_window_not_int() -> None:
     """
     # Arrange
     seq = "GCGCGCGC" * 30
-    invalid_window = "50"  # type: ignore
+    invalid_window = "50"
     expected_message = "window must be int, got str"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        find_cpg_islands(seq, window=invalid_window)  # type: ignore
+        find_cpg_islands(seq, window=invalid_window)  # type: ignore[arg-type]
 
 
 def test_find_cpg_islands_type_error_min_gc_not_number() -> None:
@@ -165,12 +165,12 @@ def test_find_cpg_islands_type_error_min_gc_not_number() -> None:
     """
     # Arrange
     seq = "GCGCGCGC" * 30
-    invalid_min_gc = "0.5"  # type: ignore
+    invalid_min_gc = "0.5"
     expected_message = "min_gc must be a number, got str"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        find_cpg_islands(seq, min_gc=invalid_min_gc)  # type: ignore
+        find_cpg_islands(seq, min_gc=invalid_min_gc)  # type: ignore[arg-type]
 
 
 def test_find_cpg_islands_type_error_min_obs_exp_not_number() -> None:
@@ -179,12 +179,12 @@ def test_find_cpg_islands_type_error_min_obs_exp_not_number() -> None:
     """
     # Arrange
     seq = "GCGCGCGC" * 30
-    invalid_obs_exp = "0.6"  # type: ignore
+    invalid_obs_exp = "0.6"
     expected_message = "min_obs_exp must be a number, got str"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        find_cpg_islands(seq, min_obs_exp=invalid_obs_exp)  # type: ignore
+        find_cpg_islands(seq, min_obs_exp=invalid_obs_exp)  # type: ignore[arg-type]
 
 
 def test_find_cpg_islands_value_error_invalid_bases() -> None:

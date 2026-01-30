@@ -56,6 +56,6 @@ def test_fasta_concat_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input types.
     """
     with pytest.raises(TypeError, match="All elements must be strings"):
-        fasta_concat([">seq1\nATGC", 123])
+        fasta_concat([">seq1\nATGC", 123])  # type: ignore[list-item]
     with pytest.raises(TypeError, match="All elements must be strings"):
-        fasta_concat([">seq1\nATGC", None])
+        fasta_concat([">seq1\nATGC", None])  # type: ignore[list-item]

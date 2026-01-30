@@ -56,9 +56,9 @@ def test_transcribe_dna_to_rna_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        transcribe_dna_to_rna(12345)
+        transcribe_dna_to_rna(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        transcribe_dna_to_rna(None)
+        transcribe_dna_to_rna(None)  # type: ignore[arg-type]
 
 
 def test_transcribe_dna_to_rna_invalid_base_error() -> None:

@@ -158,12 +158,12 @@ def test_generate_primers_type_error_seq_not_string() -> None:
     Test case 10: TypeError when seq is not a string.
     """
     # Arrange
-    invalid_seq = 12345  # type: ignore
+    invalid_seq = 12345
     expected_message = "seq must be str, got int"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        generate_primers(invalid_seq)  # type: ignore
+        generate_primers(invalid_seq)  # type: ignore[arg-type]
 
 
 def test_generate_primers_type_error_length_not_int() -> None:
@@ -172,12 +172,12 @@ def test_generate_primers_type_error_length_not_int() -> None:
     """
     # Arrange
     seq = "ATGCATGC"
-    invalid_length = "20"  # type: ignore
+    invalid_length = "20"
     expected_message = "length must be int, got str"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        generate_primers(seq, length=invalid_length)  # type: ignore
+        generate_primers(seq, length=invalid_length)  # type: ignore[arg-type]
 
 
 def test_generate_primers_type_error_gc_min_not_number() -> None:
@@ -186,12 +186,12 @@ def test_generate_primers_type_error_gc_min_not_number() -> None:
     """
     # Arrange
     seq = "ATGCATGC"
-    invalid_gc = "0.4"  # type: ignore
+    invalid_gc = "0.4"
     expected_message = "gc_min must be a number, got str"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        generate_primers(seq, gc_min=invalid_gc)  # type: ignore
+        generate_primers(seq, gc_min=invalid_gc)  # type: ignore[arg-type]
 
 
 def test_generate_primers_type_error_gc_max_not_number() -> None:
@@ -200,7 +200,7 @@ def test_generate_primers_type_error_gc_max_not_number() -> None:
     """
     # Arrange
     seq = "ATGCATGC"
-    invalid_gc = "0.6"  # type: ignore
+    invalid_gc = "0.6"
     expected_message = "gc_max must be a number, got str"
 
     # Act & Assert

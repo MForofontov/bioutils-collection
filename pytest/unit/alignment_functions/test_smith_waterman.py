@@ -70,13 +70,13 @@ def test_smith_waterman_deletion_path() -> None:
 def test_smith_waterman_seq1_type_error() -> None:
     """Test case 8: Test TypeError for non-string seq1."""
     with pytest.raises(TypeError, match="seq1 must be a string"):
-        smith_waterman(123, "ACGT")
+        smith_waterman(123, "ACGT")  # type: ignore[arg-type]
 
 
 def test_smith_waterman_seq2_type_error() -> None:
     """Test case 9: Test TypeError for non-string seq2."""
     with pytest.raises(TypeError, match="seq2 must be a string"):
-        smith_waterman("ACGT", 123)
+        smith_waterman("ACGT", 123)  # type: ignore[arg-type]
 
 
 def test_smith_waterman_empty_seq1() -> None:
@@ -94,16 +94,16 @@ def test_smith_waterman_empty_seq2() -> None:
 def test_smith_waterman_match_type_error() -> None:
     """Test case 12: Test TypeError for non-integer match parameter."""
     with pytest.raises(TypeError, match="match must be an integer"):
-        smith_waterman("ACGT", "ACGT", match=2.5)  # type: ignore
+        smith_waterman("ACGT", "ACGT", match=2.5)  # type: ignore[arg-type]
 
 
 def test_smith_waterman_mismatch_type_error() -> None:
     """Test case 13: Test TypeError for non-integer mismatch parameter."""
     with pytest.raises(TypeError, match="mismatch must be an integer"):
-        smith_waterman("ACGT", "ACGT", mismatch=-1.5)  # type: ignore
+        smith_waterman("ACGT", "ACGT", mismatch=-1.5)  # type: ignore[arg-type]
 
 
 def test_smith_waterman_gap_type_error() -> None:
     """Test case 14: Test TypeError for non-integer gap parameter."""
     with pytest.raises(TypeError, match="gap must be an integer"):
-        smith_waterman("ACGT", "ACGT", gap=-1.5)  # type: ignore
+        smith_waterman("ACGT", "ACGT", gap=-1.5)  # type: ignore[arg-type]

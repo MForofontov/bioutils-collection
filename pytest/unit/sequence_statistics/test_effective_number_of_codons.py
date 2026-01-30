@@ -56,4 +56,4 @@ def test_effective_number_of_codons_invalid_bases() -> None:
 def test_effective_number_of_codons_type_error() -> None:
     """Test case 8: Test TypeError for non-string input."""
     with pytest.raises(TypeError, match="seq must be a string"):
-        effective_number_of_codons(123)
+        effective_number_of_codons(123)  # type: ignore[arg-type]

@@ -53,7 +53,7 @@ def test_blast_score_ratio_type_error_reference() -> None:
     Test case 5: TypeError for non-numeric reference_score.
     """
     with pytest.raises(TypeError):
-        blast_score_ratio("200", 150.0)
+        blast_score_ratio("200", 150.0)  # type: ignore[arg-type]
 
 
 def test_blast_score_ratio_type_error_target() -> None:
@@ -61,7 +61,7 @@ def test_blast_score_ratio_type_error_target() -> None:
     Test case 6: TypeError for non-numeric target_score.
     """
     with pytest.raises(TypeError):
-        blast_score_ratio(200.0, "150")
+        blast_score_ratio(200.0, "150")  # type: ignore[arg-type]
 
 
 def test_blast_score_ratio_value_error_reference() -> None:

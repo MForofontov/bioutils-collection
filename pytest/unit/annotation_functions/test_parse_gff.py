@@ -64,7 +64,7 @@ def test_parse_gff_type_error() -> None:
     Test case 4: TypeError for non-string input.
     """
     with pytest.raises(TypeError):
-        list(parse_gff(123))
+        list(parse_gff(123))  # type: ignore[arg-type]
 
 
 def test_parse_gff_file_not_found() -> None:

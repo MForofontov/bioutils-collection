@@ -67,9 +67,9 @@ def test_codon_usage_frequency_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        codon_usage_frequency(12345)
+        codon_usage_frequency(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        codon_usage_frequency(None)
+        codon_usage_frequency(None)  # type: ignore[arg-type]
 
 
 def test_codon_usage_frequency_invalid_length_error() -> None:

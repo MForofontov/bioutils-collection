@@ -55,16 +55,16 @@ def test_find_motif_positions_motif_longer_than_seq() -> None:
 def test_find_motif_positions_seq_type_error() -> None:
     """Test case 8: Test TypeError for non-string seq."""
     with pytest.raises(TypeError, match="seq must be a string"):
-        find_motif_positions(123, "ATG")
+        find_motif_positions(123, "ATG")  # type: ignore[arg-type]
 
 
 def test_find_motif_positions_motif_type_error() -> None:
     """Test case 9: Test TypeError for non-string motif."""
     with pytest.raises(TypeError, match="motif must be a string"):
-        find_motif_positions("ATGC", 123)
+        find_motif_positions("ATGC", 123)  # type: ignore[arg-type]
 
 
 def test_find_motif_positions_allow_overlap_type_error() -> None:
     """Test case 10: Test TypeError for non-boolean allow_overlap."""
     with pytest.raises(TypeError, match="allow_overlap must be a boolean"):
-        find_motif_positions("ATGC", "ATG", allow_overlap="yes")  # type: ignore
+        find_motif_positions("ATGC", "ATG", allow_overlap="yes")  # type: ignore[arg-type]

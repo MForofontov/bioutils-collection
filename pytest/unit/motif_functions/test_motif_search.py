@@ -44,7 +44,7 @@ def test_motif_search_no_matches() -> None:
     # Arrange
     seq = "AAAAAAA"
     motif = "GGG"
-    expected = []
+    expected: list[int] = []
 
     # Act
     result = motif_search(seq, motif)
@@ -162,7 +162,7 @@ def test_motif_search_motif_longer_than_seq() -> None:
     # Arrange
     seq = "ATG"
     motif = "ATGCGTAG"
-    expected = []
+    expected: list[int] = []
 
     # Act
     result = motif_search(seq, motif)
@@ -176,13 +176,13 @@ def test_motif_search_type_error_seq_not_string() -> None:
     Test case 11: TypeError when seq is not a string.
     """
     # Arrange
-    invalid_seq = 12345  # type: ignore
+    invalid_seq = 12345
     motif = "ATG"
     expected_message = "seq and motif must be strings"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        motif_search(invalid_seq, motif)  # type: ignore
+        motif_search(invalid_seq, motif)  # type: ignore[arg-type]
 
 
 def test_motif_search_type_error_motif_not_string() -> None:
@@ -191,12 +191,12 @@ def test_motif_search_type_error_motif_not_string() -> None:
     """
     # Arrange
     seq = "ATGCGTAG"
-    invalid_motif = 123  # type: ignore
+    invalid_motif = 123
     expected_message = "seq and motif must be strings"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        motif_search(seq, invalid_motif)  # type: ignore
+        motif_search(seq, invalid_motif)  # type: ignore[arg-type]
 
 
 def test_motif_search_value_error_empty_motif() -> None:

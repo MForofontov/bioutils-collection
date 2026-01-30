@@ -81,6 +81,6 @@ def test_validate_fasta_invalid_type_error() -> None:
     Test case 9: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="fasta_str must be str"):
-        validate_fasta(12345)
+        validate_fasta(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="fasta_str must be str"):
-        validate_fasta(None)
+        validate_fasta(None)  # type: ignore[arg-type]

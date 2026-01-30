@@ -4,30 +4,17 @@ These tests compare different translation implementations to validate
 performance characteristics. Mark as slow tests.
 """
 
-try:
-    from bioutils_collection.translation_functions import (
-        translate_dna_to_protein,
-        translate_dna_fast,
-        translate_batch,
-        translate_large_sequence,
-        NUMBA_AVAILABLE,
-    )
-    import time
-    TRANSLATE_AVAILABLE = True
-except ImportError:
-    TRANSLATE_AVAILABLE = False
-    translate_dna_to_protein = None  # type: ignore
-    translate_dna_fast = None  # type: ignore
-    translate_batch = None  # type: ignore
-    translate_large_sequence = None  # type: ignore
-    NUMBA_AVAILABLE = False
+from bioutils_collection.translation_functions import (
+    translate_dna_to_protein,
+    translate_dna_fast,
+    translate_batch,
+    translate_large_sequence,
+)
+import time
 
 import pytest
 
-pytestmark = pytest.mark.skipif(
-    not TRANSLATE_AVAILABLE, reason="translation functions not available"
-)
-pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.slow, pytest.mark.translation]
+pytestmark = [pytest.mark.unit, pytest.mark.slow, pytest.mark.translation]
 
 
 def test_performance_small_sequence() -> None:
@@ -44,21 +31,20 @@ def test_performance_small_sequence() -> None:
         result_default = translate_dna_to_protein(seq)
     time_default = time.perf_counter() - start
 
-    # Act - Fast
-    if NUMBA_AVAILABLE:
-        # Warm up JIT
-        _ = translate_dna_fast("ATGGCC" * 10)
-        
-        start = time.perf_counter()
-        for _ in range(iterations):
-            result_fast = translate_dna_fast(seq)
-        time_fast = time.perf_counter() - start
-        
-        # Assert
-        assert result_default == result_fast
-        # For small sequences, difference should be reasonable
-        assert time_default > 0
-        assert time_fast > 0
+    # Act - Fast (Numba is always available)
+    # Warm up JIT
+    _ = translate_dna_fast("ATGGCC" * 10)
+    
+    start = time.perf_counter()
+    for _ in range(iterations):
+        result_fast = translate_dna_fast(seq)
+    time_fast = time.perf_counter() - start
+    
+    # Assert
+    assert result_default == result_fast
+    # For small sequences, difference should be reasonable
+    assert time_default > 0
+    assert time_fast > 0
 
 
 def test_performance_medium_sequence() -> None:
@@ -75,21 +61,20 @@ def test_performance_medium_sequence() -> None:
         result_default = translate_dna_to_protein(seq)
     time_default = time.perf_counter() - start
 
-    # Act - Fast
-    if NUMBA_AVAILABLE:
-        # Warm up JIT
-        _ = translate_dna_fast("ATGGCC" * 100)
-        
-        start = time.perf_counter()
-        for _ in range(iterations):
-            result_fast = translate_dna_fast(seq)
-        time_fast = time.perf_counter() - start
-        
-        # Assert
-        assert result_default == result_fast
-        # Fast should be faster for medium sequences
-        speedup = time_default / time_fast
-        assert speedup > 1.0, f"Expected speedup >1.0x, got {speedup:.2f}x"
+    # Act - Fast (Numba is always available)
+    # Warm up JIT
+    _ = translate_dna_fast("ATGGCC" * 100)
+    
+    start = time.perf_counter()
+    for _ in range(iterations):
+        result_fast = translate_dna_fast(seq)
+    time_fast = time.perf_counter() - start
+    
+    # Assert
+    assert result_default == result_fast
+    # Fast should be faster for medium sequences
+    speedup = time_default / time_fast
+    assert speedup > 1.0, f"Expected speedup >1.0x, got {speedup:.2f}x"
 
 
 def test_performance_large_sequence() -> None:
@@ -106,21 +91,20 @@ def test_performance_large_sequence() -> None:
         result_default = translate_dna_to_protein(seq)
     time_default = time.perf_counter() - start
 
-    # Act - Fast
-    if NUMBA_AVAILABLE:
-        # Warm up JIT
-        _ = translate_dna_fast("ATGGCC" * 1000)
-        
-        start = time.perf_counter()
-        for _ in range(iterations):
-            result_fast = translate_dna_fast(seq)
-        time_fast = time.perf_counter() - start
-        
-        # Assert
-        assert result_default == result_fast
-        # Fast should show significant speedup for large sequences
-        speedup = time_default / time_fast
-        assert speedup > 1.5, f"Expected speedup >1.5x for large sequences, got {speedup:.2f}x"
+    # Act - Fast (Numba is always available)
+    # Warm up JIT
+    _ = translate_dna_fast("ATGGCC" * 1000)
+    
+    start = time.perf_counter()
+    for _ in range(iterations):
+        result_fast = translate_dna_fast(seq)
+    time_fast = time.perf_counter() - start
+    
+    # Assert
+    assert result_default == result_fast
+    # Fast should show significant speedup for large sequences
+    speedup = time_default / time_fast
+    assert speedup > 1.5, f"Expected speedup >1.5x for large sequences, got {speedup:.2f}x"
 
 
 def test_performance_batch_small_sequences() -> None:
@@ -135,19 +119,18 @@ def test_performance_batch_small_sequences() -> None:
     result_default = translate_batch(sequences, use_fast=False, n_processes=1)
     time_default = time.perf_counter() - start
 
-    # Act - use_fast=True
-    if NUMBA_AVAILABLE:
-        # Warm up
-        _ = translate_dna_fast("ATGGCC" * 10)
-        
-        start = time.perf_counter()
-        result_fast = translate_batch(sequences, use_fast=True, n_processes=1)
-        time_fast = time.perf_counter() - start
-        
-        # Assert
-        assert result_default == result_fast
-        assert time_default > 0
-        assert time_fast > 0
+    # Act - use_fast=True (Numba is always available)
+    # Warm up
+    _ = translate_dna_fast("ATGGCC" * 10)
+    
+    start = time.perf_counter()
+    result_fast = translate_batch(sequences, use_fast=True, n_processes=1)
+    time_fast = time.perf_counter() - start
+    
+    # Assert
+    assert result_default == result_fast
+    assert time_default > 0
+    assert time_fast > 0
 
 
 def test_performance_batch_large_sequences() -> None:
@@ -162,21 +145,20 @@ def test_performance_batch_large_sequences() -> None:
     result_default = translate_batch(sequences, use_fast=False, n_processes=1)
     time_default = time.perf_counter() - start
 
-    # Act - use_fast=True
-    if NUMBA_AVAILABLE:
-        # Warm up
-        _ = translate_dna_fast("ATGGCC" * 1000)
-        
-        start = time.perf_counter()
-        result_fast = translate_batch(sequences, use_fast=True, n_processes=1)
-        time_fast = time.perf_counter() - start
-        
-        # Assert
-        assert result_default == result_fast
-        # Fast should be faster for large sequences
-        if time_default > 0 and time_fast > 0:
-            speedup = time_default / time_fast
-            assert speedup > 1.0, f"Expected speedup for large sequences, got {speedup:.2f}x"
+    # Act - use_fast=True (Numba is always available)
+    # Warm up
+    _ = translate_dna_fast("ATGGCC" * 1000)
+    
+    start = time.perf_counter()
+    result_fast = translate_batch(sequences, use_fast=True, n_processes=1)
+    time_fast = time.perf_counter() - start
+    
+    # Assert
+    assert result_default == result_fast
+    # Fast should be faster for large sequences
+    if time_default > 0 and time_fast > 0:
+        speedup = time_default / time_fast
+        assert speedup > 1.0, f"Expected speedup for large sequences, got {speedup:.2f}x"
 
 
 def test_performance_batch_multiprocessing() -> None:
@@ -211,27 +193,26 @@ def test_performance_large_sequence_chunked() -> None:
     # Arrange
     seq = "ATGGCCAAA" * 1_111_111  # ~10MB
 
-    # Act - Single threaded fast
-    if NUMBA_AVAILABLE:
-        # Warm up
-        _ = translate_dna_fast("ATGGCC" * 1000)
-        
-        start = time.perf_counter()
-        result_single = translate_dna_fast(seq)
-        time_single = time.perf_counter() - start
+    # Act - Single threaded fast (Numba is always available)
+    # Warm up
+    _ = translate_dna_fast("ATGGCC" * 1000)
+    
+    start = time.perf_counter()
+    result_single = translate_dna_fast(seq)
+    time_single = time.perf_counter() - start
 
-        # Act - Chunked parallel
-        start = time.perf_counter()
-        result_chunked = translate_large_sequence(
-            seq, chunk_size=2_000_000, n_processes=4, use_fast=True
-        )
-        time_chunked = time.perf_counter() - start
+    # Act - Chunked parallel
+    start = time.perf_counter()
+    result_chunked = translate_large_sequence(
+        seq, chunk_size=2_000_000, n_processes=4, use_fast=True
+    )
+    time_chunked = time.perf_counter() - start
 
-        # Assert
-        assert result_single == result_chunked
-        assert time_single > 0
-        assert time_chunked > 0
-        # Chunked may or may not be faster depending on overhead
+    # Assert
+    assert result_single == result_chunked
+    assert time_single > 0
+    assert time_chunked > 0
+    # Chunked may or may not be faster depending on overhead
 
 
 def test_performance_consistency_across_methods() -> None:
@@ -246,17 +227,15 @@ def test_performance_consistency_across_methods() -> None:
     result_batch = translate_batch([seq], n_processes=1, use_fast=False)[0]
     result_large = translate_large_sequence(seq, chunk_size=5000, use_fast=False)
     
-    if NUMBA_AVAILABLE:
-        result_fast = translate_dna_fast(seq)
-        result_batch_fast = translate_batch([seq], n_processes=1, use_fast=True)[0]
-        result_large_fast = translate_large_sequence(seq, chunk_size=5000, use_fast=True)
-        
-        # Assert - All methods produce same result
-        assert result_default == result_fast
-        assert result_default == result_batch_fast
-        assert result_default == result_large_fast
+    # Numba is always available
+    result_fast = translate_dna_fast(seq)
+    result_batch_fast = translate_batch([seq], n_processes=1, use_fast=True)[0]
+    result_large_fast = translate_large_sequence(seq, chunk_size=5000, use_fast=True)
     
-    # Assert - Non-fast methods all match
+    # Assert - All methods produce same result
+    assert result_default == result_fast
+    assert result_default == result_batch_fast
+    assert result_default == result_large_fast
     assert result_default == result_batch
     assert result_default == result_large
 
@@ -275,9 +254,9 @@ def test_performance_various_sizes() -> None:
         # Should complete without errors
         result_default = translate_dna_to_protein(seq)
         
-        if NUMBA_AVAILABLE:
-            result_fast = translate_dna_fast(seq)
-            assert result_default == result_fast
+        # Numba is always available
+        result_fast = translate_dna_fast(seq)
+        assert result_default == result_fast
         
         # Verify result is reasonable
         assert len(result_default) == len(seq) // 3

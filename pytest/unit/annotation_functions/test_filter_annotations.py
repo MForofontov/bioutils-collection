@@ -43,4 +43,4 @@ def test_filter_annotations_type_error() -> None:
     Test case 4: TypeError for non-list/tuple input.
     """
     with pytest.raises(TypeError):
-        list(filter_annotations("not a list", feature_type="exon"))
+        list(filter_annotations("not a list", feature_type="exon"))  # type: ignore[arg-type]

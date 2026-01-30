@@ -57,9 +57,9 @@ def test_sequence_to_kmers_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input types.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        sequence_to_kmers(12345, 3)
+        sequence_to_kmers(12345, 3)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="k must be int"):
-        sequence_to_kmers("ATGC", 3.5)
+        sequence_to_kmers("ATGC", 3.5)  # type: ignore[arg-type]
 
 
 def test_sequence_to_kmers_invalid_value_error() -> None:

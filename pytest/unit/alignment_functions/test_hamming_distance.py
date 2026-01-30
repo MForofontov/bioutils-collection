@@ -70,9 +70,9 @@ def test_hamming_distance_invalid_type_error() -> None:
     Test case 7: TypeError for invalid input types.
     """
     with pytest.raises(TypeError, match="seq1 must be str"):
-        hamming_distance(12345, "ATGC")
+        hamming_distance(12345, "ATGC")  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq2 must be str"):
-        hamming_distance("ATGC", 12345)
+        hamming_distance("ATGC", 12345)  # type: ignore[arg-type]
 
 
 def test_hamming_distance_different_length_error() -> None:

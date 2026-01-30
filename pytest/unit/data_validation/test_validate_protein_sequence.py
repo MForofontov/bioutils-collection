@@ -74,4 +74,4 @@ def test_validate_protein_sequence_empty() -> None:
 def test_validate_protein_sequence_type_error() -> None:
     """Test case 9: Test TypeError for non-string input."""
     with pytest.raises(TypeError, match="seq must be a string"):
-        validate_protein_sequence(123)
+        validate_protein_sequence(123)  # type: ignore[arg-type]

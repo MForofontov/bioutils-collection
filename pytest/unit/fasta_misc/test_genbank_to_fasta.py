@@ -68,4 +68,4 @@ def test_genbank_to_fasta_whitespace_only() -> None:
 def test_genbank_to_fasta_type_error() -> None:
     """Test case 9: Test TypeError for non-string input."""
     with pytest.raises(TypeError, match="genbank_str must be a string"):
-        genbank_to_fasta(123)
+        genbank_to_fasta(123)  # type: ignore[arg-type]

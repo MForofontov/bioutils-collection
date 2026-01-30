@@ -75,9 +75,9 @@ def test_kmer_frequency_invalid_type_error() -> None:
     Test case 7: TypeError for invalid input types.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        kmer_frequency(12345, 3)
+        kmer_frequency(12345, 3)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="k must be int"):
-        kmer_frequency("ATGC", 3.5)
+        kmer_frequency("ATGC", 3.5)  # type: ignore[arg-type]
 
 
 def test_kmer_frequency_invalid_value_error() -> None:

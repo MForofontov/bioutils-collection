@@ -1,6 +1,6 @@
 import pytest
 import numpy
-from bioutils_collection.fasta_misc.fasta_split import split_fasta
+from bioutils_collection.fasta_misc.fasta_split import fasta_split
 
 pytestmark = [pytest.mark.unit, pytest.mark.fasta]
 

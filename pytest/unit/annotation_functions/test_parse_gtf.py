@@ -66,7 +66,7 @@ def test_parse_gtf_type_error() -> None:
     Test case 4: TypeError for non-string input.
     """
     with pytest.raises(TypeError):
-        list(parse_gtf(123))
+        list(parse_gtf(123))  # type: ignore[arg-type]
 
 
 def test_parse_gtf_file_not_found() -> None:

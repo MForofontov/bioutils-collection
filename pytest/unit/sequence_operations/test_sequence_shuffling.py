@@ -57,6 +57,6 @@ def test_sequence_shuffling_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="sequence must be a string"):
-        sequence_shuffling(12345)
+        sequence_shuffling(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="sequence must be a string"):
-        sequence_shuffling(None)
+        sequence_shuffling(None)  # type: ignore[arg-type]

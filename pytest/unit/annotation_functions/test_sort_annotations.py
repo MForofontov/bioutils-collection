@@ -38,7 +38,7 @@ def test_sort_annotations_type_error() -> None:
     Test case 4: TypeError for non-list input.
     """
     with pytest.raises(TypeError):
-        sort_annotations("not a list")
+        sort_annotations("not a list")  # type: ignore[arg-type]
 
 
 def test_sort_annotations_key_error() -> None:
@@ -56,7 +56,7 @@ def test_sort_annotations_by_type_error() -> None:
     """
     annots: list[dict[str, object]] = [{"start": 1}]
     with pytest.raises(TypeError, match="by must be a string"):
-        sort_annotations(annots, by=123)  # type: ignore
+        sort_annotations(annots, by=123)  # type: ignore[arg-type]
 
 
 def test_sort_annotations_reverse_type_error() -> None:
@@ -65,4 +65,4 @@ def test_sort_annotations_reverse_type_error() -> None:
     """
     annots: list[dict[str, object]] = [{"start": 1}]
     with pytest.raises(TypeError, match="reverse must be a boolean"):
-        sort_annotations(annots, reverse="yes")  # type: ignore
+        sort_annotations(annots, reverse="yes")  # type: ignore[arg-type]

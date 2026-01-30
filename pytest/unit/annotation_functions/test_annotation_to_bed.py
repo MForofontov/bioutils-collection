@@ -53,7 +53,7 @@ def test_annotation_to_bed_type_error() -> None:
     Test case 5: TypeError for non-list/tuple input.
     """
     with pytest.raises(TypeError):
-        annotation_to_bed("not a list")
+        annotation_to_bed("not a list")  # type: ignore[arg-type]
 
 
 def test_annotation_to_bed_key_error() -> None:

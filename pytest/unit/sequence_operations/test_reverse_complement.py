@@ -56,9 +56,9 @@ def test_reverse_complement_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        reverse_complement(12345)
+        reverse_complement(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        reverse_complement(None)
+        reverse_complement(None)  # type: ignore[arg-type]
 
 
 def test_reverse_complement_invalid_base_error() -> None:

@@ -64,13 +64,13 @@ def test_sequence_quality_filter_invalid_min_max() -> None:
 def test_sequence_quality_filter_type_error() -> None:
     """Test case 8: Test TypeError for non-string seq."""
     with pytest.raises(TypeError, match="seq must be a string"):
-        sequence_quality_filter(123)
+        sequence_quality_filter(123)  # type: ignore[arg-type]
 
 
 def test_sequence_quality_filter_param_type_error() -> None:
     """Test case 9: Test TypeError for non-numeric parameter."""
     with pytest.raises(TypeError, match="min_length must be a number or None"):
-        sequence_quality_filter("ATGC", min_length="five")
+        sequence_quality_filter("ATGC", min_length="five")  # type: ignore[arg-type]
 
 
 def test_sequence_quality_filter_negative_min_length() -> None:

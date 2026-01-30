@@ -55,9 +55,9 @@ def test_gc_skew_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        gc_skew(12345)
+        gc_skew(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        gc_skew(None)
+        gc_skew(None)  # type: ignore[arg-type]
 
 
 def test_gc_skew_invalid_base_error() -> None:

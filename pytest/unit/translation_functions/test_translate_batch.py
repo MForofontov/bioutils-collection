@@ -1,24 +1,13 @@
 """Unit tests for translate_batch function."""
 
-try:
-    from bioutils_collection.translation_functions import (
-        translate_batch,
-        translate_dna_to_protein,
-        NUMBA_AVAILABLE,
-    )
-    TRANSLATE_BATCH_AVAILABLE = True
-except ImportError:
-    TRANSLATE_BATCH_AVAILABLE = False
-    translate_batch = None  # type: ignore
-    translate_dna_to_protein = None  # type: ignore
-    NUMBA_AVAILABLE = False
+from bioutils_collection.translation_functions import (
+    translate_batch,
+    translate_dna_to_protein,
+)
 
 import pytest
 
-pytestmark = pytest.mark.skipif(
-    not TRANSLATE_BATCH_AVAILABLE, reason="translate_batch not available"
-)
-pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.translation]
+pytestmark = [pytest.mark.unit, pytest.mark.translation]
 
 
 def test_translate_batch_empty() -> None:
@@ -26,8 +15,8 @@ def test_translate_batch_empty() -> None:
     Test case 1: Empty sequence list.
     """
     # Arrange
-    sequences = []
-    expected = []
+    sequences: list[str] = []
+    expected: list[str] = []
 
     # Act
     result = translate_batch(sequences)
@@ -296,10 +285,9 @@ def test_translate_batch_bacterial_code() -> None:
     assert result == expected
 
 
-@pytest.mark.skipif(not NUMBA_AVAILABLE, reason="Numba not installed")
 def test_translate_batch_fast_vs_default() -> None:
     """
-    Test case 19: use_fast=True and False give same results.
+    Test case 19: use_fast=True and False give same results (Numba is always available).
     """
     # Arrange
     sequences = ["ATGGCC", "ATGAAATTCTGA", "GCTTGCGGCGGTTATTCA"]  # Fixed: all multiples of 3
@@ -345,7 +333,7 @@ def test_translate_batch_non_string_sequence() -> None:
 
     # Act & Assert
     with pytest.raises((AttributeError, TypeError)):
-        translate_batch(sequences)
+        translate_batch(sequences)  # type: ignore[arg-type]
 
 
 def test_translate_batch_non_list_input() -> None:
@@ -357,7 +345,7 @@ def test_translate_batch_non_list_input() -> None:
 
     # Act & Assert
     with pytest.raises(TypeError, match="sequences must be list"):
-        translate_batch(sequences)
+        translate_batch(sequences)  # type: ignore[arg-type]
 
 
 def test_translate_batch_invalid_n_processes_negative() -> None:

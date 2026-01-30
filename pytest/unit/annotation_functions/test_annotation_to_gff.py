@@ -61,4 +61,4 @@ def test_annotation_to_gff_type_error_non_list_input() -> None:
     Test case 4: Non-list input raises TypeError.
     """
     with pytest.raises(TypeError):
-        annotation_to_gff("not_a_list")
+        annotation_to_gff("not_a_list")  # type: ignore[arg-type]

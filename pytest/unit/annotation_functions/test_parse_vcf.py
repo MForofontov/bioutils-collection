@@ -67,7 +67,7 @@ def test_parse_vcf_type_error() -> None:
     Test case 4: TypeError for non-string input.
     """
     with pytest.raises(TypeError):
-        list(parse_vcf(123))
+        list(parse_vcf(123))  # type: ignore[arg-type]
 
 
 def test_parse_vcf_file_not_found() -> None:

@@ -58,9 +58,9 @@ def test_sequence_entropy_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        sequence_entropy(12345)
+        sequence_entropy(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        sequence_entropy(None)
+        sequence_entropy(None)  # type: ignore[arg-type]
 
 
 def test_sequence_entropy_empty_error() -> None:

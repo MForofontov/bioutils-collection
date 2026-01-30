@@ -71,4 +71,4 @@ def test_relative_synonymous_codon_usage_invalid_bases() -> None:
 def test_relative_synonymous_codon_usage_type_error() -> None:
     """Test case 9: Test TypeError for non-string input."""
     with pytest.raises(TypeError, match="seq must be a string"):
-        relative_synonymous_codon_usage(123)
+        relative_synonymous_codon_usage(123)  # type: ignore[arg-type]

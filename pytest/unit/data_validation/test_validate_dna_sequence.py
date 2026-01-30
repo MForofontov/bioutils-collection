@@ -74,10 +74,10 @@ def test_validate_dna_sequence_empty() -> None:
 def test_validate_dna_sequence_type_error() -> None:
     """Test case 9: Test TypeError for non-string input."""
     with pytest.raises(TypeError, match="seq must be a string"):
-        validate_dna_sequence(123)
+        validate_dna_sequence(123)  # type: ignore[arg-type]
 
 
 def test_validate_dna_sequence_allow_ambiguous_type_error() -> None:
     """Test case 10: Test TypeError for non-boolean allow_ambiguous."""
     with pytest.raises(TypeError, match="allow_ambiguous must be a boolean"):
-        validate_dna_sequence("ATGC", allow_ambiguous="yes")
+        validate_dna_sequence("ATGC", allow_ambiguous="yes")  # type: ignore[arg-type]

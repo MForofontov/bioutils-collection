@@ -56,9 +56,9 @@ def test_find_orfs_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        list(find_orfs(12345))
+        list(find_orfs(12345))  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        list(find_orfs(None))
+        list(find_orfs(None))  # type: ignore[arg-type]
 
 
 def test_find_orfs_invalid_base_error() -> None:

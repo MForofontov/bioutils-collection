@@ -57,9 +57,9 @@ def test_translate_dna_to_protein_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        translate_dna_to_protein(12345)
+        translate_dna_to_protein(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        translate_dna_to_protein(None)
+        translate_dna_to_protein(None)  # type: ignore[arg-type]
 
 
 def test_translate_dna_to_protein_invalid_base_error() -> None:

@@ -66,7 +66,7 @@ def test_parse_bed_type_error() -> None:
     Test case 4: TypeError for non-string input.
     """
     with pytest.raises(TypeError):
-        list(parse_bed(123))
+        list(parse_bed(123))  # type: ignore[arg-type]
 
 
 def test_parse_bed_file_not_found() -> None:

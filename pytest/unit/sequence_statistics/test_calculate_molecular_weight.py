@@ -131,12 +131,12 @@ def test_calculate_molecular_weight_type_error_seq_not_string() -> None:
     Test case 9: TypeError when seq is not a string.
     """
     # Arrange
-    invalid_seq = 12345  # type: ignore
+    invalid_seq = 12345
     expected_message = "seq must be str, got int"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        calculate_molecular_weight(invalid_seq, "dna")  # type: ignore
+        calculate_molecular_weight(invalid_seq, "dna")  # type: ignore[arg-type]
 
 
 def test_calculate_molecular_weight_type_error_seq_type_not_string() -> None:
@@ -145,12 +145,12 @@ def test_calculate_molecular_weight_type_error_seq_type_not_string() -> None:
     """
     # Arrange
     seq = "ATGC"
-    invalid_type = 123  # type: ignore
+    invalid_type = 123
     expected_message = "seq_type must be str, got int"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        calculate_molecular_weight(seq, invalid_type)  # type: ignore
+        calculate_molecular_weight(seq, invalid_type)  # type: ignore[arg-type]
 
 
 def test_calculate_molecular_weight_value_error_invalid_seq_type() -> None:

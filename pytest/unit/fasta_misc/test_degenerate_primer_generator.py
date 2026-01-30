@@ -59,9 +59,9 @@ def test_degenerate_primer_generator_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        degenerate_primer_generator(12345)
+        degenerate_primer_generator(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        degenerate_primer_generator(None)
+        degenerate_primer_generator(None)  # type: ignore[arg-type]
 
 
 def test_degenerate_primer_generator_invalid_base_error() -> None:

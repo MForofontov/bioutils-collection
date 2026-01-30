@@ -52,10 +52,10 @@ def test_levenshtein_distance_completely_different() -> None:
 def test_levenshtein_distance_seq1_type_error() -> None:
     """Test case 9: Test TypeError for non-string seq1."""
     with pytest.raises(TypeError, match="seq1 must be a string"):
-        levenshtein_distance(123, "ACGT")
+        levenshtein_distance(123, "ACGT")  # type: ignore[arg-type]
 
 
 def test_levenshtein_distance_seq2_type_error() -> None:
     """Test case 10: Test TypeError for non-string seq2."""
     with pytest.raises(TypeError, match="seq2 must be a string"):
-        levenshtein_distance("ACGT", 123)
+        levenshtein_distance("ACGT", 123)  # type: ignore[arg-type]
