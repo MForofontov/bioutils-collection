@@ -52,6 +52,12 @@ def smith_waterman(
     Finds the best local alignment between two sequences.
     Algorithm uses dynamic programming with O(n*m) time and space complexity.
 
+    References
+    ----------
+    Smith, T.F., Waterman, M.S. (1981).
+    Identification of common molecular subsequences.
+    Journal of Molecular Biology 147(1):195-197.
+
     Complexity
     ----------
     Time: O(n*m), Space: O(n*m) where n, m are sequence lengths

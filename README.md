@@ -75,7 +75,8 @@ protein = translate_dna_to_protein("ATGGCCTAA")  # "MA*"
 - **`restriction_functions`** - Restriction enzyme site identification
 - **`clustering_functions`** - Motif clustering and grouping
 
-## 🔬 Use Cases
+
+## �🔬 Use Cases
 
 **Genomic Analysis**
 ```python

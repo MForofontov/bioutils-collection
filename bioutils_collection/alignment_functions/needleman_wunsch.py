@@ -51,6 +51,12 @@ def needleman_wunsch(
     For production use, consider using established bioinformatics libraries.
     Algorithm uses dynamic programming with O(n*m) time and space complexity.
 
+    References
+    ----------
+    Needleman, S.B., Wunsch, C.D. (1970).
+    A general method applicable to the search for similarities in the amino acid
+    sequence of two proteins. Journal of Molecular Biology 48(3):443-453.
+
     Complexity
     ----------
     Time: O(n*m), Space: O(n*m) where n, m are sequence lengths

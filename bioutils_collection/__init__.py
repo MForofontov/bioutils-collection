@@ -46,7 +46,6 @@ from .motif_functions.sequence_pattern_match import sequence_pattern_match
 from .repeat_functions.palindromic_sequence_finder import palindromic_sequence_finder
 from .repeat_functions.tandem_repeat_finder import tandem_repeat_finder
 from .restriction_functions.restriction_site_finder import restriction_site_finder
-from .sequence_operations.canonical_minimizers import (
 from .sequence_operations.canonical_minimizer_sketch import (
     canonical_minimizer_sketch,
 )

@@ -96,7 +96,7 @@ def canonical_minimizers(seq: str, k: int, w: int) -> list[str]:
         minimizer = min(window)
         minimizers.append(minimizer)
     
-__all__ = ["canonical_minimizers
+    return minimizers
 
 
-__all__ = ["canonical_minimizers", "canonical_minimizer_sketch"]
+__all__ = ["canonical_minimizers"]
