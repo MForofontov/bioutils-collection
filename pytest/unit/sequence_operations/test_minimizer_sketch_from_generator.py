@@ -61,50 +61,29 @@ def test_minimizer_sketch_from_generator_single_kmer() -> None:
     assert "ATG" in result
 
 
-def test_minimizer_sketch_from_generator_type_error_w_not_int() -> None:
-    """Test case 8: TypeError when w is not an integer."""
-    kmers = [("ATG", 0), ("TGC", 1)]
-    with pytest.raises(TypeError, match="w must be int, got str"):
-        minimizer_sketch_from_generator(iter(kmers), "2")
-
-
-def test_minimizer_sketch_from_generator_value_error_w_negative() -> None:
-    """Test case 9: ValueError when w is negative."""
-    kmers = [("ATG", 0), ("TGC", 1)]
-    with pytest.raises(ValueError, match="w must be positive"):
-        minimizer_sketch_from_generator(iter(kmers), -1)
-
-
-def test_minimizer_sketch_from_generator_value_error_w_zero() -> None:
-    """Test case 10: ValueError when w is zero."""
-    kmers = [("ATG", 0), ("TGC", 1)]
-    with pytest.raises(ValueError, match="w must be positive"):
-        minimizer_sketch_from_generator(iter(kmers), 0)
-
-
 def test_minimizer_sketch_from_generator_returns_dict() -> None:
-    """Test case 11: Verify function returns a dict."""
+    """Test case 8: Verify function returns a dict."""
     kmers = [("ATG", 0), ("TGC", 1), ("GCG", 2)]
     result = minimizer_sketch_from_generator(iter(kmers), 2)
     assert isinstance(result, dict)
 
 
 def test_minimizer_sketch_from_generator_all_keys_strings() -> None:
-    """Test case 12: All dict keys are strings."""
+    """Test case 9: All dict keys are strings."""
     kmers = [("ATG", 0), ("TGC", 1), ("GCG", 2)]
     result = minimizer_sketch_from_generator(iter(kmers), 2)
     assert all(isinstance(k, str) for k in result.keys())
 
 
 def test_minimizer_sketch_from_generator_all_values_lists() -> None:
-    """Test case 13: All dict values are lists."""
+    """Test case 10: All dict values are lists."""
     kmers = [("ATG", 0), ("TGC", 1), ("GCG", 2)]
     result = minimizer_sketch_from_generator(iter(kmers), 2)
     assert all(isinstance(v, list) for v in result.values())
 
 
 def test_minimizer_sketch_from_generator_all_positions_integers() -> None:
-    """Test case 14: All positions are integers."""
+    """Test case 11: All positions are integers."""
     kmers = [("ATG", 0), ("TGC", 1), ("GCG", 2)]
     result = minimizer_sketch_from_generator(iter(kmers), 2)
     for positions in result.values():
@@ -112,21 +91,21 @@ def test_minimizer_sketch_from_generator_all_positions_integers() -> None:
 
 
 def test_minimizer_sketch_from_generator_selects_minimums() -> None:
-    """Test case 15: Selects minimum k-mers."""
+    """Test case 12: Selects minimum k-mers."""
     kmers = [("CCC", 0), ("AAA", 1), ("GGG", 2)]
     result = minimizer_sketch_from_generator(iter(kmers), 2)
     assert "AAA" in result  # Should select AAA as minimum
 
 
 def test_minimizer_sketch_from_generator_repeated_kmers() -> None:
-    """Test case 16: Handle repeated k-mers."""
+    """Test case 13: Handle repeated k-mers."""
     kmers = [("ATG", 0), ("ATG", 1), ("ATG", 2)]
     result = minimizer_sketch_from_generator(iter(kmers), 2)
     assert "ATG" in result
 
 
 def test_minimizer_sketch_from_generator_different_positions() -> None:
-    """Test case 17: Same k-mer at different positions."""
+    """Test case 14: Same k-mer at different positions."""
     kmers = [("ATG", 0), ("GGG", 5), ("ATG", 10)]
     result = minimizer_sketch_from_generator(iter(kmers), 2)
     if "ATG" in result:
@@ -134,7 +113,7 @@ def test_minimizer_sketch_from_generator_different_positions() -> None:
 
 
 def test_minimizer_sketch_from_generator_streaming_use() -> None:
-    """Test case 18: Simulate streaming usage."""
+    """Test case 15: Simulate streaming usage."""
     def kmer_generator():
         for i, kmer in enumerate(["ATG", "TGC", "GCG", "CGA"]):
             yield (kmer, i)
@@ -144,15 +123,36 @@ def test_minimizer_sketch_from_generator_streaming_use() -> None:
 
 
 def test_minimizer_sketch_from_generator_large_window() -> None:
-    """Test case 19: Large window size."""
+    """Test case 16: Large window size."""
     kmers = [(f"K{i}", i) for i in range(100)]
     result = minimizer_sketch_from_generator(iter(kmers), 10)
     assert isinstance(result, dict)
 
 
 def test_minimizer_sketch_from_generator_consistency() -> None:
-    """Test case 20: Multiple calls with same data produce same result."""
+    """Test case 17: Multiple calls with same data produce same result."""
     kmers_data = [("ATG", 0), ("TGC", 1), ("GCG", 2)]
     result1 = minimizer_sketch_from_generator(iter(kmers_data), 2)
     result2 = minimizer_sketch_from_generator(iter(kmers_data), 2)
     assert result1 == result2
+
+
+def test_minimizer_sketch_from_generator_type_error_w_not_int() -> None:
+    """Test case 18: TypeError when w is not an integer."""
+    kmers = [("ATG", 0), ("TGC", 1)]
+    with pytest.raises(TypeError, match="w must be int, got str"):
+        minimizer_sketch_from_generator(iter(kmers), "2")
+
+
+def test_minimizer_sketch_from_generator_value_error_w_negative() -> None:
+    """Test case 19: ValueError when w is negative."""
+    kmers = [("ATG", 0), ("TGC", 1)]
+    with pytest.raises(ValueError, match="w must be positive"):
+        minimizer_sketch_from_generator(iter(kmers), -1)
+
+
+def test_minimizer_sketch_from_generator_value_error_w_zero() -> None:
+    """Test case 20: ValueError when w is zero."""
+    kmers = [("ATG", 0), ("TGC", 1)]
+    with pytest.raises(ValueError, match="w must be positive"):
+        minimizer_sketch_from_generator(iter(kmers), 0)

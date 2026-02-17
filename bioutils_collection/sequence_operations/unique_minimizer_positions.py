@@ -69,26 +69,26 @@ def unique_minimizer_positions(seq: str, k: int, w: int) -> dict[str, list[int]]
 
     seq = seq.upper()
     position_map: dict[str, set[int]] = {}
-    
+
     # Generate all k-mers with positions
-    kmers = [(seq[i:i + k], i) for i in range(len(seq) - k + 1)]
-    
+    kmers = [(seq[i : i + k], i) for i in range(len(seq) - k + 1)]
+
     if len(kmers) < w:
         # If we have fewer k-mers than window size, add minimum
         if kmers:
             min_kmer = min(kmers, key=lambda x: x[0])
             position_map[min_kmer[0]] = {min_kmer[1]}
         return {k: sorted(v) for k, v in position_map.items()}
-    
+
     # Slide window and collect minimizer positions
     for i in range(len(kmers) - w + 1):
-        window = kmers[i:i + w]
+        window = kmers[i : i + w]
         # Find minimum k-mer in window
         min_kmer = min(window, key=lambda x: x[0])
         if min_kmer[0] not in position_map:
             position_map[min_kmer[0]] = set()
         position_map[min_kmer[0]].add(min_kmer[1])
-    
+
     # Convert sets to sorted lists
     return {kmer: sorted(positions) for kmer, positions in position_map.items()}
 

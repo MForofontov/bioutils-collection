@@ -53,27 +53,27 @@ def minimizer_sketch_from_generator(
 
     sketch: dict[str, list[int]] = {}
     window: list[tuple[str, int]] = []
-    
+
     for kmer, pos in kmers_with_pos:
         window.append((kmer, pos))
-        
+
         if len(window) == w:
             # Find minimizer in window
             min_kmer = min(window, key=lambda x: x[0])
             if min_kmer[0] not in sketch:
                 sketch[min_kmer[0]] = []
             sketch[min_kmer[0]].append(min_kmer[1])
-            
+
             # Slide window
             window.pop(0)
-    
+
     # Process last window if exists
     if window and len(window) > 0:
         min_kmer = min(window, key=lambda x: x[0])
         if min_kmer[0] not in sketch:
             sketch[min_kmer[0]] = []
         sketch[min_kmer[0]].append(min_kmer[1])
-    
+
     return sketch
 
 

@@ -55,82 +55,82 @@ def test_syncmer_positions_lowercase() -> None:
     assert result_upper == result_lower
 
 
-def test_syncmer_positions_type_error_seq_not_string() -> None:
-    """Test case 8: TypeError when seq is not a string."""
-    with pytest.raises(TypeError, match="seq must be str, got list"):
-        syncmer_positions([], 4, 2)
-
-
-def test_syncmer_positions_type_error_k_not_int() -> None:
-    """Test case 9: TypeError when k is not an integer."""
-    with pytest.raises(TypeError, match="k must be int, got str"):
-        syncmer_positions("ATGC", "4", 2)
-
-
-def test_syncmer_positions_type_error_s_not_int() -> None:
-    """Test case 10: TypeError when s is not an integer."""
-    with pytest.raises(TypeError, match="s must be int, got dict"):
-        syncmer_positions("ATGC", 4, {})
-
-
-def test_syncmer_positions_type_error_method_not_string() -> None:
-    """Test case 11: TypeError when method is not a string."""
-    with pytest.raises(TypeError, match="method must be str, got list"):
-        syncmer_positions("ATGC", 4, 2, method=[])
-
-
-def test_syncmer_positions_value_error_empty() -> None:
-    """Test case 12: ValueError when sequence is empty."""
-    with pytest.raises(ValueError, match="seq cannot be empty"):
-        syncmer_positions("", 4, 2)
-
-
-def test_syncmer_positions_value_error_k_negative() -> None:
-    """Test case 13: ValueError when k is negative."""
-    with pytest.raises(ValueError, match="k must be positive"):
-        syncmer_positions("ATGC", -1, 2)
-
-
-def test_syncmer_positions_value_error_s_negative() -> None:
-    """Test case 14: ValueError when s is negative."""
-    with pytest.raises(ValueError, match="s must be positive"):
-        syncmer_positions("ATGC", 4, -1)
-
-
-def test_syncmer_positions_value_error_s_not_less_than_k() -> None:
-    """Test case 15: ValueError when s >= k."""
-    with pytest.raises(ValueError, match="s must be less than k"):
-        syncmer_positions("ATGC", 4, 5)
-
-
-def test_syncmer_positions_value_error_k_too_long() -> None:
-    """Test case 16: ValueError when k is longer than sequence."""
-    with pytest.raises(ValueError, match="k cannot be longer than sequence"):
-        syncmer_positions("ATG", 5, 2)
-
-
-def test_syncmer_positions_value_error_invalid_method() -> None:
-    """Test case 17: ValueError when method is not 'open' or 'closed'."""
-    with pytest.raises(ValueError, match="method must be 'open' or 'closed'"):
-        syncmer_positions("ATGC", 4, 2, method="random")
-
-
 def test_syncmer_positions_returns_list() -> None:
-    """Test case 18: Verify function returns a list."""
+    """Test case 8: Verify function returns a list."""
     result = syncmer_positions("ATGCGATCG", 4, 2)
     assert isinstance(result, list)
 
 
 def test_syncmer_positions_known_example() -> None:
-    """Test case 19: Test with known example."""
+    """Test case 9: Test with known example."""
     result = syncmer_positions("ATGCGATCG", 4, 2, method="open")
     assert all(isinstance(p, int) for p in result)
     assert all(0 <= p <= 5 for p in result)
 
 
 def test_syncmer_positions_large_sequence() -> None:
-    """Test case 20: Handle large sequence."""
+    """Test case 10: Handle large sequence."""
     large_seq = "ATGC" * 1000
     result = syncmer_positions(large_seq, 5, 3)
     assert isinstance(result, list)
     assert all(isinstance(p, int) for p in result)
+
+
+def test_syncmer_positions_type_error_seq_not_string() -> None:
+    """Test case 11: TypeError when seq is not a string."""
+    with pytest.raises(TypeError, match="seq must be str, got list"):
+        syncmer_positions([], 4, 2)
+
+
+def test_syncmer_positions_type_error_k_not_int() -> None:
+    """Test case 12: TypeError when k is not an integer."""
+    with pytest.raises(TypeError, match="k must be int, got str"):
+        syncmer_positions("ATGC", "4", 2)
+
+
+def test_syncmer_positions_type_error_s_not_int() -> None:
+    """Test case 13: TypeError when s is not an integer."""
+    with pytest.raises(TypeError, match="s must be int, got dict"):
+        syncmer_positions("ATGC", 4, {})
+
+
+def test_syncmer_positions_type_error_method_not_string() -> None:
+    """Test case 14: TypeError when method is not a string."""
+    with pytest.raises(TypeError, match="method must be str, got list"):
+        syncmer_positions("ATGC", 4, 2, method=[])
+
+
+def test_syncmer_positions_value_error_empty() -> None:
+    """Test case 15: ValueError when sequence is empty."""
+    with pytest.raises(ValueError, match="seq cannot be empty"):
+        syncmer_positions("", 4, 2)
+
+
+def test_syncmer_positions_value_error_k_negative() -> None:
+    """Test case 16: ValueError when k is negative."""
+    with pytest.raises(ValueError, match="k must be positive"):
+        syncmer_positions("ATGC", -1, 2)
+
+
+def test_syncmer_positions_value_error_s_negative() -> None:
+    """Test case 17: ValueError when s is negative."""
+    with pytest.raises(ValueError, match="s must be positive"):
+        syncmer_positions("ATGC", 4, -1)
+
+
+def test_syncmer_positions_value_error_s_not_less_than_k() -> None:
+    """Test case 18: ValueError when s >= k."""
+    with pytest.raises(ValueError, match="s must be less than k"):
+        syncmer_positions("ATGC", 4, 5)
+
+
+def test_syncmer_positions_value_error_k_too_long() -> None:
+    """Test case 19: ValueError when k is longer than sequence."""
+    with pytest.raises(ValueError, match="k cannot be longer than sequence"):
+        syncmer_positions("ATG", 5, 2)
+
+
+def test_syncmer_positions_value_error_invalid_method() -> None:
+    """Test case 20: ValueError when method is not 'open' or 'closed'."""
+    with pytest.raises(ValueError, match="method must be 'open' or 'closed'"):
+        syncmer_positions("ATGC", 4, 2, method="random")

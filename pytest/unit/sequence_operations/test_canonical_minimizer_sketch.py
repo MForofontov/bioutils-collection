@@ -43,93 +43,93 @@ def test_canonical_minimizer_sketch_lowercase() -> None:
     assert result_upper == result_lower
 
 
-def test_canonical_minimizer_sketch_type_error_seq_not_string() -> None:
-    """Test case 6: TypeError when seq is not a string."""
-    with pytest.raises(TypeError, match="seq must be str, got int"):
-        canonical_minimizer_sketch(12345, 3, 4)
-
-
-def test_canonical_minimizer_sketch_type_error_k_not_int() -> None:
-    """Test case 7: TypeError when k is not an integer."""
-    with pytest.raises(TypeError, match="k must be int, got str"):
-        canonical_minimizer_sketch("ATGC", "3", 4)
-
-
-def test_canonical_minimizer_sketch_type_error_w_not_int() -> None:
-    """Test case 8: TypeError when w is not an integer."""
-    with pytest.raises(TypeError, match="w must be int, got list"):
-        canonical_minimizer_sketch("ATGC", 3, [4])
-
-
-def test_canonical_minimizer_sketch_value_error_empty() -> None:
-    """Test case 9: ValueError when sequence is empty."""
-    with pytest.raises(ValueError, match="seq cannot be empty"):
-        canonical_minimizer_sketch("", 3, 4)
-
-
-def test_canonical_minimizer_sketch_value_error_k_negative() -> None:
-    """Test case 10: ValueError when k is negative."""
-    with pytest.raises(ValueError, match="k must be positive"):
-        canonical_minimizer_sketch("ATGC", -1, 4)
-
-
-def test_canonical_minimizer_sketch_value_error_w_negative() -> None:
-    """Test case 11: ValueError when w is negative."""
-    with pytest.raises(ValueError, match="w must be positive"):
-        canonical_minimizer_sketch("ATGC", 3, -1)
-
-
-def test_canonical_minimizer_sketch_value_error_k_too_long() -> None:
-    """Test case 12: ValueError when k is longer than sequence."""
-    with pytest.raises(ValueError, match="k cannot be longer than sequence"):
-        canonical_minimizer_sketch("ATG", 5, 4)
-
-
 def test_canonical_minimizer_sketch_returns_dict() -> None:
-    """Test case 13: Verify function returns a dict."""
+    """Test case 6: Verify function returns a dict."""
     result = canonical_minimizer_sketch("ATGCGATCG", 3, 4)
     assert isinstance(result, dict)
 
 
 def test_canonical_minimizer_sketch_all_keys_strings() -> None:
-    """Test case 14: All dict keys are strings."""
+    """Test case 7: All dict keys are strings."""
     result = canonical_minimizer_sketch("ATGCGATCG", 3, 4)
     assert all(isinstance(k, str) for k in result.keys())
 
 
 def test_canonical_minimizer_sketch_all_values_lists() -> None:
-    """Test case 15: All dict values are lists."""
+    """Test case 8: All dict values are lists."""
     result = canonical_minimizer_sketch("ATGCGATCG", 3, 4)
     assert all(isinstance(v, list) for v in result.values())
 
 
 def test_canonical_minimizer_sketch_all_positions_integers() -> None:
-    """Test case 16: All positions are integers."""
+    """Test case 9: All positions are integers."""
     result = canonical_minimizer_sketch("ATGCGATCG", 3, 4)
     for positions in result.values():
         assert all(isinstance(p, int) for p in positions)
 
 
 def test_canonical_minimizer_sketch_fewer_kmers_than_window() -> None:
-    """Test case 17: Handle when sequence has fewer k-mers than window size."""
+    """Test case 10: Handle when sequence has fewer k-mers than window size."""
     result = canonical_minimizer_sketch("ATGC", 3, 10)
     assert len(result) == 1
 
 
 def test_canonical_minimizer_sketch_non_empty_lists() -> None:
-    """Test case 18: All position lists are non-empty."""
+    """Test case 11: All position lists are non-empty."""
     result = canonical_minimizer_sketch("ATGCGATCG", 3, 4)
     assert all(len(v) > 0 for v in result.values())
 
 
 def test_canonical_minimizer_sketch_large_sequence() -> None:
-    """Test case 19: Handle large sequence."""
+    """Test case 12: Handle large sequence."""
     large_seq = "ATGC" * 1000
     result = canonical_minimizer_sketch(large_seq, 5, 10)
     assert isinstance(result, dict)
 
 
 def test_canonical_minimizer_sketch_all_minimizers_uppercase() -> None:
-    """Test case 20: All minimizers are uppercase."""
+    """Test case 13: All minimizers are uppercase."""
     result = canonical_minimizer_sketch("atgc", 2, 2)
     assert all(k.isupper() for k in result.keys())
+
+
+def test_canonical_minimizer_sketch_type_error_seq_not_string() -> None:
+    """Test case 14: TypeError when seq is not a string."""
+    with pytest.raises(TypeError, match="seq must be str, got int"):
+        canonical_minimizer_sketch(12345, 3, 4)
+
+
+def test_canonical_minimizer_sketch_type_error_k_not_int() -> None:
+    """Test case 15: TypeError when k is not an integer."""
+    with pytest.raises(TypeError, match="k must be int, got str"):
+        canonical_minimizer_sketch("ATGC", "3", 4)
+
+
+def test_canonical_minimizer_sketch_type_error_w_not_int() -> None:
+    """Test case 16: TypeError when w is not an integer."""
+    with pytest.raises(TypeError, match="w must be int, got list"):
+        canonical_minimizer_sketch("ATGC", 3, [4])
+
+
+def test_canonical_minimizer_sketch_value_error_empty() -> None:
+    """Test case 17: ValueError when sequence is empty."""
+    with pytest.raises(ValueError, match="seq cannot be empty"):
+        canonical_minimizer_sketch("", 3, 4)
+
+
+def test_canonical_minimizer_sketch_value_error_k_negative() -> None:
+    """Test case 18: ValueError when k is negative."""
+    with pytest.raises(ValueError, match="k must be positive"):
+        canonical_minimizer_sketch("ATGC", -1, 4)
+
+
+def test_canonical_minimizer_sketch_value_error_w_negative() -> None:
+    """Test case 19: ValueError when w is negative."""
+    with pytest.raises(ValueError, match="w must be positive"):
+        canonical_minimizer_sketch("ATGC", 3, -1)
+
+
+def test_canonical_minimizer_sketch_value_error_k_too_long() -> None:
+    """Test case 20: ValueError when k is longer than sequence."""
+    with pytest.raises(ValueError, match="k cannot be longer than sequence"):
+        canonical_minimizer_sketch("ATG", 5, 4)

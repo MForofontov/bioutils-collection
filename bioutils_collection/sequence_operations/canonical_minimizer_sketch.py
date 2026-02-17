@@ -64,34 +64,34 @@ def canonical_minimizer_sketch(seq: str, k: int, w: int) -> dict[str, list[int]]
 
     seq = seq.upper()
     sketch: dict[str, list[int]] = {}
-    
+
     # Define reverse complement inline
     complement = {"A": "T", "T": "A", "G": "C", "C": "G", "U": "A"}
-    
+
     # Generate all k-mers with canonical forms and positions
     canonical_kmers = []
     for i in range(len(seq) - k + 1):
-        kmer = seq[i:i + k]
+        kmer = seq[i : i + k]
         rev_comp = "".join(complement.get(base, base) for base in reversed(kmer))
         canonical = min(kmer, rev_comp)
         canonical_kmers.append((canonical, i))
-    
+
     if len(canonical_kmers) < w:
         # If we have fewer k-mers than window size, add the minimum
         if canonical_kmers:
             min_kmer = min(canonical_kmers, key=lambda x: x[0])
             sketch[min_kmer[0]] = [min_kmer[1]]
         return sketch
-    
+
     # Slide window and collect minimizers with positions
     for i in range(len(canonical_kmers) - w + 1):
-        window = canonical_kmers[i:i + w]
+        window = canonical_kmers[i : i + w]
         # Find minimum canonical k-mer in window
         min_kmer = min(window, key=lambda x: x[0])
         if min_kmer[0] not in sketch:
             sketch[min_kmer[0]] = []
         sketch[min_kmer[0]].append(min_kmer[1])
-    
+
     return sketch
 
 

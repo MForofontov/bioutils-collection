@@ -69,24 +69,24 @@ def minimizer_positions(seq: str, k: int, w: int) -> list[int]:
 
     seq = seq.upper()
     positions = []
-    
+
     # Generate all k-mers with positions
-    kmers = [(seq[i:i + k], i) for i in range(len(seq) - k + 1)]
-    
+    kmers = [(seq[i : i + k], i) for i in range(len(seq) - k + 1)]
+
     if len(kmers) < w:
         # If we have fewer k-mers than window size, return position of minimum
         if kmers:
             min_kmer = min(kmers, key=lambda x: x[0])
             positions.append(min_kmer[1])
         return positions
-    
+
     # Slide window and collect minimizer positions
     for i in range(len(kmers) - w + 1):
-        window = kmers[i:i + w]
+        window = kmers[i : i + w]
         # Find minimum k-mer in window
         min_kmer = min(window, key=lambda x: x[0])
         positions.append(min_kmer[1])
-    
+
     return positions
 
 

@@ -777,7 +777,66 @@ All code must pass mypy strict checks:
 ## Publishing & Versioning
 - Version in `bioutils_collection/_version.py`
 - SemVer: MAJOR.MINOR.PATCH
-- Update CHANGELOG.md for all changes
+- **CRITICAL**: Update CHANGELOG.md for ALL changes (see CHANGELOG Workflow below)
+
+### CHANGELOG Workflow (MANDATORY)
+
+**IMMEDIATELY after making ANY changes**, update `CHANGELOG.md`:
+
+1. **After creating new functions**:
+   ```markdown
+   ### Added
+   - **function_name** - Brief description (citation if algorithmic)
+   ```
+
+2. **After modifying existing functions**:
+   ```markdown
+   ### Enhanced
+   - **function_name** - What was improved/added
+   ```
+
+3. **After fixing bugs**:
+   ```markdown
+   ### Fixed
+   - **function_name** - What was fixed
+   ```
+
+4. **After removing functions**:
+   ```markdown
+   ### Removed
+   - **function_name** - Reason for removal
+   ```
+
+5. **After adding tests**:
+   - Add to relevant section (e.g., "220 new unit tests for minimizer functions")
+
+**Structure**: All changes go under `[Unreleased]` section at top of CHANGELOG.md
+
+**When publishing a new version**:
+1. Change `[Unreleased]` → `[0.X.0] - YYYY-MM-DD`
+2. Update version in `_version.py`
+3. Add new empty `[Unreleased]` section at top
+4. Commit with message: "Release v0.X.0"
+
+**Example CHANGELOG.md structure**:
+```markdown
+# Changelog
+
+## [Unreleased]
+
+### Added
+- **new_function** - Description
+
+### Fixed
+- **existing_function** - Bug fix description
+
+## [0.3.0] - 2026-02-17
+
+### Added
+- Previous release content...
+```
+
+**DO NOT FORGET**: Update CHANGELOG.md immediately after implementing changes, not when preparing to publish!
 
 ## Quick Reference: Common Function Signatures
 

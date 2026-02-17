@@ -72,30 +72,30 @@ def canonical_minimizers(seq: str, k: int, w: int) -> list[str]:
 
     seq = seq.upper()
     minimizers = []
-    
+
     # Define reverse complement inline
     complement = {"A": "T", "T": "A", "G": "C", "C": "G", "U": "A"}
-    
+
     # Generate all k-mers and convert to canonical form
     canonical_kmers = []
     for i in range(len(seq) - k + 1):
-        kmer = seq[i:i + k]
+        kmer = seq[i : i + k]
         rev_comp = "".join(complement.get(base, base) for base in reversed(kmer))
         canonical = min(kmer, rev_comp)
         canonical_kmers.append(canonical)
-    
+
     if len(canonical_kmers) < w:
         # If we have fewer k-mers than window size, return the minimum
         if canonical_kmers:
             minimizers.append(min(canonical_kmers))
         return minimizers
-    
+
     # Slide window across canonical k-mers
     for i in range(len(canonical_kmers) - w + 1):
-        window = canonical_kmers[i:i + w]
+        window = canonical_kmers[i : i + w]
         minimizer = min(window)
         minimizers.append(minimizer)
-    
+
     return minimizers
 
 

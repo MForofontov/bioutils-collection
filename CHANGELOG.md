@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+- **generate_minimizers** - Core minimizer generation using sliding window (Roberts et al. 2004)
+- **canonical_minimizers** - Strand-independent minimizers using reverse complement
+- **minimizer_sketch** - Compact sequence representation with position mapping
+- **minimizer_positions** - Extract all minimizer positions from sequence
+- **unique_minimizer_positions** - Deduplicated minimizer positions
+- **minimizer_density** - Calculate minimizer density/compression ratio
+- **canonical_minimizer_sketch** - Canonical minimizers with position mapping
+- **minimizer_sketch_from_generator** - Memory-efficient streaming minimizer sketch
+- **generate_syncmers** - Syncmer variant generation with open/closed methods (Edgar 2021)
+- **syncmer_positions** - Extract all syncmer positions from sequence
+- **syncmer_density** - Calculate syncmer density/compression ratio
+- 220 new unit tests for all minimizer/syncmer functions (20 tests per function)
+
+### Enhanced
+- Added academic References sections to 9 algorithmic functions:
+  - **needleman_wunsch** - Needleman & Wunsch (1970)
+  - **smith_waterman** - Smith & Waterman (1981)
+  - **generate_minimizers** - Roberts et al. (2004)
+  - **generate_syncmers** - Edgar (2021)
+  - **calculate_cai** - Sharp & Li (1987)
+  - **calculate_enc** - Wright (1990)
+  - **levenshtein_distance** - Levenshtein (1966)
+  - **melting_temperature** - Wallace (1979), SantaLucia (1998)
+  - **find_cpg_islands** - Gardiner-Garden & Frommer (1987)
+
+### Fixed
+- **pairwise_identity** - Added strict=True to zip() calls (B905 linting)
+- Code formatting improvements across 22 files using ruff
+
 ## [0.2.0] - 2026-01-28
 
 ### Added

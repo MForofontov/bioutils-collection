@@ -51,7 +51,7 @@ def kmer_frequency(seq: str, k: int) -> dict[str, int]:
         raise ValueError("k cannot be longer than sequence")
 
     # Count k-mer frequencies using Counter
-    kmers = (seq[i:i + k] for i in range(len(seq) - k + 1))
+    kmers = (seq[i : i + k] for i in range(len(seq) - k + 1))
     return dict(Counter(kmers))
 
 

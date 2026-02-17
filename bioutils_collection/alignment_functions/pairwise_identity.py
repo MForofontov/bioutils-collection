@@ -84,7 +84,7 @@ def pairwise_identity(seq1: str, seq2: str, aligned: bool = False) -> float:
         matches = 0
         compared_positions = 0
 
-        for c1, c2 in zip(seq1, seq2):
+        for c1, c2 in zip(seq1, seq2, strict=False):
             # Skip positions where either sequence has a gap
             if c1 != "-" and c2 != "-":
                 compared_positions += 1
@@ -97,7 +97,7 @@ def pairwise_identity(seq1: str, seq2: str, aligned: bool = False) -> float:
         identity = (matches / compared_positions) * 100.0
     else:
         # For unaligned sequences, simple character comparison
-        matches = sum(1 for c1, c2 in zip(seq1, seq2) if c1 == c2)
+        matches = sum(1 for c1, c2 in zip(seq1, seq2, strict=False) if c1 == c2)
         identity = (matches / len(seq1)) * 100.0
 
     return round(identity, 2)

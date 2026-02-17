@@ -72,11 +72,11 @@ def minimizer_density(seq: str, k: int, w: int) -> float:
     total_kmers = len(seq) - k + 1
     if total_kmers == 0:
         return 0.0
-    
+
     # Get unique minimizers
     unique_mins = unique_minimizer_positions(seq, k, w)
     unique_count = len(unique_mins)
-    
+
     return unique_count / total_kmers
 
 

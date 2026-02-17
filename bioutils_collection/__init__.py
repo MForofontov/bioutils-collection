@@ -3,7 +3,6 @@ Bioinformatics functions package: unified exports for all submodules.
 """
 
 from ._version import __version__
-
 from .alignment_functions.blast_score_ratio import blast_score_ratio
 from .alignment_functions.hamming_distance import hamming_distance
 from .alignment_functions.levenshtein_distance import levenshtein_distance

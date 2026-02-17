@@ -81,9 +81,9 @@ def syncmer_density(seq: str, k: int, s: int, method: str = "open") -> float:
     total_kmers = len(seq) - k + 1
     if total_kmers == 0:
         return 0.0
-    
+
     num_syncmers = len(syncmer_positions(seq, k, s, method))
-    
+
     return num_syncmers / total_kmers
 
 

@@ -78,36 +78,36 @@ def minimizer_sketch(
 
     seq = seq.upper()
     sketch: dict[str, list[int]] = {}
-    
+
     # Generate all k-mers with positions
-    kmers = [(seq[i:i + k], i) for i in range(len(seq) - k + 1)]
-    
+    kmers = [(seq[i : i + k], i) for i in range(len(seq) - k + 1)]
+
     if len(kmers) < w:
         # If we have fewer k-mers than window size, add the minimum
         if kmers:
             min_kmer = min(kmers, key=lambda x: x[0])
             sketch[min_kmer[0]] = [min_kmer[1]]
         return sketch
-    
+
     # Slide window and collect minimizers with positions
     minimizer_positions = []
     for i in range(len(kmers) - w + 1):
-        window = kmers[i:i + w]
+        window = kmers[i : i + w]
         # Find minimum k-mer in window
         min_kmer = min(window, key=lambda x: x[0])
         minimizer_positions.append(min_kmer)
-    
+
     # Apply density sampling if needed
     if density < 1.0:
         step = max(1, int(1.0 / density))
         minimizer_positions = minimizer_positions[::step]
-    
+
     # Build sketch dictionary
     for kmer, pos in minimizer_positions:
         if kmer not in sketch:
             sketch[kmer] = []
         sketch[kmer].append(pos)
-    
+
     return sketch
 
 

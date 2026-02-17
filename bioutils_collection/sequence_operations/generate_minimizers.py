@@ -75,22 +75,22 @@ def generate_minimizers(seq: str, k: int, w: int) -> list[str]:
 
     seq = seq.upper()
     minimizers = []
-    
+
     # Generate all k-mers
-    kmers = [seq[i:i + k] for i in range(len(seq) - k + 1)]
-    
+    kmers = [seq[i : i + k] for i in range(len(seq) - k + 1)]
+
     if len(kmers) < w:
         # If we have fewer k-mers than window size, return the minimum
         if kmers:
             minimizers.append(min(kmers))
         return minimizers
-    
+
     # Slide window across k-mers
     for i in range(len(kmers) - w + 1):
-        window = kmers[i:i + w]
+        window = kmers[i : i + w]
         minimizer = min(window)
         minimizers.append(minimizer)
-    
+
     return minimizers
 
 

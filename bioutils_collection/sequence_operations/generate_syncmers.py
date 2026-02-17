@@ -90,19 +90,19 @@ def generate_syncmers(seq: str, k: int, s: int, method: str = "open") -> list[st
 
     seq = seq.upper()
     syncmers = []
-    
+
     # Generate all k-mers
     for i in range(len(seq) - k + 1):
-        kmer = seq[i:i + k]
-        
+        kmer = seq[i : i + k]
+
         # Extract all s-mers from this k-mer
-        smers = [kmer[j:j + s] for j in range(k - s + 1)]
-        
+        smers = [kmer[j : j + s] for j in range(k - s + 1)]
+
         if not smers:
             continue
-            
+
         min_smer = min(smers)
-        
+
         if method == "open":
             # Open syncmer: minimum s-mer must be at first position
             if smers[0] == min_smer:
@@ -111,7 +111,7 @@ def generate_syncmers(seq: str, k: int, s: int, method: str = "open") -> list[st
             # Closed syncmer: minimum s-mer can be anywhere
             if min_smer in smers:
                 syncmers.append(kmer)
-    
+
     return syncmers
 
 

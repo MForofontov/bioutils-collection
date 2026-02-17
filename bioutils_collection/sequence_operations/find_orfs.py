@@ -30,11 +30,11 @@ def find_orfs(seq: str) -> Iterator[tuple[int, int, str]]:
     --------
     >>> list(find_orfs('ATGAAATAGATGTAA'))
     [(0, 9, 'ATGAAATAG'), (9, 15, 'ATGTAA')]
-    
+
     >>> # ORF without stop codon (reaches end)
     >>> list(find_orfs('ATGGCCAAA'))
     [(0, 9, 'ATGGCCAAA')]
-    
+
     Notes
     -----
     - Start codon: ATG
@@ -48,11 +48,11 @@ def find_orfs(seq: str) -> Iterator[tuple[int, int, str]]:
     seq = seq.upper()
     if not all(base in "ATCG" for base in seq):
         raise ValueError("Sequence contains invalid DNA bases")
-    
+
     start_codon = "ATG"
     stop_codons = {"TAA", "TAG", "TGA"}
     i = 0
-    
+
     while i <= len(seq) - 3:  # Fixed: was len(seq) - 2
         if seq[i : i + 3] == start_codon:
             # Search for stop codon
@@ -64,14 +64,14 @@ def find_orfs(seq: str) -> Iterator[tuple[int, int, str]]:
                     i = len(seq)
                     found_stop = True
                     break
-                    
+
                 codon = seq[j : j + 3]
                 if codon in stop_codons:
                     yield (i, j + 3, seq[i : j + 3])
                     i = j + 3
                     found_stop = True
                     break
-            
+
             if not found_stop:
                 # ORF reaches end without stop codon
                 yield (i, len(seq), seq[i:])
