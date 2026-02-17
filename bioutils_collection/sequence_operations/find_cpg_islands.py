@@ -40,6 +40,12 @@ def find_cpg_islands(
     CpG islands are regions with high GC content and CpG dinucleotide frequency.
     Often found near gene promoters.
 
+    References
+    ----------
+    Gardiner-Garden, M., Frommer, M. (1987).
+    CpG islands in vertebrate genomes.
+    Journal of Molecular Biology 196(2):261-282.
+
     Complexity
     ----------
     Time: O(n*w), Space: O(k) where k is number of islands

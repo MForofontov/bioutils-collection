@@ -49,6 +49,12 @@ def codon_adaptation_index(
     Stop codons are excluded from calculation.
     If no reference weights provided, all synonymous codons get equal weight.
 
+    References
+    ----------
+    Sharp, P.M., Li, W.H. (1987).
+    The codon adaptation index - a measure of directional synonymous codon usage
+    bias, and its potential applications. Nucleic Acids Research 15(3):1281-1295.
+
     Complexity
     ----------
     Time: O(n), Space: O(1) where n is sequence length

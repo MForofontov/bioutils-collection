@@ -45,6 +45,12 @@ def levenshtein_distance(seq1: str, seq2: str) -> int:
     Space complexity can be optimized to O(min(n,m)) but this implementation
     uses O(n*m) for clarity.
 
+    References
+    ----------
+    Levenshtein, V.I. (1966).
+    Binary codes capable of correcting deletions, insertions, and reversals.
+    Soviet Physics Doklady 10(8):707-710.
+
     Complexity
     ----------
     Time: O(n*m), Space: O(n*m) where n, m are sequence lengths
