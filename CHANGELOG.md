@@ -1,6 +1,9 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this package will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
@@ -18,7 +21,7 @@ All notable changes to this project will be documented in this file.
 - **syncmer_density** - Calculate syncmer density/compression ratio
 - 220 new unit tests for all minimizer/syncmer functions (20 tests per function)
 
-### Enhanced
+### Changed
 - Added academic References sections to 9 algorithmic functions:
   - **needleman_wunsch** - Needleman & Wunsch (1970)
   - **smith_waterman** - Smith & Waterman (1981)
@@ -58,11 +61,6 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Updated all `__init__.py` files to remove deleted function exports
 - Removed 5 test files for deleted functions
-
-### Verified
-- All remaining ~70 functions verified as unique and non-redundant
-- 692 tests passing, 6 skipped
-- No broken dependencies or import errors
 
 ## [0.1.1] - Previous Release
 
