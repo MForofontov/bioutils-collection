@@ -2,6 +2,8 @@
 
 from collections import Counter
 
+from ..sequence_operations.sequence_to_kmers import sequence_to_kmers
+
 
 def kmer_frequency(seq: str, k: int) -> dict[str, int]:
     """
@@ -51,8 +53,7 @@ def kmer_frequency(seq: str, k: int) -> dict[str, int]:
         raise ValueError("k cannot be longer than sequence")
 
     # Count k-mer frequencies using Counter
-    kmers = (seq[i : i + k] for i in range(len(seq) - k + 1))
-    return dict(Counter(kmers))
+    return dict(Counter(sequence_to_kmers(seq, k)))
 
 
 __all__ = ["kmer_frequency"]

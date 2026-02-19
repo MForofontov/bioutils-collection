@@ -19,9 +19,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **generate_syncmers** - Syncmer variant generation with open/closed methods (Edgar 2021)
 - **syncmer_positions** - Extract all syncmer positions from sequence
 - **syncmer_density** - Calculate syncmer density/compression ratio
-- 220 new unit tests for all minimizer/syncmer functions (20 tests per function)
+- **sequence_to_kmers_with_positions** - Split sequence into (kmer, position) tuples
+- 240 new unit tests for all minimizer/syncmer/utility functions (20 tests per function)
 
 ### Changed
+- **generate_minimizers** - Refactored to use `sequence_to_kmers` instead of inline list comprehension
+- **kmer_frequency** - Refactored to use `sequence_to_kmers` instead of inline generator
+- **sequence_statistics** - Refactored to use `gc_content` instead of inline GC calculation
+- **minimizer_positions** - Refactored to use `sequence_to_kmers_with_positions`
+- **unique_minimizer_positions** - Refactored to use `sequence_to_kmers_with_positions`
+- **minimizer_sketch** - Refactored to use `sequence_to_kmers_with_positions`
 - Added academic References sections to 9 algorithmic functions:
   - **needleman_wunsch** - Needleman & Wunsch (1970)
   - **smith_waterman** - Smith & Waterman (1981)

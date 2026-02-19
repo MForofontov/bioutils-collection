@@ -1,5 +1,7 @@
 """Create minimizer sketch representation of sequences."""
 
+from .sequence_to_kmers_with_positions import sequence_to_kmers_with_positions
+
 
 def minimizer_sketch(
     seq: str, k: int, w: int, density: float = 1.0
@@ -80,7 +82,7 @@ def minimizer_sketch(
     sketch: dict[str, list[int]] = {}
 
     # Generate all k-mers with positions
-    kmers = [(seq[i : i + k], i) for i in range(len(seq) - k + 1)]
+    kmers = sequence_to_kmers_with_positions(seq, k)
 
     if len(kmers) < w:
         # If we have fewer k-mers than window size, add the minimum

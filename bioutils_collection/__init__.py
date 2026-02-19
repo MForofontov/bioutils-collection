@@ -66,6 +66,9 @@ from .sequence_operations.sequence_complement import sequence_complement
 from .sequence_operations.sequence_quality_filter import sequence_quality_filter
 from .sequence_operations.sequence_shuffling import sequence_shuffling
 from .sequence_operations.sequence_to_kmers import sequence_to_kmers
+from .sequence_operations.sequence_to_kmers_with_positions import (
+    sequence_to_kmers_with_positions,
+)
 from .sequence_operations.syncmer_density import syncmer_density
 from .sequence_operations.syncmer_positions import syncmer_positions
 from .sequence_operations.unique_minimizer_positions import unique_minimizer_positions
@@ -144,6 +147,7 @@ __all__ = [
     "sequence_quality_filter",
     "sequence_shuffling",
     "sequence_to_kmers",
+    "sequence_to_kmers_with_positions",
     "syncmer_density",
     "syncmer_positions",
     "unique_minimizer_positions",

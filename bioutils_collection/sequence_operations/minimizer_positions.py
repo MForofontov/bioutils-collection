@@ -1,5 +1,7 @@
 """Get positions of minimizers in sequences."""
 
+from .sequence_to_kmers_with_positions import sequence_to_kmers_with_positions
+
 
 def minimizer_positions(seq: str, k: int, w: int) -> list[int]:
     """
@@ -71,7 +73,7 @@ def minimizer_positions(seq: str, k: int, w: int) -> list[int]:
     positions = []
 
     # Generate all k-mers with positions
-    kmers = [(seq[i : i + k], i) for i in range(len(seq) - k + 1)]
+    kmers = sequence_to_kmers_with_positions(seq, k)
 
     if len(kmers) < w:
         # If we have fewer k-mers than window size, return position of minimum

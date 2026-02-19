@@ -1,5 +1,7 @@
 """Get unique minimizers and all their positions in sequence."""
 
+from .sequence_to_kmers_with_positions import sequence_to_kmers_with_positions
+
 
 def unique_minimizer_positions(seq: str, k: int, w: int) -> dict[str, list[int]]:
     """
@@ -71,7 +73,7 @@ def unique_minimizer_positions(seq: str, k: int, w: int) -> dict[str, list[int]]
     position_map: dict[str, set[int]] = {}
 
     # Generate all k-mers with positions
-    kmers = [(seq[i : i + k], i) for i in range(len(seq) - k + 1)]
+    kmers = sequence_to_kmers_with_positions(seq, k)
 
     if len(kmers) < w:
         # If we have fewer k-mers than window size, add minimum
