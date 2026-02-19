@@ -35,6 +35,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - **pairwise_identity** - Added strict=True to zip() calls (B905 linting)
+- **canonical_minimizers** - Replaced inline reverse complement dict with `reverse_complement` function
+- **canonical_minimizer_sketch** - Replaced inline reverse complement dict with `reverse_complement` function
+- **palindromic_sequence_finder** - Replaced private `_reverse_complement` helper with `reverse_complement` function
+- **fasta_reverse_complement** - Replaced inline `str.maketrans` with `reverse_complement` function
 - Code formatting improvements across 22 files using ruff
 
 ## [0.2.0] - 2026-01-28

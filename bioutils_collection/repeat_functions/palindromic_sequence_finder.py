@@ -1,10 +1,6 @@
 """Find palindromic sequences in DNA (biological palindromes: reverse complements)."""
 
-
-def _reverse_complement(seq: str) -> str:
-    """Get reverse complement of DNA sequence."""
-    complement = {"A": "T", "T": "A", "G": "C", "C": "G"}
-    return "".join(complement.get(base, base) for base in reversed(seq))
+from ..sequence_operations.reverse_complement import reverse_complement
 
 
 def palindromic_sequence_finder(
@@ -91,7 +87,7 @@ def palindromic_sequence_finder(
 
             if biological:
                 # Check if reverse complement equals original (biological palindrome)
-                if substr == _reverse_complement(substr):
+                if substr == reverse_complement(substr):
                     results.append((i, i + length, substr))
             else:
                 # Check if simple reversal equals original (string palindrome)

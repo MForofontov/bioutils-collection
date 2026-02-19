@@ -1,5 +1,7 @@
 """Generate canonical minimizers considering reverse complement."""
 
+from .reverse_complement import reverse_complement
+
 
 def canonical_minimizers(seq: str, k: int, w: int) -> list[str]:
     """
@@ -73,14 +75,11 @@ def canonical_minimizers(seq: str, k: int, w: int) -> list[str]:
     seq = seq.upper()
     minimizers = []
 
-    # Define reverse complement inline
-    complement = {"A": "T", "T": "A", "G": "C", "C": "G", "U": "A"}
-
     # Generate all k-mers and convert to canonical form
     canonical_kmers = []
     for i in range(len(seq) - k + 1):
         kmer = seq[i : i + k]
-        rev_comp = "".join(complement.get(base, base) for base in reversed(kmer))
+        rev_comp = reverse_complement(kmer)
         canonical = min(kmer, rev_comp)
         canonical_kmers.append(canonical)
 

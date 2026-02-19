@@ -1,5 +1,7 @@
 """Create canonical minimizer sketch with positions."""
 
+from .reverse_complement import reverse_complement
+
 
 def canonical_minimizer_sketch(seq: str, k: int, w: int) -> dict[str, list[int]]:
     """
@@ -65,14 +67,11 @@ def canonical_minimizer_sketch(seq: str, k: int, w: int) -> dict[str, list[int]]
     seq = seq.upper()
     sketch: dict[str, list[int]] = {}
 
-    # Define reverse complement inline
-    complement = {"A": "T", "T": "A", "G": "C", "C": "G", "U": "A"}
-
     # Generate all k-mers with canonical forms and positions
     canonical_kmers = []
     for i in range(len(seq) - k + 1):
         kmer = seq[i : i + k]
-        rev_comp = "".join(complement.get(base, base) for base in reversed(kmer))
+        rev_comp = reverse_complement(kmer)
         canonical = min(kmer, rev_comp)
         canonical_kmers.append((canonical, i))
 
