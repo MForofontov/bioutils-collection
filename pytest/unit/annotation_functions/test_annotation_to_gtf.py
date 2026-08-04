@@ -1,6 +1,6 @@
 import pytest
 
-pytestmark = [pytest.mark.unit, pytest.mark.bioinformatics]
+pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 from bioutils_collection.annotation_functions.annotation_to_gtf import (
     annotation_to_gtf,
 )
@@ -103,12 +103,12 @@ def test_annotation_to_gtf_invalid_record_type() -> None:
     """
     Test case 6: Error raised when a record is not a dict.
     """
-    annotations = ["not_a_dict"]
+    annotations: list[str] = ["not_a_dict"]
     with pytest.raises(TypeError, match=r"record must be a dict"):
         # Patch annotation_to_gtf to raise TypeError for non-dict records
         # For now, this will raise KeyError for missing keys, but best practice is TypeError
         try:
-            annotation_to_gtf(annotations)
+            annotation_to_gtf(annotations)  # type: ignore[arg-type]
         except KeyError as e:
             # If KeyError is raised, fail the test with a message
             pytest.fail(f"Expected TypeError for non-dict record, got KeyError: {e}")

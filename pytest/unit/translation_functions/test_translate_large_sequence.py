@@ -1,26 +1,14 @@
 """Unit tests for translate_large_sequence function."""
 
-try:
-    from bioutils_collection.translation_functions import (
-        translate_large_sequence,
-        translate_dna_to_protein,
-        translate_dna_fast,
-        NUMBA_AVAILABLE,
-    )
-    TRANSLATE_LARGE_AVAILABLE = True
-except ImportError:
-    TRANSLATE_LARGE_AVAILABLE = False
-    translate_large_sequence = None  # type: ignore
-    translate_dna_to_protein = None  # type: ignore
-    translate_dna_fast = None  # type: ignore
-    NUMBA_AVAILABLE = False
+from bioutils_collection.translation_functions import (
+    translate_large_sequence,
+    translate_dna_to_protein,
+    translate_dna_fast,
+)
 
 import pytest
 
-pytestmark = pytest.mark.skipif(
-    not TRANSLATE_LARGE_AVAILABLE, reason="translate_large_sequence not available"
-)
-pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.bioinformatics]
+pytestmark = [pytest.mark.unit, pytest.mark.translation]
 
 
 def test_translate_large_sequence_small() -> None:
@@ -193,10 +181,9 @@ def test_translate_large_sequence_use_fast_false() -> None:
     assert result == expected
 
 
-@pytest.mark.skipif(not NUMBA_AVAILABLE, reason="Numba not installed")
 def test_translate_large_sequence_use_fast_true() -> None:
     """
-    Test case 12: With use_fast=True.
+    Test case 12: With use_fast=True (Numba is always available).
     """
     # Arrange
     seq = "ATGGCC" * 1000
@@ -282,6 +269,24 @@ def test_translate_large_sequence_invalid_length() -> None:
         translate_large_sequence(seq)
 
 
+def test_translate_large_sequence_invalid_chunk_size_one() -> None:
+    """
+    Test case 18a: ValueError for chunk_size 1 (rounds to 0).
+    """
+    seq = "ATG" * 100
+    with pytest.raises(ValueError, match="chunk_size must be at least 3"):
+        translate_large_sequence(seq, chunk_size=1)
+
+
+def test_translate_large_sequence_invalid_chunk_size_two() -> None:
+    """
+    Test case 18b: ValueError for chunk_size 2 (rounds to 0).
+    """
+    seq = "ATG" * 100
+    with pytest.raises(ValueError, match="chunk_size must be at least 3"):
+        translate_large_sequence(seq, chunk_size=2)
+
+
 def test_translate_large_sequence_invalid_chunk_size_zero() -> None:
     """
     Test case 18: ValueError for zero chunk_size.
@@ -315,7 +320,7 @@ def test_translate_large_sequence_non_string() -> None:
 
     # Act & Assert
     with pytest.raises(TypeError, match="sequence must be str"):
-        translate_large_sequence(seq)
+        translate_large_sequence(seq)  # type: ignore[arg-type]
 
 
 def test_translate_large_sequence_invalid_chunk_size_type() -> None:
@@ -327,7 +332,7 @@ def test_translate_large_sequence_invalid_chunk_size_type() -> None:
 
     # Act & Assert
     with pytest.raises(TypeError, match="chunk_size must be int"):
-        translate_large_sequence(seq, chunk_size="1000")
+        translate_large_sequence(seq, chunk_size="1000")  # type: ignore[arg-type]
 
 
 def test_translate_large_sequence_invalid_chunk_size_negative() -> None:

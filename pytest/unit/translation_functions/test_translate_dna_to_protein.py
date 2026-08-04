@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.translation_functions.translate_dna_to_protein import (
+    translate_dna_to_protein,
+)
 
-try:
-    import numpy
-    from bioutils_collection.translation_functions.translate_dna_to_protein import (
-        translate_dna_to_protein,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    translate_dna_to_protein = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.translation]
 
 
 def test_translate_dna_to_protein_basic() -> None:
@@ -68,9 +57,9 @@ def test_translate_dna_to_protein_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        translate_dna_to_protein(12345)
+        translate_dna_to_protein(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        translate_dna_to_protein(None)
+        translate_dna_to_protein(None)  # type: ignore[arg-type]
 
 
 def test_translate_dna_to_protein_invalid_base_error() -> None:

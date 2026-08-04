@@ -1,19 +1,9 @@
 import pytest
+from bioutils_collection.alignment_functions.levenshtein_distance import (
+    levenshtein_distance,
+)
 
-try:
-    from bioutils_collection.alignment_functions.levenshtein_distance import (
-        levenshtein_distance,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    levenshtein_distance = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.alignment]
 
 
 def test_levenshtein_distance_identical() -> None:
@@ -62,10 +52,10 @@ def test_levenshtein_distance_completely_different() -> None:
 def test_levenshtein_distance_seq1_type_error() -> None:
     """Test case 9: Test TypeError for non-string seq1."""
     with pytest.raises(TypeError, match="seq1 must be a string"):
-        levenshtein_distance(123, "ACGT")
+        levenshtein_distance(123, "ACGT")  # type: ignore[arg-type]
 
 
 def test_levenshtein_distance_seq2_type_error() -> None:
     """Test case 10: Test TypeError for non-string seq2."""
     with pytest.raises(TypeError, match="seq2 must be a string"):
-        levenshtein_distance("ACGT", 123)
+        levenshtein_distance("ACGT", 123)  # type: ignore[arg-type]

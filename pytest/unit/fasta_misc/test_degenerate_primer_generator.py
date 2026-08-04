@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.fasta_misc.degenerate_primer_generator import (
+    degenerate_primer_generator,
+)
 
-try:
-    import numpy
-    from bioutils_collection.fasta_misc.degenerate_primer_generator import (
-        degenerate_primer_generator,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    degenerate_primer_generator = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.fasta]
 
 
 def test_degenerate_primer_generator_basic() -> None:
@@ -70,9 +59,9 @@ def test_degenerate_primer_generator_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        degenerate_primer_generator(12345)
+        degenerate_primer_generator(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        degenerate_primer_generator(None)
+        degenerate_primer_generator(None)  # type: ignore[arg-type]
 
 
 def test_degenerate_primer_generator_invalid_base_error() -> None:

@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_statistics.melting_temperature import (
+    melting_temperature,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_statistics.melting_temperature import (
-        melting_temperature,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    melting_temperature = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_statistics]
 
 
 def test_melting_temperature_basic() -> None:
@@ -85,9 +74,9 @@ def test_melting_temperature_invalid_type_error() -> None:
     Test case 7: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        melting_temperature(12345)
+        melting_temperature(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        melting_temperature(None)
+        melting_temperature(None)  # type: ignore[arg-type]
 
 
 def test_melting_temperature_empty_error() -> None:

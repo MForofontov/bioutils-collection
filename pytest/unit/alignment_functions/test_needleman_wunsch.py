@@ -1,6 +1,6 @@
 import pytest
 
-pytestmark = [pytest.mark.unit, pytest.mark.bioinformatics]
+pytestmark = [pytest.mark.unit, pytest.mark.alignment]
 from bioutils_collection.alignment_functions.needleman_wunsch import (
     needleman_wunsch,
 )
@@ -46,13 +46,13 @@ def test_needleman_wunsch_completely_different() -> None:
 def test_needleman_wunsch_seq1_type_error() -> None:
     """Test case 6: Test TypeError for non-string seq1."""
     with pytest.raises(TypeError, match="seq1 must be a string"):
-        needleman_wunsch(123, "ACGT")
+        needleman_wunsch(123, "ACGT")  # type: ignore[arg-type]
 
 
 def test_needleman_wunsch_seq2_type_error() -> None:
     """Test case 7: Test TypeError for non-string seq2."""
     with pytest.raises(TypeError, match="seq2 must be a string"):
-        needleman_wunsch("ACGT", 123)
+        needleman_wunsch("ACGT", 123)  # type: ignore[arg-type]
 
 
 def test_needleman_wunsch_empty_seq1() -> None:
@@ -65,3 +65,9 @@ def test_needleman_wunsch_empty_seq2() -> None:
     """Test case 9: Test ValueError for empty seq2."""
     with pytest.raises(ValueError, match="seq2 cannot be empty"):
         needleman_wunsch("ACGT", "")
+
+
+def test_needleman_wunsch_bool_match_type_error() -> None:
+    """Test case 10: Test TypeError for bool match parameter."""
+    with pytest.raises(TypeError, match="match must be an integer"):
+        needleman_wunsch("ACGT", "ACGT", match=True)  # type: ignore[arg-type]

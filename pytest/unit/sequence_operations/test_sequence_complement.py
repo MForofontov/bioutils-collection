@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_operations.sequence_complement import (
+    sequence_complement,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_operations.sequence_complement import (
-        sequence_complement,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    sequence_complement = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_operations]
 
 
 def test_sequence_complement_normal_sequence() -> None:
@@ -145,12 +134,12 @@ def test_sequence_complement_type_error_not_string() -> None:
     Test case 9: TypeError when input is not a string.
     """
     # Arrange
-    invalid_input = 12345  # type: ignore
+    invalid_input = 12345
     expected_message = "seq must be a string, got int"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        sequence_complement(invalid_input)  # type: ignore
+        sequence_complement(invalid_input)  # type: ignore[arg-type]
 
 
 def test_sequence_complement_type_error_list() -> None:
@@ -158,12 +147,12 @@ def test_sequence_complement_type_error_list() -> None:
     Test case 10: TypeError when input is a list.
     """
     # Arrange
-    invalid_input = ["A", "T", "G", "C"]  # type: ignore
+    invalid_input = ["A", "T", "G", "C"]
     expected_message = "seq must be a string, got list"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        sequence_complement(invalid_input)  # type: ignore
+        sequence_complement(invalid_input)  # type: ignore[arg-type]
 
 
 def test_sequence_complement_value_error_invalid_base() -> None:

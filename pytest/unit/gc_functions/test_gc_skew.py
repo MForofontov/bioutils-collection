@@ -1,19 +1,8 @@
 import pytest
+import numpy
+from bioutils_collection.gc_functions.gc_skew import gc_skew
 
-try:
-    import numpy
-    from bioutils_collection.gc_functions.gc_skew import gc_skew
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    gc_skew = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.gc_functions]
 
 
 def test_gc_skew_equal_g_and_c() -> None:
@@ -66,9 +55,9 @@ def test_gc_skew_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        gc_skew(12345)
+        gc_skew(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        gc_skew(None)
+        gc_skew(None)  # type: ignore[arg-type]
 
 
 def test_gc_skew_invalid_base_error() -> None:

@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_operations.sequence_quality_filter import (
+    sequence_quality_filter,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_operations.sequence_quality_filter import (
-        sequence_quality_filter,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    sequence_quality_filter = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_operations]
 
 
 def test_sequence_quality_filter_passes_all() -> None:
@@ -75,13 +64,13 @@ def test_sequence_quality_filter_invalid_min_max() -> None:
 def test_sequence_quality_filter_type_error() -> None:
     """Test case 8: Test TypeError for non-string seq."""
     with pytest.raises(TypeError, match="seq must be a string"):
-        sequence_quality_filter(123)
+        sequence_quality_filter(123)  # type: ignore[arg-type]
 
 
 def test_sequence_quality_filter_param_type_error() -> None:
     """Test case 9: Test TypeError for non-numeric parameter."""
     with pytest.raises(TypeError, match="min_length must be a number or None"):
-        sequence_quality_filter("ATGC", min_length="five")
+        sequence_quality_filter("ATGC", min_length="five")  # type: ignore[arg-type]
 
 
 def test_sequence_quality_filter_negative_min_length() -> None:

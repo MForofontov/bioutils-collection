@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_statistics.codon_usage_frequency import (
+    codon_usage_frequency,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_statistics.codon_usage_frequency import (
-        codon_usage_frequency,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    codon_usage_frequency = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_statistics]
 
 
 def test_codon_usage_frequency_basic() -> None:
@@ -78,9 +67,9 @@ def test_codon_usage_frequency_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        codon_usage_frequency(12345)
+        codon_usage_frequency(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        codon_usage_frequency(None)
+        codon_usage_frequency(None)  # type: ignore[arg-type]
 
 
 def test_codon_usage_frequency_invalid_length_error() -> None:

@@ -3,7 +3,7 @@ import tempfile
 
 import pytest
 
-pytestmark = [pytest.mark.unit, pytest.mark.bioinformatics]
+pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 from bioutils_collection.annotation_functions.parse_gff import parse_gff
 
 
@@ -64,7 +64,7 @@ def test_parse_gff_type_error() -> None:
     Test case 4: TypeError for non-string input.
     """
     with pytest.raises(TypeError):
-        list(parse_gff(123))
+        list(parse_gff(123))  # type: ignore[arg-type]
 
 
 def test_parse_gff_file_not_found() -> None:

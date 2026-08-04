@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.data_validation.validate_dna_sequence import (
+    validate_dna_sequence,
+)
 
-try:
-    import numpy
-    from bioutils_collection.data_validation.validate_dna_sequence import (
-        validate_dna_sequence,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    validate_dna_sequence = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.data_validation]
 
 
 def test_validate_dna_sequence_valid() -> None:
@@ -85,10 +74,10 @@ def test_validate_dna_sequence_empty() -> None:
 def test_validate_dna_sequence_type_error() -> None:
     """Test case 9: Test TypeError for non-string input."""
     with pytest.raises(TypeError, match="seq must be a string"):
-        validate_dna_sequence(123)
+        validate_dna_sequence(123)  # type: ignore[arg-type]
 
 
 def test_validate_dna_sequence_allow_ambiguous_type_error() -> None:
     """Test case 10: Test TypeError for non-boolean allow_ambiguous."""
     with pytest.raises(TypeError, match="allow_ambiguous must be a boolean"):
-        validate_dna_sequence("ATGC", allow_ambiguous="yes")
+        validate_dna_sequence("ATGC", allow_ambiguous="yes")  # type: ignore[arg-type]

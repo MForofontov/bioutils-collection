@@ -1,19 +1,8 @@
 import pytest
+import numpy
+from bioutils_collection.translation_functions.rna_to_dna import rna_to_dna
 
-try:
-    import numpy
-    from bioutils_collection.translation_functions.rna_to_dna import rna_to_dna
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    rna_to_dna = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.translation]
 
 
 def test_rna_to_dna_normal_conversion() -> None:
@@ -112,12 +101,12 @@ def test_rna_to_dna_type_error_not_string() -> None:
     Test case 7: TypeError when input is not a string.
     """
     # Arrange
-    invalid_input = 12345  # type: ignore
+    invalid_input = 12345
     expected_message = "seq must be a string, got int"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        rna_to_dna(invalid_input)  # type: ignore
+        rna_to_dna(invalid_input)  # type: ignore[arg-type]
 
 
 def test_rna_to_dna_type_error_list() -> None:
@@ -125,12 +114,12 @@ def test_rna_to_dna_type_error_list() -> None:
     Test case 8: TypeError when input is a list.
     """
     # Arrange
-    invalid_input = ["A", "U", "G", "C"]  # type: ignore
+    invalid_input = ["A", "U", "G", "C"]
     expected_message = "seq must be a string, got list"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        rna_to_dna(invalid_input)  # type: ignore
+        rna_to_dna(invalid_input)  # type: ignore[arg-type]
 
 
 def test_rna_to_dna_value_error_invalid_bases() -> None:

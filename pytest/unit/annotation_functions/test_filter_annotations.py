@@ -1,6 +1,6 @@
 import pytest
 
-pytestmark = [pytest.mark.unit, pytest.mark.bioinformatics]
+pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 from bioutils_collection.annotation_functions.filter_annotations import (
     filter_annotations,
 )
@@ -43,4 +43,4 @@ def test_filter_annotations_type_error() -> None:
     Test case 4: TypeError for non-list/tuple input.
     """
     with pytest.raises(TypeError):
-        list(filter_annotations("not a list", feature_type="exon"))
+        list(filter_annotations("not a list", feature_type="exon"))  # type: ignore[arg-type]

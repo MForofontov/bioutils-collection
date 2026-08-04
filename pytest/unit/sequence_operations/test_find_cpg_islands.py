@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_operations.find_cpg_islands import (
+    find_cpg_islands,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_operations.find_cpg_islands import (
-        find_cpg_islands,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    find_cpg_islands = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_operations]
 
 
 def test_find_cpg_islands_high_cpg_content() -> None:
@@ -33,6 +22,7 @@ def test_find_cpg_islands_high_cpg_content() -> None:
     assert len(result) > 0
     assert all(isinstance(island, tuple) for island in result)
     assert all(len(island) == 2 for island in result)
+    assert len(result) < len(seq) - window + 1
 
 
 def test_find_cpg_islands_no_islands() -> None:
@@ -80,7 +70,7 @@ def test_find_cpg_islands_custom_window() -> None:
     assert isinstance(result, list)
     if result:
         for start, end in result:
-            assert end - start == window
+            assert end - start >= window
 
 
 def test_find_cpg_islands_custom_gc_threshold() -> None:
@@ -148,12 +138,12 @@ def test_find_cpg_islands_type_error_seq_not_string() -> None:
     Test case 9: TypeError when seq is not a string.
     """
     # Arrange
-    invalid_seq = 12345  # type: ignore
+    invalid_seq = 12345
     expected_message = "seq must be str, got int"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        find_cpg_islands(invalid_seq)  # type: ignore
+        find_cpg_islands(invalid_seq)  # type: ignore[arg-type]
 
 
 def test_find_cpg_islands_type_error_window_not_int() -> None:
@@ -162,12 +152,12 @@ def test_find_cpg_islands_type_error_window_not_int() -> None:
     """
     # Arrange
     seq = "GCGCGCGC" * 30
-    invalid_window = "50"  # type: ignore
+    invalid_window = "50"
     expected_message = "window must be int, got str"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        find_cpg_islands(seq, window=invalid_window)  # type: ignore
+        find_cpg_islands(seq, window=invalid_window)  # type: ignore[arg-type]
 
 
 def test_find_cpg_islands_type_error_min_gc_not_number() -> None:
@@ -176,12 +166,12 @@ def test_find_cpg_islands_type_error_min_gc_not_number() -> None:
     """
     # Arrange
     seq = "GCGCGCGC" * 30
-    invalid_min_gc = "0.5"  # type: ignore
+    invalid_min_gc = "0.5"
     expected_message = "min_gc must be a number, got str"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        find_cpg_islands(seq, min_gc=invalid_min_gc)  # type: ignore
+        find_cpg_islands(seq, min_gc=invalid_min_gc)  # type: ignore[arg-type]
 
 
 def test_find_cpg_islands_type_error_min_obs_exp_not_number() -> None:
@@ -190,12 +180,12 @@ def test_find_cpg_islands_type_error_min_obs_exp_not_number() -> None:
     """
     # Arrange
     seq = "GCGCGCGC" * 30
-    invalid_obs_exp = "0.6"  # type: ignore
+    invalid_obs_exp = "0.6"
     expected_message = "min_obs_exp must be a number, got str"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        find_cpg_islands(seq, min_obs_exp=invalid_obs_exp)  # type: ignore
+        find_cpg_islands(seq, min_obs_exp=invalid_obs_exp)  # type: ignore[arg-type]
 
 
 def test_find_cpg_islands_value_error_invalid_bases() -> None:
@@ -279,6 +269,16 @@ def test_find_cpg_islands_value_error_min_gc_greater_than_one() -> None:
     # Act & Assert
     with pytest.raises(ValueError, match=expected_message):
         find_cpg_islands(seq, min_gc=invalid_gc)
+
+
+def test_find_cpg_islands_merges_adjacent_windows() -> None:
+    """
+    Test case 20: Adjacent qualifying windows merge into a single island.
+    """
+    seq = "GCGCGCGCGC" * 20
+    window = 50
+    result = find_cpg_islands(seq, window=window)
+    assert result == [(0, 200)]
 
 
 def test_find_cpg_islands_value_error_min_obs_exp_negative() -> None:

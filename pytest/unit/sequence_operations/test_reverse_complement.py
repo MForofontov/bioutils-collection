@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_operations.reverse_complement import (
+    reverse_complement,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_operations.reverse_complement import (
-        reverse_complement,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    reverse_complement = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_operations]
 
 
 def test_reverse_complement_basic() -> None:
@@ -67,9 +56,9 @@ def test_reverse_complement_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        reverse_complement(12345)
+        reverse_complement(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        reverse_complement(None)
+        reverse_complement(None)  # type: ignore[arg-type]
 
 
 def test_reverse_complement_invalid_base_error() -> None:
