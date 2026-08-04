@@ -51,7 +51,7 @@ Homepage = "https://github.com/MForofontov/bioutils-collection"
 Repository = "https://github.com/MForofontov/bioutils-collection"
 Issues = "https://github.com/MForofontov/bioutils-collection/issues"
 Documentation = "https://github.com/MForofontov/bioutils-collection#readme"
-Author = "https://github.com/MForofontov"
+Author Profile = "https://github.com/MForofontov"
 
 [project.optional-dependencies]
 dev = [
