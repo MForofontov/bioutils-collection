@@ -44,7 +44,7 @@ def translate_large_sequence(
         If chunk_size or n_processes are not integers
     ValueError
         If sequence length is not a multiple of 3
-        If chunk_size is zero or negative
+        If chunk_size is zero, negative, or less than 3 after codon-boundary adjustment
         If n_processes is negative
         If table name/number is unrecognized
 
@@ -93,6 +93,11 @@ def translate_large_sequence(
 
     # Adjust chunk_size to be multiple of 3
     chunk_size = (chunk_size // 3) * 3
+    if chunk_size < 3:
+        raise ValueError(
+            "chunk_size must be at least 3 (after codon-boundary adjustment), "
+            f"got {chunk_size}"
+        )
 
     # If sequence is smaller than chunk_size, process directly
     if seq_len <= chunk_size:

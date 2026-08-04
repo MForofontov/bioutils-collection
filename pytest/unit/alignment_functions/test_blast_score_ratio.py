@@ -72,3 +72,10 @@ def test_blast_score_ratio_value_error_reference() -> None:
         blast_score_ratio(0, 100.0)
     with pytest.raises(ValueError):
         blast_score_ratio(-10, 100.0)
+
+
+def test_blast_score_ratio_clamped_above_one() -> None:
+    """
+    Test case 8: BSR is clamped to 1.0 when target exceeds reference.
+    """
+    assert blast_score_ratio(100, 150) == 1.0

@@ -1,5 +1,6 @@
 """Generate minimizers from sequences using sliding window approach."""
 
+from ._minimizer_window import sliding_window_minima
 from .sequence_to_kmers import sequence_to_kmers
 
 
@@ -58,7 +59,7 @@ def generate_minimizers(seq: str, k: int, w: int) -> list[str]:
 
     Complexity
     ----------
-    Time: O(n*w*k), Space: O(m) where n is sequence length, m is minimizers count
+    Time: O(n*k), Space: O(m) where n is sequence length, m is minimizers count
     """
     if not isinstance(seq, str):
         raise TypeError(f"seq must be str, got {type(seq).__name__}")
@@ -76,24 +77,8 @@ def generate_minimizers(seq: str, k: int, w: int) -> list[str]:
         raise ValueError("k cannot be longer than sequence")
 
     seq = seq.upper()
-    minimizers = []
-
-    # Generate all k-mers
     kmers = sequence_to_kmers(seq, k)
-
-    if len(kmers) < w:
-        # If we have fewer k-mers than window size, return the minimum
-        if kmers:
-            minimizers.append(min(kmers))
-        return minimizers
-
-    # Slide window across k-mers
-    for i in range(len(kmers) - w + 1):
-        window = kmers[i : i + w]
-        minimizer = min(window)
-        minimizers.append(minimizer)
-
-    return minimizers
+    return sliding_window_minima(kmers, w)
 
 
 __all__ = ["generate_minimizers"]

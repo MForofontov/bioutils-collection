@@ -299,30 +299,20 @@ def test_translate_dna_fast_invalid_length_longer() -> None:
 
 def test_translate_dna_fast_invalid_bases() -> None:
     """
-    Test case 20: Invalid bases produce 'X' (unknown amino acid).
+    Test case 20: ValueError for invalid DNA bases.
     """
-    # Arrange
-    seq = "ATGNNN"  # N is invalid base
-
-    # Act
-    result = translate_dna_fast(seq)
-
-    # Assert
-    assert result == "MX"
+    seq = "ATGNNN"
+    with pytest.raises(ValueError, match="Invalid DNA bases found"):
+        translate_dna_fast(seq)
 
 
 def test_translate_dna_fast_mixed_invalid_bases() -> None:
     """
-    Test case 21: Mixed valid and invalid bases.
+    Test case 21: ValueError for mixed valid and invalid bases.
     """
-    # Arrange
-    seq = "ATGXYZGCC"  # XYZ are invalid
-
-    # Act
-    result = translate_dna_fast(seq)
-
-    # Assert
-    assert result == "MXA"
+    seq = "ATGXYZGCC"
+    with pytest.raises(ValueError, match="Invalid DNA bases found"):
+        translate_dna_fast(seq)
 
 
 def test_translate_dna_fast_invalid_table_name() -> None:

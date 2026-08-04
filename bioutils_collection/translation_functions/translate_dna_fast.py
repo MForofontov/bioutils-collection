@@ -51,6 +51,7 @@ def translate_dna_fast(
         If dna_sequence is not a string
     ValueError
         If dna_sequence length is not a multiple of 3
+        If dna_sequence contains invalid DNA bases
         If table name/number is unrecognized
 
     Notes
@@ -76,6 +77,12 @@ def translate_dna_fast(
     codon_table = get_codon_table(table)
 
     seq_upper = dna_sequence.upper()
+
+    invalid_bases = set(seq_upper) - {"A", "T", "C", "G"}
+    if invalid_bases:
+        raise ValueError(
+            f"Invalid DNA bases found: {', '.join(sorted(invalid_bases))}"
+        )
 
     # Convert codon table to list-based lookup (simpler for Numba)
     # Each codon becomes a number: first_base*16 + second_base*4 + third_base

@@ -85,6 +85,13 @@ def test_find_orfs_no_stop_codon() -> None:
     assert result[0][2] == "ATGAAACCCTTT"  # ORF sequence
 
 
+def test_find_orfs_partial_codon_truncated() -> None:
+    """
+    Test case 10: ORF truncated to last complete codon when sequence ends mid-codon.
+    """
+    assert list(find_orfs("ATGAA")) == [(0, 3, "ATG")]
+
+
 def test_find_orfs_with_stop_codon() -> None:
     """
     Test case 9: ORF with proper stop codon.

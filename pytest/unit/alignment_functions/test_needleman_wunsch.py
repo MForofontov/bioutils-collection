@@ -65,3 +65,9 @@ def test_needleman_wunsch_empty_seq2() -> None:
     """Test case 9: Test ValueError for empty seq2."""
     with pytest.raises(ValueError, match="seq2 cannot be empty"):
         needleman_wunsch("ACGT", "")
+
+
+def test_needleman_wunsch_bool_match_type_error() -> None:
+    """Test case 10: Test TypeError for bool match parameter."""
+    with pytest.raises(TypeError, match="match must be an integer"):
+        needleman_wunsch("ACGT", "ACGT", match=True)  # type: ignore[arg-type]

@@ -16,9 +16,9 @@ def codon_adaptation_index(
     ----------
     seq : str
         DNA coding sequence (must be multiple of 3).
-    reference_weights : dict[str, float] | None, optional
-        Dictionary mapping codons to their relative weights (0-1).
-        If None, uses equal weights for all synonymous codons (by default None).
+    reference_weights : dict[str, float]
+        Dictionary mapping codons to their relative weights (0-1) from a
+        reference set of highly expressed genes.
 
     Returns
     -------
@@ -29,25 +29,26 @@ def codon_adaptation_index(
     ------
     TypeError
         If seq is not a string.
-        If reference_weights is not a dict or None.
+        If reference_weights is not a dict.
     ValueError
+        If reference_weights is None.
         If seq length is not a multiple of 3.
         If seq contains invalid DNA bases.
         If seq is empty.
 
     Examples
     --------
-    >>> codon_adaptation_index("ATGATGATG")
+    >>> weights = {"ATG": 1.0}
+    >>> codon_adaptation_index("ATGATGATG", reference_weights=weights)
     1.0
     >>> weights = {"ATG": 1.0, "ATT": 0.5, "ATC": 0.8}
     >>> codon_adaptation_index("ATGATT", reference_weights=weights)
-    0.71
+    0.7071
 
     Notes
     -----
     CAI = exp(sum(ln(w_i)) / L) where w_i is the weight of codon i and L is the number of codons.
     Stop codons are excluded from calculation.
-    If no reference weights provided, all synonymous codons get equal weight.
 
     References
     ----------
@@ -62,9 +63,13 @@ def codon_adaptation_index(
     # Input validation
     if not isinstance(seq, str):
         raise TypeError(f"seq must be a string, got {type(seq).__name__}")
-    if reference_weights is not None and not isinstance(reference_weights, dict):
+    if reference_weights is None:
+        raise ValueError(
+            "reference_weights is required; provide codon weights from a reference gene set"
+        )
+    if not isinstance(reference_weights, dict):
         raise TypeError(
-            f"reference_weights must be a dict or None, got {type(reference_weights).__name__}"
+            f"reference_weights must be a dict, got {type(reference_weights).__name__}"
         )
 
     if len(seq) == 0:
@@ -78,10 +83,6 @@ def codon_adaptation_index(
     invalid_bases = set(seq_upper) - valid_bases
     if invalid_bases:
         raise ValueError(f"Invalid DNA bases found: {', '.join(sorted(invalid_bases))}")
-
-    # If no reference weights, use uniform weights
-    if reference_weights is None:
-        reference_weights = {}
 
     # Convert to uppercase for codon lookup
     reference_weights_upper = {k.upper(): v for k, v in reference_weights.items()}

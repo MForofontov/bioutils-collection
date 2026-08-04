@@ -178,9 +178,11 @@ pytest --cov=bioutils_collection --cov-report=html
 ## 📖 Documentation
 
 Each function includes:
-- **� License
-
-MIT License - see [LICENSE](LICENSE) for details.
+- **Complete type hints** for static analysis
+- **NumPy-style docstrings** with parameter descriptions
+- **Usage examples** in docstrings
+- **Complexity notes** for performance-critical code
+- **Algorithm references** where applicable
 
 ## 📊 Project Stats
 
@@ -211,7 +213,9 @@ Contributions are welcome! Please:
 
 ## 📄 License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT © 2026 [Mykyta Forofontov](https://github.com/MForofontov)
+
+See [LICENSE](LICENSE) for the full license text.
 
 ## 🔗 Related Projects
 

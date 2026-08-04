@@ -53,14 +53,18 @@ def find_orfs(seq: str) -> Iterator[tuple[int, int, str]]:
     stop_codons = {"TAA", "TAG", "TGA"}
     i = 0
 
-    while i <= len(seq) - 3:  # Fixed: was len(seq) - 2
+    def _codon_aligned_end(start: int, end: int) -> int:
+        """Return end position truncated to the last complete codon boundary."""
+        return start + ((end - start) // 3) * 3
+
+    while i <= len(seq) - 3:
         if seq[i : i + 3] == start_codon:
-            # Search for stop codon
             found_stop = False
-            for j in range(i + 3, len(seq), 3):  # Fixed: removed - 2 to scan to end
+            for j in range(i + 3, len(seq), 3):
                 if j + 3 > len(seq):
-                    # Incomplete codon at end - yield ORF without stop
-                    yield (i, len(seq), seq[i:])
+                    end = _codon_aligned_end(i, len(seq))
+                    if end > i:
+                        yield (i, end, seq[i:end])
                     i = len(seq)
                     found_stop = True
                     break
@@ -73,8 +77,9 @@ def find_orfs(seq: str) -> Iterator[tuple[int, int, str]]:
                     break
 
             if not found_stop:
-                # ORF reaches end without stop codon
-                yield (i, len(seq), seq[i:])
+                end = _codon_aligned_end(i, len(seq))
+                if end > i:
+                    yield (i, end, seq[i:end])
                 i = len(seq)
         else:
             i += 1

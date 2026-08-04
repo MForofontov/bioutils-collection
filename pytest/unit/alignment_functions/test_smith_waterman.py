@@ -107,3 +107,9 @@ def test_smith_waterman_gap_type_error() -> None:
     """Test case 14: Test TypeError for non-integer gap parameter."""
     with pytest.raises(TypeError, match="gap must be an integer"):
         smith_waterman("ACGT", "ACGT", gap=-1.5)  # type: ignore[arg-type]
+
+
+def test_smith_waterman_bool_match_type_error() -> None:
+    """Test case 15: Test TypeError for bool match parameter."""
+    with pytest.raises(TypeError, match="match must be an integer"):
+        smith_waterman("ACGT", "ACGT", match=True)  # type: ignore[arg-type]

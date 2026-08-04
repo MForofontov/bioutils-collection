@@ -1,5 +1,6 @@
 """Get positions of minimizers in sequences."""
 
+from ._minimizer_window import sliding_window_minima
 from .sequence_to_kmers_with_positions import sequence_to_kmers_with_positions
 
 
@@ -52,7 +53,7 @@ def minimizer_positions(seq: str, k: int, w: int) -> list[int]:
 
     Complexity
     ----------
-    Time: O(n*w*k), Space: O(m) where m is number of windows
+    Time: O(n*k), Space: O(m) where m is number of windows
     """
     if not isinstance(seq, str):
         raise TypeError(f"seq must be str, got {type(seq).__name__}")
@@ -70,26 +71,9 @@ def minimizer_positions(seq: str, k: int, w: int) -> list[int]:
         raise ValueError("k cannot be longer than sequence")
 
     seq = seq.upper()
-    positions = []
-
-    # Generate all k-mers with positions
     kmers = sequence_to_kmers_with_positions(seq, k)
-
-    if len(kmers) < w:
-        # If we have fewer k-mers than window size, return position of minimum
-        if kmers:
-            min_kmer = min(kmers, key=lambda x: x[0])
-            positions.append(min_kmer[1])
-        return positions
-
-    # Slide window and collect minimizer positions
-    for i in range(len(kmers) - w + 1):
-        window = kmers[i : i + w]
-        # Find minimum k-mer in window
-        min_kmer = min(window, key=lambda x: x[0])
-        positions.append(min_kmer[1])
-
-    return positions
+    selected = sliding_window_minima(kmers, w, key=lambda item: item[0])
+    return [pos for _, pos in selected]
 
 
 __all__ = ["minimizer_positions"]

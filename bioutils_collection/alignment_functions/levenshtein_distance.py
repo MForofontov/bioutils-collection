@@ -42,8 +42,7 @@ def levenshtein_distance(seq1: str, seq2: str) -> int:
     Notes
     -----
     The algorithm uses dynamic programming with O(n*m) time complexity.
-    Space complexity can be optimized to O(min(n,m)) but this implementation
-    uses O(n*m) for clarity.
+    Space complexity is O(min(n,m)) using a two-row rolling array.
 
     References
     ----------
@@ -53,7 +52,7 @@ def levenshtein_distance(seq1: str, seq2: str) -> int:
 
     Complexity
     ----------
-    Time: O(n*m), Space: O(n*m) where n, m are sequence lengths
+    Time: O(n*m), Space: O(min(n,m)) where n, m are sequence lengths
     """
     # Input validation
     if not isinstance(seq1, str):
@@ -67,31 +66,26 @@ def levenshtein_distance(seq1: str, seq2: str) -> int:
     if len(seq2) == 0:
         return len(seq1)
 
-    # Initialize distance matrix
+    # Use shorter sequence for columns to minimize memory
+    if len(seq1) < len(seq2):
+        seq1, seq2 = seq2, seq1
+
     n, m = len(seq1), len(seq2)
-    distance = [[0 for _ in range(m + 1)] for _ in range(n + 1)]
+    previous = list(range(m + 1))
+    current = [0] * (m + 1)
 
-    # Initialize first row and column
-    for i in range(n + 1):
-        distance[i][0] = i
-    for j in range(m + 1):
-        distance[0][j] = j
-
-    # Fill the distance matrix
     for i in range(1, n + 1):
+        current[0] = i
         for j in range(1, m + 1):
-            if seq1[i - 1] == seq2[j - 1]:
-                cost = 0
-            else:
-                cost = 1
-
-            distance[i][j] = min(
-                distance[i - 1][j] + 1,  # deletion
-                distance[i][j - 1] + 1,  # insertion
-                distance[i - 1][j - 1] + cost,  # substitution
+            cost = 0 if seq1[i - 1] == seq2[j - 1] else 1
+            current[j] = min(
+                previous[j] + 1,
+                current[j - 1] + 1,
+                previous[j - 1] + cost,
             )
+        previous, current = current, previous
 
-    return distance[n][m]
+    return previous[m]
 
 
 __all__ = ["levenshtein_distance"]

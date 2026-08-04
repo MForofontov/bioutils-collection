@@ -22,6 +22,7 @@ def test_find_cpg_islands_high_cpg_content() -> None:
     assert len(result) > 0
     assert all(isinstance(island, tuple) for island in result)
     assert all(len(island) == 2 for island in result)
+    assert len(result) < len(seq) - window + 1
 
 
 def test_find_cpg_islands_no_islands() -> None:
@@ -69,7 +70,7 @@ def test_find_cpg_islands_custom_window() -> None:
     assert isinstance(result, list)
     if result:
         for start, end in result:
-            assert end - start == window
+            assert end - start >= window
 
 
 def test_find_cpg_islands_custom_gc_threshold() -> None:
@@ -268,6 +269,16 @@ def test_find_cpg_islands_value_error_min_gc_greater_than_one() -> None:
     # Act & Assert
     with pytest.raises(ValueError, match=expected_message):
         find_cpg_islands(seq, min_gc=invalid_gc)
+
+
+def test_find_cpg_islands_merges_adjacent_windows() -> None:
+    """
+    Test case 20: Adjacent qualifying windows merge into a single island.
+    """
+    seq = "GCGCGCGCGC" * 20
+    window = 50
+    result = find_cpg_islands(seq, window=window)
+    assert result == [(0, 200)]
 
 
 def test_find_cpg_islands_value_error_min_obs_exp_negative() -> None:

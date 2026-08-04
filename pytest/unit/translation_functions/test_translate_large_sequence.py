@@ -269,6 +269,24 @@ def test_translate_large_sequence_invalid_length() -> None:
         translate_large_sequence(seq)
 
 
+def test_translate_large_sequence_invalid_chunk_size_one() -> None:
+    """
+    Test case 18a: ValueError for chunk_size 1 (rounds to 0).
+    """
+    seq = "ATG" * 100
+    with pytest.raises(ValueError, match="chunk_size must be at least 3"):
+        translate_large_sequence(seq, chunk_size=1)
+
+
+def test_translate_large_sequence_invalid_chunk_size_two() -> None:
+    """
+    Test case 18b: ValueError for chunk_size 2 (rounds to 0).
+    """
+    seq = "ATG" * 100
+    with pytest.raises(ValueError, match="chunk_size must be at least 3"):
+        translate_large_sequence(seq, chunk_size=2)
+
+
 def test_translate_large_sequence_invalid_chunk_size_zero() -> None:
     """
     Test case 18: ValueError for zero chunk_size.

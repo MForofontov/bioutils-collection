@@ -1,5 +1,6 @@
 """Generate canonical minimizers considering reverse complement."""
 
+from ._minimizer_window import sliding_window_minima
 from .reverse_complement import reverse_complement
 
 
@@ -55,7 +56,7 @@ def canonical_minimizers(seq: str, k: int, w: int) -> list[str]:
 
     Complexity
     ----------
-    Time: O(n*w*k), Space: O(m) where n is sequence length, m is minimizers count
+    Time: O(n*k), Space: O(m) where n is sequence length, m is minimizers count
     """
     if not isinstance(seq, str):
         raise TypeError(f"seq must be str, got {type(seq).__name__}")
@@ -73,29 +74,13 @@ def canonical_minimizers(seq: str, k: int, w: int) -> list[str]:
         raise ValueError("k cannot be longer than sequence")
 
     seq = seq.upper()
-    minimizers = []
-
-    # Generate all k-mers and convert to canonical form
     canonical_kmers = []
     for i in range(len(seq) - k + 1):
         kmer = seq[i : i + k]
         rev_comp = reverse_complement(kmer)
-        canonical = min(kmer, rev_comp)
-        canonical_kmers.append(canonical)
+        canonical_kmers.append(min(kmer, rev_comp))
 
-    if len(canonical_kmers) < w:
-        # If we have fewer k-mers than window size, return the minimum
-        if canonical_kmers:
-            minimizers.append(min(canonical_kmers))
-        return minimizers
-
-    # Slide window across canonical k-mers
-    for i in range(len(canonical_kmers) - w + 1):
-        window = canonical_kmers[i : i + w]
-        minimizer = min(window)
-        minimizers.append(minimizer)
-
-    return minimizers
+    return sliding_window_minima(canonical_kmers, w)
 
 
 __all__ = ["canonical_minimizers"]
