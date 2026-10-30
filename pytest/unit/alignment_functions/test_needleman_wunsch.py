@@ -1,9 +1,9 @@
 import pytest
-
-pytestmark = [pytest.mark.unit, pytest.mark.alignment]
 from bioutils_collection.alignment_functions.needleman_wunsch import (
     needleman_wunsch,
 )
+
+pytestmark = [pytest.mark.unit, pytest.mark.alignment]
 
 
 def test_needleman_wunsch_identical() -> None:

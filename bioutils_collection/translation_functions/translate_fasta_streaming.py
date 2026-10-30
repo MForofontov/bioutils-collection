@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+from .genetic_code_tables import get_codon_table
 from .translate_dna_fast import translate_dna_fast
 from .translate_dna_to_protein import translate_dna_to_protein
 
@@ -40,6 +41,7 @@ def translate_fasta_streaming(
         If input FASTA file does not exist
     ValueError
         If table name/number is unrecognized
+        If input and output refer to the same file
     OSError
         If unable to read input file or write output file
 
@@ -72,6 +74,11 @@ def translate_fasta_streaming(
     if not fasta_file.exists():
         raise FileNotFoundError(f"FASTA file not found: {fasta_file}")
 
+    if output_file.exists() and fasta_file.samefile(output_file):
+        raise ValueError("Input and output must refer to different files")
+
+    # Reject invalid configuration before opening (and truncating) the output.
+    table = get_codon_table(table)
     translate_func = translate_dna_fast if use_fast else translate_dna_to_protein
 
     count = 0

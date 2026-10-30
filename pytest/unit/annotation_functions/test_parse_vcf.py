@@ -2,9 +2,9 @@ import os
 import tempfile
 
 import pytest
+from bioutils_collection.annotation_functions.parse_vcf import parse_vcf
 
 pytestmark = [pytest.mark.unit, pytest.mark.annotation]
-from bioutils_collection.annotation_functions.parse_vcf import parse_vcf
 
 
 def test_parse_vcf_typical() -> None:

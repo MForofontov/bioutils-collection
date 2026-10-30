@@ -2,9 +2,9 @@ import os
 import tempfile
 
 import pytest
+from bioutils_collection.annotation_functions.parse_gtf import parse_gtf
 
 pytestmark = [pytest.mark.unit, pytest.mark.annotation]
-from bioutils_collection.annotation_functions.parse_gtf import parse_gtf
 
 
 def test_parse_gtf_typical() -> None:

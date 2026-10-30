@@ -1,7 +1,6 @@
 """Unit tests for generate_syncmers function."""
 
 import pytest
-
 from bioutils_collection import generate_syncmers
 
 

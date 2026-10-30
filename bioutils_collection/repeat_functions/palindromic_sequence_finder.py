@@ -1,6 +1,8 @@
 """Find palindromic sequences in DNA (biological palindromes: reverse complements)."""
 
-from ..sequence_operations.reverse_complement import reverse_complement
+from bioutils_collection.sequence_operations.reverse_complement import (
+    reverse_complement,
+)
 
 
 def palindromic_sequence_finder(

@@ -1,6 +1,6 @@
 """Calculate basic sequence statistics."""
 
-from ..gc_functions.gc_content import gc_content
+from bioutils_collection.gc_functions.gc_content import gc_content
 
 
 def sequence_statistics(seq: str) -> dict[str, float]:

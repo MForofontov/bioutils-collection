@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.translation_functions.translate_dna_to_protein import (
     translate_dna_to_protein,
 )

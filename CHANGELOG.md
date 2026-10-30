@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-10-30
+
+### Fixed
+- Fixed invalid TOML in project URLs and aligned the setuptools requirement with
+  the license metadata syntax used by the package.
+- Centralized runtime/development requirements and allowed NumPy versions
+  compatible with Python 3.10.
+- Prevented streaming FASTA translation from overwriting its input, including
+  hard-link aliases, and validated translation tables before opening output.
+- Validated in-memory FASTA translation tables before processing records or
+  overwriting output, including for empty input files.
+- Normalized FASTQ line endings before quality filtering and FASTA conversion.
+- Replaced the private Numba kernel's reflected list with an immutable tuple.
+- Corrected README examples for GC percentages, alignment return ordering,
+  FASTA text input, and ORF length filtering.
+- Resolved lint/formatting issues and updated Numba decoration for typed stubs.
+
+### Changed
+- Reduced overlapping GC window analysis to linear time while preserving output
+  boundaries, rounding, and validation.
+- Deferred scikit-learn loading until motif clustering is requested, avoiding
+  its import overhead for unrelated sequence utilities and translation workers.
+- Made mypy use the running interpreter version to match installed dependency
+  stubs; Python compatibility remains checked through the test matrix.
+
+### Added
+- Regression tests for GC window equivalence and streaming translation file safety.
+- Translation backend equivalence checks across all registered genetic code
+  identifiers, custom codon tables, and FASTQ newline regression tests.
+- Packaged the PEP 561 typing marker.
+- Added test, static analysis, and packaging workflows required before publication.
+- Added a staged major check plan with explicit acceptance criteria.
+
 ## [0.3.0] - 2026-08-04
 
 ### Added

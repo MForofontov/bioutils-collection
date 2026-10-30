@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.sequence_statistics.relative_synonymous_codon_usage import (
     relative_synonymous_codon_usage,
 )

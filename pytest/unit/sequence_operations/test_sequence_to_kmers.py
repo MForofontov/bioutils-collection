@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.sequence_operations.sequence_to_kmers import (
     sequence_to_kmers,
 )

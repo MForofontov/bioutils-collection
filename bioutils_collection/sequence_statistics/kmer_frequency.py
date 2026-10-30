@@ -2,7 +2,7 @@
 
 from collections import Counter
 
-from ..sequence_operations.sequence_to_kmers import sequence_to_kmers
+from bioutils_collection.sequence_operations.sequence_to_kmers import sequence_to_kmers
 
 
 def kmer_frequency(seq: str, k: int) -> dict[str, int]:

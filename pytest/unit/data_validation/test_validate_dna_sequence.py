@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.data_validation.validate_dna_sequence import (
     validate_dna_sequence,
 )

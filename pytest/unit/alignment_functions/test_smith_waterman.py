@@ -1,7 +1,7 @@
 import pytest
+from bioutils_collection.alignment_functions.smith_waterman import smith_waterman
 
 pytestmark = [pytest.mark.unit, pytest.mark.alignment]
-from bioutils_collection.alignment_functions.smith_waterman import smith_waterman
 
 
 def test_smith_waterman_identical() -> None:

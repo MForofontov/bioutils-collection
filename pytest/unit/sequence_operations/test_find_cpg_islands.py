@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.sequence_operations.find_cpg_islands import (
     find_cpg_islands,
 )

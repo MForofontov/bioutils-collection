@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.data_validation.validate_protein_sequence import (
     validate_protein_sequence,
 )

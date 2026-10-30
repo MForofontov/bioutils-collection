@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.repeat_functions.tandem_repeat_finder import (
     tandem_repeat_finder,
 )

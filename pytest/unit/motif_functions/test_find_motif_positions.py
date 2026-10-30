@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.motif_functions.find_motif_positions import (
     find_motif_positions,
 )

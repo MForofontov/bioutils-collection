@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.alignment_functions.blast_score_ratio import (
     blast_score_ratio,
 )

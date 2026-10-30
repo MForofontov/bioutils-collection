@@ -1,11 +1,11 @@
 from typing import Any
 
 import pytest
-
-pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 from bioutils_collection.annotation_functions.merge_annotations import (
     merge_annotations,
 )
+
+pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 
 
 def test_merge_annotations_typical() -> None:

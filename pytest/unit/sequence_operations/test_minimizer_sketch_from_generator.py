@@ -1,7 +1,6 @@
 """Unit tests for minimizer_sketch_from_generator function."""
 
 import pytest
-
 from bioutils_collection import minimizer_sketch_from_generator
 
 
@@ -114,10 +113,11 @@ def test_minimizer_sketch_from_generator_different_positions() -> None:
 
 def test_minimizer_sketch_from_generator_streaming_use() -> None:
     """Test case 15: Simulate streaming usage."""
+
     def kmer_generator():
         for i, kmer in enumerate(["ATG", "TGC", "GCG", "CGA"]):
             yield (kmer, i)
-    
+
     result = minimizer_sketch_from_generator(kmer_generator(), 2)
     assert isinstance(result, dict)
 

@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.translation_functions.transcribe_dna_to_rna import (
     transcribe_dna_to_rna,
 )

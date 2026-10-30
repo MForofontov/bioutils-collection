@@ -64,7 +64,7 @@ def fastq_to_fasta(fastq_str: str, min_quality: int | None = None) -> str:
     if min_quality is not None and min_quality < 0:
         raise ValueError(f"min_quality must be non-negative, got {min_quality}")
 
-    lines = fastq_str.strip().split("\n")
+    lines = fastq_str.strip().splitlines()
 
     if len(lines) % 4 != 0:
         raise ValueError(
@@ -100,8 +100,11 @@ def fastq_to_fasta(fastq_str: str, min_quality: int | None = None) -> str:
         # Apply quality filtering if requested
         if min_quality is not None:
             # Calculate average quality (assuming Phred+33 encoding)
-            qualities = [ord(q) - 33 for q in quality_line]
-            avg_quality = sum(qualities) / len(qualities) if qualities else 0
+            avg_quality = (
+                sum(ord(q) - 33 for q in quality_line) / len(quality_line)
+                if quality_line
+                else 0
+            )
 
             if avg_quality < min_quality:
                 continue  # Skip this sequence

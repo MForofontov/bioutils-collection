@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.sequence_operations.sequence_quality_filter import (
     sequence_quality_filter,
 )

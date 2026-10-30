@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.motif_functions.generate_consensus_sequence import (
     generate_consensus_sequence,
 )

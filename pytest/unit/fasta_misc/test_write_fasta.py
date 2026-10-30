@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.fasta_misc.write_fasta import write_fasta
 
 pytestmark = [pytest.mark.unit, pytest.mark.fasta]

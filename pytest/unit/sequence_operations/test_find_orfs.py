@@ -1,5 +1,4 @@
 import pytest
-
 from bioutils_collection.sequence_operations.find_orfs import find_orfs
 
 pytestmark = [pytest.mark.unit, pytest.mark.sequence_operations]

@@ -1,7 +1,6 @@
 """Unit tests for canonical_minimizer_sketch function."""
 
 import pytest
-
 from bioutils_collection import canonical_minimizer_sketch
 
 

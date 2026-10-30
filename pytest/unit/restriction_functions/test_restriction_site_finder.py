@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.restriction_functions.restriction_site_finder import (
     restriction_site_finder,
 )

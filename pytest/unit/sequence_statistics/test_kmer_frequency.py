@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.sequence_statistics.kmer_frequency import kmer_frequency
 
 pytestmark = [pytest.mark.unit, pytest.mark.sequence_statistics]

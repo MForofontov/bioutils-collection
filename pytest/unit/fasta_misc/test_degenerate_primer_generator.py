@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.fasta_misc.degenerate_primer_generator import (
     degenerate_primer_generator,
 )
