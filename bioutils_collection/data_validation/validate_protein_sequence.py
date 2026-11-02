@@ -72,7 +72,8 @@ def validate_protein_sequence(seq: str) -> dict[str, Any]:
     # Check for stop codon
     has_stop_codon = "*" in seq_upper
 
-    # Calculate approximate molecular weight (average residue weights in Da)
+    # Approximate linear-chain mass from free amino acids, minus bond water.
+    # Unknown/ambiguous symbols use coarse estimates; stop/invalid symbols add no mass.
     aa_weights = {
         "A": 89.1,
         "C": 121.2,
@@ -101,6 +102,8 @@ def validate_protein_sequence(seq: str) -> dict[str, Any]:
     }
 
     molecular_weight = sum(aa_weights.get(aa, 0.0) for aa in seq_upper)
+    residue_count = sum(aa in aa_weights and aa != "*" for aa in seq_upper)
+    molecular_weight -= max(residue_count - 1, 0) * 18.0153
 
     # Build report
     report: dict[str, Any] = {

@@ -35,14 +35,16 @@ def validate_dna_sequence(seq: str, allow_ambiguous: bool = False) -> dict[str, 
     >>> validate_dna_sequence("ATGC")
     {'is_valid': True, 'length': 4, 'invalid_chars': [], 'has_lowercase': False, 'gc_content': 50.0}
     >>> validate_dna_sequence("ATGCX")
-    {'is_valid': False, 'length': 5, 'invalid_chars': ['X'], 'has_lowercase': False, 'gc_content': 40.0}
+    {'is_valid': False, 'length': 5, 'invalid_chars': ['X'], 'has_lowercase': False, 'gc_content': 50.0}
     >>> validate_dna_sequence("atgc")
     {'is_valid': True, 'length': 4, 'invalid_chars': [], 'has_lowercase': True, 'gc_content': 50.0}
     >>> validate_dna_sequence("ATGCN", allow_ambiguous=True)
-    {'is_valid': True, 'length': 5, 'invalid_chars': [], 'has_lowercase': False, 'gc_content': 40.0}
+    {'is_valid': True, 'length': 5, 'invalid_chars': [], 'has_lowercase': False, 'gc_content': 50.0}
 
     Notes
     -----
+    GC percentage uses only A/T/G/C in its denominator; ambiguous and invalid
+    symbols are excluded, even when allowed for validation.
     Standard DNA bases: A, T, G, C
     IUPAC ambiguous codes: R, Y, S, W, K, M, B, D, H, V, N
 

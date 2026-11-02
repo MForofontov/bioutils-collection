@@ -55,9 +55,8 @@ def test_parse_vcf_comment_and_invalid_lines() -> None:
         tmp.flush()
         tmp_name = tmp.name
     try:
-        result = list(parse_vcf(tmp_name))
-        assert len(result) == 1
-        assert result[0]["chrom"] == "chr1"
+        with pytest.raises(ValueError, match="line 3"):
+            list(parse_vcf(tmp_name))
     finally:
         os.remove(tmp_name)
 

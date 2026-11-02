@@ -2,6 +2,9 @@
 
 from pathlib import Path
 
+from bioutils_collection.fasta_misc.fasta_parser import _parse_fasta_lines
+
+from ._atomic_output import atomic_text_output
 from .genetic_code_tables import get_codon_table
 from .translate_dna_fast import translate_dna_fast
 from .translate_dna_to_protein import translate_dna_to_protein
@@ -25,7 +28,7 @@ def translate_fasta_streaming(
     table : str, int, or dict[str, str], optional
         Genetic code table
     use_fast : bool, optional
-        Use Numba JIT implementation for 2.7x speedup (default: False)
+        Use the Numba JIT implementation (default: False)
         Requires: pip install numba
 
     Returns
@@ -55,7 +58,11 @@ def translate_fasta_streaming(
     - Memory-efficient: processes one sequence at a time
     - Invalid sequences (not multiple of 3) will have ERROR in output
     - Recommended for files larger than available RAM
-    - Set use_fast=True for 2.7x speedup on large sequences
+    - Empty sequence records are skipped; IDs use the first header word.
+    - Duplicate IDs overwrite earlier entries in the dictionary API; streaming
+      preserves each record.
+    - Output is replaced atomically on success; failed processing preserves it.
+    - Set use_fast=True to use the Numba backend on large sequences
     """
     # Input validation
     if not isinstance(fasta_file, (str, Path)):
@@ -82,48 +89,23 @@ def translate_fasta_streaming(
     translate_func = translate_dna_fast if use_fast else translate_dna_to_protein
 
     count = 0
-    current_id = None
-    current_seq: list[str] = []
-
-    with open(fasta_file) as fin, open(output_file, "w") as fout:
-        for line in fin:
-            line = line.strip()
-            if not line:
+    with (
+        open(fasta_file, encoding="utf-8") as source,
+        atomic_text_output(output_file) as output,
+    ):
+        for header, seq in _parse_fasta_lines(source):
+            if not seq:
                 continue
-
-            if line.startswith(">"):
-                # Translate and write previous sequence
-                if current_id is not None and current_seq:
-                    seq = "".join(current_seq)
-                    try:
-                        protein = translate_func(seq, table=table)
-                        fout.write(f">{current_id}\n")
-                        for i in range(0, len(protein), 60):
-                            fout.write(f"{protein[i : i + 60]}\n")
-                        count += 1
-                    except ValueError as e:
-                        fout.write(f">{current_id}\n")
-                        fout.write(f"ERROR: {e}\n")
-
-                # Start new sequence
-                current_id = line[1:].split()[0]
-                current_seq = []
-            else:
-                current_seq.append(line)
-
-        # Translate and write last sequence
-        if current_id is not None and current_seq:
-            seq = "".join(current_seq)
+            seq_id = header.split()[0]
             try:
                 protein = translate_func(seq, table=table)
-                fout.write(f">{current_id}\n")
-                for i in range(0, len(protein), 60):
-                    fout.write(f"{protein[i : i + 60]}\n")
-                count += 1
             except ValueError as e:
-                fout.write(f">{current_id}\n")
-                fout.write(f"ERROR: {e}\n")
-
+                output.write(f">{seq_id}\nERROR: {e}\n")
+                continue
+            output.write(f">{seq_id}\n")
+            for i in range(0, len(protein), 60):
+                output.write(f"{protein[i : i + 60]}\n")
+            count += 1
     return count
 
 

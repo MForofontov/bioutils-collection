@@ -48,7 +48,8 @@ def codon_adaptation_index(
     Notes
     -----
     CAI = exp(sum(ln(w_i)) / L) where w_i is the weight of codon i and L is the number of codons.
-    Stop codons are excluded from calculation.
+    Stop codons are excluded. A zero weight makes the geometric mean zero.
+    Weights must be finite and within [0, 1]; omitted codons retain weight 1.0.
 
     References
     ----------
@@ -84,6 +85,14 @@ def codon_adaptation_index(
     if invalid_bases:
         raise ValueError(f"Invalid DNA bases found: {', '.join(sorted(invalid_bases))}")
 
+    for codon, weight in reference_weights.items():
+        if not isinstance(codon, str) or not isinstance(weight, (int, float)):
+            raise TypeError(
+                "reference_weights must map string codons to numeric weights"
+            )
+        if not 0 <= weight <= 1 or not math.isfinite(weight):
+            raise ValueError("reference weight must be finite and between 0 and 1")
+
     # Convert to uppercase for codon lookup
     reference_weights_upper = {k.upper(): v for k, v in reference_weights.items()}
 
@@ -91,12 +100,11 @@ def codon_adaptation_index(
     stop_codons = {"TAA", "TAG", "TGA"}
 
     # Extract codons and calculate CAI
-    codons = [seq_upper[i : i + 3] for i in range(0, len(seq_upper), 3)]
-
     log_sum = 0.0
     codon_count = 0
 
-    for codon in codons:
+    for i in range(0, len(seq_upper), 3):
+        codon = seq_upper[i : i + 3]
         # Skip stop codons
         if codon in stop_codons:
             continue
@@ -104,10 +112,10 @@ def codon_adaptation_index(
         # Get weight (default to 1.0 if not in reference)
         weight = reference_weights_upper.get(codon, 1.0)
 
-        # Avoid log(0)
-        if weight > 0:
-            log_sum += math.log(weight)
-            codon_count += 1
+        if weight == 0:
+            return 0.0
+        log_sum += math.log(weight)
+        codon_count += 1
 
     if codon_count == 0:
         return 0.0

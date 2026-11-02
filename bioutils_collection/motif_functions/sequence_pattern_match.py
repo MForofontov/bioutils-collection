@@ -57,7 +57,7 @@ def sequence_pattern_match(seq: str, pattern: str, use_iupac: bool = True) -> li
     - V = A, C, or G (not T)
     - N = A, C, G, or T (any)
 
-    Case-insensitive matching.
+    Case-insensitive matching, including overlapping occurrences in both modes.
 
     Complexity
     ----------
@@ -116,7 +116,7 @@ def sequence_pattern_match(seq: str, pattern: str, use_iupac: bool = True) -> li
 
         # Find all matches
         positions = []
-        for match in re.finditer(regex_pattern, seq_upper):
+        for match in re.finditer(f"(?={regex_pattern})", seq_upper):
             positions.append(match.start())
     else:
         # Literal string matching

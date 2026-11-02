@@ -1146,7 +1146,7 @@ RHABDOPLEURIDAE_MITOCHONDRIAL = {
     "AGT": "S",
     "AGC": "S",
     "AGA": "S",
-    "AGG": "S",  # AGA/AGG -> S
+    "AGG": "K",  # AGA -> S; AGG -> K
     "GTT": "V",
     "GTC": "V",
     "GTA": "V",
@@ -1589,7 +1589,7 @@ BLASTOCRITHIDIA_NUCLEAR = {
     "TAG": "E",  # TAA/TAG -> E
     "TGT": "C",
     "TGC": "C",
-    "TGA": "*",
+    "TGA": "W",
     "TGG": "W",
     "CTT": "L",
     "CTC": "L",
@@ -1690,7 +1690,7 @@ CEPHALODISCIDAE_MITOCHONDRIAL = {
     "AGT": "S",
     "AGC": "S",
     "AGA": "S",
-    "AGG": "S",  # AGA/AGG -> S
+    "AGG": "K",  # AGA -> S; AGG -> K
     "GTT": "V",
     "GTC": "V",
     "GTA": "V",
@@ -1775,14 +1775,15 @@ def get_codon_table(table: str | int | dict[str, str] = "standard") -> dict[str,
     ----------
     table : str, int, or dict[str, str]
         Genetic code identifier. Can be:
-        - NCBI table number (1-6, 9-16, 21-31, 33; tables 7-8, 17-20, 32 are reserved/unassigned)
+        - NCBI table number (1-6, 9-16, 21-31, 33; tables 7-8 and 17-20 are unassigned; table 32 is not implemented)
         - Table name (e.g., "standard", "vertebrate_mitochondrial")
         - Custom dictionary mapping codons to amino acids
 
     Returns
     -------
     dict[str, str]
-        Codon table dictionary
+        Codon table dictionary. Uses the NCBI AAs row for internal codons;
+        alternative initiation and context-dependent termination are not modeled.
 
     Raises
     ------

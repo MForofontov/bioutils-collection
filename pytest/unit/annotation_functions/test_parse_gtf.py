@@ -54,9 +54,8 @@ def test_parse_gtf_comment_and_invalid_lines() -> None:
         tmp.flush()
         tmp_name = tmp.name
     try:
-        result = list(parse_gtf(tmp_name))
-        assert len(result) == 1
-        assert result[0]["seqname"] == "chr1"
+        with pytest.raises(ValueError, match="line 3"):
+            list(parse_gtf(tmp_name))
     finally:
         os.remove(tmp_name)
 

@@ -22,6 +22,8 @@ def parse_gtf(gtf_file: str) -> Iterator[dict[str, Any]]:
     ------
     TypeError
         If gtf_file is not a string.
+    ValueError
+        If a non-comment record has malformed columns or coordinates.
     FileNotFoundError
         If the file does not exist.
 
@@ -33,7 +35,8 @@ def parse_gtf(gtf_file: str) -> Iterator[dict[str, Any]]:
 
     Notes
     -----
-    This function parses standard GTF files and extracts attributes as a dictionary.
+    Coordinates are one-based and inclusive; the attribute field is retained as text.
+    Malformed records raise ValueError rather than being silently discarded.
 
     Complexity
     ----------
@@ -42,13 +45,15 @@ def parse_gtf(gtf_file: str) -> Iterator[dict[str, Any]]:
     if not isinstance(gtf_file, str):
         raise TypeError(f"gtf_file must be a string, got {type(gtf_file).__name__}")
     try:
-        with open(gtf_file) as f:
-            for line in f:
+        with open(gtf_file, encoding="utf-8") as f:
+            for line_number, line in enumerate(f, 1):
                 if line.startswith("#") or not line.strip():
                     continue
                 parts = line.strip().split("\t")
                 if len(parts) != 9:
-                    continue
+                    raise ValueError(
+                        f"Invalid GTF line {line_number}: expected 9 columns"
+                    )
                 record = {
                     "seqname": parts[0],
                     "source": parts[1],

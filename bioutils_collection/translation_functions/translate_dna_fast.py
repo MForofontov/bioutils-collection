@@ -1,9 +1,4 @@
-"""Fast DNA translation using Numba JIT compilation.
-
-This implementation uses Numba's @njit decorator to compile the translation
-function to machine code, providing ~2.7x speedup over the default implementation
-for sequences larger than 30K bases.
-"""
+"""Numba-compiled DNA translation; benchmark compilation and warmed calls separately."""
 
 from numba import njit
 
@@ -15,15 +10,12 @@ def translate_dna_fast(
     table: str | int | dict[str, str] = "standard",
 ) -> str:
     """
-    Translate DNA sequence to protein using Numba JIT compilation (fastest method).
+    Translate DNA sequence to protein using Numba JIT compilation.
 
-    This implementation uses Numba to compile the translation loop to
-    machine code for maximum performance (~2.7x faster than default).
-    Requires Numba to be installed.
-
-    Note: First call will be slow due to JIT compilation (~50ms overhead),
-    but subsequent calls will be very fast. Recommended for large sequences
-    or repeated translations.
+    Compilation occurs on the first call. Runtime and startup costs depend on
+    the environment and input; use the paired benchmarks to compare warmed
+    calls separately from initialization. Configuration is validated even for
+    empty input.
 
     Parameters
     ----------
@@ -58,16 +50,16 @@ def translate_dna_fast(
     -----
     Requires: pip install numba
 
-    Performance characteristics:
-    - Tiny sequences (<100 bases): Use translate_dna_to_protein() instead
-    - Medium sequences (100-30K bases): ~1.8x faster (after JIT warmup)
-    - Large sequences (>30K bases): ~2.7x faster than default
+    Empty input returns an empty protein only after table validation.
+    Sparse custom tables retain X for missing codons and allow multi-character
+    translation values, as in the Python backend.
     """
     # Input validation
     if not isinstance(dna_sequence, str):
         raise TypeError(f"dna_sequence must be str, got {type(dna_sequence).__name__}")
 
     if not dna_sequence:
+        get_codon_table(table)
         return ""
 
     if len(dna_sequence) % 3 != 0:

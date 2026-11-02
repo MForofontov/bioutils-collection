@@ -27,11 +27,13 @@ def annotation_statistics(annotations: Sequence[dict[str, Any]]) -> dict[str, An
     --------
     >>> annots = [{'feature': 'exon', 'start': 10, 'end': 20}, ...]
     >>> annotation_statistics(annots)
-    {'feature_counts': {'exon': 1}, 'total_coverage': 10}
+    {'feature_counts': {'exon': 1}, 'total_coverage': 11}
 
     Notes
     -----
-    Computes feature counts and total coverage.
+    Input coordinates must be one-based and inclusive; convert native BED
+    starts before calling. total_coverage sums record lengths and counts
+    overlaps repeatedly; it is not the union of covered genomic positions.
 
     Complexity
     ----------
@@ -44,7 +46,7 @@ def annotation_statistics(annotations: Sequence[dict[str, Any]]) -> dict[str, An
     feature_counts: dict[str, int] = {}
     total_coverage = 0
     for record in annotations:
-        feature = record.get("feature", ".")
+        feature = record.get("feature", record.get("type", "."))
         feature_counts[feature] = feature_counts.get(feature, 0) + 1
         start = record.get("start")
         end = record.get("end")

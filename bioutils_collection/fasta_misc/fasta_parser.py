@@ -1,6 +1,6 @@
 """Parse FASTA format sequences."""
 
-from collections.abc import Iterator
+from collections.abc import Iterable, Iterator
 
 
 def parse_fasta(fasta_str: str) -> Iterator[tuple[str, str]]:
@@ -31,22 +31,29 @@ def parse_fasta(fasta_str: str) -> Iterator[tuple[str, str]]:
     """
     if not isinstance(fasta_str, str):
         raise TypeError(f"fasta_str must be str, got {type(fasta_str).__name__}")
+    yield from _parse_fasta_lines(fasta_str.splitlines())
+
+
+def _parse_fasta_lines(lines: Iterable[str]) -> Iterator[tuple[str, str]]:
+    """Parse text lines without retaining the entire file; reject missing IDs."""
     header = None
     seq: list[str] = []
-    for line in fasta_str.splitlines():
+    for line in lines:
         line = line.strip()
         if not line:
             continue
         if line.startswith(">"):
-            if header:
+            if header is not None:
                 yield (header, "".join(seq))
             header = line[1:].strip()
+            if not header:
+                raise ValueError("FASTA format error: empty header")
             seq = []
         else:
             if header is None:
                 raise ValueError("FASTA format error: sequence before header")
             seq.append(line)
-    if header:
+    if header is not None:
         yield (header, "".join(seq))
 
 

@@ -1,5 +1,6 @@
 """Create canonical minimizer sketch with positions."""
 
+from ._minimizer_window import sliding_window_minima
 from .reverse_complement import reverse_complement
 
 
@@ -47,7 +48,7 @@ def canonical_minimizer_sketch(seq: str, k: int, w: int) -> dict[str, list[int]]
 
     Complexity
     ----------
-    Time: O(n*w*k), Space: O(m) where m is unique canonical minimizers
+    Time: O(n*k), Space: O(n*k) including canonical k-mers and repeated positions
     """
     if not isinstance(seq, str):
         raise TypeError(f"seq must be str, got {type(seq).__name__}")
@@ -82,11 +83,7 @@ def canonical_minimizer_sketch(seq: str, k: int, w: int) -> dict[str, list[int]]
             sketch[min_kmer[0]] = [min_kmer[1]]
         return sketch
 
-    # Slide window and collect minimizers with positions
-    for i in range(len(canonical_kmers) - w + 1):
-        window = canonical_kmers[i : i + w]
-        # Find minimum canonical k-mer in window
-        min_kmer = min(window, key=lambda x: x[0])
+    for min_kmer in sliding_window_minima(canonical_kmers, w, key=lambda item: item[0]):
         if min_kmer[0] not in sketch:
             sketch[min_kmer[0]] = []
         sketch[min_kmer[0]].append(min_kmer[1])

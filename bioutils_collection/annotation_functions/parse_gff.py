@@ -6,7 +6,7 @@ from typing import Any
 
 def parse_gff(gff_file: str) -> Iterator[dict[str, Any]]:
     """
-    Parse a GFF formatted file and yield annotation dictionaries.
+    Parse GFF records with one-based inclusive coordinates and encoded attributes.
 
     Parameters
     ----------
@@ -38,7 +38,9 @@ def parse_gff(gff_file: str) -> Iterator[dict[str, Any]]:
     try:
         with open(gff_file) as f:
             for line in f:
-                if not line or line.startswith("#"):
+                if line.rstrip() == "##FASTA":
+                    break
+                if not line.strip() or line.startswith("#"):
                     continue
                 parts = line.strip().split("\t")
                 if len(parts) != 9:

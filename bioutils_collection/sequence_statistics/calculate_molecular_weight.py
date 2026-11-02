@@ -27,13 +27,17 @@ def calculate_molecular_weight(seq: str, seq_type: str = "dna") -> float:
     Examples
     --------
     >>> calculate_molecular_weight('ATGC', 'dna')
-    1221.8
+    1253.8153
     >>> calculate_molecular_weight('AUGC', 'rna')
-    1237.8
+    1303.8153
 
     Notes
     -----
-    Uses average molecular weights for nucleotides and amino acids.
+    Approximate average mass of an unmodified linear chain, using tables
+    rounded to 0.1 Da. DNA/RNA are single stranded with a 5-prime phosphate
+    and 3-prime hydroxyl: add one terminal water to summed residue masses.
+    Protein tables contain free amino acids: subtract water for each peptide
+    bond. Empty input returns 0.0. Water mass is 18.0153 Da.
 
     Complexity
     ----------
@@ -88,7 +92,12 @@ def calculate_molecular_weight(seq: str, seq_type: str = "dna") -> float:
     if not all(base in valid_chars for base in seq):
         raise ValueError(f"Sequence contains invalid {seq_type} characters")
 
-    return sum(weights.get(base, 0) for base in seq)
+    if not seq:
+        return 0.0
+    mass = sum(weights[base] for base in seq)
+    if seq_type == "protein":
+        return mass - (len(seq) - 1) * 18.0153
+    return mass + 18.0153
 
 
 __all__ = ["calculate_molecular_weight"]

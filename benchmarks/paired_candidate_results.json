@@ -1,0 +1,2062 @@
+{
+  "baseline_commit": "9e1cc06420f14940f9e640af554539be29886fb5",
+  "snapshot_manifests": {
+    "baseline": {
+      "tree_sha256": "b1d2b4a831d4bdacf32427d13363d251ae586f84dcebd10f168a2e72083b8213",
+      "package_sha256": "09b76e539f6c76f082ccca6c31f3e88bbe5cca6bc76b1c726b586207eb21a980",
+      "files": {
+        ".github/copilot-instructions.md": "8bc33dbe0db3bf4fda134d4cf6d8ba6f6e29f9c7380d02a504d1929083e25921",
+        ".github/workflows/ci.yml": "9b7f7437e7737861bdb19b3124550e48822e233cfa9ddc9505ff75a3330bc7e3",
+        ".github/workflows/publish-pypi.yml": "af238623c8bfb678f8411200bda3374530bb35307dd91af0503fea10a4dabee4",
+        ".gitignore": "2b0d7769cce3aa57f53e3d297d1512d7c317794c5a41d86a1fdebc0fe55e36dd",
+        "bioutils_collection/__init__.py": "0b0ec3bc45c82871275439e1c90392197ce612450af316bda2c3c7c0d23a259b",
+        "bioutils_collection/_version.py": "00a1b50bbdd45c0667ab83916558e9489d93d55194134117797c846a73924fd7",
+        "bioutils_collection/alignment_functions/__init__.py": "032e82fcfe53a387cb9b8e75038e9ef9289a1217b3ecbd8eefa116a489a91123",
+        "bioutils_collection/alignment_functions/blast_score_ratio.py": "406603882dfd82cdcfda5380727dc20e8b2cb1d1211d92bbb16555b4a26288b9",
+        "bioutils_collection/alignment_functions/hamming_distance.py": "fa2b47a9a31a50979b257e074ab959feef47bce280a4a0f3fab6030d9cc7034e",
+        "bioutils_collection/alignment_functions/levenshtein_distance.py": "43d2b117b7f6d0538c0b7a20350806383a15091b31298d184a8e0639de8183f7",
+        "bioutils_collection/alignment_functions/needleman_wunsch.py": "a918b83a46163bcb963b5c7bd3085ac05aeb84da9608f52ab68d0f5ececf743a",
+        "bioutils_collection/alignment_functions/pairwise_identity.py": "128f90b0bc2a2aaa7f2483132f3e0df7694c50b5d581f98773dcff746f2ca8b1",
+        "bioutils_collection/alignment_functions/smith_waterman.py": "9dac8eb84e443b25c3a7fc8b4ab0b47b22bcd3fbf72dc56738d4eaf00693a40a",
+        "bioutils_collection/annotation_functions/__init__.py": "914a12b4bc968c635888e9a0ef7b885453ce99b064abce21073d8e9dbca6a5fa",
+        "bioutils_collection/annotation_functions/annotation_statistics.py": "ce8feab80786806d6a807bb14f5275e7406d29d42009248e94c9249bc36bb653",
+        "bioutils_collection/annotation_functions/annotation_to_bed.py": "607444663f43ab9b5e8931fba2e544a3fb4b069e7dea5ef944f29f9464bfbd85",
+        "bioutils_collection/annotation_functions/annotation_to_gff.py": "8e9f914e99205453f7f033fb9c7b3e11c2c765e0930b129b062dfb13b74d4b2d",
+        "bioutils_collection/annotation_functions/annotation_to_gtf.py": "8179ed515513bd0ecc4efd35cc262c23654720fa1f6958c96c5789a0ea74eb95",
+        "bioutils_collection/annotation_functions/filter_annotations.py": "7c67cbebc9ebacb5aad811251623fce1a91c4644f9849f42dc6e34084ee419b1",
+        "bioutils_collection/annotation_functions/merge_annotations.py": "1602765625c15ff7d90322ed53e8aa3f34985afb1e1d02fa44a27e3abe328182",
+        "bioutils_collection/annotation_functions/parse_bed.py": "c2e35dcaf347738b887d6ebff83f2ca25fdbd50d1af61ed2758a8f2f92d06096",
+        "bioutils_collection/annotation_functions/parse_gff.py": "d58fe403d308ea4b80f174288e9a9fc2f4f41a2aea746486792002418f3aded0",
+        "bioutils_collection/annotation_functions/parse_gtf.py": "33f90e2f7db0a3c14bd01d14eabbde0c3bdff3272850a7f5c9d6c343b3e41f05",
+        "bioutils_collection/annotation_functions/parse_vcf.py": "887bca66891748eb04ac4ab44c316572975e93db58a728249985997e716cd416",
+        "bioutils_collection/annotation_functions/sort_annotations.py": "faaacf1431f9ee0249512115538a5203fdb20d4a71edd56603faba463476bf4d",
+        "bioutils_collection/clustering_functions/__init__.py": "1685fc48643d939aeb94463abd8d7d62e2585b8cda6c6dea017f26e6605170c1",
+        "bioutils_collection/clustering_functions/motif_clustering.py": "e6403953b744c0c5f9743d0793a0bfb9ab5f06c964197cce17f2f8a5decaf8f6",
+        "bioutils_collection/data_validation/__init__.py": "7b4e42d74881205a814129f60387451d85c625a4099694fa397ed733906327ff",
+        "bioutils_collection/data_validation/validate_dna_sequence.py": "8739709744185828ba33fff155751619b9e0f698e1e1b48c5421c02da30c6750",
+        "bioutils_collection/data_validation/validate_protein_sequence.py": "f9a7483e13a658a2b8ea7705881ab3e8232b35ecf599b8f0da2ca796de440084",
+        "bioutils_collection/fasta_misc/__init__.py": "d05b82d8161313cb40acdc9250c405595487e55a1839a228f4d6c48d10b2f924",
+        "bioutils_collection/fasta_misc/degenerate_primer_generator.py": "45c1a7a74b607cde145bd1ce2b5f2a2b38bd80496ead84d39fcc6eea5efca7a4",
+        "bioutils_collection/fasta_misc/fasta_concat.py": "a1e79ff0671b58bea5ea938f09571d70d77affbccfa836c31b84fd052aff2cd3",
+        "bioutils_collection/fasta_misc/fasta_filter.py": "7c10622ca8708d41671b1b1bc883f9e912846fcd5736f43720d67d8ec5560975",
+        "bioutils_collection/fasta_misc/fasta_parser.py": "83eaea1f1de5be1386c80764cdfc938501a91287b00a5543f0325222f595e3ef",
+        "bioutils_collection/fasta_misc/fasta_rename_headers.py": "f9115cf805037ecb864b96deaba1af31d14b335fe780943381fa71ecde36b3f3",
+        "bioutils_collection/fasta_misc/fasta_reverse_complement.py": "db4885a5782161c65072f9e5235a1bedc3de9152a8b82a2191e2e62d95d7e1e9",
+        "bioutils_collection/fasta_misc/fasta_split.py": "b900e69c3aa1bc3525ac34cc1bcbe1bb092c93a843d8eea09bfa6afb94920f27",
+        "bioutils_collection/fasta_misc/fasta_stats.py": "5eb039b4e9f312f443006853980dca1679f1a820ef57e1e3ada05f5eca0761a8",
+        "bioutils_collection/fasta_misc/fasta_subsample.py": "b54977d8dd7da21345dc6fb09ab22b5f64387f03eba66471592c8776ad87a539",
+        "bioutils_collection/fasta_misc/fasta_to_dict.py": "e453814e36c99b784baf07b4172ff4906c5f12dc366b12ca8c0896b7b2be552d",
+        "bioutils_collection/fasta_misc/fastq_to_fasta.py": "f2beab7bbea44d8b189e8c7cbebfa4cd7bc715e986957276d38cd81fb923dd6c",
+        "bioutils_collection/fasta_misc/genbank_to_fasta.py": "ed8363946ce73954eb57d4f71508920c16a9ff0cd32149b45bbd37977093a5a0",
+        "bioutils_collection/fasta_misc/generate_primers.py": "8b284bbe30a815c1909810c64ef591e98b611b4508f87f18284d3be7d162923e",
+        "bioutils_collection/fasta_misc/validate_fasta.py": "e4f5da602659f762b6a5fdd911372b5f77b12b4ad97920e35cd21ea71bb2a35c",
+        "bioutils_collection/fasta_misc/write_fasta.py": "a455a16d6ec0cf1bf1632ba12e2d395528971939cb4312d7432e1664a0fd75a2",
+        "bioutils_collection/gc_functions/__init__.py": "26997936159a73fa7333ba69d18b467182be48aed7093f23b0dd76b693725443",
+        "bioutils_collection/gc_functions/gc_content.py": "16eab0a7531a3cdd68818b9bcdcbb5b0207cb183db651e48a583e38e01fde502",
+        "bioutils_collection/gc_functions/gc_content_windows.py": "09c360e870d2add05b7969ac814e60ca5cc61fcce73c64f3c21fd3b2728990e8",
+        "bioutils_collection/gc_functions/gc_skew.py": "ae5c59972d19f257909b23d006a842062988b86f9d7bd460b4d1c473c45c37a1",
+        "bioutils_collection/motif_functions/__init__.py": "70bf0fabfb58716560f11f8a047923a092a0b9be6446ae811530474d1ed7dfac",
+        "bioutils_collection/motif_functions/find_motif_positions.py": "24a0c1ca572d2dbce08b3b57ae867c41c5fcd350e252e05c56160b4581ccb9dd",
+        "bioutils_collection/motif_functions/generate_consensus_sequence.py": "6d323bdffff48df221de2702f2bf24fb063b66f4f2bc199cb3c246d28917f6e1",
+        "bioutils_collection/motif_functions/motif_search.py": "7d58d0590b252ccf8911378c24d6c5efd7bb03ba8a6379686a64062c05c143df",
+        "bioutils_collection/motif_functions/sequence_pattern_match.py": "a80c200ed57d6b34ebfd53c86a8ed4ad734e48a063010097068b4a597831a1ed",
+        "bioutils_collection/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bioutils_collection/repeat_functions/__init__.py": "63fb1d5730394f7dba11753204a2f7355f120649c1a895fd34d3c39af8300b19",
+        "bioutils_collection/repeat_functions/palindromic_sequence_finder.py": "63f13a2a4f043b1db73915229aa533d459fc66c4eac510a4afc3eab85ddb43bd",
+        "bioutils_collection/repeat_functions/tandem_repeat_finder.py": "55718e3b9cfc13e90ff50b6bf915a757a646113ef55ca541a837c3223f7234af",
+        "bioutils_collection/restriction_functions/__init__.py": "b61c44492c95cd79ed2a8ed933d98d6c1481ce287ad12a7a1bb4d3f7c6d09c72",
+        "bioutils_collection/restriction_functions/restriction_site_finder.py": "7a0958378dfe23813f8fc1864fd37f75a6c7ccfbe194b4a018741ccc72db2f85",
+        "bioutils_collection/sequence_operations/__init__.py": "57c2c4e8d0759e59b082ddc2e3e79d6dba1afafcb5636abb4793e6196779518d",
+        "bioutils_collection/sequence_operations/_minimizer_window.py": "bc32b9a58ec1fbea6055b959ef7a5045ab1eb01b4fb26943fbd316f18ddb8406",
+        "bioutils_collection/sequence_operations/canonical_minimizer_sketch.py": "23ce730957f988236d15f9c371d2b330ddd4f7d19e41508b2190663c9461cb64",
+        "bioutils_collection/sequence_operations/canonical_minimizers.py": "95a44828b14bde800a9ac622a4c084466d612c3f92e0d34736b3b5d3ae8e22c7",
+        "bioutils_collection/sequence_operations/find_cpg_islands.py": "122c57e4d26aa03f15d7cdf2376e17657fe5edc5be385e8a45f409873d065b16",
+        "bioutils_collection/sequence_operations/find_orfs.py": "0ca89f5029f479e7efffa0810cd40121911ab702aba3c2bc17ec8a7073b921b9",
+        "bioutils_collection/sequence_operations/generate_minimizers.py": "9280576a47ea91d7e455d5db4c431b875cdf9354dca9478d34df0e332a23ab3f",
+        "bioutils_collection/sequence_operations/generate_syncmers.py": "bc1837996088b43a859b667cda3c1c44fe2950a81b966fc3583863ec173be434",
+        "bioutils_collection/sequence_operations/minimizer_density.py": "ebc1229c2dc84ff353e8cd7210f94b571bc06d634569974343c802bba8dcd948",
+        "bioutils_collection/sequence_operations/minimizer_positions.py": "331a102cbb466897f115f203b765a83f6532b6de68cf9d158397d6eb5826e9e0",
+        "bioutils_collection/sequence_operations/minimizer_sketch.py": "aec8ffd8cd9f422875b654138f98a2773df294dba5319ad1f4fd2833fec35132",
+        "bioutils_collection/sequence_operations/minimizer_sketch_from_generator.py": "a93d054093195d930f3ec18a41ee23245bf08347dd7ecb0e0d105398843b5920",
+        "bioutils_collection/sequence_operations/remove_low_complexity_regions.py": "cd1eb9672ad736dd1dd2cd2fb0a04901a131e241b746a0d78c57d28fc1ba7ad8",
+        "bioutils_collection/sequence_operations/reverse_complement.py": "7286e515868762395ff43c08a9e0de8204fd1b45218064aef79aeda23a13220a",
+        "bioutils_collection/sequence_operations/sequence_complement.py": "ea825dca151c8e36b8bff3a647e695563eb0a96b7775221554fdc592e3977839",
+        "bioutils_collection/sequence_operations/sequence_quality_filter.py": "29b78bd7174303c07f0ee61efd306270db45e6d196a31c462c376aad81c75725",
+        "bioutils_collection/sequence_operations/sequence_shuffling.py": "e1537e2ad9a06119aa40fc3136a868b32c9fe433e2b346a0c384e6c253a4d2e2",
+        "bioutils_collection/sequence_operations/sequence_to_kmers.py": "b04f50419baa298d58f8ae66ede6e6b06e94959372d751c0f1f196c651dbf8bc",
+        "bioutils_collection/sequence_operations/sequence_to_kmers_with_positions.py": "37bda4c6b36cc1de2aa5f1f1bdc45acfec0b2a6806202c5a663b10a7594ef986",
+        "bioutils_collection/sequence_operations/syncmer_density.py": "a9a6b5855f876afbd1056d56f344276d7c511728556ebac89b0e54ba6f232673",
+        "bioutils_collection/sequence_operations/syncmer_positions.py": "7c541a06f759a91d4183065d5cb98afa74f89a0d19a31d869c8e5160c1a93c53",
+        "bioutils_collection/sequence_operations/unique_minimizer_positions.py": "97801f7311bd2513edb80f9edb33ec7511617a67f46cde65880ff0e5c4ebb06c",
+        "bioutils_collection/sequence_statistics/__init__.py": "6f49d0367e50a086c288a07aa12118c73a0d8b3915252dc0a104f55209352489",
+        "bioutils_collection/sequence_statistics/amino_acid_composition.py": "144357a05e97dae651950b23db2e61f9480b0b481fbbc5f3d6913ef07bc4cdd8",
+        "bioutils_collection/sequence_statistics/calculate_isoelectric_point.py": "04da3229ba761cc0ad1ca3a4ba79e30a68a345146e7148701900c8a1607b4bea",
+        "bioutils_collection/sequence_statistics/calculate_molecular_weight.py": "4f3df893c2eb656c879a8942b8afd367a333845cf919248715fbe33eb3f197bd",
+        "bioutils_collection/sequence_statistics/codon_adaptation_index.py": "ac7786f5e0af46832eb2f4185eba4c19a6bb9ba0b6890c6fa9e6f50d4b0e7dcf",
+        "bioutils_collection/sequence_statistics/codon_usage_frequency.py": "6556d2948440b08e07cda59b97f9d1488324a9df999ee0c7ff561a7567bf6225",
+        "bioutils_collection/sequence_statistics/effective_number_of_codons.py": "c91fb9c4fda6ff5867a818cd09b1b8596f211a01a751fe506310450f597011ad",
+        "bioutils_collection/sequence_statistics/kmer_frequency.py": "41a373253615d11f3a659a5f01de8fdbf249bd3b790852c14d1a3e9730c4c6af",
+        "bioutils_collection/sequence_statistics/melting_temperature.py": "f4bd6d4f302d7e8e086099bc40baea21fd7400f70a0228020b390d97725c56d4",
+        "bioutils_collection/sequence_statistics/relative_synonymous_codon_usage.py": "6e6669a53cc4bca79785661fae6c7fe207c81977452774530a7d2c5af2cbdf34",
+        "bioutils_collection/sequence_statistics/sequence_complexity.py": "5ca9e030f7ea925320e28771de1f4ad3e77588b284b43d0e0aacb1abceaa3420",
+        "bioutils_collection/sequence_statistics/sequence_conservation.py": "4155781b895d3b5c1d7fb2223b05a9843e1d0f31be67a7deaf03b4f7fa0676a9",
+        "bioutils_collection/sequence_statistics/sequence_entropy.py": "e99ad4cbdb36648346753a27a6acd0870b93ef93f86453b1030411b5ea8edbf9",
+        "bioutils_collection/sequence_statistics/sequence_logo.py": "b14961bad99ce819ac8cf426b48b4aeb19243101a8a599e9c0e06b80ffd12fb1",
+        "bioutils_collection/sequence_statistics/sequence_statistics.py": "9cf9a491dbe2bf696039685eb0a2200fc5fded2804c68c5c3733bed05626fa0f",
+        "bioutils_collection/translation_functions/__init__.py": "8f31dba4fd00039ea7d64aedb8d24f1bab40d9e4468e8953f6859ba6c74d11e7",
+        "bioutils_collection/translation_functions/genetic_code_tables.py": "62f1b20434726044fdd5df5c27cbe5a0888f7128d9921253bf0463d1f8e54713",
+        "bioutils_collection/translation_functions/rna_to_dna.py": "6696cd1980152a3d8d10a2aa130911598790db95fe2e355a4d8b057dfea3b47b",
+        "bioutils_collection/translation_functions/transcribe_dna_to_rna.py": "f6bb383f6eecac0d6f143e34978ae39eb8c3c4dfa89b0005cfc6e8ea95bd72da",
+        "bioutils_collection/translation_functions/translate_batch.py": "702687a528530abf9b5df16b69b76e1ed53ff7d0d9bcf72f20ecb26f4de30b29",
+        "bioutils_collection/translation_functions/translate_dna_fast.py": "a7273eac8d1874d513f39bc3f333c6021e2f353b02ff938010927eb54048de34",
+        "bioutils_collection/translation_functions/translate_dna_to_protein.py": "4a6b4e30587cf98d838db1d4b081a5e524d7a45771710774518a3e09664c1cb2",
+        "bioutils_collection/translation_functions/translate_fasta.py": "0c76e80162d49483e6b68a9947665625b93f62bdeaa0d07a376fd52b2f26e7df",
+        "bioutils_collection/translation_functions/translate_fasta_streaming.py": "6c7ba0498954ae61a0c19da82864e9fcb6a24771e669a34d01c757c811d8d1f0",
+        "bioutils_collection/translation_functions/translate_large_sequence.py": "fde99deb759936f8a5598ab59dd4385e17357936d776777f90d67cdc0df9cef9",
+        "CHANGELOG.md": "e2895305fb58a6cb876e7fd3d1dc74c872c01ee8a41674d67bfa55942f784528",
+        "LICENSE": "671d046d66efc44081628c96c8c2c7a11fb211706c7cc4dd8a417372ec0787bc",
+        "MAJOR_CHECK_PLAN.md": "0f9de947b6137ef8dbd60a6da458eaa6686a3acf7b46501447df77e09c9b1b5c",
+        "pyproject.toml": "70f247ee1e030c9835fd820702d2e9049f366f2f74ad222b3b37d87d400cafdc",
+        "pytest/conftest.py": "b89f38ba0d6ea7adf8fa50f7b2df9fc54495ab583275815acd64a8fdc17be0fc",
+        "pytest/unit/alignment_functions/test_blast_score_ratio.py": "24ddaf9617fa291638167f87691e0dad0dc81b50682eba11607665bca35752d5",
+        "pytest/unit/alignment_functions/test_hamming_distance.py": "f99138a8bae45f39ba5354425c039885a688c32548e887de53610a9c9e4c8781",
+        "pytest/unit/alignment_functions/test_levenshtein_distance.py": "f8848fe4ba00253cb22464df48970fd887df767df11590ef065801fc7225fd07",
+        "pytest/unit/alignment_functions/test_needleman_wunsch.py": "66c64eed8fe478b1d9a4bbf59b56311bd24f0ecebf8288ed0f54d1865efd64a3",
+        "pytest/unit/alignment_functions/test_pairwise_identity.py": "bc366c951713fba3fba365f4e0c63237cdb90858a4db8b824256de5528baca16",
+        "pytest/unit/alignment_functions/test_smith_waterman.py": "33e1f67d2f7686dd1d1b298b9e04f4b3916843e32079d526ad666125b299f89c",
+        "pytest/unit/annotation_functions/test_annotation_statistics.py": "e09581c236e0ce8f6f81573ebd0027c0caae68f93befcd94254f19dc4f4d47c0",
+        "pytest/unit/annotation_functions/test_annotation_to_bed.py": "3d3ed25ec2f05d3dbf126ec4e062c808541d501af8b95c2cc234d374e3f7313d",
+        "pytest/unit/annotation_functions/test_annotation_to_gff.py": "a26b89aceb00ae39969986baa8f8d29217d8cf1dd3825a29442aef9a3ea1cc6f",
+        "pytest/unit/annotation_functions/test_annotation_to_gtf.py": "960a2c8be8f2de9723c186c9ba22ccc8b678f149240b1f0c3c44faf0928688aa",
+        "pytest/unit/annotation_functions/test_filter_annotations.py": "e35bd96d4a1dbf32da645de3f292c21583b903c4ced4927cc552bbdbf32e700b",
+        "pytest/unit/annotation_functions/test_merge_annotations.py": "a5daa3cd5afbbf09c409d2d03db332b502abe13face5c230d8e31bd42e4bea32",
+        "pytest/unit/annotation_functions/test_parse_bed.py": "d6c43878288cb69727a39a816c59db65d214c017ce03325ab04dbaca7f390b03",
+        "pytest/unit/annotation_functions/test_parse_gff.py": "ccff9e2cbb72245d54595004a4cd221fbc5faffc03038693ab1dfd4a208ad173",
+        "pytest/unit/annotation_functions/test_parse_gtf.py": "b58f1afdcf70a105906ff482cb8dd9175527734dc08a8dd776c09f2a22eca821",
+        "pytest/unit/annotation_functions/test_parse_vcf.py": "da2f3e091550049a77bbf4ef9016ea7312f452567a52c07190a7538af7018ccc",
+        "pytest/unit/annotation_functions/test_sort_annotations.py": "a87ff4a5d6023042df764e1c928d336d2fffa545af49a312a23ec37cd9299be2",
+        "pytest/unit/clustering_functions/test_motif_clustering.py": "cbbd3bfabc79b448417269a7da5c2fbcd2ce03ae20708803d6ce2763861297f0",
+        "pytest/unit/data_validation/test_validate_dna_sequence.py": "66d50e2504a51d3f8dee5799503050e2c878063762602e2c67b1f7252486b1a9",
+        "pytest/unit/data_validation/test_validate_protein_sequence.py": "b02ee792771a1e04c2a9272e1d53d95677574649a85ac1067c73345992774e87",
+        "pytest/unit/fasta_misc/test_degenerate_primer_generator.py": "91f9387adbc6f3273f52d1b9d4557b6e4d522fad7a90fced4e799510d7fb54a8",
+        "pytest/unit/fasta_misc/test_fasta_concat.py": "62e4c69a9b3a4f22ab098622d38252b6438446d31fc7118e78182c88733ab856",
+        "pytest/unit/fasta_misc/test_fasta_filter.py": "a60cabd16f412a068518fb0f8bddae501de2c9c26c59c66af22d673a1fbb3ab4",
+        "pytest/unit/fasta_misc/test_fasta_parser.py": "c5b359872dd361d6aa71f70f174e19818a58c36743bf2885cb7aa290270dcb5c",
+        "pytest/unit/fasta_misc/test_fasta_rename_headers.py": "48fdfcc0e3d19fe7faa79760f79541bbb375c5fd917e9832c13ee6a958f6ae1b",
+        "pytest/unit/fasta_misc/test_fasta_reverse_complement.py": "87f8b2fce1cff3fa63fd3927c70b86a713cdebb3ef5ec07c521959e26af40a82",
+        "pytest/unit/fasta_misc/test_fasta_split.py": "ff881ad65726beec55f4f049814d94478b502f923e5269644004973d0d614c9b",
+        "pytest/unit/fasta_misc/test_fasta_stats.py": "25c22ce73dbe4c5c08fadc6b2706b1e9a797904370ea52c8927b20d56fb1e99f",
+        "pytest/unit/fasta_misc/test_fasta_subsample.py": "f0be5c101b1910fa9c249cba7b6fb63e37593b2adaddc28cbc123d20849e37d1",
+        "pytest/unit/fasta_misc/test_fasta_to_dict.py": "27d48a16299a17f5bbff89e7f2550d4d189cc1e3d626fcfceda981abda984b20",
+        "pytest/unit/fasta_misc/test_fastq_to_fasta.py": "efb1ac6d058015539ebf6a16f6081567f5e0807d97e02b795446d2d178536cad",
+        "pytest/unit/fasta_misc/test_genbank_to_fasta.py": "24bead8b7b5cef03910ee86991add46d9f54ab8db76cb446382e054eaf95f700",
+        "pytest/unit/fasta_misc/test_generate_primers.py": "4f6e676771b3d8526a925ea3852b0c6c4a1776a19829377d4073f0000718275b",
+        "pytest/unit/fasta_misc/test_validate_fasta.py": "3127395ade0da842d32961eecf5569b0e292653875272cb87d0840496373b639",
+        "pytest/unit/fasta_misc/test_write_fasta.py": "226a3e86713636269733b8abcf45308192d36b2f3628ca5bfdd961a1e1e52d95",
+        "pytest/unit/gc_functions/test_gc_content.py": "9f86140b472064814c9fe9bfe243818d42c394aed43ad9cd52a24b81bded8b8d",
+        "pytest/unit/gc_functions/test_gc_content_windows.py": "71654827d207aeee972d5a08b73ed89587916e0bb5207a0bc40e3d2b823e4cd5",
+        "pytest/unit/gc_functions/test_gc_content_windows_regression.py": "17444392ad18df5765cb80d30483692683f8d5a3bf96798a23f3388f03b5cbcd",
+        "pytest/unit/gc_functions/test_gc_skew.py": "a4be84123782ee6d0e85a3e94554b55c4754d4684fbac4bbeb7d281c9c86d409",
+        "pytest/unit/motif_functions/test_find_motif_positions.py": "b7d0a385e9d7a5c84b6df2fb455c9a3d2e080d35038e7a3675c57dca78b6b3d5",
+        "pytest/unit/motif_functions/test_generate_consensus_sequence.py": "cb72d21486ad317774392fe3dac8a3490d888a3e5f4cae7e1503cf251243d16a",
+        "pytest/unit/motif_functions/test_motif_search.py": "05f7fbdf1a42b54ef40ee0c6797a0ed6453446176fb93147a58c60033eb5db22",
+        "pytest/unit/motif_functions/test_sequence_pattern_match.py": "9fc0988771a63a559c5e7b8f370c4e9601d3dfe1b044857b4f13291ab6105835",
+        "pytest/unit/repeat_functions/test_palindromic_sequence_finder.py": "6b0cbdc415eca09f32d7242ecb7ff364ea79ac4e1261a7e0444bb6719040c132",
+        "pytest/unit/repeat_functions/test_tandem_repeat_finder.py": "a9a6bf711585850bcb5604abc31a2f010170bdf97924823afe64ddcef097c75f",
+        "pytest/unit/restriction_functions/test_restriction_site_finder.py": "c5fbc900578a15222ffc46ab7ab6a8d928a12706792efc18b76893900e5b6f6d",
+        "pytest/unit/sequence_operations/test_canonical_minimizer_sketch.py": "5c75aa058893058a89715cb719c0298b3f97e14ba19d5f7549f83892845107a4",
+        "pytest/unit/sequence_operations/test_canonical_minimizers.py": "a47673b7e8ee8e1f45013413e484cba735f9d75442002bc158155a0ebc114048",
+        "pytest/unit/sequence_operations/test_find_cpg_islands.py": "e138999a02da947640ccacc85ba2bae4ac919035e9241dbd8e8223f63d990b4f",
+        "pytest/unit/sequence_operations/test_find_orfs.py": "7b728f2ce6b220d77620fcef2a0402c67e3de481213aaf22560a5aaf075c82ee",
+        "pytest/unit/sequence_operations/test_generate_minimizers.py": "c8c671e444c23d61adf4d228ee51dbdde35a0b56a326b1d7361f2d6a6f9e34eb",
+        "pytest/unit/sequence_operations/test_generate_syncmers.py": "af97b4fb8995b94c878fc3d89e47b005d57cd67ae6652094d09d51b7473c4bef",
+        "pytest/unit/sequence_operations/test_minimizer_density.py": "1933437b03370e929e2db84cee37eddb45af867e64b96e6435e2e16e0ccadff5",
+        "pytest/unit/sequence_operations/test_minimizer_positions.py": "3acb119ef2cc27afe44ce8610b0ca9d00dcbfb08f01aa9fb5b936290d1a86276",
+        "pytest/unit/sequence_operations/test_minimizer_sketch.py": "e2136285e148c665a1e0ffc6125f553a61e0f7bd3365ea588cdb346e8a215fa2",
+        "pytest/unit/sequence_operations/test_minimizer_sketch_from_generator.py": "0f73fb0d3a6af2a53c9586801645ad8f2b61ec037f33f5c2e3abd187c67927c0",
+        "pytest/unit/sequence_operations/test_remove_low_complexity_regions.py": "6d7f4119b11647dfd9db65d5125f735c5fe52c35c2cc330ad6e2e76c1503a65d",
+        "pytest/unit/sequence_operations/test_reverse_complement.py": "dfd43589b06a538c5d0128924ee4146ea3a7c85dcb8f4ff38ffb26c5eeffb635",
+        "pytest/unit/sequence_operations/test_sequence_complement.py": "3dcec7fdc9bc7db9f85117a5b8af2efba577518c741dda495e947af8c5833760",
+        "pytest/unit/sequence_operations/test_sequence_quality_filter.py": "c75d39f36fbf45036b891aa3ca1a1aa69036f5254a3d5f6cfabecfeb34bca7ce",
+        "pytest/unit/sequence_operations/test_sequence_shuffling.py": "e9cd6b18ee9062174d7e087995b0b2783a0dc45243595875aa982e3b62d3deae",
+        "pytest/unit/sequence_operations/test_sequence_to_kmers.py": "4fd4438c53bb9f9fa70fc5c49a4ccacd5106a3760e3bebef0811412a5a9c5cf5",
+        "pytest/unit/sequence_operations/test_sequence_to_kmers_with_positions.py": "448c6388a2511cdb194ab1a51e7227d685e9ef24c252e3b891dfbf31ff9f7a16",
+        "pytest/unit/sequence_operations/test_syncmer_density.py": "656c82951a74dc2665176f4bed8f3b95e6bea274e38e39ff282a5fab7f4d17f9",
+        "pytest/unit/sequence_operations/test_syncmer_positions.py": "6bea9f730148beac697ac93f17c55bcd99728cb971e2cfdd710c9b9491b800b5",
+        "pytest/unit/sequence_operations/test_unique_minimizer_positions.py": "8d5d026911ed33618f8fa55334d3e25846b39f44d6d081549384c9b12406caac",
+        "pytest/unit/sequence_statistics/test_amino_acid_composition.py": "ebdcce7417fdc373ac1805d453bfc379c8148a6f7a4d40cbd6916773cb41615e",
+        "pytest/unit/sequence_statistics/test_calculate_isoelectric_point.py": "74ce7b103c60e8db6329cd6395f521406814a3553df1991388e35ff54918914c",
+        "pytest/unit/sequence_statistics/test_calculate_molecular_weight.py": "54c0ef9fb2a27206d0e4c9b8e2e0ee45302692bee73d0a3d529c09f5c3d6f5e3",
+        "pytest/unit/sequence_statistics/test_codon_adaptation_index.py": "ab06525539624c91850711d2c8f00b99638f08c8a8117990d07a2b2d7116f8ef",
+        "pytest/unit/sequence_statistics/test_codon_usage_frequency.py": "ced79710205afd7360f20295b5510a1ba1e37623ad8434b7efa28f217e165f2e",
+        "pytest/unit/sequence_statistics/test_effective_number_of_codons.py": "57c65bcd646fdb75b18958b753c57ffa79b0c889f03b77810f9f58afe14b1bc8",
+        "pytest/unit/sequence_statistics/test_kmer_frequency.py": "291f71501be2d49c28813e26cf5f5c081d39ddf20b88dc8fa3386ceb99ace2b3",
+        "pytest/unit/sequence_statistics/test_melting_temperature.py": "4068e11bb92c578c6ac9615af8cb0350fbe864a6e8adbf3260a85264f8aaf354",
+        "pytest/unit/sequence_statistics/test_relative_synonymous_codon_usage.py": "76731c4b3942d68d507dcbe18655b773c0163e5aed101bc8166a1536f33b50fe",
+        "pytest/unit/sequence_statistics/test_sequence_complexity.py": "93f17a40d5654d6aedf038a49860fc373c6d49cedc5f3460c15804b7c76471d3",
+        "pytest/unit/sequence_statistics/test_sequence_conservation.py": "6cab37438acd316c83dab76047165c1f48780276d61d8dbb223048cee22110f1",
+        "pytest/unit/sequence_statistics/test_sequence_entropy.py": "e6b10caa6dab20e302d9e549a49fd61d7e91a3b411c98ea1f40c52b63bd12c4c",
+        "pytest/unit/sequence_statistics/test_sequence_logo.py": "2e052dce927c398f64af380309611b2ff94069439594f8c1f9ff3001625a199b",
+        "pytest/unit/sequence_statistics/test_sequence_statistics.py": "3a4602e475c58b01b4be7af2ee75bc48a47a53cb4102d4714c24ef2d649ffbd0",
+        "pytest/unit/translation_functions/test_rna_to_dna.py": "19fcbd56b2b835d1a1314a0db2c40196d614447c13c7affcb8ca26fc149dc4c9",
+        "pytest/unit/translation_functions/test_transcribe_dna_to_rna.py": "16617ebc25e6fe99fbbe7750753c86c40df4a3f8453276053c96b62da66841d9",
+        "pytest/unit/translation_functions/test_translate_batch.py": "fec8d761394982fac5393f992b6443fd424e746f9446a0036f147fb8e26e5eb1",
+        "pytest/unit/translation_functions/test_translate_dna_fast.py": "d505941d1565f21d910ac9d4861b95360283872f2a1538c0f30d8f711f253370",
+        "pytest/unit/translation_functions/test_translate_dna_to_protein.py": "73e8459c0c70056f9b0587f31b1cea27babf2a524fd7bddf84a3c86682659635",
+        "pytest/unit/translation_functions/test_translate_fasta_streaming.py": "483538e77822696def9359393be251c635404d2e9ab059d69bedb292fff7fecb",
+        "pytest/unit/translation_functions/test_translate_large_sequence.py": "09bc6b8854df9b418e2c53e7e65535dc35ff9db4020394ad9ce49d20de8f7a95",
+        "pytest/unit/translation_functions/test_translation_performance.py": "50c41cd17bc8b25be1cb9f363f83851778d30b1f1aff036ea774b04b23400eab",
+        "pytest/unit/translation_functions/test_translation_regressions.py": "47ea6e58dc583c73007616888ae02d58e59149bdecf4cc2a03f76d72eac56e57",
+        "pytest.sh": "b3bdd4cb50c04791da3c8e064377eff9276e41ba87c566a765f2231446ccc2bd",
+        "README.md": "acc2c7cc74a7f2e156eb0ce16a62b60db3665ff9dab020347c3f4f3703ca91f1",
+        "requirements.txt": "71fb25cdf98bebd5ecdd14dbe8711f9f485a435b18dd7e548f9807ddfb9bef0c",
+        "requirements_dev.txt": "5ed4a7b6683909ff28c10d2173e1cf8b112046e6e8428617e2a4ab5e99a076dc"
+      }
+    },
+    "current": {
+      "tree_sha256": "3ed4dd2e8102c300de8b37913f8d0c095e5622c3054e598427714ec3de0f98c1",
+      "package_sha256": "c701cedeb4c3700c5976c260cf389600bf49e920fc94dd11d68d253c0f157cb2",
+      "files": {
+        ".agents/skills/documentation-maintenance/SKILL.md": "3d6817cf9f0baafe01e4b68b8392632b4b53d08444e2a3d8d012601730ca05c2",
+        ".agents/skills/major-check/SKILL.md": "90d8c98b06d7d3fe7ae1bcad88abf9b85aeeed44c087181181c22281483a5e66",
+        ".cursor/rules/repository.mdc": "48be153df98d6d8d7ef8aa3da6cf5a892f6863cf4a3d35a1b0165d47d035ddb9",
+        ".github/copilot-instructions.md": "8bc33dbe0db3bf4fda134d4cf6d8ba6f6e29f9c7380d02a504d1929083e25921",
+        ".github/workflows/ci.yml": "a4c28c7566127a62ab49761dc33826215692dc4f256af5fedce547191364d052",
+        ".github/workflows/publish-pypi.yml": "af238623c8bfb678f8411200bda3374530bb35307dd91af0503fea10a4dabee4",
+        ".gitignore": "2b0d7769cce3aa57f53e3d297d1512d7c317794c5a41d86a1fdebc0fe55e36dd",
+        "AGENTS.md": "f39fee14959d38b4caca4ee84059a84069bb4a691a59273065b15a737e0e9cf6",
+        "benchmarks/major_audit.py": "1fc4cce5d3aedaa1f0f86123892764a381fc9e3a5f5ef3712a2e4676efe19f5f",
+        "benchmarks/major_audit_results.json": "12f68a5475d27aad3d395131ef158f8468f87e1b1d2455639a718884b7acd10b",
+        "benchmarks/paired_audit.py": "2545d0e16487fbf94577b0db6ff196cce9db5c3787bd0d6f81e775c50f8725d8",
+        "bioutils_collection/__init__.py": "0b0ec3bc45c82871275439e1c90392197ce612450af316bda2c3c7c0d23a259b",
+        "bioutils_collection/_version.py": "c2a35fa442c1c03bc9e6327001554fc7101225f02e2cebd60ced20053c48e0d8",
+        "bioutils_collection/alignment_functions/__init__.py": "032e82fcfe53a387cb9b8e75038e9ef9289a1217b3ecbd8eefa116a489a91123",
+        "bioutils_collection/alignment_functions/blast_score_ratio.py": "406603882dfd82cdcfda5380727dc20e8b2cb1d1211d92bbb16555b4a26288b9",
+        "bioutils_collection/alignment_functions/hamming_distance.py": "fa2b47a9a31a50979b257e074ab959feef47bce280a4a0f3fab6030d9cc7034e",
+        "bioutils_collection/alignment_functions/levenshtein_distance.py": "43d2b117b7f6d0538c0b7a20350806383a15091b31298d184a8e0639de8183f7",
+        "bioutils_collection/alignment_functions/needleman_wunsch.py": "a918b83a46163bcb963b5c7bd3085ac05aeb84da9608f52ab68d0f5ececf743a",
+        "bioutils_collection/alignment_functions/pairwise_identity.py": "128f90b0bc2a2aaa7f2483132f3e0df7694c50b5d581f98773dcff746f2ca8b1",
+        "bioutils_collection/alignment_functions/smith_waterman.py": "9dac8eb84e443b25c3a7fc8b4ab0b47b22bcd3fbf72dc56738d4eaf00693a40a",
+        "bioutils_collection/annotation_functions/__init__.py": "914a12b4bc968c635888e9a0ef7b885453ce99b064abce21073d8e9dbca6a5fa",
+        "bioutils_collection/annotation_functions/_annotation_fields.py": "bc58bfa57b9c74bdba996819871f114e8cae5e7f686b062aad5dacb675a0a138",
+        "bioutils_collection/annotation_functions/annotation_statistics.py": "653231465b816c78db2b1b15dc123773c60859c1168e9fb391e154353ac74b2b",
+        "bioutils_collection/annotation_functions/annotation_to_bed.py": "ed23af4546fb7c85753861bc0a72cbb28bc5f6e2fba3318aa6ecd7e40cd53717",
+        "bioutils_collection/annotation_functions/annotation_to_gff.py": "7b30b3a2c3f11626c4f1b378ae3a20e87b35bbc43c414a0d8880e74e6788a75a",
+        "bioutils_collection/annotation_functions/annotation_to_gtf.py": "b89bca3685895f8f3ee4d20a595705b6d603853417c23a81d3af7627e8f49507",
+        "bioutils_collection/annotation_functions/filter_annotations.py": "23f007dedb27d746fbd9b138dbdb1c31823214b450434d4a1c3dd19670feb7c4",
+        "bioutils_collection/annotation_functions/merge_annotations.py": "12532248bd5be8fbabdc06f1907aceadb227bfab3874264f770943654d9f8d01",
+        "bioutils_collection/annotation_functions/parse_bed.py": "6a12727ffff0b9db8334698d470b166901be2f5ff68f730267e810d03532b35a",
+        "bioutils_collection/annotation_functions/parse_gff.py": "a9a328f67e4f0c15c44c65745803a1fbae2886a776cdf2a50ffc166d12928736",
+        "bioutils_collection/annotation_functions/parse_gtf.py": "63d37eef47add6667a2002d4f4939e856f3c32b935ac2bb0e52454876b425d54",
+        "bioutils_collection/annotation_functions/parse_vcf.py": "9fc6ff2e0e767ef328d074af8843480c5191437e892d638d605fae3b7366baf0",
+        "bioutils_collection/annotation_functions/sort_annotations.py": "faaacf1431f9ee0249512115538a5203fdb20d4a71edd56603faba463476bf4d",
+        "bioutils_collection/clustering_functions/__init__.py": "1685fc48643d939aeb94463abd8d7d62e2585b8cda6c6dea017f26e6605170c1",
+        "bioutils_collection/clustering_functions/motif_clustering.py": "e6403953b744c0c5f9743d0793a0bfb9ab5f06c964197cce17f2f8a5decaf8f6",
+        "bioutils_collection/data_validation/__init__.py": "7b4e42d74881205a814129f60387451d85c625a4099694fa397ed733906327ff",
+        "bioutils_collection/data_validation/validate_dna_sequence.py": "e57865ff95ace9971ddee4871f4a2ba52e86358d4ba4e335e6c68965c321db99",
+        "bioutils_collection/data_validation/validate_protein_sequence.py": "7b0c10402b1508119e51b98d9a50116daf3e23231f7e88b606634d00602a531c",
+        "bioutils_collection/fasta_misc/__init__.py": "d05b82d8161313cb40acdc9250c405595487e55a1839a228f4d6c48d10b2f924",
+        "bioutils_collection/fasta_misc/degenerate_primer_generator.py": "45c1a7a74b607cde145bd1ce2b5f2a2b38bd80496ead84d39fcc6eea5efca7a4",
+        "bioutils_collection/fasta_misc/fasta_concat.py": "a1e79ff0671b58bea5ea938f09571d70d77affbccfa836c31b84fd052aff2cd3",
+        "bioutils_collection/fasta_misc/fasta_filter.py": "7c10622ca8708d41671b1b1bc883f9e912846fcd5736f43720d67d8ec5560975",
+        "bioutils_collection/fasta_misc/fasta_parser.py": "b8b813d6a4417f9a2a66681d2e7852d07fe50a46d64bf17f08d5e3cd641716b9",
+        "bioutils_collection/fasta_misc/fasta_rename_headers.py": "f9115cf805037ecb864b96deaba1af31d14b335fe780943381fa71ecde36b3f3",
+        "bioutils_collection/fasta_misc/fasta_reverse_complement.py": "db4885a5782161c65072f9e5235a1bedc3de9152a8b82a2191e2e62d95d7e1e9",
+        "bioutils_collection/fasta_misc/fasta_split.py": "b900e69c3aa1bc3525ac34cc1bcbe1bb092c93a843d8eea09bfa6afb94920f27",
+        "bioutils_collection/fasta_misc/fasta_stats.py": "5eb039b4e9f312f443006853980dca1679f1a820ef57e1e3ada05f5eca0761a8",
+        "bioutils_collection/fasta_misc/fasta_subsample.py": "b54977d8dd7da21345dc6fb09ab22b5f64387f03eba66471592c8776ad87a539",
+        "bioutils_collection/fasta_misc/fasta_to_dict.py": "e453814e36c99b784baf07b4172ff4906c5f12dc366b12ca8c0896b7b2be552d",
+        "bioutils_collection/fasta_misc/fastq_to_fasta.py": "3dccfc9da613e2815ea2b574bbdf601942659c24e2bd5664dfdef3e40729db34",
+        "bioutils_collection/fasta_misc/genbank_to_fasta.py": "ed8363946ce73954eb57d4f71508920c16a9ff0cd32149b45bbd37977093a5a0",
+        "bioutils_collection/fasta_misc/generate_primers.py": "8b284bbe30a815c1909810c64ef591e98b611b4508f87f18284d3be7d162923e",
+        "bioutils_collection/fasta_misc/validate_fasta.py": "e4f5da602659f762b6a5fdd911372b5f77b12b4ad97920e35cd21ea71bb2a35c",
+        "bioutils_collection/fasta_misc/write_fasta.py": "a455a16d6ec0cf1bf1632ba12e2d395528971939cb4312d7432e1664a0fd75a2",
+        "bioutils_collection/gc_functions/__init__.py": "26997936159a73fa7333ba69d18b467182be48aed7093f23b0dd76b693725443",
+        "bioutils_collection/gc_functions/gc_content.py": "16eab0a7531a3cdd68818b9bcdcbb5b0207cb183db651e48a583e38e01fde502",
+        "bioutils_collection/gc_functions/gc_content_windows.py": "09c360e870d2add05b7969ac814e60ca5cc61fcce73c64f3c21fd3b2728990e8",
+        "bioutils_collection/gc_functions/gc_skew.py": "ae5c59972d19f257909b23d006a842062988b86f9d7bd460b4d1c473c45c37a1",
+        "bioutils_collection/motif_functions/__init__.py": "70bf0fabfb58716560f11f8a047923a092a0b9be6446ae811530474d1ed7dfac",
+        "bioutils_collection/motif_functions/find_motif_positions.py": "24a0c1ca572d2dbce08b3b57ae867c41c5fcd350e252e05c56160b4581ccb9dd",
+        "bioutils_collection/motif_functions/generate_consensus_sequence.py": "6d323bdffff48df221de2702f2bf24fb063b66f4f2bc199cb3c246d28917f6e1",
+        "bioutils_collection/motif_functions/motif_search.py": "7d58d0590b252ccf8911378c24d6c5efd7bb03ba8a6379686a64062c05c143df",
+        "bioutils_collection/motif_functions/sequence_pattern_match.py": "9dc649d118dfb80a8b489aaee4e0176ef1e3c3c0834e4759f2901f9505bb2264",
+        "bioutils_collection/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bioutils_collection/repeat_functions/__init__.py": "63fb1d5730394f7dba11753204a2f7355f120649c1a895fd34d3c39af8300b19",
+        "bioutils_collection/repeat_functions/palindromic_sequence_finder.py": "63f13a2a4f043b1db73915229aa533d459fc66c4eac510a4afc3eab85ddb43bd",
+        "bioutils_collection/repeat_functions/tandem_repeat_finder.py": "55718e3b9cfc13e90ff50b6bf915a757a646113ef55ca541a837c3223f7234af",
+        "bioutils_collection/restriction_functions/__init__.py": "b61c44492c95cd79ed2a8ed933d98d6c1481ce287ad12a7a1bb4d3f7c6d09c72",
+        "bioutils_collection/restriction_functions/restriction_site_finder.py": "7a0958378dfe23813f8fc1864fd37f75a6c7ccfbe194b4a018741ccc72db2f85",
+        "bioutils_collection/sequence_operations/__init__.py": "57c2c4e8d0759e59b082ddc2e3e79d6dba1afafcb5636abb4793e6196779518d",
+        "bioutils_collection/sequence_operations/_minimizer_window.py": "bc32b9a58ec1fbea6055b959ef7a5045ab1eb01b4fb26943fbd316f18ddb8406",
+        "bioutils_collection/sequence_operations/_syncmer_selection.py": "7f923713cfc96c789b18b1cb920a24a1382ab84809027cbe9138e5d8fa6e97f0",
+        "bioutils_collection/sequence_operations/canonical_minimizer_sketch.py": "e384dd712a1e4d6c565f002c28d177bb9b1d9714877921754e5f4620378e5abc",
+        "bioutils_collection/sequence_operations/canonical_minimizers.py": "95a44828b14bde800a9ac622a4c084466d612c3f92e0d34736b3b5d3ae8e22c7",
+        "bioutils_collection/sequence_operations/find_cpg_islands.py": "122c57e4d26aa03f15d7cdf2376e17657fe5edc5be385e8a45f409873d065b16",
+        "bioutils_collection/sequence_operations/find_orfs.py": "0ca89f5029f479e7efffa0810cd40121911ab702aba3c2bc17ec8a7073b921b9",
+        "bioutils_collection/sequence_operations/generate_minimizers.py": "9280576a47ea91d7e455d5db4c431b875cdf9354dca9478d34df0e332a23ab3f",
+        "bioutils_collection/sequence_operations/generate_syncmers.py": "4c85506b1f5117c890f5e4fee4ea7b1ee73736a43018a72c6afd5d36d509a2af",
+        "bioutils_collection/sequence_operations/minimizer_density.py": "ebc1229c2dc84ff353e8cd7210f94b571bc06d634569974343c802bba8dcd948",
+        "bioutils_collection/sequence_operations/minimizer_positions.py": "331a102cbb466897f115f203b765a83f6532b6de68cf9d158397d6eb5826e9e0",
+        "bioutils_collection/sequence_operations/minimizer_sketch.py": "202ad72d5f45712098892bf2cbffafe9d4a06032c116d14a9593895e02021631",
+        "bioutils_collection/sequence_operations/minimizer_sketch_from_generator.py": "d6d2f0f01d1b8a18e2307fccf77ac8518ff3931df0670c2e9f689d1ac850cab8",
+        "bioutils_collection/sequence_operations/remove_low_complexity_regions.py": "cd1eb9672ad736dd1dd2cd2fb0a04901a131e241b746a0d78c57d28fc1ba7ad8",
+        "bioutils_collection/sequence_operations/reverse_complement.py": "7286e515868762395ff43c08a9e0de8204fd1b45218064aef79aeda23a13220a",
+        "bioutils_collection/sequence_operations/sequence_complement.py": "ea825dca151c8e36b8bff3a647e695563eb0a96b7775221554fdc592e3977839",
+        "bioutils_collection/sequence_operations/sequence_quality_filter.py": "29b78bd7174303c07f0ee61efd306270db45e6d196a31c462c376aad81c75725",
+        "bioutils_collection/sequence_operations/sequence_shuffling.py": "e1537e2ad9a06119aa40fc3136a868b32c9fe433e2b346a0c384e6c253a4d2e2",
+        "bioutils_collection/sequence_operations/sequence_to_kmers.py": "b04f50419baa298d58f8ae66ede6e6b06e94959372d751c0f1f196c651dbf8bc",
+        "bioutils_collection/sequence_operations/sequence_to_kmers_with_positions.py": "37bda4c6b36cc1de2aa5f1f1bdc45acfec0b2a6806202c5a663b10a7594ef986",
+        "bioutils_collection/sequence_operations/syncmer_density.py": "67f5c3fbe24d74838c7595cf756632888dfe6bb9bb4367319b1f01d8e4e72acf",
+        "bioutils_collection/sequence_operations/syncmer_positions.py": "182f782cb5a887b00dda11ee2db8bc24cf7b5c87b122f052ae1638f00ae9431c",
+        "bioutils_collection/sequence_operations/unique_minimizer_positions.py": "97801f7311bd2513edb80f9edb33ec7511617a67f46cde65880ff0e5c4ebb06c",
+        "bioutils_collection/sequence_statistics/__init__.py": "6f49d0367e50a086c288a07aa12118c73a0d8b3915252dc0a104f55209352489",
+        "bioutils_collection/sequence_statistics/amino_acid_composition.py": "144357a05e97dae651950b23db2e61f9480b0b481fbbc5f3d6913ef07bc4cdd8",
+        "bioutils_collection/sequence_statistics/calculate_isoelectric_point.py": "23e89f4f96ec57a971ca3dd2a39d1aa3b4f2119891ee8079c98d74d06604f3e1",
+        "bioutils_collection/sequence_statistics/calculate_molecular_weight.py": "e87ee6a571920c6e9fe8ee602bfcb34dabe19a85d1b5f04ae107affecec5ea18",
+        "bioutils_collection/sequence_statistics/codon_adaptation_index.py": "5b1c67540db760c8a96b8dc47eadf094fa79a641dd3a6b94d704d0e9d3731a17",
+        "bioutils_collection/sequence_statistics/codon_usage_frequency.py": "6556d2948440b08e07cda59b97f9d1488324a9df999ee0c7ff561a7567bf6225",
+        "bioutils_collection/sequence_statistics/effective_number_of_codons.py": "220b7c8fc0d9720ee69fec9f0a7353a6c92f423094be9cf5546e3722604e01f1",
+        "bioutils_collection/sequence_statistics/kmer_frequency.py": "1265b36ab51087fcd80e4a948a329395280ba67fc53379a39ad49f1e5093c2a9",
+        "bioutils_collection/sequence_statistics/melting_temperature.py": "fe38f53222e9d20160c810b3c079a129fabcc3fefd52fc020ee85092ea1f6c23",
+        "bioutils_collection/sequence_statistics/relative_synonymous_codon_usage.py": "6e6669a53cc4bca79785661fae6c7fe207c81977452774530a7d2c5af2cbdf34",
+        "bioutils_collection/sequence_statistics/sequence_complexity.py": "062c7166a24b67d9326e837c339b47e5a9ddf62603246539768805b6d4942fd5",
+        "bioutils_collection/sequence_statistics/sequence_conservation.py": "4155781b895d3b5c1d7fb2223b05a9843e1d0f31be67a7deaf03b4f7fa0676a9",
+        "bioutils_collection/sequence_statistics/sequence_entropy.py": "e99ad4cbdb36648346753a27a6acd0870b93ef93f86453b1030411b5ea8edbf9",
+        "bioutils_collection/sequence_statistics/sequence_logo.py": "b14961bad99ce819ac8cf426b48b4aeb19243101a8a599e9c0e06b80ffd12fb1",
+        "bioutils_collection/sequence_statistics/sequence_statistics.py": "9cf9a491dbe2bf696039685eb0a2200fc5fded2804c68c5c3733bed05626fa0f",
+        "bioutils_collection/translation_functions/__init__.py": "8f31dba4fd00039ea7d64aedb8d24f1bab40d9e4468e8953f6859ba6c74d11e7",
+        "bioutils_collection/translation_functions/_atomic_output.py": "8980d3e27d13b6145c98882760767c0ec31958463680135caf1c9c1768ddd9a4",
+        "bioutils_collection/translation_functions/genetic_code_tables.py": "ca058b2f09fabcc2dec7c2ff0efc15a57fea44a8275e277b92927dc98a04696f",
+        "bioutils_collection/translation_functions/rna_to_dna.py": "6696cd1980152a3d8d10a2aa130911598790db95fe2e355a4d8b057dfea3b47b",
+        "bioutils_collection/translation_functions/transcribe_dna_to_rna.py": "f6bb383f6eecac0d6f143e34978ae39eb8c3c4dfa89b0005cfc6e8ea95bd72da",
+        "bioutils_collection/translation_functions/translate_batch.py": "87b3b1b945b1ee5e5051f935a99cafb7d7276f407873847237b576b142c213b8",
+        "bioutils_collection/translation_functions/translate_dna_fast.py": "65c591cb056d8716a26c3447d1bd99002e08f370c800dd22ab5972798c6c5705",
+        "bioutils_collection/translation_functions/translate_dna_to_protein.py": "4a6b4e30587cf98d838db1d4b081a5e524d7a45771710774518a3e09664c1cb2",
+        "bioutils_collection/translation_functions/translate_fasta.py": "9fe506a2b85c41dc4f592a6d78de26207cfdf9aa9f9c077b8ae8fbfd41f701c8",
+        "bioutils_collection/translation_functions/translate_fasta_streaming.py": "cf02858d65f0bac6cc730c55fa897df1db636ee1d713fbc87abe28f21ed90fb4",
+        "bioutils_collection/translation_functions/translate_large_sequence.py": "c6ab41fc420e1b6bc5f93d44bb13cb6980dc11c8cf5952d327333cd562d73498",
+        "CHANGELOG.md": "7dc57375e6f9b796241c72854d6067f72890ddcdf45b64917081b5b4de685848",
+        "LICENSE": "671d046d66efc44081628c96c8c2c7a11fb211706c7cc4dd8a417372ec0787bc",
+        "MAJOR_CHECK_PLAN.md": "53aa2cbeb65de4c36825eb7b7959fc9f061a5e0b898d4719fc3ce9ed5d86f8a4",
+        "pyproject.toml": "70f247ee1e030c9835fd820702d2e9049f366f2f74ad222b3b37d87d400cafdc",
+        "pytest/conftest.py": "b89f38ba0d6ea7adf8fa50f7b2df9fc54495ab583275815acd64a8fdc17be0fc",
+        "pytest/fixtures/ncbi_genetic_codes.json": "7f03849b9c4e68022bc90801ee077539f914a3899ea1238691baeeecc74fc935",
+        "pytest/unit/alignment_functions/test_blast_score_ratio.py": "24ddaf9617fa291638167f87691e0dad0dc81b50682eba11607665bca35752d5",
+        "pytest/unit/alignment_functions/test_hamming_distance.py": "f99138a8bae45f39ba5354425c039885a688c32548e887de53610a9c9e4c8781",
+        "pytest/unit/alignment_functions/test_levenshtein_distance.py": "f8848fe4ba00253cb22464df48970fd887df767df11590ef065801fc7225fd07",
+        "pytest/unit/alignment_functions/test_needleman_wunsch.py": "66c64eed8fe478b1d9a4bbf59b56311bd24f0ecebf8288ed0f54d1865efd64a3",
+        "pytest/unit/alignment_functions/test_pairwise_identity.py": "bc366c951713fba3fba365f4e0c63237cdb90858a4db8b824256de5528baca16",
+        "pytest/unit/alignment_functions/test_smith_waterman.py": "33e1f67d2f7686dd1d1b298b9e04f4b3916843e32079d526ad666125b299f89c",
+        "pytest/unit/annotation_functions/test_annotation_roundtrips.py": "66e5f91ace2d95c8115c1902dea434828a0004a54396f71fa721bead7b9a0646",
+        "pytest/unit/annotation_functions/test_annotation_statistics.py": "e09581c236e0ce8f6f81573ebd0027c0caae68f93befcd94254f19dc4f4d47c0",
+        "pytest/unit/annotation_functions/test_annotation_to_bed.py": "3d3ed25ec2f05d3dbf126ec4e062c808541d501af8b95c2cc234d374e3f7313d",
+        "pytest/unit/annotation_functions/test_annotation_to_gff.py": "a26b89aceb00ae39969986baa8f8d29217d8cf1dd3825a29442aef9a3ea1cc6f",
+        "pytest/unit/annotation_functions/test_annotation_to_gtf.py": "960a2c8be8f2de9723c186c9ba22ccc8b678f149240b1f0c3c44faf0928688aa",
+        "pytest/unit/annotation_functions/test_filter_annotations.py": "e35bd96d4a1dbf32da645de3f292c21583b903c4ced4927cc552bbdbf32e700b",
+        "pytest/unit/annotation_functions/test_merge_annotations.py": "a5daa3cd5afbbf09c409d2d03db332b502abe13face5c230d8e31bd42e4bea32",
+        "pytest/unit/annotation_functions/test_parse_bed.py": "d6c43878288cb69727a39a816c59db65d214c017ce03325ab04dbaca7f390b03",
+        "pytest/unit/annotation_functions/test_parse_gff.py": "ccff9e2cbb72245d54595004a4cd221fbc5faffc03038693ab1dfd4a208ad173",
+        "pytest/unit/annotation_functions/test_parse_gtf.py": "fcce4d9f2502aa9dbdd9173f6d3f16746c2ae6c1f449767f4255039262a0ec6d",
+        "pytest/unit/annotation_functions/test_parse_vcf.py": "6284343b8460749ae4d6431d6510287fcea0aaf146a21e28191fe05d3f872261",
+        "pytest/unit/annotation_functions/test_sort_annotations.py": "a87ff4a5d6023042df764e1c928d336d2fffa545af49a312a23ec37cd9299be2",
+        "pytest/unit/clustering_functions/test_motif_clustering.py": "cbbd3bfabc79b448417269a7da5c2fbcd2ce03ae20708803d6ce2763861297f0",
+        "pytest/unit/data_validation/test_validate_dna_sequence.py": "66d50e2504a51d3f8dee5799503050e2c878063762602e2c67b1f7252486b1a9",
+        "pytest/unit/data_validation/test_validate_protein_sequence.py": "9e5752bc32a7bf2b667fb3f99e13d35cc47cb4a0160fcba12a80f64e928f43b9",
+        "pytest/unit/fasta_misc/test_degenerate_primer_generator.py": "91f9387adbc6f3273f52d1b9d4557b6e4d522fad7a90fced4e799510d7fb54a8",
+        "pytest/unit/fasta_misc/test_fasta_concat.py": "62e4c69a9b3a4f22ab098622d38252b6438446d31fc7118e78182c88733ab856",
+        "pytest/unit/fasta_misc/test_fasta_filter.py": "a60cabd16f412a068518fb0f8bddae501de2c9c26c59c66af22d673a1fbb3ab4",
+        "pytest/unit/fasta_misc/test_fasta_parser.py": "c5b359872dd361d6aa71f70f174e19818a58c36743bf2885cb7aa290270dcb5c",
+        "pytest/unit/fasta_misc/test_fasta_rename_headers.py": "48fdfcc0e3d19fe7faa79760f79541bbb375c5fd917e9832c13ee6a958f6ae1b",
+        "pytest/unit/fasta_misc/test_fasta_reverse_complement.py": "87f8b2fce1cff3fa63fd3927c70b86a713cdebb3ef5ec07c521959e26af40a82",
+        "pytest/unit/fasta_misc/test_fasta_split.py": "ff881ad65726beec55f4f049814d94478b502f923e5269644004973d0d614c9b",
+        "pytest/unit/fasta_misc/test_fasta_stats.py": "25c22ce73dbe4c5c08fadc6b2706b1e9a797904370ea52c8927b20d56fb1e99f",
+        "pytest/unit/fasta_misc/test_fasta_subsample.py": "f0be5c101b1910fa9c249cba7b6fb63e37593b2adaddc28cbc123d20849e37d1",
+        "pytest/unit/fasta_misc/test_fasta_to_dict.py": "27d48a16299a17f5bbff89e7f2550d4d189cc1e3d626fcfceda981abda984b20",
+        "pytest/unit/fasta_misc/test_fastq_to_fasta.py": "efb1ac6d058015539ebf6a16f6081567f5e0807d97e02b795446d2d178536cad",
+        "pytest/unit/fasta_misc/test_format_audit.py": "836b81f99d7e0b96133d7107a18ae0db4ddbe7a1f74cd8d96b513c1c9b155f85",
+        "pytest/unit/fasta_misc/test_genbank_to_fasta.py": "24bead8b7b5cef03910ee86991add46d9f54ab8db76cb446382e054eaf95f700",
+        "pytest/unit/fasta_misc/test_generate_primers.py": "4f6e676771b3d8526a925ea3852b0c6c4a1776a19829377d4073f0000718275b",
+        "pytest/unit/fasta_misc/test_validate_fasta.py": "3127395ade0da842d32961eecf5569b0e292653875272cb87d0840496373b639",
+        "pytest/unit/fasta_misc/test_write_fasta.py": "226a3e86713636269733b8abcf45308192d36b2f3628ca5bfdd961a1e1e52d95",
+        "pytest/unit/gc_functions/test_gc_content.py": "9f86140b472064814c9fe9bfe243818d42c394aed43ad9cd52a24b81bded8b8d",
+        "pytest/unit/gc_functions/test_gc_content_windows.py": "71654827d207aeee972d5a08b73ed89587916e0bb5207a0bc40e3d2b823e4cd5",
+        "pytest/unit/gc_functions/test_gc_content_windows_regression.py": "17444392ad18df5765cb80d30483692683f8d5a3bf96798a23f3388f03b5cbcd",
+        "pytest/unit/gc_functions/test_gc_skew.py": "a4be84123782ee6d0e85a3e94554b55c4754d4684fbac4bbeb7d281c9c86d409",
+        "pytest/unit/motif_functions/test_find_motif_positions.py": "b7d0a385e9d7a5c84b6df2fb455c9a3d2e080d35038e7a3675c57dca78b6b3d5",
+        "pytest/unit/motif_functions/test_generate_consensus_sequence.py": "cb72d21486ad317774392fe3dac8a3490d888a3e5f4cae7e1503cf251243d16a",
+        "pytest/unit/motif_functions/test_motif_search.py": "05f7fbdf1a42b54ef40ee0c6797a0ed6453446176fb93147a58c60033eb5db22",
+        "pytest/unit/motif_functions/test_overlap_regressions.py": "be6caa77a094dff4da38c19b18505b515c9851de334f95bd3d79a893b5ca8da2",
+        "pytest/unit/motif_functions/test_sequence_pattern_match.py": "44e70b35779e2662f7005f477413bc496aa8f6ede44ed602a221c2015f24e469",
+        "pytest/unit/repeat_functions/test_palindromic_sequence_finder.py": "6b0cbdc415eca09f32d7242ecb7ff364ea79ac4e1261a7e0444bb6719040c132",
+        "pytest/unit/repeat_functions/test_tandem_repeat_finder.py": "a9a6bf711585850bcb5604abc31a2f010170bdf97924823afe64ddcef097c75f",
+        "pytest/unit/restriction_functions/test_restriction_site_finder.py": "c5fbc900578a15222ffc46ab7ab6a8d928a12706792efc18b76893900e5b6f6d",
+        "pytest/unit/sequence_operations/test_canonical_minimizer_sketch.py": "5c75aa058893058a89715cb719c0298b3f97e14ba19d5f7549f83892845107a4",
+        "pytest/unit/sequence_operations/test_canonical_minimizers.py": "a47673b7e8ee8e1f45013413e484cba735f9d75442002bc158155a0ebc114048",
+        "pytest/unit/sequence_operations/test_find_cpg_islands.py": "e138999a02da947640ccacc85ba2bae4ac919035e9241dbd8e8223f63d990b4f",
+        "pytest/unit/sequence_operations/test_find_orfs.py": "7b728f2ce6b220d77620fcef2a0402c67e3de481213aaf22560a5aaf075c82ee",
+        "pytest/unit/sequence_operations/test_generate_minimizers.py": "c8c671e444c23d61adf4d228ee51dbdde35a0b56a326b1d7361f2d6a6f9e34eb",
+        "pytest/unit/sequence_operations/test_generate_syncmers.py": "af97b4fb8995b94c878fc3d89e47b005d57cd67ae6652094d09d51b7473c4bef",
+        "pytest/unit/sequence_operations/test_minimizer_audit.py": "1a26473362f4342807323c4332cc6e25e8a1f52f3c98d676c6d3d528f8914ab0",
+        "pytest/unit/sequence_operations/test_minimizer_density.py": "1933437b03370e929e2db84cee37eddb45af867e64b96e6435e2e16e0ccadff5",
+        "pytest/unit/sequence_operations/test_minimizer_positions.py": "3acb119ef2cc27afe44ce8610b0ca9d00dcbfb08f01aa9fb5b936290d1a86276",
+        "pytest/unit/sequence_operations/test_minimizer_sketch.py": "e2136285e148c665a1e0ffc6125f553a61e0f7bd3365ea588cdb346e8a215fa2",
+        "pytest/unit/sequence_operations/test_minimizer_sketch_from_generator.py": "0f73fb0d3a6af2a53c9586801645ad8f2b61ec037f33f5c2e3abd187c67927c0",
+        "pytest/unit/sequence_operations/test_remove_low_complexity_regions.py": "6d7f4119b11647dfd9db65d5125f735c5fe52c35c2cc330ad6e2e76c1503a65d",
+        "pytest/unit/sequence_operations/test_reverse_complement.py": "dfd43589b06a538c5d0128924ee4146ea3a7c85dcb8f4ff38ffb26c5eeffb635",
+        "pytest/unit/sequence_operations/test_sequence_complement.py": "3dcec7fdc9bc7db9f85117a5b8af2efba577518c741dda495e947af8c5833760",
+        "pytest/unit/sequence_operations/test_sequence_quality_filter.py": "c75d39f36fbf45036b891aa3ca1a1aa69036f5254a3d5f6cfabecfeb34bca7ce",
+        "pytest/unit/sequence_operations/test_sequence_shuffling.py": "e9cd6b18ee9062174d7e087995b0b2783a0dc45243595875aa982e3b62d3deae",
+        "pytest/unit/sequence_operations/test_sequence_to_kmers.py": "4fd4438c53bb9f9fa70fc5c49a4ccacd5106a3760e3bebef0811412a5a9c5cf5",
+        "pytest/unit/sequence_operations/test_sequence_to_kmers_with_positions.py": "448c6388a2511cdb194ab1a51e7227d685e9ef24c252e3b891dfbf31ff9f7a16",
+        "pytest/unit/sequence_operations/test_syncmer_density.py": "656c82951a74dc2665176f4bed8f3b95e6bea274e38e39ff282a5fab7f4d17f9",
+        "pytest/unit/sequence_operations/test_syncmer_positions.py": "6bea9f730148beac697ac93f17c55bcd99728cb971e2cfdd710c9b9491b800b5",
+        "pytest/unit/sequence_operations/test_syncmer_regressions.py": "9904481a0d0745ad8a75cd881a9fe1611abef3e57b7b0b79b4498f4cf33ab000",
+        "pytest/unit/sequence_operations/test_unique_minimizer_positions.py": "8d5d026911ed33618f8fa55334d3e25846b39f44d6d081549384c9b12406caac",
+        "pytest/unit/sequence_statistics/test_amino_acid_composition.py": "ebdcce7417fdc373ac1805d453bfc379c8148a6f7a4d40cbd6916773cb41615e",
+        "pytest/unit/sequence_statistics/test_calculate_isoelectric_point.py": "051548bb16c9fcfa9320422e8d94c48b6a2189d0fa432269917971de51328787",
+        "pytest/unit/sequence_statistics/test_calculate_molecular_weight.py": "54c0ef9fb2a27206d0e4c9b8e2e0ee45302692bee73d0a3d529c09f5c3d6f5e3",
+        "pytest/unit/sequence_statistics/test_codon_adaptation_index.py": "ab06525539624c91850711d2c8f00b99638f08c8a8117990d07a2b2d7116f8ef",
+        "pytest/unit/sequence_statistics/test_codon_usage_frequency.py": "ced79710205afd7360f20295b5510a1ba1e37623ad8434b7efa28f217e165f2e",
+        "pytest/unit/sequence_statistics/test_effective_number_of_codons.py": "57c65bcd646fdb75b18958b753c57ffa79b0c889f03b77810f9f58afe14b1bc8",
+        "pytest/unit/sequence_statistics/test_kmer_frequency.py": "291f71501be2d49c28813e26cf5f5c081d39ddf20b88dc8fa3386ceb99ace2b3",
+        "pytest/unit/sequence_statistics/test_melting_temperature.py": "4068e11bb92c578c6ac9615af8cb0350fbe864a6e8adbf3260a85264f8aaf354",
+        "pytest/unit/sequence_statistics/test_relative_synonymous_codon_usage.py": "76731c4b3942d68d507dcbe18655b773c0163e5aed101bc8166a1536f33b50fe",
+        "pytest/unit/sequence_statistics/test_scientific_regressions.py": "7a8bf1540e5626dace9d532d65fe415a81672faf1fdcd0f5f32c121847302e1c",
+        "pytest/unit/sequence_statistics/test_sequence_complexity.py": "93f17a40d5654d6aedf038a49860fc373c6d49cedc5f3460c15804b7c76471d3",
+        "pytest/unit/sequence_statistics/test_sequence_conservation.py": "6cab37438acd316c83dab76047165c1f48780276d61d8dbb223048cee22110f1",
+        "pytest/unit/sequence_statistics/test_sequence_entropy.py": "e6b10caa6dab20e302d9e549a49fd61d7e91a3b411c98ea1f40c52b63bd12c4c",
+        "pytest/unit/sequence_statistics/test_sequence_logo.py": "2e052dce927c398f64af380309611b2ff94069439594f8c1f9ff3001625a199b",
+        "pytest/unit/sequence_statistics/test_sequence_statistics.py": "3a4602e475c58b01b4be7af2ee75bc48a47a53cb4102d4714c24ef2d649ffbd0",
+        "pytest/unit/test_audit_reference_fixtures.py": "308c24024cfc31aa4e5c658e325f0d2ed9daf8a773831c51943a1ba4981d2bb3",
+        "pytest/unit/translation_functions/test_empty_configuration.py": "61f9a841c66ea158cc9b5efc0dfbe1209c17ace0e454d47dc9c8ddd6fda0cda8",
+        "pytest/unit/translation_functions/test_file_safety_audit.py": "c1f5e66cd0922228aa1493013a122f567d03cd7bbe91bfaaedec8de5462c5953",
+        "pytest/unit/translation_functions/test_ncbi_genetic_codes.py": "fe423eed725129c73f679900cae9de30d151048ef95e71203400b48eef94891a",
+        "pytest/unit/translation_functions/test_rna_to_dna.py": "19fcbd56b2b835d1a1314a0db2c40196d614447c13c7affcb8ca26fc149dc4c9",
+        "pytest/unit/translation_functions/test_transcribe_dna_to_rna.py": "16617ebc25e6fe99fbbe7750753c86c40df4a3f8453276053c96b62da66841d9",
+        "pytest/unit/translation_functions/test_translate_batch.py": "fec8d761394982fac5393f992b6443fd424e746f9446a0036f147fb8e26e5eb1",
+        "pytest/unit/translation_functions/test_translate_dna_fast.py": "d505941d1565f21d910ac9d4861b95360283872f2a1538c0f30d8f711f253370",
+        "pytest/unit/translation_functions/test_translate_dna_to_protein.py": "73e8459c0c70056f9b0587f31b1cea27babf2a524fd7bddf84a3c86682659635",
+        "pytest/unit/translation_functions/test_translate_fasta_streaming.py": "483538e77822696def9359393be251c635404d2e9ab059d69bedb292fff7fecb",
+        "pytest/unit/translation_functions/test_translate_large_sequence.py": "09bc6b8854df9b418e2c53e7e65535dc35ff9db4020394ad9ce49d20de8f7a95",
+        "pytest/unit/translation_functions/test_translation_performance.py": "ee551b3dfd0a753c9b4cf42a03da86b6fa24a839c838783f393b6a26290e0581",
+        "pytest/unit/translation_functions/test_translation_regressions.py": "3745358233c51515ab141e31189dc99c7cd9bdfb7ca8352bdce3ac2ee5813d0c",
+        "pytest.sh": "b3bdd4cb50c04791da3c8e064377eff9276e41ba87c566a765f2231446ccc2bd",
+        "README.md": "2fc530e33c343acac634efeaaf0f049123bf88df2e8637df5e2d9c76c8230f57",
+        "requirements.txt": "71fb25cdf98bebd5ecdd14dbe8711f9f485a435b18dd7e548f9807ddfb9bef0c",
+        "requirements_dev.txt": "5ed4a7b6683909ff28c10d2173e1cf8b112046e6e8428617e2a4ab5e99a076dc",
+        "scripts/check_distribution.py": "33c2782888cf4ace23b353386bca432cb9fceff5bf736c0c5c19275e4417b1ab"
+      }
+    }
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "dependencies": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "numba": "0.68.1"
+  },
+  "seed": 20261030,
+  "samples": 5,
+  "startup": [
+    {
+      "sample": 0,
+      "role": "baseline",
+      "import_seconds": 1.4610882000997663,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 0,
+      "role": "current",
+      "import_seconds": 1.0923248999752104,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 1,
+      "role": "current",
+      "import_seconds": 0.993173899827525,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 1,
+      "role": "baseline",
+      "import_seconds": 0.9737746000755578,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 2,
+      "role": "baseline",
+      "import_seconds": 1.1230188000481576,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 2,
+      "role": "current",
+      "import_seconds": 1.0284741998184472,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 3,
+      "role": "current",
+      "import_seconds": 1.0652685998938978,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 3,
+      "role": "baseline",
+      "import_seconds": 0.9492631999310106,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 4,
+      "role": "baseline",
+      "import_seconds": 1.127531599951908,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 4,
+      "role": "current",
+      "import_seconds": 0.8625686999876052,
+      "numba_first_call_seconds": null
+    }
+  ],
+  "notes": "Complete Git-tracked/nonignored-untracked snapshots exclude only this generated report. Timing rounds counterbalance version and case order. Operation timings exclude imports, preparation, JIT warmup, output hashing and memory instrumentation. RSS is absolute process peak including imports, preparation and JIT; pre-operation peak is also recorded. Python allocations are separate un-timed calls. Non-equivalent old outputs have no speedup claim. Shared-host load is uncontrolled.",
+  "measurements": [
+    {
+      "id": "open_syncmers/10000/random/implementation",
+      "name": "open_syncmers",
+      "size": 10000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "75138bc214e26dea2ee51c754f1fd1fff1868fbff463dc58d31b487400373773",
+        "current": "75138bc214e26dea2ee51c754f1fd1fff1868fbff463dc58d31b487400373773"
+      },
+      "seconds": {
+        "baseline": [
+          0.12521573326860866,
+          0.03285879998778304,
+          0.03896099996442596,
+          0.03755066667993864,
+          0.05040030002904435
+        ],
+        "current": [
+          0.014297300018370152,
+          0.0058166333474218845,
+          0.005589633326356609,
+          0.0064926000001529855,
+          0.005377266633634766
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.03896099996442596,
+        "current": 0.0058166333474218845
+      },
+      "runtime_ratio": 0.1492937386805489,
+      "python_memory_ratio": 1.002016750231086,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67796992,
+          "peak_rss_bytes": 67817472,
+          "peak_python_bytes": 35701
+        },
+        "current": {
+          "rss_before_bytes": 67559424,
+          "peak_rss_bytes": 67592192,
+          "peak_python_bytes": 35773
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "open_syncmers/10000/repetitive/implementation",
+      "name": "open_syncmers",
+      "size": 10000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "16b6d6acfb9b0b5f256f5d1fd2baea473e1d7718676659e798546684b20b2e83",
+        "current": "16b6d6acfb9b0b5f256f5d1fd2baea473e1d7718676659e798546684b20b2e83"
+      },
+      "seconds": {
+        "baseline": [
+          0.07593773336460193,
+          0.03396396664902568,
+          0.03356813328961531,
+          0.03828703332692385,
+          0.03941596671938896
+        ],
+        "current": [
+          0.008272000045205155,
+          0.006885666633024812,
+          0.008540466660633683,
+          0.005640733366211255,
+          0.012374833303814134
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.03828703332692385,
+        "current": 0.008272000045205155
+      },
+      "runtime_ratio": 0.21605225911792433,
+      "python_memory_ratio": 0.9982567282203352,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67575808,
+          "peak_rss_bytes": 67710976,
+          "peak_python_bytes": 111285
+        },
+        "current": {
+          "rss_before_bytes": 67571712,
+          "peak_rss_bytes": 67665920,
+          "peak_python_bytes": 111091
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "open_syncmers/100000/random/implementation",
+      "name": "open_syncmers",
+      "size": 100000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "2fc9b9fa92c60deabd3a11be3b600627fed997878646e1726d85ba16ae4eed57",
+        "current": "2fc9b9fa92c60deabd3a11be3b600627fed997878646e1726d85ba16ae4eed57"
+      },
+      "seconds": {
+        "baseline": [
+          0.4771829000674188,
+          0.3400912000797689,
+          0.35325260017998517,
+          0.34965910017490387,
+          0.4452736000530422
+        ],
+        "current": [
+          0.05617800005711615,
+          0.057833699975162745,
+          0.0706196001265198,
+          0.05461340001784265,
+          0.0666998999658972
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.35325260017998517,
+        "current": 0.057833699975162745
+      },
+      "runtime_ratio": 0.1637176908130216,
+      "python_memory_ratio": 0.9999691940864969,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 68947968,
+          "peak_rss_bytes": 69283840,
+          "peak_python_bytes": 324613
+        },
+        "current": {
+          "rss_before_bytes": 68624384,
+          "peak_rss_bytes": 68882432,
+          "peak_python_bytes": 324603
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "open_syncmers/100000/repetitive/implementation",
+      "name": "open_syncmers",
+      "size": 100000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "8db9da044776f6e53e84b91d14c1cfa7e1d5e42eef5b6c7a71fa4911b8ecafff",
+        "current": "8db9da044776f6e53e84b91d14c1cfa7e1d5e42eef5b6c7a71fa4911b8ecafff"
+      },
+      "seconds": {
+        "baseline": [
+          0.48630250012502074,
+          0.4319251000415534,
+          0.34552229987457395,
+          0.4256515000015497,
+          0.3395251000765711
+        ],
+        "current": [
+          0.05676810001023114,
+          0.056221900042146444,
+          0.0751045998185873,
+          0.06521430006250739,
+          0.06245389999821782
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.4256515000015497,
+        "current": 0.06245389999821782
+      },
+      "runtime_ratio": 0.14672543148089562,
+      "python_memory_ratio": 0.9998267567888567,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67604480,
+          "peak_rss_bytes": 68792320,
+          "peak_python_bytes": 1119813
+        },
+        "current": {
+          "rss_before_bytes": 67604480,
+          "peak_rss_bytes": 68812800,
+          "peak_python_bytes": 1119619
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "closed_syncmers/10000/random/implementation",
+      "name": "closed_syncmers",
+      "size": 10000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": false,
+      "digests": {
+        "baseline": "d0b741f0252bd1d2140909b13ea2f1c5182bf10037aab54ebab6b225e8c2e5b3",
+        "current": "08279fbf7188df48fb71aa87e86a9ea28974c288059a55a02bc5302e6473e21d"
+      },
+      "seconds": {
+        "baseline": [
+          0.045714433304965496,
+          0.04056259997499486,
+          0.03493149997666478,
+          0.034983166648695864,
+          0.044477100018411875
+        ],
+        "current": [
+          0.0060523999854922295,
+          0.006059900003795822,
+          0.006684399986018737,
+          0.005959433348228534,
+          0.0058578333506981535
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.04056259997499486,
+        "current": 0.0060523999854922295
+      },
+      "runtime_ratio": 0.1492113422025038,
+      "python_memory_ratio": 0.12837000290944298,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67674112,
+          "peak_rss_bytes": 68124672,
+          "peak_python_bytes": 409013
+        },
+        "current": {
+          "rss_before_bytes": 67706880,
+          "peak_rss_bytes": 67764224,
+          "peak_python_bytes": 52505
+        }
+      },
+      "verdict": "semantic correction; timing not comparable",
+      "optimization_candidate": true
+    },
+    {
+      "id": "closed_syncmers/10000/random/corrected-reference",
+      "name": "closed_syncmers",
+      "size": 10000,
+      "pattern": "random",
+      "comparison": "corrected-reference",
+      "equivalent": true,
+      "digests": {
+        "baseline": "08279fbf7188df48fb71aa87e86a9ea28974c288059a55a02bc5302e6473e21d",
+        "current": "08279fbf7188df48fb71aa87e86a9ea28974c288059a55a02bc5302e6473e21d"
+      },
+      "seconds": {
+        "baseline": [
+          0.0846467000277092,
+          0.04846046663199862,
+          0.04336173335711161,
+          0.03981770000730952,
+          0.04209173331037164
+        ],
+        "current": [
+          0.0059640000108629465,
+          0.0059628000017255545,
+          0.005668099969625473,
+          0.006172733381390572,
+          0.0060662999749183655
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.04336173335711161,
+        "current": 0.0059640000108629465
+      },
+      "runtime_ratio": 0.1375406273947951,
+      "python_memory_ratio": 1.236808630924338,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67600384,
+          "peak_rss_bytes": 67645440,
+          "peak_python_bytes": 42452
+        },
+        "current": {
+          "rss_before_bytes": 67690496,
+          "peak_rss_bytes": 67747840,
+          "peak_python_bytes": 52505
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "closed_syncmers/10000/repetitive/implementation",
+      "name": "closed_syncmers",
+      "size": 10000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": false,
+      "digests": {
+        "baseline": "d0b741f0252bd1d2140909b13ea2f1c5182bf10037aab54ebab6b225e8c2e5b3",
+        "current": "16b6d6acfb9b0b5f256f5d1fd2baea473e1d7718676659e798546684b20b2e83"
+      },
+      "seconds": {
+        "baseline": [
+          0.036792000057175756,
+          0.04149983334355056,
+          0.03371576662175357,
+          0.05302589999822279,
+          0.03396536665968597
+        ],
+        "current": [
+          0.0058538000254581375,
+          0.005982433368141453,
+          0.007383533365403612,
+          0.008018300014858445,
+          0.005889133317396045
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.036792000057175756,
+        "current": 0.005982433368141453
+      },
+      "runtime_ratio": 0.16260147202773947,
+      "python_memory_ratio": 0.2716075039179684,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67411968,
+          "peak_rss_bytes": 67977216,
+          "peak_python_bytes": 409013
+        },
+        "current": {
+          "rss_before_bytes": 67477504,
+          "peak_rss_bytes": 67588096,
+          "peak_python_bytes": 111091
+        }
+      },
+      "verdict": "semantic correction; timing not comparable",
+      "optimization_candidate": true
+    },
+    {
+      "id": "closed_syncmers/10000/repetitive/corrected-reference",
+      "name": "closed_syncmers",
+      "size": 10000,
+      "pattern": "repetitive",
+      "comparison": "corrected-reference",
+      "equivalent": true,
+      "digests": {
+        "baseline": "16b6d6acfb9b0b5f256f5d1fd2baea473e1d7718676659e798546684b20b2e83",
+        "current": "16b6d6acfb9b0b5f256f5d1fd2baea473e1d7718676659e798546684b20b2e83"
+      },
+      "seconds": {
+        "baseline": [
+          0.04111930006183684,
+          0.04605836669603983,
+          0.05490230000577867,
+          0.05143533336619536,
+          0.04132726672105491
+        ],
+        "current": [
+          0.00563546665944159,
+          0.008270266621063152,
+          0.006741666700690985,
+          0.009058333312471708,
+          0.005584966701765855
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.04605836669603983,
+        "current": 0.006741666700690985
+      },
+      "runtime_ratio": 0.14637224861190407,
+      "python_memory_ratio": 1.0973467936307242,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67465216,
+          "peak_rss_bytes": 67559424,
+          "peak_python_bytes": 101236
+        },
+        "current": {
+          "rss_before_bytes": 67473408,
+          "peak_rss_bytes": 67584000,
+          "peak_python_bytes": 111091
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "closed_syncmers/100000/random/implementation",
+      "name": "closed_syncmers",
+      "size": 100000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": false,
+      "digests": {
+        "baseline": "88d08708ef25e0a6935fa8e8f01b68747ccd0abdd26fd14a9e147ecb9663252a",
+        "current": "2371af88dca7c75a39ba289d0b606c2772c483e54815f52d33f5ee3d6aaf0f9f"
+      },
+      "seconds": {
+        "baseline": [
+          0.38119129999540746,
+          0.402380800107494,
+          0.4559883999172598,
+          0.3901207000017166,
+          0.36149000003933907
+        ],
+        "current": [
+          0.07101509999483824,
+          0.06595680001191795,
+          0.0586343000177294,
+          0.11642109998501837,
+          0.06476450012996793
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.3901207000017166,
+        "current": 0.06595680001191795
+      },
+      "runtime_ratio": 0.16906767575170384,
+      "python_memory_ratio": 0.12114986222840998,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 68743168,
+          "peak_rss_bytes": 72183808,
+          "peak_python_bytes": 4094821
+        },
+        "current": {
+          "rss_before_bytes": 68947968,
+          "peak_rss_bytes": 68947968,
+          "peak_python_bytes": 496087
+        }
+      },
+      "verdict": "semantic correction; timing not comparable",
+      "optimization_candidate": true
+    },
+    {
+      "id": "closed_syncmers/100000/random/corrected-reference",
+      "name": "closed_syncmers",
+      "size": 100000,
+      "pattern": "random",
+      "comparison": "corrected-reference",
+      "equivalent": true,
+      "digests": {
+        "baseline": "2371af88dca7c75a39ba289d0b606c2772c483e54815f52d33f5ee3d6aaf0f9f",
+        "current": "2371af88dca7c75a39ba289d0b606c2772c483e54815f52d33f5ee3d6aaf0f9f"
+      },
+      "seconds": {
+        "baseline": [
+          0.445560900028795,
+          0.4483133000321686,
+          0.4288518000394106,
+          0.4422477998305112,
+          0.45346680004149675
+        ],
+        "current": [
+          0.14260819996707141,
+          0.06936219986528158,
+          0.06804679986089468,
+          0.061639499850571156,
+          0.060297499876469374
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.445560900028795,
+        "current": 0.06804679986089468
+      },
+      "runtime_ratio": 0.15272165905153945,
+      "python_memory_ratio": 1.2524792720736007,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 68636672,
+          "peak_rss_bytes": 68968448,
+          "peak_python_bytes": 396084
+        },
+        "current": {
+          "rss_before_bytes": 68268032,
+          "peak_rss_bytes": 68657152,
+          "peak_python_bytes": 496087
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "closed_syncmers/100000/repetitive/implementation",
+      "name": "closed_syncmers",
+      "size": 100000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": false,
+      "digests": {
+        "baseline": "88d08708ef25e0a6935fa8e8f01b68747ccd0abdd26fd14a9e147ecb9663252a",
+        "current": "8db9da044776f6e53e84b91d14c1cfa7e1d5e42eef5b6c7a71fa4911b8ecafff"
+      },
+      "seconds": {
+        "baseline": [
+          0.43289489997550845,
+          0.388225199887529,
+          0.34789450000971556,
+          0.3353532999753952,
+          0.37112300004810095
+        ],
+        "current": [
+          0.06745950016193092,
+          0.05800299998372793,
+          0.07902380009181798,
+          0.059845600044354796,
+          0.06371979997493327
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.37112300004810095,
+        "current": 0.06371979997493327
+      },
+      "runtime_ratio": 0.17169455939587305,
+      "python_memory_ratio": 0.27342318504276497,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67608576,
+          "peak_rss_bytes": 71757824,
+          "peak_python_bytes": 4094821
+        },
+        "current": {
+          "rss_before_bytes": 67547136,
+          "peak_rss_bytes": 68919296,
+          "peak_python_bytes": 1119619
+        }
+      },
+      "verdict": "semantic correction; timing not comparable",
+      "optimization_candidate": true
+    },
+    {
+      "id": "closed_syncmers/100000/repetitive/corrected-reference",
+      "name": "closed_syncmers",
+      "size": 100000,
+      "pattern": "repetitive",
+      "comparison": "corrected-reference",
+      "equivalent": true,
+      "digests": {
+        "baseline": "8db9da044776f6e53e84b91d14c1cfa7e1d5e42eef5b6c7a71fa4911b8ecafff",
+        "current": "8db9da044776f6e53e84b91d14c1cfa7e1d5e42eef5b6c7a71fa4911b8ecafff"
+      },
+      "seconds": {
+        "baseline": [
+          0.4313014999497682,
+          0.4364761000033468,
+          0.5102921999059618,
+          0.407518699998036,
+          0.41543589998036623
+        ],
+        "current": [
+          0.05870410008355975,
+          0.06344359996728599,
+          0.11925900005735457,
+          0.058950399979949,
+          0.08481439994648099
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.4313014999497682,
+        "current": 0.06344359996728599
+      },
+      "runtime_ratio": 0.1470980276550742,
+      "python_memory_ratio": 1.0979197147575321,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67551232,
+          "peak_rss_bytes": 68636672,
+          "peak_python_bytes": 1019764
+        },
+        "current": {
+          "rss_before_bytes": 67325952,
+          "peak_rss_bytes": 68861952,
+          "peak_python_bytes": 1119619
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "minimizer_sketch/10000/random/implementation",
+      "name": "minimizer_sketch",
+      "size": 10000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "bea113d1e097efbc62a2da0a5a51b1567964a3ca7d83ef8c2d4cb79c3cc3c72a",
+        "current": "bea113d1e097efbc62a2da0a5a51b1567964a3ca7d83ef8c2d4cb79c3cc3c72a"
+      },
+      "seconds": {
+        "baseline": [
+          0.03694896663849553,
+          0.03369183333901068,
+          0.040229766707246505,
+          0.04011253329614798,
+          0.033849600004032254
+        ],
+        "current": [
+          0.009468800000225505,
+          0.009905399987474084,
+          0.011929699995865425,
+          0.00967153332506617,
+          0.00972680002450943
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.03694896663849553,
+        "current": 0.00972680002450943
+      },
+      "runtime_ratio": 0.26324958204312804,
+      "python_memory_ratio": 0.9997644843420823,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67674112,
+          "peak_rss_bytes": 69644288,
+          "peak_python_bytes": 1936177
+        },
+        "current": {
+          "rss_before_bytes": 67420160,
+          "peak_rss_bytes": 69521408,
+          "peak_python_bytes": 1935721
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "minimizer_sketch/10000/repetitive/implementation",
+      "name": "minimizer_sketch",
+      "size": 10000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "a6b9cdd026275667cb322060978cf74e9f04b52712118adb17b5bf019d823290",
+        "current": "a6b9cdd026275667cb322060978cf74e9f04b52712118adb17b5bf019d823290"
+      },
+      "seconds": {
+        "baseline": [
+          0.03491013334132731,
+          0.040946633322164416,
+          0.04516636665600041,
+          0.0363944333512336,
+          0.0354761666773508
+        ],
+        "current": [
+          0.009933633341764411,
+          0.00896583334542811,
+          0.017400133345897,
+          0.00969003327190876,
+          0.014937199962635836
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.0363944333512336,
+        "current": 0.009933633341764411
+      },
+      "runtime_ratio": 0.27294375614801836,
+      "python_memory_ratio": 0.9997539435138485,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67657728,
+          "peak_rss_bytes": 69861376,
+          "peak_python_bytes": 1853233
+        },
+        "current": {
+          "rss_before_bytes": 67739648,
+          "peak_rss_bytes": 69898240,
+          "peak_python_bytes": 1852777
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "minimizer_sketch/100000/random/implementation",
+      "name": "minimizer_sketch",
+      "size": 100000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "8584f4765d288b1ac760c34e9dd52c349f6b6d74a79ea0f8093278ec67b8c9f3",
+        "current": "8584f4765d288b1ac760c34e9dd52c349f6b6d74a79ea0f8093278ec67b8c9f3"
+      },
+      "seconds": {
+        "baseline": [
+          0.35628189984709024,
+          0.38775949995033443,
+          0.44026669999584556,
+          0.3346544001251459,
+          0.3408199001569301
+        ],
+        "current": [
+          0.10054060001857579,
+          0.10036849998869002,
+          0.3471597998868674,
+          0.2047093000728637,
+          0.1078065000474453
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.35628189984709024,
+        "current": 0.1078065000474453
+      },
+      "runtime_ratio": 0.30258764223979356,
+      "python_memory_ratio": 0.9999762404479176,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 68902912,
+          "peak_rss_bytes": 89223168,
+          "peak_python_bytes": 19192281
+        },
+        "current": {
+          "rss_before_bytes": 68988928,
+          "peak_rss_bytes": 88813568,
+          "peak_python_bytes": 19191825
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "minimizer_sketch/100000/repetitive/implementation",
+      "name": "minimizer_sketch",
+      "size": 100000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "5a1143f81fc690f446597b9d8e50a80586af68b70e0f30f6442e4053474f4870",
+        "current": "5a1143f81fc690f446597b9d8e50a80586af68b70e0f30f6442e4053474f4870"
+      },
+      "seconds": {
+        "baseline": [
+          0.4356219000183046,
+          0.35663530020974576,
+          0.43016779981553555,
+          0.4030012001749128,
+          0.3531116999220103
+        ],
+        "current": [
+          0.1000173999927938,
+          0.11747929989360273,
+          0.15517969988286495,
+          0.1192977000027895,
+          0.09549460001289845
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.4030012001749128,
+        "current": 0.11747929989360273
+      },
+      "runtime_ratio": 0.2915110422564839,
+      "python_memory_ratio": 0.9999753388968278,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67522560,
+          "peak_rss_bytes": 87904256,
+          "peak_python_bytes": 18490657
+        },
+        "current": {
+          "rss_before_bytes": 67837952,
+          "peak_rss_bytes": 89448448,
+          "peak_python_bytes": 18490201
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "canonical_sketch/10000/random/implementation",
+      "name": "canonical_sketch",
+      "size": 10000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "f18671c6bb1c77d17085a576578bfd48c13444974727ec8df7dd38c01eadb9e9",
+        "current": "f18671c6bb1c77d17085a576578bfd48c13444974727ec8df7dd38c01eadb9e9"
+      },
+      "seconds": {
+        "baseline": [
+          0.06967290001921356,
+          0.06890966665620606,
+          0.08377886664432783,
+          0.06806456670165062,
+          0.08003423331926267
+        ],
+        "current": [
+          0.04340776661410928,
+          0.044031466667850815,
+          0.04318486666306853,
+          0.055414666732152305,
+          0.04399493336677551
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.06967290001921356,
+        "current": 0.04399493336677551
+      },
+      "runtime_ratio": 0.6314497222685308,
+      "python_memory_ratio": 1.045788986742931,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67747840,
+          "peak_rss_bytes": 69632000,
+          "peak_python_bytes": 1849353
+        },
+        "current": {
+          "rss_before_bytes": 68014080,
+          "peak_rss_bytes": 70148096,
+          "peak_python_bytes": 1934033
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "canonical_sketch/10000/repetitive/implementation",
+      "name": "canonical_sketch",
+      "size": 10000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "014ee454cffa01b35c59e882acbf6fda22e3271637d211612d9dfda89810c6ba",
+        "current": "014ee454cffa01b35c59e882acbf6fda22e3271637d211612d9dfda89810c6ba"
+      },
+      "seconds": {
+        "baseline": [
+          0.068753599965324,
+          0.06892300001345575,
+          0.07395676663145423,
+          0.07004009994367759,
+          0.07435626668545108
+        ],
+        "current": [
+          0.041927400045096874,
+          0.04113529995083809,
+          0.04139186666967968,
+          0.07937106668638687,
+          0.04967030005839964
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.07004009994367759,
+        "current": 0.041927400045096874
+      },
+      "runtime_ratio": 0.59861993456338,
+      "python_memory_ratio": 1.0476857948508886,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67411968,
+          "peak_rss_bytes": 69496832,
+          "peak_python_bytes": 1768577
+        },
+        "current": {
+          "rss_before_bytes": 67575808,
+          "peak_rss_bytes": 69709824,
+          "peak_python_bytes": 1852913
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "canonical_sketch/100000/random/implementation",
+      "name": "canonical_sketch",
+      "size": 100000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "fd95f424cfcb0f7efdcbe4e30159695eb087ba7f974a8f2f1f9c94a467fa1447",
+        "current": "fd95f424cfcb0f7efdcbe4e30159695eb087ba7f974a8f2f1f9c94a467fa1447"
+      },
+      "seconds": {
+        "baseline": [
+          0.7037249999120831,
+          0.7904186998493969,
+          0.7253199000842869,
+          0.7843353999778628,
+          0.7224017998669297
+        ],
+        "current": [
+          0.4766507998574525,
+          0.44419749989174306,
+          0.4382220001425594,
+          0.610524500021711,
+          0.44701789994724095
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.7253199000842869,
+        "current": 0.44701789994724095
+      },
+      "runtime_ratio": 0.616304474612229,
+      "python_memory_ratio": 1.0434656368468378,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 68661248,
+          "peak_rss_bytes": 87650304,
+          "peak_python_bytes": 18408657
+        },
+        "current": {
+          "rss_before_bytes": 68956160,
+          "peak_rss_bytes": 88879104,
+          "peak_python_bytes": 19208801
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "canonical_sketch/100000/repetitive/implementation",
+      "name": "canonical_sketch",
+      "size": 100000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "97db95f6c66235d656f34e7685e378628066fbb32fa950dad2068dc1b07d5167",
+        "current": "97db95f6c66235d656f34e7685e378628066fbb32fa950dad2068dc1b07d5167"
+      },
+      "seconds": {
+        "baseline": [
+          0.8202521000057459,
+          0.7074752000626177,
+          0.7152229999192059,
+          0.773003299953416,
+          0.7412219000980258
+        ],
+        "current": [
+          0.6033717000391334,
+          0.4536716998554766,
+          0.45696679991669953,
+          0.495189500041306,
+          0.44716769992373884
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.7412219000980258,
+        "current": 0.45696679991669953
+      },
+      "runtime_ratio": 0.6165047199175661,
+      "python_memory_ratio": 1.0452309367116572,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67514368,
+          "peak_rss_bytes": 87388160,
+          "peak_python_bytes": 17690193
+        },
+        "current": {
+          "rss_before_bytes": 67485696,
+          "peak_rss_bytes": 88350720,
+          "peak_python_bytes": 18490337
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "streaming_sketch/10000/random/implementation",
+      "name": "streaming_sketch",
+      "size": 10000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": false,
+      "digests": {
+        "baseline": "db4efa558543779e3dd45b6f6db9a403eedd52f2e02deb105d71789a11aec3ce",
+        "current": "bea113d1e097efbc62a2da0a5a51b1567964a3ca7d83ef8c2d4cb79c3cc3c72a"
+      },
+      "seconds": {
+        "baseline": [
+          0.03734780002074937,
+          0.031971799985816084,
+          0.07237420006034274,
+          0.032107266675059996,
+          0.05532979996254047
+        ],
+        "current": [
+          0.007187966722995043,
+          0.007111399977778395,
+          0.007561999994019668,
+          0.0075125666335225105,
+          0.008532733346025148
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.03734780002074937,
+        "current": 0.0075125666335225105
+      },
+      "runtime_ratio": 0.20115151707326118,
+      "python_memory_ratio": 0.9877849363900971,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67571712,
+          "peak_rss_bytes": 67825664,
+          "peak_python_bytes": 244616
+        },
+        "current": {
+          "rss_before_bytes": 67432448,
+          "peak_rss_bytes": 67649536,
+          "peak_python_bytes": 241628
+        }
+      },
+      "verdict": "semantic correction; timing not comparable",
+      "optimization_candidate": true
+    },
+    {
+      "id": "streaming_sketch/10000/random/corrected-reference",
+      "name": "streaming_sketch",
+      "size": 10000,
+      "pattern": "random",
+      "comparison": "corrected-reference",
+      "equivalent": true,
+      "digests": {
+        "baseline": "bea113d1e097efbc62a2da0a5a51b1567964a3ca7d83ef8c2d4cb79c3cc3c72a",
+        "current": "bea113d1e097efbc62a2da0a5a51b1567964a3ca7d83ef8c2d4cb79c3cc3c72a"
+      },
+      "seconds": {
+        "baseline": [
+          0.03952650004066527,
+          0.0528326667069147,
+          0.034218633314594626,
+          0.03810993333657583,
+          0.0606198333359013
+        ],
+        "current": [
+          0.011851200057814518,
+          0.007267066665614645,
+          0.007593466667458415,
+          0.010252300028999647,
+          0.009955566609278321
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.03952650004066527,
+        "current": 0.009955566609278321
+      },
+      "runtime_ratio": 0.2518706842001172,
+      "python_memory_ratio": 0.13126192411158577,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67686400,
+          "peak_rss_bytes": 69574656,
+          "peak_python_bytes": 1840808
+        },
+        "current": {
+          "rss_before_bytes": 67481600,
+          "peak_rss_bytes": 67698688,
+          "peak_python_bytes": 241628
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "streaming_sketch/10000/repetitive/implementation",
+      "name": "streaming_sketch",
+      "size": 10000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": false,
+      "digests": {
+        "baseline": "06b839e39f0ffebe3d538d7d1478d4e3c5831369aee35e3315bb3fd6491911c6",
+        "current": "a6b9cdd026275667cb322060978cf74e9f04b52712118adb17b5bf019d823290"
+      },
+      "seconds": {
+        "baseline": [
+          0.04396440003377696,
+          0.04141686670482159,
+          0.03416979995866617,
+          0.040731133349860706,
+          0.06102453335188329
+        ],
+        "current": [
+          0.007775333321963747,
+          0.007960299961268902,
+          0.007422000014533599,
+          0.010049266663069526,
+          0.007603433371211092
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.04141686670482159,
+        "current": 0.007775333321963747
+      },
+      "runtime_ratio": 0.18773349943100776,
+      "python_memory_ratio": 0.9876234115924228,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67403776,
+          "peak_rss_bytes": 67723264,
+          "peak_python_bytes": 169352
+        },
+        "current": {
+          "rss_before_bytes": 67403776,
+          "peak_rss_bytes": 67694592,
+          "peak_python_bytes": 167256
+        }
+      },
+      "verdict": "semantic correction; timing not comparable",
+      "optimization_candidate": true
+    },
+    {
+      "id": "streaming_sketch/10000/repetitive/corrected-reference",
+      "name": "streaming_sketch",
+      "size": 10000,
+      "pattern": "repetitive",
+      "comparison": "corrected-reference",
+      "equivalent": true,
+      "digests": {
+        "baseline": "a6b9cdd026275667cb322060978cf74e9f04b52712118adb17b5bf019d823290",
+        "current": "a6b9cdd026275667cb322060978cf74e9f04b52712118adb17b5bf019d823290"
+      },
+      "seconds": {
+        "baseline": [
+          0.036917500042666994,
+          0.05649073328822851,
+          0.03563920004914204,
+          0.03609263330387572,
+          0.06747453333809972
+        ],
+        "current": [
+          0.007819099972645441,
+          0.010164966651548943,
+          0.007516199955716729,
+          0.013032000046223402,
+          0.007177166640758514
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.036917500042666994,
+        "current": 0.007819099972645441
+      },
+      "runtime_ratio": 0.2117992811974972,
+      "python_memory_ratio": 0.0951191548603718,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67416064,
+          "peak_rss_bytes": 69476352,
+          "peak_python_bytes": 1758384
+        },
+        "current": {
+          "rss_before_bytes": 67358720,
+          "peak_rss_bytes": 67686400,
+          "peak_python_bytes": 167256
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "streaming_sketch/100000/random/implementation",
+      "name": "streaming_sketch",
+      "size": 100000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": false,
+      "digests": {
+        "baseline": "cf01d35a6f177eb9b8614806576e92c953852b7310d810027cf424421de716af",
+        "current": "8584f4765d288b1ac760c34e9dd52c349f6b6d74a79ea0f8093278ec67b8c9f3"
+      },
+      "seconds": {
+        "baseline": [
+          0.38180199987255037,
+          0.34649570006877184,
+          0.33713830006308854,
+          0.33987949998117983,
+          0.4985758000984788
+        ],
+        "current": [
+          0.10655690007843077,
+          0.0792149999178946,
+          0.07629029988311231,
+          0.1441971999593079,
+          0.1071218999568373
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.34649570006877184,
+        "current": 0.10655690007843077
+      },
+      "runtime_ratio": 0.3075273374454042,
+      "python_memory_ratio": 0.9988901321340242,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 69750784,
+          "peak_rss_bytes": 70729728,
+          "peak_python_bytes": 2209272
+        },
+        "current": {
+          "rss_before_bytes": 68952064,
+          "peak_rss_bytes": 70000640,
+          "peak_python_bytes": 2206820
+        }
+      },
+      "verdict": "semantic correction; timing not comparable",
+      "optimization_candidate": true
+    },
+    {
+      "id": "streaming_sketch/100000/random/corrected-reference",
+      "name": "streaming_sketch",
+      "size": 100000,
+      "pattern": "random",
+      "comparison": "corrected-reference",
+      "equivalent": true,
+      "digests": {
+        "baseline": "8584f4765d288b1ac760c34e9dd52c349f6b6d74a79ea0f8093278ec67b8c9f3",
+        "current": "8584f4765d288b1ac760c34e9dd52c349f6b6d74a79ea0f8093278ec67b8c9f3"
+      },
+      "seconds": {
+        "baseline": [
+          0.44101780001074076,
+          0.39806090015918016,
+          0.39011749997735023,
+          0.3724992999341339,
+          0.3667737999930978
+        ],
+        "current": [
+          0.08852750016376376,
+          0.07552090007811785,
+          0.07775950012728572,
+          0.10012379987165332,
+          0.09202699991874397
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.39011749997735023,
+        "current": 0.08852750016376376
+      },
+      "runtime_ratio": 0.2269252216804003,
+      "python_memory_ratio": 0.12064689944433389,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 68907008,
+          "peak_rss_bytes": 87797760,
+          "peak_python_bytes": 18291560
+        },
+        "current": {
+          "rss_before_bytes": 68784128,
+          "peak_rss_bytes": 70905856,
+          "peak_python_bytes": 2206820
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "streaming_sketch/100000/repetitive/implementation",
+      "name": "streaming_sketch",
+      "size": 100000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": false,
+      "digests": {
+        "baseline": "f619681fe99b70ba7514133a23958a640b76299a98d07e83d6bb9647578e6147",
+        "current": "5a1143f81fc690f446597b9d8e50a80586af68b70e0f30f6442e4053474f4870"
+      },
+      "seconds": {
+        "baseline": [
+          0.4419454000890255,
+          0.3950992999598384,
+          0.34627179987728596,
+          0.3422061000019312,
+          0.34194559999741614
+        ],
+        "current": [
+          0.11394819989800453,
+          0.07700739987194538,
+          0.07924330001696944,
+          0.11179029988124967,
+          0.08513309992849827
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.34627179987728596,
+        "current": 0.08513309992849827
+      },
+      "runtime_ratio": 0.2458562896506972,
+      "python_memory_ratio": 0.99869421116898,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67608576,
+          "peak_rss_bytes": 69976064,
+          "peak_python_bytes": 1605160
+        },
+        "current": {
+          "rss_before_bytes": 67547136,
+          "peak_rss_bytes": 69926912,
+          "peak_python_bytes": 1603064
+        }
+      },
+      "verdict": "semantic correction; timing not comparable",
+      "optimization_candidate": true
+    },
+    {
+      "id": "streaming_sketch/100000/repetitive/corrected-reference",
+      "name": "streaming_sketch",
+      "size": 100000,
+      "pattern": "repetitive",
+      "comparison": "corrected-reference",
+      "equivalent": true,
+      "digests": {
+        "baseline": "5a1143f81fc690f446597b9d8e50a80586af68b70e0f30f6442e4053474f4870",
+        "current": "5a1143f81fc690f446597b9d8e50a80586af68b70e0f30f6442e4053474f4870"
+      },
+      "seconds": {
+        "baseline": [
+          0.3434247998520732,
+          0.5494476999156177,
+          0.4033474000170827,
+          0.397189199924469,
+          0.42660590005107224
+        ],
+        "current": [
+          0.07651140005327761,
+          0.07944560004398227,
+          0.0992280999198556,
+          0.13136460003443062,
+          0.09737890004180372
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.4033474000170827,
+        "current": 0.09737890004180372
+      },
+      "runtime_ratio": 0.2414268693381425,
+      "python_memory_ratio": 0.09113496304718591,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67624960,
+          "peak_rss_bytes": 87601152,
+          "peak_python_bytes": 17590000
+        },
+        "current": {
+          "rss_before_bytes": 67510272,
+          "peak_rss_bytes": 69431296,
+          "peak_python_bytes": 1603064
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "kmer_frequency/10000/random/implementation",
+      "name": "kmer_frequency",
+      "size": 10000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "bf12b97ea8c75ac7a1d120baa2a5898b83b5b7f24422d14ac1bcaadc78ba4595",
+        "current": "bf12b97ea8c75ac7a1d120baa2a5898b83b5b7f24422d14ac1bcaadc78ba4595"
+      },
+      "seconds": {
+        "baseline": [
+          0.002520066685974598,
+          0.0032030000196148953,
+          0.0020944333324829736,
+          0.0036446667121102414,
+          0.002315766643732786
+        ],
+        "current": [
+          0.0028157999428610006,
+          0.0026213666424155235,
+          0.003490000031888485,
+          0.003563466714695096,
+          0.003113566664978862
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.002520066685974598,
+        "current": 0.003113566664978862
+      },
+      "runtime_ratio": 1.2355096324662285,
+      "python_memory_ratio": 1.000070574618544,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67579904,
+          "peak_rss_bytes": 69017600,
+          "peak_python_bytes": 1133552
+        },
+        "current": {
+          "rss_before_bytes": 67530752,
+          "peak_rss_bytes": 68734976,
+          "peak_python_bytes": 1133632
+        }
+      },
+      "verdict": "runtime regression",
+      "optimization_candidate": true
+    },
+    {
+      "id": "kmer_frequency/10000/repetitive/implementation",
+      "name": "kmer_frequency",
+      "size": 10000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "ce364f10b28ebf3e60d4daf85ef297483ac13f19711afab45d1fe3300243a069",
+        "current": "ce364f10b28ebf3e60d4daf85ef297483ac13f19711afab45d1fe3300243a069"
+      },
+      "seconds": {
+        "baseline": [
+          0.002039933344349265,
+          0.002404066656405727,
+          0.002291399985551834,
+          0.0038504666493584714,
+          0.0023695999601234994
+        ],
+        "current": [
+          0.002776533365249634,
+          0.002874133332322041,
+          0.00281893330005308,
+          0.003113499997804562,
+          0.004555366700515151
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.0023695999601234994,
+        "current": 0.002874133332322041
+      },
+      "runtime_ratio": 1.2129192187242637,
+      "python_memory_ratio": 0.002070228521379091,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67502080,
+          "peak_rss_bytes": 68599808,
+          "peak_python_bytes": 803776
+        },
+        "current": {
+          "rss_before_bytes": 67407872,
+          "peak_rss_bytes": 67420160,
+          "peak_python_bytes": 1664
+        }
+      },
+      "verdict": "runtime regression",
+      "optimization_candidate": true
+    },
+    {
+      "id": "kmer_frequency/100000/random/implementation",
+      "name": "kmer_frequency",
+      "size": 100000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "ab34c35f523dffac855377a1554dfc775e70ebb5904e3295597640f5dbc52a11",
+        "current": "ab34c35f523dffac855377a1554dfc775e70ebb5904e3295597640f5dbc52a11"
+      },
+      "seconds": {
+        "baseline": [
+          0.03033989993855357,
+          0.04992819996550679,
+          0.029373300028964877,
+          0.03325559990480542,
+          0.03340570000000298
+        ],
+        "current": [
+          0.03465800010599196,
+          0.03562949993647635,
+          0.034308499889448285,
+          0.20231079985387623,
+          0.044363300083205104
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.03325559990480542,
+        "current": 0.03562949993647635
+      },
+      "runtime_ratio": 1.071383467399964,
+      "python_memory_ratio": 1.0000053734378074,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 69013504,
+          "peak_rss_bytes": 84164608,
+          "peak_python_bytes": 14888048
+        },
+        "current": {
+          "rss_before_bytes": 68337664,
+          "peak_rss_bytes": 85024768,
+          "peak_python_bytes": 14888128
+        }
+      },
+      "verdict": "neutral",
+      "optimization_candidate": true
+    },
+    {
+      "id": "kmer_frequency/100000/repetitive/implementation",
+      "name": "kmer_frequency",
+      "size": 100000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "3e0ffd471c58d41cb0702ea49c21f001c64a8c36016eb9bada968ed471560c40",
+        "current": "3e0ffd471c58d41cb0702ea49c21f001c64a8c36016eb9bada968ed471560c40"
+      },
+      "seconds": {
+        "baseline": [
+          0.02265499997884035,
+          0.0535778000485152,
+          0.03967730002477765,
+          0.02584039978682995,
+          0.025324000045657158
+        ],
+        "current": [
+          0.03767389990389347,
+          0.027858000015839934,
+          0.028197400039061904,
+          0.032467400189489126,
+          0.028088599909096956
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.02584039978682995,
+        "current": 0.028197400039061904
+      },
+      "runtime_ratio": 1.0912137688145693,
+      "python_memory_ratio": 0.00020801081656246124,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67346432,
+          "peak_rss_bytes": 76902400,
+          "peak_python_bytes": 7999584
+        },
+        "current": {
+          "rss_before_bytes": 67612672,
+          "peak_rss_bytes": 67624960,
+          "peak_python_bytes": 1664
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    }
+  ]
+}

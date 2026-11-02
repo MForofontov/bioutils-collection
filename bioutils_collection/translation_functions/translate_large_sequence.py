@@ -2,6 +2,7 @@
 
 from multiprocessing import cpu_count
 
+from .genetic_code_tables import get_codon_table
 from .translate_batch import translate_batch
 
 
@@ -17,6 +18,8 @@ def translate_large_sequence(
 
     Splits the sequence into chunks and processes them in parallel,
     then combines the results. Useful for very large sequences (>10MB).
+    Table, process, and codon-adjusted chunk settings are validated even for
+    empty sequence input.
 
     Parameters
     ----------
@@ -82,9 +85,6 @@ def translate_large_sequence(
         if n_processes < 1:
             raise ValueError(f"n_processes must be positive, got {n_processes}")
 
-    if not sequence:
-        return ""
-
     seq_len = len(sequence)
 
     # Validate sequence length
@@ -98,6 +98,10 @@ def translate_large_sequence(
             "chunk_size must be at least 3 (after codon-boundary adjustment), "
             f"got {chunk_size}"
         )
+
+    table = get_codon_table(table)
+    if not sequence:
+        return ""
 
     # If sequence is smaller than chunk_size, process directly
     if seq_len <= chunk_size:

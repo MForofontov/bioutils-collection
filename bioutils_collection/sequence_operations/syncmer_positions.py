@@ -1,5 +1,7 @@
 """Get positions of all syncmers in a sequence."""
 
+from ._syncmer_selection import iter_syncmer_positions, validate_syncmer_inputs
+
 
 def syncmer_positions(seq: str, k: int, s: int, method: str = "open") -> list[int]:
     """
@@ -31,9 +33,9 @@ def syncmer_positions(seq: str, k: int, s: int, method: str = "open") -> list[in
     Examples
     --------
     >>> syncmer_positions('ATGCGATCG', 4, 2, method='open')
-    [0, 4]
+    [0, 5]
     >>> syncmer_positions('AAACCCGGG', 3, 2, method='closed')
-    [0, 1, 3, 4, 6]
+    [0, 1, 2, 3, 4, 5, 6]
 
     Notes
     -----
@@ -45,54 +47,10 @@ def syncmer_positions(seq: str, k: int, s: int, method: str = "open") -> list[in
 
     Complexity
     ----------
-    Time: O(n*k*s), Space: O(m) where m is number of syncmers
+    Time: O(n*s), Space: O(n + (k-s)*s + m) including uppercase input and output
     """
-    if not isinstance(seq, str):
-        raise TypeError(f"seq must be str, got {type(seq).__name__}")
-    if not isinstance(k, int):
-        raise TypeError(f"k must be int, got {type(k).__name__}")
-    if not isinstance(s, int):
-        raise TypeError(f"s must be int, got {type(s).__name__}")
-    if not isinstance(method, str):
-        raise TypeError(f"method must be str, got {type(method).__name__}")
-    if not seq:
-        raise ValueError("seq cannot be empty")
-    if k <= 0:
-        raise ValueError("k must be positive")
-    if s <= 0:
-        raise ValueError("s must be positive")
-    if s >= k:
-        raise ValueError("s must be less than k")
-    if k > len(seq):
-        raise ValueError("k cannot be longer than sequence")
-    if method not in ("open", "closed"):
-        raise ValueError("method must be 'open' or 'closed'")
-
-    seq = seq.upper()
-    positions = []
-
-    # Generate all k-mers and check syncmer condition
-    for i in range(len(seq) - k + 1):
-        kmer = seq[i : i + k]
-
-        # Extract all s-mers from this k-mer
-        smers = [kmer[j : j + s] for j in range(k - s + 1)]
-
-        if not smers:
-            continue
-
-        min_smer = min(smers)
-
-        if method == "open":
-            # Open syncmer: minimum s-mer must be at first position
-            if smers[0] == min_smer:
-                positions.append(i)
-        else:  # closed
-            # Closed syncmer: minimum s-mer can be anywhere
-            if min_smer in smers:
-                positions.append(i)
-
-    return positions
+    validate_syncmer_inputs(seq, k, s, method)
+    return list(iter_syncmer_positions(seq.upper(), k, s, method))
 
 
 __all__ = ["syncmer_positions"]

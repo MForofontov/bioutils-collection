@@ -2,6 +2,9 @@
 
 from pathlib import Path
 
+from bioutils_collection.fasta_misc.fasta_parser import _parse_fasta_lines
+
+from ._atomic_output import atomic_text_output
 from .genetic_code_tables import get_codon_table
 from .translate_dna_fast import translate_dna_fast
 from .translate_dna_to_protein import translate_dna_to_protein
@@ -25,7 +28,7 @@ def translate_fasta(
     table : str, int, or dict[str, str], optional
         Genetic code table
     use_fast : bool, optional
-        Use Numba JIT implementation for 2.7x speedup (default: False)
+        Use the Numba JIT implementation (default: False)
         Requires: pip install numba
 
     Returns
@@ -40,7 +43,8 @@ def translate_fasta(
     FileNotFoundError
         If input FASTA file does not exist
     ValueError
-        If table name/number is unrecognized
+        If table name/number is unrecognized, FASTA headers are malformed,
+        or input and output refer to the same file
     OSError
         If unable to read input file or write output file
 
@@ -54,7 +58,11 @@ def translate_fasta(
     -----
     - Invalid sequences (not multiple of 3) will have ERROR message in results
     - For huge files that don't fit in memory, use translate_fasta_streaming()
-    - Set use_fast=True for 2.7x speedup on large sequences
+    - Empty sequence records are skipped; IDs use the first header word.
+    - Duplicate IDs overwrite earlier entries in the dictionary API; streaming
+      preserves each record.
+    - Output is replaced atomically on success; failed processing preserves it.
+    - Set use_fast=True to use the Numba backend on large sequences
     """
     # Input validation
     if not isinstance(fasta_file, (str, Path)):
@@ -72,54 +80,35 @@ def translate_fasta(
     if not fasta_file.exists():
         raise FileNotFoundError(f"FASTA file not found: {fasta_file}")
 
+    if (
+        output_file is not None
+        and Path(output_file).exists()
+        and fasta_file.samefile(output_file)
+    ):
+        raise ValueError("Input and output must refer to different files")
+
     # Configuration errors must not be converted into per-record errors or
     # overwrite an existing output, including when the input file is empty.
     table = get_codon_table(table)
     translate_func = translate_dna_fast if use_fast else translate_dna_to_protein
 
     results = {}
-    current_id = None
-    current_seq: list[str] = []
-
-    with open(fasta_file) as f:
-        for line in f:
-            line = line.strip()
-            if not line:
+    with open(fasta_file, encoding="utf-8") as source:
+        for header, seq in _parse_fasta_lines(source):
+            if not seq:
                 continue
-
-            if line.startswith(">"):
-                # Save previous sequence
-                if current_id is not None and current_seq:
-                    seq = "".join(current_seq)
-                    try:
-                        results[current_id] = translate_func(seq, table=table)
-                    except ValueError as e:
-                        results[current_id] = f"ERROR: {e}"
-
-                # Start new sequence
-                current_id = line[1:].split()[0]  # Take first word after >
-                current_seq = []
-            else:
-                current_seq.append(line)
-
-        # Save last sequence
-        if current_id is not None and current_seq:
-            seq = "".join(current_seq)
+            seq_id = header.split()[0]
             try:
-                results[current_id] = translate_func(seq, table=table)
+                results[seq_id] = translate_func(seq, table=table)
             except ValueError as e:
-                results[current_id] = f"ERROR: {e}"
+                results[seq_id] = f"ERROR: {e}"
 
-    # Write output file if requested
     if output_file is not None:
-        output_file = Path(output_file)
-        with open(output_file, "w") as f:
+        with atomic_text_output(Path(output_file)) as output:
             for seq_id, protein in results.items():
-                f.write(f">{seq_id}\n")
-                # Write in 60-character lines
+                output.write(f">{seq_id}\n")
                 for i in range(0, len(protein), 60):
-                    f.write(f"{protein[i : i + 60]}\n")
-
+                    output.write(f"{protein[i : i + 60]}\n")
     return results
 
 

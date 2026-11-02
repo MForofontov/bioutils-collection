@@ -56,9 +56,13 @@ def filter_annotations(
     if chrom is not None and not isinstance(chrom, str):
         raise TypeError(f"chrom must be str or None, got {type(chrom).__name__}")
     for record in annotations:
-        if feature_type and record.get("feature") != feature_type:
+        if feature_type and record.get("feature", record.get("type")) != feature_type:
             continue
-        if chrom and (record.get("seqname") or record.get("chrom")) != chrom:
+        if (
+            chrom
+            and (record.get("seqname") or record.get("chrom") or record.get("seqid"))
+            != chrom
+        ):
             continue
         yield record
 

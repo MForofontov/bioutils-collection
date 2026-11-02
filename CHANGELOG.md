@@ -7,6 +7,58 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-11-02
+
+### Fixed
+- Validate table identifiers, process counts, and codon-adjusted chunk sizes even
+  for empty fast, batch, and chunked translation inputs.
+- Corrected closed syncmers to select boundary minima with leftmost tie-breaking.
+- Corrected NCBI tables 24/33 (AGG to lysine) and 31 (TGA to tryptophan).
+- Made GFF/GTF writers accept native parser records; GFF records now work with
+  BED conversion, filtering, and feature statistics without renaming fields.
+- Handled BED track/browser headers, blank annotation lines, and embedded GFF
+  FASTA sections. Malformed GTF/VCF records now raise errors instead of disappearing.
+- Prevented both FASTA translators from overwriting input aliases; output is now
+  written transactionally and preserved after processing, write, or commit errors.
+- Rejected empty FASTA/FASTQ identifiers, mismatched FASTQ separator identifiers,
+  and invalid Phred+33 characters. Both file translators share FASTA parsing.
+- Included overlapping IUPAC matches, consistent with literal matching.
+- Corrected CAI zero-weight handling and rejected non-finite/out-of-range weights.
+- Replaced pKa averaging with a Henderson-Hasselbalch zero-charge pI solver,
+  retaining the existing fixed pKa set and two-decimal output.
+- Accounted for peptide-bond water and nucleotide termini in approximate masses,
+  including the molecular weight reported by protein validation.
+- Removed spurious trailing windows from streaming minimizer sketches and made
+  zero-density sketches empty rather than raising division-by-zero errors.
+
+### Changed
+- Keep the previous k-mer counting implementation: paired measurements rejected
+  the generator candidate's medium-input runtime penalty under the balanced policy.
+- Keep hardware speed thresholds in explicit benchmarks; slow translation tests
+  now check backend/process equivalence without machine-dependent speed assertions.
+- Shared a monotonic-deque syncmer selector across generation, positions, and
+  density; density no longer retains every selected position.
+- Used deque selection for normal/canonical minimizer sketches and streaming
+  sketches while preserving complete-window ordering and leftmost ties.
+- Documented coordinate conventions, approximate scientific models, and corrected
+  misleading examples. Public function signatures and return types are unchanged.
+
+### Added
+- Tracked wheel/sdist verification in separate virtual environments, wired into
+  packaging CI, with source/version checks and installed README/public-import checks.
+- Paired baseline/current benchmarks with complete source snapshots, five
+  counterbalanced timing rounds, separate Python/process memory measurements,
+  and explicit correctness and runtime/memory retention decisions.
+- File-safety checks for partial writes, close failures, cancellation, missing
+  destinations, permission preservation, and mandatory Linux symlink coverage.
+- Canonical repository instructions, shared audit/documentation skills, and an
+  always-applied rule requiring documentation and version updates with changes.
+- Exhaustive small-input and analytical regression fixtures, including an
+  independent NCBI snapshot covering all supported genetic-code identifiers.
+- Reproducible correctness-first benchmarks for selectors, GC windows, k-mer
+  counting, alignment, translation, and FASTA processing, with separate memory
+  measurements and process/Numba startup measurements.
+
 ## [0.3.1] - 2026-10-30
 
 ### Fixed
