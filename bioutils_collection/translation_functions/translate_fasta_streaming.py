@@ -16,7 +16,7 @@ def translate_fasta_streaming(
     table: str | int | dict[str, str] = "standard",
     use_fast: bool = False,
 ) -> int:
-    """
+    r"""
     Translate FASTA file in streaming mode (memory-efficient for huge files).
 
     Parameters
@@ -50,8 +50,14 @@ def translate_fasta_streaming(
 
     Examples
     --------
-    >>> n = translate_fasta_streaming('huge.fasta', 'proteins.fasta')
-    >>> print(f"Translated {n} sequences")
+    >>> from tempfile import TemporaryDirectory
+    >>> with TemporaryDirectory() as directory:
+    ...     source = Path(directory) / 'sequences.fasta'
+    ...     output = Path(directory) / 'proteins.fasta'
+    ...     _ = source.write_text('>example\nATGGCCTAA\n', encoding='utf-8')
+    ...     n = translate_fasta_streaming(source, output)
+    >>> n
+    1
 
     Notes
     -----

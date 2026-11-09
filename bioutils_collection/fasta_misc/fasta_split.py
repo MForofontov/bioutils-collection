@@ -6,7 +6,7 @@ from .fasta_parser import parse_fasta
 
 
 def fasta_split(fasta_str: str) -> Iterator[str]:
-    """
+    r"""
     Split a FASTA string into individual record strings.
 
     Parameters

@@ -4,7 +4,7 @@ from collections.abc import Sequence
 
 
 def write_fasta(records: Sequence[tuple[str, str]]) -> str:
-    """
+    r"""
     Write (header, sequence) pairs to a FASTA-formatted string.
 
     Parameters

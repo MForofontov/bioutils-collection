@@ -44,6 +44,8 @@ def genbank_to_fasta(genbank_str: str) -> str:
     - ORIGIN marks start of sequence data
     - // marks end of record
     - Sequence data has line numbers that are removed
+    - LF, CRLF, and CR line endings and whitespace-separated sequence groups
+      are accepted; sequence whitespace is omitted from the FASTA output
 
     For full GenBank parsing, use Biopython.
 
@@ -69,7 +71,7 @@ def genbank_to_fasta(genbank_str: str) -> str:
         if not record:
             continue
 
-        lines = record.split("\n")
+        lines = record.splitlines()
 
         # Extract LOCUS name
         locus_name = None
@@ -97,8 +99,7 @@ def genbank_to_fasta(genbank_str: str) -> str:
                 # Remove line numbers and whitespace
                 # Example: "        1 atgcatgcat gcatgcatgc"
                 cleaned = re.sub(r"^\s*\d+\s*", "", line)  # Remove leading numbers
-                cleaned = cleaned.replace(" ", "")  # Remove spaces
-                cleaned = cleaned.strip()
+                cleaned = "".join(cleaned.split())  # Remove sequence whitespace
 
                 if cleaned:
                     sequence_parts.append(cleaned)

@@ -35,9 +35,9 @@ def canonical_minimizer_sketch(seq: str, k: int, w: int) -> dict[str, list[int]]
     Examples
     --------
     >>> canonical_minimizer_sketch('ATGCGATCG', 3, 4)
-    {'ATC': [4, 4]}
+    {'ATG': [0], 'ATC': [4, 4, 4]}
     >>> canonical_minimizer_sketch('AAACCCGGG', 2, 3)
-    {'AA': [0, 1], 'CC': [3, 4, 5, 6]}
+    {'AA': [0, 1], 'AC': [2], 'CC': [3, 4, 6]}
 
     Notes
     -----

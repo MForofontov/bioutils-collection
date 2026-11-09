@@ -7,7 +7,7 @@ from ._annotation_fields import annotation_fields
 
 
 def annotation_to_gff(annotations: Sequence[dict[str, Any]]) -> list[str]:
-    """
+    r"""
     Convert annotation records to GFF format strings.
 
     Parameters

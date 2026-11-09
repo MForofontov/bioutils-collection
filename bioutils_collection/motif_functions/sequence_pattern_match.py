@@ -35,9 +35,9 @@ def sequence_pattern_match(seq: str, pattern: str, use_iupac: bool = True) -> li
     --------
     >>> sequence_pattern_match("ATGCATGC", "ATG")
     [0, 4]
-    >>> sequence_pattern_match("ATGCATGC", "ARG", use_iupac=True)  # R = A or G
+    >>> sequence_pattern_match("AAGCAGGC", "ARG", use_iupac=True)  # R = A or G
     [0, 4]
-    >>> sequence_pattern_match("ATGCTTGC", "AYGC", use_iupac=True)  # Y = C or T
+    >>> sequence_pattern_match("ATGCACGC", "AYGC", use_iupac=True)  # Y = C or T
     [0, 4]
     >>> sequence_pattern_match("ATGCATGC", "N", use_iupac=True)  # N = any base
     [0, 1, 2, 3, 4, 5, 6, 7]

@@ -1,7 +1,15 @@
 # Bioutils Collection
 
-Bioinformatics utilities for sequence analysis, alignment, annotation, FASTA
-processing, and molecular biology workflows.
+[![PyPI version](https://img.shields.io/pypi/v/bioutils-collection.svg)](https://pypi.org/project/bioutils-collection/)
+[![Python versions](https://img.shields.io/pypi/pyversions/bioutils-collection.svg)](https://pypi.org/project/bioutils-collection/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> **Bioinformatics utilities** — 80+ functions across 12 specialized modules for
+> sequence analysis, alignment, annotation, FASTA processing, and molecular biology.
+
+Current version: **0.3.3**. See the [release notes](CHANGELOG.md#033---2026-11-08)
+for correctness fixes, documentation updates, and validation details.
+The PyPI badges above report the version and Python support published on PyPI.
 
 ## Installation
 
@@ -57,6 +65,11 @@ for header, sequence in parse_fasta(">example\nATGGCCTAA\n"):
 Functions are available from their modules; common utilities are also exported
 from `bioutils_collection`. Docstrings describe inputs, outputs, and validation.
 
+BED parsing preserves zero-based, half-open coordinates and skips track/browser
+metadata. Records on chromosomes named `track` or `browser` are retained when
+their tab-delimited coordinate fields are integers. BLAST score ratios require
+finite scores: the reference must be positive and the target non-negative.
+
 ## Sequence analysis example
 
 ```python
@@ -95,6 +108,7 @@ python -m pytest --cov=bioutils_collection --cov-report=html
 python -m mypy bioutils_collection
 python -m ruff check .
 python -m ruff format --check .
+python scripts/check_documentation.py --report dist/documentation-report.json
 ```
 
 See [the major check plan](MAJOR_CHECK_PLAN.md) for the staged correctness,
@@ -105,6 +119,7 @@ To reproduce performance measurements separately from functional tests:
 ```bash
 python benchmarks/major_audit.py --output benchmarks/major_audit_results.json
 python benchmarks/paired_audit.py --output benchmarks/paired_audit_results.json
+python benchmarks/alignment_recheck.py --output benchmarks/alignment_recheck_results.json
 python scripts/check_distribution.py --artifact-dir dist --report dist/distribution-report.json
 ```
 
@@ -115,6 +130,17 @@ The paired runner additionally records immutable baseline/current source manifes
 five counterbalanced timing samples, and separately measured process peak RSS.
 It labels corrected-reference comparisons and does not claim speedups when old
 outputs differ. Runtime/memory retention criteria are in [AGENTS.md](AGENTS.md).
+
+The alignment recheck records actual square/unequal sequence dimensions and uses
+calibrated batches of at least 100 ms across five counterbalanced rounds. It
+includes an unchanged edit-distance control; drift above 10% makes timing evidence
+inconclusive. Repeat once without concurrent heavy checks and retain both reports.
+Persistent control drift does not support a new speed claim.
+
+The documentation checker parses every package docstring before executing the
+examples in a separate process with a temporary working directory and a timeout.
+File examples create temporary inputs, stochastic examples assert invariants,
+and large-job examples use small inputs. The unit suite runs this check as well.
 
 Use a fresh artifact directory for distribution checks. The verifier derives the
 version from package metadata and installs the wheel and sdist into separate
@@ -150,6 +176,15 @@ available dependencies/build tools; the report explicitly records this limitatio
   unique-substring fraction. Melting temperature uses composition approximations,
   rather than nearest-neighbor thermodynamics. DNA validation computes GC over
   standard A/T/G/C bases only; ambiguous symbols are excluded from its denominator.
+- FASTA statistics return the mean of per-record GC fractions (0 to 1), count
+  G/C case-insensitively, and include ambiguous characters in each denominator.
+  Empty records contribute zero. GenBank conversion accepts LF/CRLF/CR line
+  endings and removes whitespace between sequence groups.
+- Restriction sites must be nonempty strings; matches are literal,
+  case-insensitive, overlapping, and reported at zero-based start positions.
+- Low-complexity masking requires a finite threshold in [0, 2] and masks the
+  union of windows strictly below it. N counts as a fifth entropy symbol;
+  repeats above the entropy threshold remain unchanged.
 
 ## Contributing
 

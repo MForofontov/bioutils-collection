@@ -7,6 +7,50 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-11-08
+
+Release prepared on 2026-11-08; publication is tracked by the GitHub release
+and PyPI publishing workflow.
+
+### Fixed
+- Preserve BED records whose chromosome is named `track` or `browser` while
+  continuing to skip metadata lines.
+- Reject non-finite BLAST reference and target scores instead of returning NaN
+  or treating an infinite target score as a perfect match.
+- Count lowercase G/C bases in FASTA statistics while preserving the mean of
+  per-record GC fractions and the existing empty/ambiguous-record denominators.
+- Normalize GenBank LF/CRLF/CR line endings and remove tabs between sequence
+  groups rather than emitting whitespace in FASTA sequences.
+- Reject empty restriction recognition sites and non-string site elements.
+- Reject NaN low-complexity masking thresholds, including on short/empty input.
+- Correct executable alignment, FASTA statistics, and entropy-masking docstring
+  examples.
+- Correct ten malformed FASTA docstrings and 38 incorrect example results across
+  sequence selection, annotation, motifs, repeats, validation and statistics.
+- Make stochastic, file-based and large-job examples executable with small,
+  temporary inputs and invariant assertions.
+
+### Changed
+- Reuse scoring-row references in global alignment while preserving full outputs
+  and tie-breaking. Reject the local-alignment candidate because confirmation
+  did not meet the retention gate on every medium/large fixture. Timings are
+  environment-specific.
+- Prepare version 0.3.3 with PyPI version, supported Python versions, and MIT
+  license badges in the README, plus a summary of the package's 80+ functions
+  across 12 module families.
+- Explicitly identify version 0.3.3 in the README, link its release notes, and
+  distinguish the source version from the live PyPI badges.
+
+### Added
+- Fresh main-sync audit evidence, BED/score-ratio regressions, a five-round paired
+  benchmark with 103 equivalent outputs, and Linux symlink/file-safety checks.
+- Regression fixtures for format whitespace, lowercase GC counts, invalid
+  recognition sites, and masking thresholds, plus fresh paired audit evidence.
+- A bounded documentation checker, exercised by the unit suite, and stronger
+  independent masking, IUPAC, selector and alignment-tie fixtures.
+- Calibrated square/unequal alignment benchmarks with unchanged controls,
+  complete-output comparisons, and explicit inconclusive timing decisions.
+
 ## [0.3.2] - 2026-11-02
 
 ### Fixed

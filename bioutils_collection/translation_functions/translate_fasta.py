@@ -16,7 +16,7 @@ def translate_fasta(
     table: str | int | dict[str, str] = "standard",
     use_fast: bool = False,
 ) -> dict[str, str]:
-    """
+    r"""
     Translate sequences from a FASTA file.
 
     Parameters
@@ -50,9 +50,14 @@ def translate_fasta(
 
     Examples
     --------
-    >>> proteins = translate_fasta('sequences.fasta', 'proteins.fasta')
-    >>> len(proteins)
-    42
+    >>> from tempfile import TemporaryDirectory
+    >>> with TemporaryDirectory() as directory:
+    ...     source = Path(directory) / 'sequences.fasta'
+    ...     output = Path(directory) / 'proteins.fasta'
+    ...     _ = source.write_text('>example\nATGGCCTAA\n', encoding='utf-8')
+    ...     proteins = translate_fasta(source, output)
+    >>> proteins
+    {'example': 'MA*'}
 
     Notes
     -----

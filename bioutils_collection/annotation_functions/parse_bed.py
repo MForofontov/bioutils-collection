@@ -5,7 +5,7 @@ from typing import Any
 
 
 def parse_bed(bed_file: str) -> Iterator[dict[str, Any]]:
-    """
+    r"""
     Parse BED records, preserving zero-based, half-open start/end coordinates.
 
     Parameters
@@ -29,22 +29,36 @@ def parse_bed(bed_file: str) -> Iterator[dict[str, Any]]:
 
     Examples
     --------
-    >>> for record in parse_bed('example.bed'):
-    ...     print(record)
-    {'chrom': 'chr1', 'start': 1, 'end': 100, 'name': 'feature1'}
+    >>> from pathlib import Path
+    >>> from tempfile import TemporaryDirectory
+    >>> with TemporaryDirectory() as directory:
+    ...     path = Path(directory) / 'example.bed'
+    ...     _ = path.write_text('chr1\t0\t100\tfeature1\n', encoding='utf-8')
+    ...     records = list(parse_bed(str(path)))
+    >>> records
+    [{'chrom': 'chr1', 'start': 0, 'end': 100, 'name': 'feature1'}]
+
+    Notes
+    -----
+    Blank lines, comments and track/browser metadata are skipped. Tab-delimited
+    records with integer coordinates are retained even when their chromosome
+    is named track or browser.
     """
     if not isinstance(bed_file, str):
         raise TypeError("bed_file must be str")
     try:
         with open(bed_file) as f:
             for line in f:
-                if (
-                    not line.strip()
-                    or line.startswith("#")
-                    or line.split(maxsplit=1)[0] in ("track", "browser")
-                ):
+                if not line.strip() or line.startswith("#"):
                     continue
                 parts = line.strip().split("\t")
+                if line.split(maxsplit=1)[0] in ("track", "browser"):
+                    # Metadata keywords are also legal chromosome names.
+                    try:
+                        int(parts[1])
+                        int(parts[2])
+                    except (IndexError, ValueError):
+                        continue
                 if len(parts) < 3:
                     raise ValueError("Invalid BED line: " + line)
                 ann = {

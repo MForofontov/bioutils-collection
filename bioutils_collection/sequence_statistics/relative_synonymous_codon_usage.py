@@ -30,8 +30,8 @@ def relative_synonymous_codon_usage(seq: str) -> dict[str, float]:
 
     Examples
     --------
-    >>> relative_synonymous_codon_usage("ATGATGATG")
-    {'ATG': 1.0, ...}
+    >>> relative_synonymous_codon_usage("ATGATGATG")["ATG"]
+    1.0
     >>> rscu = relative_synonymous_codon_usage("TTTTTTTTCTTT")
     >>> rscu['TTT']  # TTT is used more than TTC
     1.5

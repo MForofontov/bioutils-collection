@@ -25,9 +25,9 @@ def restriction_site_finder(
     ------
     TypeError
         If sequence is not a string.
-        If sites is not a sequence.
+        If sites is not a sequence or any site is not a string.
     ValueError
-        If sites is empty.
+        If sites is empty or contains an empty recognition site.
         If sequence is empty.
 
     Examples
@@ -55,6 +55,10 @@ def restriction_site_finder(
 
     results: dict[str, list[int]] = {}
     for site in sites:
+        if not isinstance(site, str):
+            raise TypeError("Each site must be a string")
+        if not site:
+            raise ValueError("Recognition site cannot be empty")
         site_upper = site.upper()
         positions: list[int] = []
         start = 0

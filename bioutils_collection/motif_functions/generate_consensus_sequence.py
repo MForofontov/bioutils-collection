@@ -35,11 +35,11 @@ def generate_consensus_sequence(sequences: list[str], threshold: float = 0.5) ->
     >>> generate_consensus_sequence(["ATGC", "ATGC", "ATGC"])
     'ATGC'
     >>> generate_consensus_sequence(["ATGC", "ATCC", "ATAC"])
-    'ATGC'
+    'ATNC'
     >>> generate_consensus_sequence(["ATGC", "TTGC", "CTGC", "GTGC"])
     'NTGC'
     >>> generate_consensus_sequence(["AT-C", "ATGC", "ATCC"], threshold=0.5)
-    'ATGC'
+    'ATNC'
 
     Notes
     -----

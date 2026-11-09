@@ -48,6 +48,7 @@ NAMES = (
     "edit_distance",
 )
 OPTIMIZATIONS = {
+    "global_alignment",
     "open_syncmers",
     "closed_syncmers",
     "syncmer_density",

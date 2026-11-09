@@ -10,7 +10,7 @@ from .fasta_parser import parse_fasta
 
 
 def fasta_reverse_complement(fasta_str: str) -> Iterator[tuple[str, str]]:
-    """
+    r"""
     Generate reverse complement for all DNA sequences in a FASTA string.
 
     Parameters

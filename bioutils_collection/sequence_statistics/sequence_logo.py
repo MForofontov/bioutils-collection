@@ -27,10 +27,10 @@ def sequence_logo_matrix(sequences: Sequence[str]) -> np.ndarray:
     Examples
     --------
     >>> sequence_logo_matrix(["ATGC", "ATGT", "ATGA"])
-    array([[0, 3, 0, 0],
-           [0, 0, 3, 0],
+    array([[3, 0, 0, 0],
            [0, 0, 0, 3],
-           [1, 1, 1, 0]])
+           [0, 0, 3, 0],
+           [1, 1, 0, 1]])
 
     Complexity
     ----------

@@ -37,9 +37,9 @@ def canonical_minimizers(seq: str, k: int, w: int) -> list[str]:
     Examples
     --------
     >>> canonical_minimizers('ATGCGATCG', 3, 4)
-    ['ATC', 'ATC']
+    ['ATG', 'ATC', 'ATC', 'ATC']
     >>> canonical_minimizers('AAACCCGGG', 2, 3)
-    ['AA', 'AA', 'CC', 'CC', 'CG', 'CC', 'CC']
+    ['AA', 'AA', 'AC', 'CC', 'CC', 'CC']
 
     Notes
     -----

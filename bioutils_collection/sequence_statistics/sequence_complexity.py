@@ -25,7 +25,7 @@ def sequence_complexity(sequence: str, window: int = 10) -> float:
     Examples
     --------
     >>> sequence_complexity("ATGCATGC", window=4)
-    0.75
+    0.6153846153846154
 
     Notes
     -----

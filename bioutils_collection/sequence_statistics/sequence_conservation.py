@@ -25,7 +25,7 @@ def sequence_conservation(sequences: Sequence[str]) -> list[float]:
     Examples
     --------
     >>> sequence_conservation(["ATGC", "ATGT", "ATGA"])
-    [1.0, 1.0, 1.0, 0.6666666666666666]
+    [1.0, 1.0, 1.0, 0.3333333333333333]
 
     Complexity
     ----------

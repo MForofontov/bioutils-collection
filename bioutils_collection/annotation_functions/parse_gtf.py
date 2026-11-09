@@ -5,7 +5,7 @@ from typing import Any
 
 
 def parse_gtf(gtf_file: str) -> Iterator[dict[str, Any]]:
-    """
+    r"""
     Parse a GTF (Gene Transfer Format) file and yield annotation records as dictionaries.
 
     Parameters
@@ -29,9 +29,14 @@ def parse_gtf(gtf_file: str) -> Iterator[dict[str, Any]]:
 
     Examples
     --------
-    >>> for record in parse_gtf('example.gtf'):
-    ...     print(record)
-    {'seqname': 'chr1', 'source': 'ENSEMBL', ...}
+    >>> from pathlib import Path
+    >>> from tempfile import TemporaryDirectory
+    >>> with TemporaryDirectory() as directory:
+    ...     path = Path(directory) / 'example.gtf'
+    ...     _ = path.write_text('chr1\tENSEMBL\texon\t1\t100\t.\t+\t.\tgene_id "g1";\n', encoding='utf-8')
+    ...     records = list(parse_gtf(str(path)))
+    >>> records[0]['start'], records[0]['end']
+    (1, 100)
 
     Notes
     -----

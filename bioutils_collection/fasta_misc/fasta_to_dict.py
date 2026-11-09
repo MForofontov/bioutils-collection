@@ -4,7 +4,7 @@ from .fasta_parser import parse_fasta
 
 
 def fasta_to_dict(fasta_str: str) -> dict[str, str]:
-    """
+    r"""
     Convert FASTA string to a dictionary {header: sequence}.
 
     Parameters

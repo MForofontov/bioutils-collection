@@ -5,7 +5,7 @@ from typing import Any
 
 
 def parse_vcf(vcf_file: str) -> Iterator[dict[str, Any]]:
-    """
+    r"""
     Parse a VCF (Variant Call Format) file and yield variant records as dictionaries.
 
     Parameters
@@ -29,9 +29,14 @@ def parse_vcf(vcf_file: str) -> Iterator[dict[str, Any]]:
 
     Examples
     --------
-    >>> for record in parse_vcf('example.vcf'):
-    ...     print(record)
-    {'chrom': 'chr1', 'pos': 12345, ...}
+    >>> from pathlib import Path
+    >>> from tempfile import TemporaryDirectory
+    >>> with TemporaryDirectory() as directory:
+    ...     path = Path(directory) / 'example.vcf'
+    ...     _ = path.write_text('chr1\t12345\t.\tA\tG\t.\tPASS\t.\n', encoding='utf-8')
+    ...     records = list(parse_vcf(str(path)))
+    >>> records[0]['pos']
+    12345
 
     Notes
     -----
