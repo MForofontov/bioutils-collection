@@ -41,9 +41,9 @@ def minimizer_sketch(
     Examples
     --------
     >>> minimizer_sketch('ATGCGATCG', 3, 4)
-    {'ATC': [4, 4]}
+    {'ATG': [0], 'CGA': [3], 'ATC': [5, 5]}
     >>> minimizer_sketch('AAACCCGGG', 2, 3, density=0.5)
-    {'AA': [0], 'CC': [4], 'GG': [7]}
+    {'AA': [0], 'AC': [2], 'CC': [4]}
 
     Notes
     -----

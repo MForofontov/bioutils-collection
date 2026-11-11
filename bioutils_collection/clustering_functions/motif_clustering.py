@@ -28,8 +28,9 @@ def motif_clustering(motifs: Sequence[str], n_clusters: int = 2) -> list[int]:
 
     Examples
     --------
-    >>> motif_clustering(["ATGC", "ATGT", "GTGC"], n_clusters=2)
-    [0, 0, 1]
+    >>> labels = motif_clustering(["AAAA", "AAAA", "TTTT", "TTTT"], n_clusters=2)
+    >>> labels[0] == labels[1] and labels[2] == labels[3] and labels[0] != labels[2]
+    True
 
     Complexity
     ----------

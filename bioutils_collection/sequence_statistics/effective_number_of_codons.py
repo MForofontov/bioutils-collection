@@ -33,7 +33,7 @@ def effective_number_of_codons(seq: str) -> float:
     >>> effective_number_of_codons("ATGATGATG")
     20.0
     >>> effective_number_of_codons("ATGATCATTATAACG")
-    35.5
+    20.0
 
     Notes
     -----

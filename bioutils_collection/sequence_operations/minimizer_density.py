@@ -34,9 +34,9 @@ def minimizer_density(seq: str, k: int, w: int) -> float:
     Examples
     --------
     >>> round(minimizer_density('ATGCGATCG', 3, 4), 2)
-    0.29
+    0.43
     >>> round(minimizer_density('AAACCCGGG', 2, 3), 2)
-    0.88
+    0.5
 
     Notes
     -----

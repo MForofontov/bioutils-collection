@@ -52,9 +52,9 @@ def sequence_quality_filter(
     >>> sequence_quality_filter("ATGCATGC", min_length=5)
     {'passes_filter': True, 'length': 8, 'gc_content': 50.0, ...}
     >>> sequence_quality_filter("AT", min_length=5)
-    {'passes_filter': False, 'length': 2, 'failed_filters': ['min_length'], ...}
+    {'passes_filter': False, 'length': 2, 'gc_content': 0.0, 'n_content': 0.0, 'failed_filters': ['min_length']}
     >>> sequence_quality_filter("NNNATGC", max_n_content=20.0)
-    {'passes_filter': False, 'n_content': 42.86, 'failed_filters': ['max_n_content'], ...}
+    {'passes_filter': False, 'length': 7, 'gc_content': 28.57, 'n_content': 42.86, 'failed_filters': ['max_n_content']}
 
     Notes
     -----

@@ -7,7 +7,7 @@ from .fasta_parser import parse_fasta
 
 
 def fasta_subsample(fasta_str: str, n: int) -> Iterator[tuple[str, str]]:
-    """
+    r"""
     Randomly subsample n sequences from a FASTA string.
 
     Parameters
@@ -29,8 +29,9 @@ def fasta_subsample(fasta_str: str, n: int) -> Iterator[tuple[str, str]]:
 
     Examples
     --------
-    >>> list(fasta_subsample('>seq1\nATGC\n>seq2\nGGTT', 1))
-    [('seq2', 'GGTT')]  # Output may vary
+    >>> sample = list(fasta_subsample('>seq1\nATGC\n>seq2\nGGTT', 1))
+    >>> len(sample) == 1 and sample[0] in [('seq1', 'ATGC'), ('seq2', 'GGTT')]
+    True
     """
     records = list(parse_fasta(fasta_str))
     if n < 0 or n > len(records):

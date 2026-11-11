@@ -38,18 +38,18 @@ def remove_low_complexity_regions(
         If complexity_threshold is not a number.
     ValueError
         If window_size is less than 2.
-        If complexity_threshold is negative or greater than 2.
+        If complexity_threshold is not finite or outside [0, 2].
         If replace_with is not a single character.
         If seq contains invalid DNA bases.
 
     Examples
     --------
     >>> remove_low_complexity_regions("ATGATGATGATGATG")
-    'NNNNNNNNNNNNNNN'
+    'ATGATGATGATGATG'
     >>> remove_low_complexity_regions("ATGCTAGCTAGC", window_size=4, complexity_threshold=1.0)
     'ATGCTAGCTAGC'
     >>> remove_low_complexity_regions("AAAAAATGCATGC", window_size=5, complexity_threshold=1.0)
-    'NNNNNNTGCATGC'
+    'NNNNNNNGCATGC'
 
     Notes
     -----
@@ -58,6 +58,9 @@ def remove_low_complexity_regions(
 
     For DNA: H ranges from 0 (all same base) to 2 (equal ATGC distribution)
     Typical threshold: 1.5 bits
+    N is accepted and counted as a fifth symbol; it is not distributed among
+    A/T/G/C. Every position covered by a window below the threshold is masked.
+    Repeats with entropy above the threshold remain unchanged.
 
     Complexity
     ----------
@@ -84,7 +87,7 @@ def remove_low_complexity_regions(
 
     if window_size < 2:
         raise ValueError(f"window_size must be at least 2, got {window_size}")
-    if complexity_threshold < 0 or complexity_threshold > 2:
+    if not 0 <= complexity_threshold <= 2:
         raise ValueError(
             f"complexity_threshold must be between 0 and 2, got {complexity_threshold}"
         )

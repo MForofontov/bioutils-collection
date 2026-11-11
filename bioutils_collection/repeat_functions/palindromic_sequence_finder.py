@@ -41,7 +41,7 @@ def palindromic_sequence_finder(
     --------
     >>> # Biological palindromes (restriction sites)
     >>> palindromic_sequence_finder("GAATTC", min_length=4)
-    [(0, 6, 'GAATTC')]
+    [(1, 5, 'AATT'), (0, 6, 'GAATTC')]
 
     >>> # EcoRI site is a biological palindrome
     >>> seq = "ATGAATTCGC"
@@ -50,7 +50,7 @@ def palindromic_sequence_finder(
 
     >>> # String palindromes
     >>> palindromic_sequence_finder("ATGCAT", min_length=4, biological=False)
-    [(0, 4, 'ATGC'), (2, 6, 'GCAT')]
+    []
 
     Notes
     -----

@@ -24,8 +24,9 @@ def sequence_shuffling(sequence: str) -> str:
 
     Examples
     --------
-    >>> sequence_shuffling("ATGC")
-    'GCAT'  # Output may vary
+    >>> shuffled = sequence_shuffling("ATGC")
+    >>> sorted(shuffled) == sorted("ATGC")
+    True
 
     Complexity
     ----------

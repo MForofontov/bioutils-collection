@@ -8,7 +8,7 @@ from .fasta_parser import parse_fasta
 def fasta_rename_headers(
     fasta_str: str, rename_fn: Callable[[str], str]
 ) -> Iterator[tuple[str, str]]:
-    """
+    r"""
     Rename FASTA headers using a mapping function.
 
     Parameters

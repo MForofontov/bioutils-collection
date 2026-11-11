@@ -4,7 +4,7 @@ import re
 
 
 def validate_fasta(fasta_str: str) -> bool:
-    """
+    r"""
     Validate if a string is in proper FASTA format.
 
     Parameters

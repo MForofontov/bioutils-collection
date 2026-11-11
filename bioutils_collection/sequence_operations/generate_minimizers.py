@@ -36,11 +36,11 @@ def generate_minimizers(seq: str, k: int, w: int) -> list[str]:
     Examples
     --------
     >>> generate_minimizers('ATGCGATCG', 3, 4)
-    ['ATC', 'ATC']
+    ['ATG', 'CGA', 'ATC', 'ATC']
     >>> generate_minimizers('AAACCCGGG', 2, 3)
-    ['AA', 'AA', 'CC', 'CC', 'CG', 'GG', 'GG']
+    ['AA', 'AA', 'AC', 'CC', 'CC', 'CG']
     >>> generate_minimizers('ATGC', 2, 2)
-    ['AT', 'AT', 'GC']
+    ['AT', 'GC']
 
     Notes
     -----

@@ -8,7 +8,7 @@ from .fasta_parser import parse_fasta
 def fasta_filter(
     fasta_str: str, predicate: Callable[[str, str], bool]
 ) -> Iterator[tuple[str, str]]:
-    """
+    r"""
     Filter FASTA records by a predicate function.
 
     Parameters

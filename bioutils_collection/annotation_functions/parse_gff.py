@@ -5,7 +5,7 @@ from typing import Any
 
 
 def parse_gff(gff_file: str) -> Iterator[dict[str, Any]]:
-    """
+    r"""
     Parse GFF records with one-based inclusive coordinates and encoded attributes.
 
     Parameters
@@ -29,9 +29,14 @@ def parse_gff(gff_file: str) -> Iterator[dict[str, Any]]:
 
     Examples
     --------
-    >>> for record in parse_gff('example.gff'):
-    ...     print(record)
-    {'seqid': 'chr1', 'source': 'RefSeq', 'type': 'gene', 'start': 1, 'end': 100, 'score': '.', 'strand': '+', 'phase': '.', 'attributes': {'ID': 'gene1', 'Name': 'abc'}}
+    >>> from pathlib import Path
+    >>> from tempfile import TemporaryDirectory
+    >>> with TemporaryDirectory() as directory:
+    ...     path = Path(directory) / 'example.gff'
+    ...     _ = path.write_text('chr1\tRefSeq\tgene\t1\t100\t.\t+\t.\tID=gene1\n', encoding='utf-8')
+    ...     records = list(parse_gff(str(path)))
+    >>> records[0]['attributes']
+    {'ID': 'gene1'}
     """
     if not isinstance(gff_file, str):
         raise TypeError("gff_file must be str")

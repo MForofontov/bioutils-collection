@@ -43,13 +43,15 @@ def needleman_wunsch(
     >>> needleman_wunsch("GAT", "GAAT")
     (2, 'G-AT', 'GAAT')
     >>> needleman_wunsch("GCATGCU", "GATTACA")
-    (0, 'GCATG-CU', 'G-ATTACA')
+    (0, 'GCA-TGCU', 'G-ATTACA')
 
     Notes
     -----
     This is a simplified implementation for educational purposes.
     For production use, consider using established bioinformatics libraries.
     Algorithm uses dynamic programming with O(n*m) time and space complexity.
+    Scoring reuses row references; traceback prefers diagonal, then up, then left
+    when scores tie.
 
     References
     ----------
@@ -80,7 +82,7 @@ def needleman_wunsch(
 
     # Initialize scoring matrix
     n, m = len(seq1), len(seq2)
-    score_matrix = [[0 for _ in range(m + 1)] for _ in range(n + 1)]
+    score_matrix = [[0] * (m + 1) for _ in range(n + 1)]
 
     # Initialize first row and column with gap penalties
     for i in range(n + 1):
@@ -90,16 +92,19 @@ def needleman_wunsch(
 
     # Fill the scoring matrix
     for i in range(1, n + 1):
-        for j in range(1, m + 1):
-            if seq1[i - 1] == seq2[j - 1]:
-                diagonal = score_matrix[i - 1][j - 1] + match
+        previous_row = score_matrix[i - 1]
+        current_row = score_matrix[i]
+        base = seq1[i - 1]
+        for j, other_base in enumerate(seq2, 1):
+            if base == other_base:
+                diagonal = previous_row[j - 1] + match
             else:
-                diagonal = score_matrix[i - 1][j - 1] + mismatch
+                diagonal = previous_row[j - 1] + mismatch
 
-            up = score_matrix[i - 1][j] + gap
-            left = score_matrix[i][j - 1] + gap
+            up = previous_row[j] + gap
+            left = current_row[j - 1] + gap
 
-            score_matrix[i][j] = max(diagonal, up, left)
+            current_row[j] = max(diagonal, up, left)
 
     # Traceback to get alignment
     aligned_seq1 = []

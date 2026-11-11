@@ -36,9 +36,9 @@ def minimizer_positions(seq: str, k: int, w: int) -> list[int]:
     Examples
     --------
     >>> minimizer_positions('ATGCGATCG', 3, 4)
-    [4, 4]
+    [0, 3, 5, 5]
     >>> minimizer_positions('AAACCCGGG', 2, 3)
-    [0, 1, 3, 4, 5, 6, 7]
+    [0, 1, 2, 3, 4, 5]
 
     Notes
     -----

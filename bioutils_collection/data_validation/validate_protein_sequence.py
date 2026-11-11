@@ -32,12 +32,14 @@ def validate_protein_sequence(seq: str) -> dict[str, Any]:
     --------
     >>> validate_protein_sequence("ACDEFGHIKLMNPQRSTVWY")
     {'is_valid': True, 'length': 20, 'invalid_chars': [], 'has_lowercase': False, ...}
-    >>> validate_protein_sequence("ACDEFX")
-    {'is_valid': False, 'length': 6, 'invalid_chars': ['X'], ...}
+    >>> validate_protein_sequence("ACDEFX")['is_valid']  # X is accepted as unknown
+    True
+    >>> validate_protein_sequence("ACDEFJ")['invalid_chars']
+    ['J']
     >>> validate_protein_sequence("acdef")
     {'is_valid': True, 'length': 5, 'invalid_chars': [], 'has_lowercase': True, ...}
-    >>> validate_protein_sequence("ACDEF*")
-    {'is_valid': True, 'length': 6, 'invalid_chars': [], 'has_stop_codon': True, ...}
+    >>> validate_protein_sequence("ACDEF*")['has_stop_codon']
+    True
 
     Notes
     -----

@@ -25,7 +25,7 @@ def annotation_statistics(annotations: Sequence[dict[str, Any]]) -> dict[str, An
 
     Examples
     --------
-    >>> annots = [{'feature': 'exon', 'start': 10, 'end': 20}, ...]
+    >>> annots = [{'feature': 'exon', 'start': 10, 'end': 20}]
     >>> annotation_statistics(annots)
     {'feature_counts': {'exon': 1}, 'total_coverage': 11}
 

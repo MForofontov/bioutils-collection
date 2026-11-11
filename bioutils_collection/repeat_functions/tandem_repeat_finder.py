@@ -29,7 +29,7 @@ def tandem_repeat_finder(
     Examples
     --------
     >>> tandem_repeat_finder("ATATATGC", min_repeat=2, min_length=2)
-    [(0, 6, 'AT')]
+    [(0, 6, 'AT'), (1, 5, 'TA'), (2, 6, 'AT')]
 
     Complexity
     ----------

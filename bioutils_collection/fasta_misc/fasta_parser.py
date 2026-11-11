@@ -4,7 +4,7 @@ from collections.abc import Iterable, Iterator
 
 
 def parse_fasta(fasta_str: str) -> Iterator[tuple[str, str]]:
-    """
+    r"""
     Parse a FASTA formatted string and yield (header, sequence) tuples.
 
     Parameters

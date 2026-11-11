@@ -35,9 +35,9 @@ def unique_minimizer_positions(seq: str, k: int, w: int) -> dict[str, list[int]]
     Examples
     --------
     >>> unique_minimizer_positions('ATGCGATCG', 3, 4)
-    {'ATC': [4]}
+    {'ATG': [0], 'CGA': [3], 'ATC': [5]}
     >>> unique_minimizer_positions('AAACCCGGG', 2, 3)
-    {'AA': [0, 1], 'CC': [3, 4], 'CG': [5], 'GG': [6, 7]}
+    {'AA': [0, 1], 'AC': [2], 'CC': [3, 4], 'CG': [5]}
 
     Notes
     -----

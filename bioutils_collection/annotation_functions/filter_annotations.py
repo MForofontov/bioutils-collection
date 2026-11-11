@@ -33,7 +33,7 @@ def filter_annotations(
 
     Examples
     --------
-    >>> annots = [{'feature': 'exon', 'seqname': 'chr1'}, ...]
+    >>> annots = [{'feature': 'exon', 'seqname': 'chr1'}]
     >>> list(filter_annotations(annots, feature_type='exon'))
     [{'feature': 'exon', 'seqname': 'chr1'}]
 

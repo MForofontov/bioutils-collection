@@ -39,11 +39,11 @@ def smith_waterman(
     Examples
     --------
     >>> smith_waterman("ACGT", "ACT")
-    (4, 'AC', 'AC')
+    (5, 'ACGT', 'AC-T')
     >>> smith_waterman("GGTTGACTA", "TGTTACGG")
-    (13, 'GTTAC', 'GTTAC')
+    (9, 'GTTGAC', 'GTT-AC')
     >>> smith_waterman("GCATGCU", "GATTACA")
-    (6, 'AT', 'AT')
+    (5, 'GCAT', 'G-AT')
 
     Notes
     -----
@@ -51,6 +51,8 @@ def smith_waterman(
     For production use, consider using established bioinformatics libraries.
     Finds the best local alignment between two sequences.
     Algorithm uses dynamic programming with O(n*m) time and space complexity.
+    Scoring retains the first row-major maximum.
+    Traceback prefers diagonal, then up, then left when scores tie.
 
     References
     ----------

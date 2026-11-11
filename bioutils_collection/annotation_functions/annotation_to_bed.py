@@ -5,7 +5,7 @@ from typing import Any
 
 
 def annotation_to_bed(annotations: Sequence[dict[str, Any]]) -> list[str]:
-    """
+    r"""
     Convert annotation records to BED format strings.
 
     Parameters

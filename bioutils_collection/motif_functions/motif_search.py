@@ -29,7 +29,7 @@ def motif_search(seq: str, motif: str) -> list[int]:
     >>> motif_search('ATGCGTAG', 'N')
     [0, 1, 2, 3, 4, 5, 6, 7]
     >>> motif_search('ATGCGTAG', 'R')
-    [0, 3, 6]
+    [0, 2, 4, 6, 7]
     """
     iupac = {
         "A": {"A"},

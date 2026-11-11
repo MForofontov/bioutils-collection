@@ -369,3 +369,404 @@ The release procedure pushes `codex/major-audit`, requires the exact pushed
 commit to pass the complete remote CI matrix, and then publishes tag `v0.3.2`
 through the existing PyPI trusted-publishing workflow. Remote CI and actual
 PyPI artifact verification must succeed before publication is reported complete.
+
+## Maintenance audit 0.3.3 — 2026-11-02
+
+### Baseline and preservation
+
+- Started on local `main` at `186a85fbbd70ac31cb3b013281cb7691d4365c59`.
+  Saved the existing README/changelog/version diff and dependency inventory under
+  ignored `dist/maintenance-audit/`. Fetch and fast-forward-only synchronization
+  found no newer remote `main`; the local 0.3.2 release commit was preserved.
+  Work continues on `codex/maintenance-audit`, including the existing 0.3.3 bump.
+- Used the explicit `.venv/Scripts/python.exe` interpreter (Windows/Python
+  3.12.14), editable `.[dev]` installation, and one BLAS/OpenMP thread. Baseline
+  functional tests: **1,146 passed, four symlink privilege skips, nine slow tests
+  deselected**, with the expected duplicate-motif clustering warning.
+
+### Review and reproduced defects
+
+- Reviewed the 12 module families: annotation coordinates/round trips, file
+  translation and atomic replacement, genetic-code/backend/process equivalence,
+  alignment scoring/traceback, selectors/GC windows, codon/protein statistics,
+  motif/repeat/restriction matches, clustering, validation, and FASTA formats.
+  Existing independent NCBI, analytical, exhaustive-short-input, and file-failure
+  fixtures remain part of final validation; existing model limits still apply.
+- Added regressions before fixes: **12 failures and two passing controls**.
+  Corrected GenBank CR line endings and sequence tabs; FASTA statistics now count
+  lowercase G/C while retaining mean-per-record fractions, ambiguous-base
+  denominators and empty-record behavior. Restriction sites reject empty and
+  non-string values. Masking rejects NaN even for empty/short input.
+- Focused format/validation checks: **186 passed**. An initial cross-module run
+  had a Numba worker import `MemoryError` on the shared host; its thread-limited
+  rerun passed **72 checks**. Neither tests nor process-equivalence assertions
+  were weakened. Local logs retain the unsuccessful attempt.
+- Executing affected docstrings exposed incorrect alignment and entropy-masking
+  examples. Corrected those examples and clarified case handling, GC fractions,
+  literal restriction matching, and the union/strict-threshold masking rule.
+  Public signatures, exports, coordinate conventions and return shapes remain.
+
+### Profiling and retained candidates
+
+- Profiled alignment, minimizer sketches, k-mer counting, translation and FASTA
+  parsing on deterministic 1k/10k/100k input. Alignment loops repeatedly indexed
+  scoring rows and characters; tried caching these references and using
+  independent zero-filled rows. Only global alignment is retained after
+  confirmation below. Scoring and traceback selection rules are unchanged.
+- Compared **1,176 complete alignment tuples per algorithm** against the starting
+  implementation across short binary sequences and six scoring configurations,
+  including zero scores, positive gaps, and negative match scores: all matched.
+  Existing exhaustive alignment-path fixtures independently check optimum scores.
+- [Focused paired measurements](benchmarks/maintenance_alignment_results.json)
+  use five counterbalanced rounds against the explicit starting commit. All 12
+  outputs match; all eight medium/large cases meet the runtime retention gate.
+  Initial global runtime ratios were 0.56–0.78 and local ratios 0.61–0.86.
+  One tiny local case was neutral (0.95), so no universal speedup is claimed.
+  Alignment matrices are capped: medium/large labels correspond to 100-by-50
+  and 300-by-150 comparisons rather than quadratic 10k/100k-base matrices.
+- Each report includes raw source manifests, dependency versions, timing samples,
+  Python allocation measurements and separate process RSS. RSS includes imports
+  and prepared inputs and is not described as Python allocation savings.
+  The first broad benchmark attempt failed inside a worker; its rerun captures
+  worker diagnostics. Unchanged controls are not new optimization claims.
+- [Source equivalence](benchmarks/maintenance_source_equivalence.json) records
+  the final raw package manifest and both measured package hashes. FASTA
+  statistics docstring escaping changed before confirmation. After confirmation,
+  only the rejected local-alignment candidate was restored: its executable AST
+  matches the starting implementation. Every other package file, including the
+  retained global alignment, matches confirmation byte-for-byte. Historical
+  candidate snapshots are not presented as the complete final package.
+- [Broad paired results](benchmarks/maintenance_paired_results.json) contain
+  **103 equivalent comparisons**, including separate import/JIT/process startup
+  measurements. Broad timing ratios conflict with the focused run: even unchanged
+  large k-mer counters varied to 1.80–1.89 and unchanged large edit distance to
+  1.15–2.21. These are uncontrolled shared-host measurements, not evidence of
+  changes to those implementations. A focused confirmation with an unchanged
+  edit-distance control determines final retention below.
+- [Confirmation results](benchmarks/maintenance_confirmation_results.json) use
+  **ten counterbalanced rounds** with an unchanged edit-distance control and
+  separate memory probes. All 12 outputs match. All four medium/large global
+  cases pass: runtime ratios **0.745–0.805** (about **19–25% less time**).
+  The local candidate misses the gate on the large repetitive case (runtime
+  0.986, Python allocation ratio 0.909), so it is **rejected** and the original
+  implementation restored. No local-alignment speedup is retained or claimed.
+  The unchanged control still varies (ratios 0.99–1.44); measurements remain
+  specific to this shared host, with no portable speed guarantee.
+
+### Final validation
+
+- Final functional run: **1,161 passed, four Windows symlink privilege skips,
+  nine slow tests deselected**, with **96.74%** package statement coverage.
+  The sole warning is the expected duplicate-motif clustering warning.
+  The separate slow run passed **all nine tests** (1,170 passes across both runs).
+- Ruff lint and formatting passed (218 Python files); strict mypy passed for
+  106 source files, and `pip check` passed. All **15 affected doctests** and local
+  Markdown link-target checks passed. Modified public signatures are unchanged.
+- Fresh isolated **0.3.3** wheel/sdist builds and both Twine checks passed. The
+  distribution verifier passed separate fresh dependency-resolution environments
+  and isolated sdist build dependencies: each installed distribution imported all
+  106 modules and executed both README examples outside the checkout, with typing,
+  licensing, source provenance, metadata and version checks.
+- Wheel SHA-256: `61c246fe0f110ad0da2b778ccc02d32aefe767063139340f5f7f43c8c7aa8cf7`.
+  Sdist SHA-256: `2aa26b33e291bbcd67bc5a09a44b1369095bcb29b8a66181f97f40e6a3eaf679`.
+  Artifacts and the verifier report are under ignored
+  `dist/maintenance-audit/artifacts-final/` and
+  `dist/maintenance-audit/distribution-report.json`, respectively. Baseline,
+  reproduction, unsuccessful-attempt and final test logs are preserved alongside.
+- Runtime dependencies: NumPy 2.5.4, SciPy 1.18.1, scikit-learn 1.9.1, and
+  Numba 0.68.1. Results apply to Windows/Python 3.12.14 and the explicit source
+  snapshots, not unexecuted supported Python/platform combinations.
+
+Fresh Linux symlink checks remain pending:
+Docker did not respond within 12 seconds, and the only WSL distribution is
+`docker-desktop`. Previous Linux results are historical. No push, tag, merge or
+publication is authorized by this maintenance audit; remote CI must validate the
+final pushed revision separately.
+
+## Second audit continuation 0.3.3 — 2026-11-02
+
+### Preserved baseline and documentation defects
+
+- Continued the same unpublished changeset on `codex/maintenance-audit`; version
+  remains 0.3.3. The complete tracked/nonignored-untracked starting tree is frozen
+  under ignored `dist/second-audit/baseline/`, with a raw source manifest, recovery
+  patch and dependency inventory alongside. Starting tree SHA-256:
+  `6d219e3e0345b7f71f79040404d20ea83bc1cb09e639e4eaf4087e027d83ba6a`.
+- The pre-implementation recheck passed 1,161 functional and nine slow tests,
+  with four Windows symlink privilege skips. Static checks and distribution-source
+  comparisons passed. These counts describe the starting tree, not final results.
+- Added [bounded documentation verification](scripts/check_documentation.py)
+  and a failing end-to-end regression before fixes. It reproduced **10 malformed
+  FASTA docstrings**. After escaping repairs, execution reproduced **38 incorrect
+  example outputs** across 208 examples; reports retain both discovery stages.
+- Corrected examples against direct windows, literal/IUPAC expansions, known
+  frequencies, documented coordinate conventions and existing independent
+  scientific fixtures. Examples now reflect gap-excluding identity, thresholded
+  consensus, leftmost complete minimizer windows, accepted protein X codes,
+  population-approximation ENC and sorted logo alphabets. Runtime conventions
+  and public signatures were preserved rather than changed to fit examples.
+- Replaced missing-file examples with temporary inputs, stochastic outputs with
+  invariant assertions, and oversized translation jobs with small executable
+  examples. All **209 examples** then passed. The checker first parses every
+  docstring, then executes examples in an isolated child process and temporary
+  working directory, with a finite positive timeout and one numerical thread.
+  Unit tests verify both real examples and rejection of malformed escaping.
+
+### Independent correctness and performance review
+
+- Replaced permissive masking assertions with exact expected strings. Added
+  exhaustive short ACN entropy/interval-union fixtures, case and fifth-symbol N
+  cases, nonfinite parameters even on empty input, all short DNA IUPAC expansion
+  matches, direct canonical/noncanonical minimizer windows, and traceback ties.
+  Existing independent fixtures cover all 12 module families, including NCBI
+  codes, serial/process equivalence, annotation conversions, scientific model
+  limits, malformed records and transactional file failure/cleanup scenarios.
+- An AST comparison against the frozen starting package confirmed that all
+  executable package code was unchanged by this continuation's documentation
+  corrections (46 files changed only in docstrings). No new runtime defect was
+  confirmed by these independent checks; no public API or dependency was added.
+- Added [calibrated alignment verification](benchmarks/alignment_recheck.py):
+  five counterbalanced rounds, batches of at least 100 ms after separate warmup
+  and calibration, square/unequal 100x50, 300x300, 1000x100 and 1000x1000 inputs,
+  random/repetitive/tie-heavy cases, complete output digests, frozen measuring
+  code/source manifests, and a byte-identical edit-distance control. Python
+  allocations, native process peak RSS and import startup are measured separately.
+  JIT and process-pool timings are outside this alignment-only experiment.
+  Report fields `rows`/`columns` are sequence lengths; the global-alignment
+  dynamic-programming matrices include boundary cells and are respectively
+  **101x51, 301x301, 1001x101 and 1001x1001**.
+- Control drift above 10% makes the run inconclusive. Repeat at most once with
+  no concurrent heavy checks and retain both reports; persistent instability
+  cannot support a new speed claim. Final timing/retention outcomes follow below.
+- [First calibrated run](benchmarks/second_audit_alignment_results.json) and
+  [single repeat](benchmarks/second_audit_alignment_repeat_results.json) each
+  produced **24 equivalent complete outputs**. Every reported timing batch was
+  at least 100 ms. Unchanged control ratios were 0.818–1.190 initially and
+  0.636–1.239 on repetition: **both timing experiments are inconclusive**.
+  Raw global-alignment gates passed 12/12 and 11/12 cases respectively, but
+  uncontrolled timing does not establish a new speed improvement or regression.
+  No further timing repetitions or new optimization candidates were introduced.
+  The previously retained global implementation is unchanged; its earlier
+  retention evidence remains historical rather than a new quantitative claim.
+- [Current source manifest](benchmarks/second_audit_source_manifest.json)
+  records the 46 docstring-only file changes, runtime-AST equivalence to the
+  starting working tree, and exact final package SHA-256
+  `9ea1cfe38c7468c63b28b0bd5f2231f9d53cfd1c33b3ab41e6dd97d5f7edac71`.
+  Both calibrated runs measured this exact package, including documentation.
+
+### Final evidence
+
+- The completed functional coverage run passed **1,177 tests**, with **four
+  Windows symlink privilege skips**, nine slow tests deselected, and **96.74%**
+  statement coverage (2,236 statements, 73 missed). The sole warning is the
+  expected duplicate-motif clustering warning. Logs, JUnit and coverage JSON
+  are preserved in ignored `dist/second-audit/`.
+- On 2026-11-03, the separate slow run passed **all nine tests** (1,181
+  deselected), and fresh executable documentation verification passed **209
+  examples across 106 modules**. Per-file package hashes still match the source
+  manifest above. All 20 local Markdown link targets in the root documentation
+  were checked successfully.
+- Validation attempts are distinguished from completed passes. An initial
+  functional attempt stalled and was interrupted; the completed diagnostic
+  functional run above passed. A subsequent fresh-environment functional attempt
+  ended without a final result while waiting on the documentation subprocess;
+  it is not counted as a pass. A separate earlier slow-test attempt encountered
+  a Windows native access violation during NumPy import before tests ran.
+  These logs are retained rather than overwritten or attributed to a confirmed
+  package defect. The successful slow/documentation retries use a fresh
+  `dist/second-audit/check-env/` with Python **3.12.14**, editable development
+  dependencies, and numerical-library thread limits of one. The original `.venv`
+  is preserved. Both dependency inventories are recorded; scientific versions
+  remain NumPy 2.5.4, SciPy 1.18.1, scikit-learn 1.9.1 and Numba 0.68.1.
+
+- Fresh-environment Ruff lint passed, formatting passed for **222 Python files**,
+  strict mypy passed for **106 source files**, and `pip check` reported no broken
+  requirements. The isolated wheel and sdist builds succeeded with setuptools
+  84.2.1. Both artifacts passed Twine checks. Final artifacts are in the fresh
+  ignored directory `dist/second-audit/artifacts/`:
+  wheel SHA-256 `321daadd24e46b4b0add8c9b957b7040d7afd2e667e021d48a85c0a9f94b428f`;
+  sdist SHA-256 `4b2022828288a7986aad6406dfd65df253cae60ff9246143e237bedd7e4ec3ed`.
+- The final distribution verifier **passed** with fresh dependency resolution,
+  separate wheel/sdist virtual environments and isolated sdist build dependencies.
+  Each installation imported **106 modules** and executed **both README
+  examples outside the checkout**. Metadata, version, public exports, `py.typed`,
+  licensing and package-source provenance checks passed. The detailed report is
+  preserved at `dist/second-audit/distribution-report.json`; its artifact hashes
+  match the files above. This completes local validation for this continuation;
+  unsuccessful attempts remain recorded separately.
+
+The bounded Linux retry timed out waiting for Docker after eight seconds; WSL
+listed only `docker-desktop`. Linux symlink/file-safety execution and the remote
+CI platform matrix remain **pending**. Windows privilege skips do not certify
+Linux behavior. No push, merge, tag or publication is part of this continuation.
+
+Continuation recheck on 2026-11-03 again timed out after eight seconds for Docker;
+WSL still listed only `docker-desktop`. Package-source and verified artifact
+hashes are unchanged, and `git diff --check` passed. The bounded probe is retained
+in ignored `dist/second-audit/platform-followup.json`. No platform test pass is
+inferred from this availability check; the pending gates above remain open.
+
+The remaining fresh-environment functional reproducibility check completed on
+2026-11-03: **1,177 passed, four Windows symlink skips, nine slow tests deselected,
+one expected clustering warning**, in 83.49 seconds. Statement coverage again
+matched **96.74%** (2,236 statements, 73 missed). This successful rerun includes
+the documentation subprocess and replaces no earlier failed/incomplete log;
+`fresh-functional.log`, `fresh-functional.xml` and
+`fresh-functional-coverage.json` are retained under `dist/second-audit/`.
+Both the original and fresh environments have now completed the functional
+suite against the same recorded package-source hashes.
+
+## Main synchronization and audit continuation (2026-11-03)
+
+### Preservation, baseline and fixes
+
+- Backed up and SHA-256-verified all 244 tracked/nonignored untracked files in
+  `D:\Projects\bioutils-audit-backup-20261103-141033` before stashing. Restored
+  every file after synchronization; five had only Git line-ending conversions.
+  The backup and named preservation stash remain available.
+- Fetched origin, switched to `main`, pulled with `--ff-only`, returned to
+  `codex/maintenance-audit` and merged `main`. Both operations were already up
+  to date. Local `main` and the audit HEAD remain
+  `186a85fbbd70ac31cb3b013281cb7691d4365c59`; remote `main` remains
+  `9e1cc06420f14940f9e640af554539be29886fb5`. The local commit was preserved.
+- Used the explicit Python 3.12.14 interpreter in
+  `dist/second-audit/check-env/`, refreshed its editable development installation,
+  and recorded dependencies under `dist/sync-audit/`. The default shell Python
+  3.8 is unsupported and was not used. Numerical-library thread limits were one.
+- Starting-tree functional coverage: **1,177 passed, four Windows symlink
+  privilege skips, nine slow tests deselected**, one expected clustering warning.
+  This is a fresh baseline run, distinct from the earlier historical results.
+- Reviewed all 12 module families and the existing independent alignment,
+  genetic-code, coordinate, selector, biological-statistics and file-safety
+  fixtures. New regressions reproduced **six failures** before fixes: valid BED
+  records on chromosomes named `track`/`browser` were discarded, and NaN/positive
+  infinity bypassed BLAST score validation. Negative infinity already raised.
+- Retain keyword-named BED chromosomes when tab-delimited coordinates are
+  integers; continue skipping metadata. Require finite BLAST reference/target
+  scores while preserving finite ratios and clamping. Focused checks passed
+  **137 tests**. No public signatures, exports or coordinate conventions changed.
+  Version remains **0.3.3**, the existing bump for this continuing changeset.
+
+### Performance evidence
+
+- [Fresh paired results](benchmarks/sync_audit_paired_results.json) explicitly
+  select baseline `186a85fbbd70ac31cb3b013281cb7691d4365c59`, five counterbalanced
+  timing rounds, all default workloads at 1k/10k/100k bases, and separate Python
+  allocations, process RSS, import/JIT and process-startup measurements.
+  **All 103 comparisons have equivalent complete outputs**, including the
+  separately labeled corrected-reference cases.
+- The existing global-alignment row-reuse implementation passes the numerical
+  retention gate in all six comparisons; medium/large runtime ratios are
+  **0.601–0.819**. Quadratic alignment inputs are capped: these medium/large
+  cases use 100x50 and 300x150 sequence lengths, not 10k/100k alignment matrices.
+- Unchanged controls show substantial drift: local-alignment ratios span
+  0.476–1.664 and other controls also vary. Raw gate labels are not proof of
+  regressions in unchanged code or a reliable new percentage speed claim.
+  Retain the existing optimization with its historical evidence and this raw
+  gate confirmation; introduce no additional optimization candidate.
+- [Final package manifest](benchmarks/sync_audit_source_manifest.json) matches
+  the measured package SHA-256
+  `8e349fcdc744127fe5cf204c10cc3763b2b725785ae85bce4b4dee5727f2c931`.
+  Full benchmark manifests describe measurement-time state; subsequent test
+  formatting and documentation/evidence edits do not change package sources.
+
+### Current validation
+
+- Final Windows/Python 3.12.14 functional run: **1,188 passed, four symlink
+  privilege skips, nine slow tests deselected**, one expected clustering warning;
+  **96.79%** coverage (2,242 statements, 72 missed). The separate slow run passed
+  **all nine tests**. Logs, XML and coverage JSON are under `dist/sync-audit/`.
+- Docker became available during this continuation. On Linux/Python **3.12.16**,
+  **41 targeted file-safety and new regression tests passed without skips**,
+  including symlink alias rejection and output-symlink preservation. Tests ran
+  on the container's `/tmp` filesystem after copying from a read-only checkout
+  mount and installing editable development dependencies. Image `python:3.12-slim`
+  ID: `sha256:aa943ce411423c7582288f18707ff66eddcbaeb510502d747a72aeb34f30d159`.
+  This closes the previously pending targeted Linux symlink check; it does not
+  establish a full Linux suite or the remote interpreter matrix.
+- Fresh executable documentation verification passed **209 examples** across
+  106 modules; all **22** final local root-documentation links resolved. Package modules
+  also parse under Python 3.10 syntax rules, without claiming 3.10 execution.
+- Ruff lint, formatting (**223 files**), strict mypy (**106 source files**) and
+  dependency consistency passed. Corrected the new test's initial formatting
+  failure before the final formatting pass. Reproduction failures remain in
+  `dist/sync-audit/reproduced.log`; validation details are recorded in
+  `dist/sync-audit/validation-summary.json`.
+- Fresh isolated **0.3.3** wheel/sdist builds and both Twine metadata checks
+  passed. Final artifacts are in `dist/sync-audit/artifacts/`, containing only
+  the wheel and sdist. Wheel SHA-256:
+  `e37f3e96fb86566ad3688885207233db8d2e5e5341432e371b7949c5d8f08168`;
+  sdist SHA-256:
+  `b2dc9ad4ffb250aa1a38918c697025cd5e19b4b8729d95c95fb352d42967a195`.
+- The distribution verifier **passed** with separate fresh wheel/sdist virtual
+  environments, fresh dependency resolution and isolated sdist build dependencies.
+  Each installation imported **106 modules** and executed **both README examples
+  outside the checkout**. Version, metadata, source inventory/provenance,
+  public exports, typing marker and license checks passed. Dependency versions
+  remained NumPy 2.5.4, SciPy 1.18.1, scikit-learn 1.9.1 and Numba 0.68.1.
+  Report: `dist/sync-audit/distribution-report.json`; reported artifact hashes
+  match the files above. This audit document is not included in the sdist, so
+  recording these results does not change the verified artifact contents.
+- Final preservation verification found no missing original files and changes
+  to only the five intended existing files in this continuation (the two fixes,
+  README, changelog and this evidence); existing audit edits remain intact.
+  Remote CI remains pending on the final pushed revision. No commit, push,
+  remote merge, tag or publication was performed.
+
+## Documentation and branch verification (2026-11-08)
+
+- Refreshed origin successfully using Git's Windows Schannel TLS backend after
+  the default OpenSSL connection was reset. Remote `main` is still `9e1cc06`
+  (version 0.3.1); local `main` and `codex/maintenance-audit` point to `186a85f`
+  (version 0.3.2). Local `main` is one commit ahead of remote `main`.
+- The continuing 0.3.3 changeset remains uncommitted: 59 tracked files modified
+  and 15 untracked files. These changes are not committed on either main branch.
+  No branch switch, commit, push or merge was performed during this check.
+- README now explicitly identifies the unpublished checkout as 0.3.3 and links
+  its release notes, distinguishing it from live published-package badges.
+  Package source, installed distribution metadata and the latest changelog
+  section agree on 0.3.3. Keep the existing bump for this continuing changeset.
+- Fresh Windows/Python 3.12.14 verification: both documentation tests passed
+  (including executable package docstrings), all 23 local root-documentation
+  links resolved, dependency consistency and `git diff --check` passed.
+- Fresh isolated wheel/sdist builds and both Twine checks passed. Artifacts are
+  under `dist/version-check-20261108/artifacts/`. An initial nonisolated build
+  failed because its interpreter lacked setuptools; the isolated build passed.
+  Earlier functional/performance results above retain their original dates;
+  this documentation check does not establish a new full-suite or remote CI run.
+- Fresh distribution verification passed for both artifacts with separate fresh
+  virtual environments, fresh dependency resolution and isolated sdist build
+  dependencies. Each installation imported all 106 modules and executed both
+  README examples outside the checkout; source and metadata checks passed for
+  0.3.3. Report: `dist/version-check-20261108/distribution-report.json`.
+
+## Version 0.3.3 release validation (2026-11-08)
+
+- The user authorized updating GitHub `main` and publishing 0.3.3 to PyPI,
+  with validation first. Preserve the existing version bump for this changeset.
+  README identifies 0.3.3 and the release notes use the release preparation date.
+- AST comparison against `186a85f` confirms unchanged function signatures in
+  all modified package files. Seven functions change implementation; the other
+  package changes correct docstrings or the version. Independent fixtures cover
+  alignment ties, format whitespace, GC denominators, invalid/non-finite values,
+  chromosome metadata keywords, entropy masking and selector/IUPAC results.
+- Fresh Windows/Python 3.12.14 functional coverage run: **1,188 passed, four
+  Windows symlink privilege skips, nine slow tests deselected**, with one expected
+  identical-motif clustering warning; **96.79%** coverage (2,242 statements,
+  72 missed). Separate slow run: **nine passed, 1,192 deselected**.
+  Logs: `dist/publish-functional-serial-20261108.log` and
+  `dist/publish-slow-serial-20261108.log`.
+- Ruff lint, formatting (223 files), strict mypy (106 source files), dependency
+  consistency and `git diff --check` passed. Initial concurrent checks encountered
+  host memory pressure; interrupted functional/slow/build attempts are not passes.
+  The complete functional and slow results above were obtained sequentially.
+- Remote platform validation must run against the final pushed commit. Earlier
+  Linux symlink evidence above remains historical, rather than a new local run.
+- Final artifact verification completed on **2026-11-09** after continuation:
+  isolated wheel/sdist builds and both Twine checks passed. Separate fresh
+  installations with fresh dependency resolution and isolated sdist build
+  dependencies each imported 106 modules and executed both README examples
+  outside the checkout. Source inventory, version 0.3.3, exports, license and
+  typing-marker checks passed. Report:
+  `dist/publish-final-20261108/distribution-report.json`. The directory retains
+  the preparation date; the verification completed the following day.

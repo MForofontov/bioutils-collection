@@ -53,12 +53,12 @@ def translate_large_sequence(
 
     Examples
     --------
-    >>> # Translate a 50MB sequence using parallel processing
-    >>> large_seq = 'ATG' + 'GCC' * 16_666_666 + 'TAA'
-    >>> protein = translate_large_sequence(large_seq, chunk_size=5_000_000)
+    >>> # A small example with codon-aligned chunks
+    >>> large_seq = 'ATG' + 'GCC' * 10 + 'TAA'
+    >>> protein = translate_large_sequence(large_seq, chunk_size=12, n_processes=1, use_fast=False)
 
-    >>> # Use specific number of processes
-    >>> protein = translate_large_sequence(large_seq, n_processes=8, use_fast=True)
+    >>> # Select the fast backend; larger jobs can use more processes
+    >>> protein = translate_large_sequence(large_seq, n_processes=1, use_fast=True)
 
     Notes
     -----

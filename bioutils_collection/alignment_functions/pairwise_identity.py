@@ -38,9 +38,9 @@ def pairwise_identity(seq1: str, seq2: str, aligned: bool = False) -> float:
     >>> pairwise_identity("ACGT", "TTTT")
     25.0
     >>> pairwise_identity("AC-GT", "ACGGT", aligned=True)
-    80.0
+    100.0
     >>> pairwise_identity("A-CGT", "ATCGT", aligned=True)
-    80.0
+    100.0
 
     Notes
     -----

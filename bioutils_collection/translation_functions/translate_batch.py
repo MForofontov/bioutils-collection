@@ -51,9 +51,9 @@ def translate_batch(
     >>> translate_batch(seqs)
     ['MA', 'MR', 'FG']
 
-    >>> # Use multiprocessing for many sequences
-    >>> big_batch = ['ATGGCC' * 100] * 1000
-    >>> proteins = translate_batch(big_batch, n_processes=4)
+    >>> # Explicit process settings for a small executable example
+    >>> big_batch = ['ATGGCC' * 3] * 12
+    >>> proteins = translate_batch(big_batch, n_processes=1)
     """
     # Input validation
     if not isinstance(sequences, list):

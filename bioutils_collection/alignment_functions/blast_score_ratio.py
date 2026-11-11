@@ -22,8 +22,8 @@ def blast_score_ratio(reference_score: float, target_score: float) -> float:
     TypeError
         If scores are not floats or ints.
     ValueError
-        If reference_score is zero or negative.
-        If target_score is negative.
+        If reference_score is not finite and positive.
+        If target_score is not finite and non-negative.
 
     Examples
     --------
@@ -40,10 +40,10 @@ def blast_score_ratio(reference_score: float, target_score: float) -> float:
         raise TypeError(
             f"target_score must be a number, got {type(target_score).__name__}"
         )
-    if reference_score <= 0:
-        raise ValueError("reference_score must be positive and non-zero")
-    if target_score < 0:
-        raise ValueError("target_score must be non-negative")
+    if not 0 < reference_score < float("inf"):
+        raise ValueError("reference_score must be finite, positive and non-zero")
+    if not 0 <= target_score < float("inf"):
+        raise ValueError("target_score must be finite and non-negative")
     return min(target_score / reference_score, 1.0)
 
 

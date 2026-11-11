@@ -27,7 +27,7 @@ def sequence_statistics(seq: str) -> dict[str, float]:
     Examples
     --------
     >>> sequence_statistics('ATGC')
-    {'length': 4, 'gc_content': 50.0, 'at_content': 50.0}
+    {'length': 4.0, 'gc_content': 50.0, 'at_content': 50.0}
     """
     if not isinstance(seq, str):
         raise TypeError(f"seq must be str, got {type(seq).__name__}")

@@ -1,0 +1,1316 @@
+{
+  "baseline_commit": "186a85fbbd70ac31cb3b013281cb7691d4365c59",
+  "snapshot_manifests": {
+    "baseline": {
+      "tree_sha256": "ef5f600aa29e08c8fe691024fce4c71719cd754ab760f54e6097f665d9e516a0",
+      "package_sha256": "d1fbe0466b29cf3e480b7e43aae7d8735171f2ff79276cc7da043328b1b390f7",
+      "files": {
+        ".agents/skills/documentation-maintenance/SKILL.md": "1c9b66d727685b0bd9cebbd3dfb9a2055b7688594404e1746f0197d379888c55",
+        ".agents/skills/major-check/SKILL.md": "b1669eee2c3b4cfa0a13f284fb2ab8898a53165f241f5d7db5093e8f6cf69bcf",
+        ".cursor/rules/repository.mdc": "1d91d0ef81f365c54e029f7e6d47cd953311730f3080c1120ed6bde98b9cab90",
+        ".github/copilot-instructions.md": "8bc33dbe0db3bf4fda134d4cf6d8ba6f6e29f9c7380d02a504d1929083e25921",
+        ".github/workflows/ci.yml": "4f36ae989b47452f331aa79a5464b4ec0f3552da0fd91e1d9dd14e6b032ac6a6",
+        ".github/workflows/publish-pypi.yml": "af238623c8bfb678f8411200bda3374530bb35307dd91af0503fea10a4dabee4",
+        ".gitignore": "2b0d7769cce3aa57f53e3d297d1512d7c317794c5a41d86a1fdebc0fe55e36dd",
+        "AGENTS.md": "293351a440686773035ec1786fba9bab7f9132fb0272d413b8edc0bf2c0e8b94",
+        "benchmarks/major_audit.py": "1fc4cce5d3aedaa1f0f86123892764a381fc9e3a5f5ef3712a2e4676efe19f5f",
+        "benchmarks/major_audit_results.json": "12f68a5475d27aad3d395131ef158f8468f87e1b1d2455639a718884b7acd10b",
+        "benchmarks/paired_audit.py": "3e5fd171807a8cf71a67f98669a6fc25e423ca5ece49345eede9ee4c7485526e",
+        "benchmarks/paired_audit_results.json": "d3951a97b606b99ca97602f81fb701c5dec8c5f912a1b86485bba455f104cbcb",
+        "benchmarks/paired_candidate_results.json": "ac5007b7cab6c7aecbdc3e8f0698bd9ae1d276bdb64281335227413f25e4f134",
+        "benchmarks/paired_density_results.json": "9bd057c1120b8370d243684047baeaba94cf8e92fd2d5a8956094b7ff6ccdee4",
+        "bioutils_collection/__init__.py": "0b0ec3bc45c82871275439e1c90392197ce612450af316bda2c3c7c0d23a259b",
+        "bioutils_collection/_version.py": "c2a35fa442c1c03bc9e6327001554fc7101225f02e2cebd60ced20053c48e0d8",
+        "bioutils_collection/alignment_functions/__init__.py": "032e82fcfe53a387cb9b8e75038e9ef9289a1217b3ecbd8eefa116a489a91123",
+        "bioutils_collection/alignment_functions/blast_score_ratio.py": "406603882dfd82cdcfda5380727dc20e8b2cb1d1211d92bbb16555b4a26288b9",
+        "bioutils_collection/alignment_functions/hamming_distance.py": "fa2b47a9a31a50979b257e074ab959feef47bce280a4a0f3fab6030d9cc7034e",
+        "bioutils_collection/alignment_functions/levenshtein_distance.py": "43d2b117b7f6d0538c0b7a20350806383a15091b31298d184a8e0639de8183f7",
+        "bioutils_collection/alignment_functions/needleman_wunsch.py": "a918b83a46163bcb963b5c7bd3085ac05aeb84da9608f52ab68d0f5ececf743a",
+        "bioutils_collection/alignment_functions/pairwise_identity.py": "128f90b0bc2a2aaa7f2483132f3e0df7694c50b5d581f98773dcff746f2ca8b1",
+        "bioutils_collection/alignment_functions/smith_waterman.py": "9dac8eb84e443b25c3a7fc8b4ab0b47b22bcd3fbf72dc56738d4eaf00693a40a",
+        "bioutils_collection/annotation_functions/__init__.py": "914a12b4bc968c635888e9a0ef7b885453ce99b064abce21073d8e9dbca6a5fa",
+        "bioutils_collection/annotation_functions/_annotation_fields.py": "4ee3e35b10b84f4fc7bb88f30b042c813e96eff5c788e99669fd6e0acd7abac8",
+        "bioutils_collection/annotation_functions/annotation_statistics.py": "653231465b816c78db2b1b15dc123773c60859c1168e9fb391e154353ac74b2b",
+        "bioutils_collection/annotation_functions/annotation_to_bed.py": "ed23af4546fb7c85753861bc0a72cbb28bc5f6e2fba3318aa6ecd7e40cd53717",
+        "bioutils_collection/annotation_functions/annotation_to_gff.py": "7b30b3a2c3f11626c4f1b378ae3a20e87b35bbc43c414a0d8880e74e6788a75a",
+        "bioutils_collection/annotation_functions/annotation_to_gtf.py": "b89bca3685895f8f3ee4d20a595705b6d603853417c23a81d3af7627e8f49507",
+        "bioutils_collection/annotation_functions/filter_annotations.py": "23f007dedb27d746fbd9b138dbdb1c31823214b450434d4a1c3dd19670feb7c4",
+        "bioutils_collection/annotation_functions/merge_annotations.py": "12532248bd5be8fbabdc06f1907aceadb227bfab3874264f770943654d9f8d01",
+        "bioutils_collection/annotation_functions/parse_bed.py": "6a12727ffff0b9db8334698d470b166901be2f5ff68f730267e810d03532b35a",
+        "bioutils_collection/annotation_functions/parse_gff.py": "a9a328f67e4f0c15c44c65745803a1fbae2886a776cdf2a50ffc166d12928736",
+        "bioutils_collection/annotation_functions/parse_gtf.py": "63d37eef47add6667a2002d4f4939e856f3c32b935ac2bb0e52454876b425d54",
+        "bioutils_collection/annotation_functions/parse_vcf.py": "9fc6ff2e0e767ef328d074af8843480c5191437e892d638d605fae3b7366baf0",
+        "bioutils_collection/annotation_functions/sort_annotations.py": "faaacf1431f9ee0249512115538a5203fdb20d4a71edd56603faba463476bf4d",
+        "bioutils_collection/clustering_functions/__init__.py": "1685fc48643d939aeb94463abd8d7d62e2585b8cda6c6dea017f26e6605170c1",
+        "bioutils_collection/clustering_functions/motif_clustering.py": "e6403953b744c0c5f9743d0793a0bfb9ab5f06c964197cce17f2f8a5decaf8f6",
+        "bioutils_collection/data_validation/__init__.py": "7b4e42d74881205a814129f60387451d85c625a4099694fa397ed733906327ff",
+        "bioutils_collection/data_validation/validate_dna_sequence.py": "e57865ff95ace9971ddee4871f4a2ba52e86358d4ba4e335e6c68965c321db99",
+        "bioutils_collection/data_validation/validate_protein_sequence.py": "7b0c10402b1508119e51b98d9a50116daf3e23231f7e88b606634d00602a531c",
+        "bioutils_collection/fasta_misc/__init__.py": "d05b82d8161313cb40acdc9250c405595487e55a1839a228f4d6c48d10b2f924",
+        "bioutils_collection/fasta_misc/degenerate_primer_generator.py": "45c1a7a74b607cde145bd1ce2b5f2a2b38bd80496ead84d39fcc6eea5efca7a4",
+        "bioutils_collection/fasta_misc/fasta_concat.py": "a1e79ff0671b58bea5ea938f09571d70d77affbccfa836c31b84fd052aff2cd3",
+        "bioutils_collection/fasta_misc/fasta_filter.py": "7c10622ca8708d41671b1b1bc883f9e912846fcd5736f43720d67d8ec5560975",
+        "bioutils_collection/fasta_misc/fasta_parser.py": "b8b813d6a4417f9a2a66681d2e7852d07fe50a46d64bf17f08d5e3cd641716b9",
+        "bioutils_collection/fasta_misc/fasta_rename_headers.py": "f9115cf805037ecb864b96deaba1af31d14b335fe780943381fa71ecde36b3f3",
+        "bioutils_collection/fasta_misc/fasta_reverse_complement.py": "db4885a5782161c65072f9e5235a1bedc3de9152a8b82a2191e2e62d95d7e1e9",
+        "bioutils_collection/fasta_misc/fasta_split.py": "b900e69c3aa1bc3525ac34cc1bcbe1bb092c93a843d8eea09bfa6afb94920f27",
+        "bioutils_collection/fasta_misc/fasta_stats.py": "5eb039b4e9f312f443006853980dca1679f1a820ef57e1e3ada05f5eca0761a8",
+        "bioutils_collection/fasta_misc/fasta_subsample.py": "b54977d8dd7da21345dc6fb09ab22b5f64387f03eba66471592c8776ad87a539",
+        "bioutils_collection/fasta_misc/fasta_to_dict.py": "e453814e36c99b784baf07b4172ff4906c5f12dc366b12ca8c0896b7b2be552d",
+        "bioutils_collection/fasta_misc/fastq_to_fasta.py": "3dccfc9da613e2815ea2b574bbdf601942659c24e2bd5664dfdef3e40729db34",
+        "bioutils_collection/fasta_misc/genbank_to_fasta.py": "ed8363946ce73954eb57d4f71508920c16a9ff0cd32149b45bbd37977093a5a0",
+        "bioutils_collection/fasta_misc/generate_primers.py": "8b284bbe30a815c1909810c64ef591e98b611b4508f87f18284d3be7d162923e",
+        "bioutils_collection/fasta_misc/validate_fasta.py": "e4f5da602659f762b6a5fdd911372b5f77b12b4ad97920e35cd21ea71bb2a35c",
+        "bioutils_collection/fasta_misc/write_fasta.py": "a455a16d6ec0cf1bf1632ba12e2d395528971939cb4312d7432e1664a0fd75a2",
+        "bioutils_collection/gc_functions/__init__.py": "26997936159a73fa7333ba69d18b467182be48aed7093f23b0dd76b693725443",
+        "bioutils_collection/gc_functions/gc_content.py": "16eab0a7531a3cdd68818b9bcdcbb5b0207cb183db651e48a583e38e01fde502",
+        "bioutils_collection/gc_functions/gc_content_windows.py": "09c360e870d2add05b7969ac814e60ca5cc61fcce73c64f3c21fd3b2728990e8",
+        "bioutils_collection/gc_functions/gc_skew.py": "ae5c59972d19f257909b23d006a842062988b86f9d7bd460b4d1c473c45c37a1",
+        "bioutils_collection/motif_functions/__init__.py": "70bf0fabfb58716560f11f8a047923a092a0b9be6446ae811530474d1ed7dfac",
+        "bioutils_collection/motif_functions/find_motif_positions.py": "24a0c1ca572d2dbce08b3b57ae867c41c5fcd350e252e05c56160b4581ccb9dd",
+        "bioutils_collection/motif_functions/generate_consensus_sequence.py": "6d323bdffff48df221de2702f2bf24fb063b66f4f2bc199cb3c246d28917f6e1",
+        "bioutils_collection/motif_functions/motif_search.py": "7d58d0590b252ccf8911378c24d6c5efd7bb03ba8a6379686a64062c05c143df",
+        "bioutils_collection/motif_functions/sequence_pattern_match.py": "9dc649d118dfb80a8b489aaee4e0176ef1e3c3c0834e4759f2901f9505bb2264",
+        "bioutils_collection/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bioutils_collection/repeat_functions/__init__.py": "63fb1d5730394f7dba11753204a2f7355f120649c1a895fd34d3c39af8300b19",
+        "bioutils_collection/repeat_functions/palindromic_sequence_finder.py": "63f13a2a4f043b1db73915229aa533d459fc66c4eac510a4afc3eab85ddb43bd",
+        "bioutils_collection/repeat_functions/tandem_repeat_finder.py": "55718e3b9cfc13e90ff50b6bf915a757a646113ef55ca541a837c3223f7234af",
+        "bioutils_collection/restriction_functions/__init__.py": "b61c44492c95cd79ed2a8ed933d98d6c1481ce287ad12a7a1bb4d3f7c6d09c72",
+        "bioutils_collection/restriction_functions/restriction_site_finder.py": "7a0958378dfe23813f8fc1864fd37f75a6c7ccfbe194b4a018741ccc72db2f85",
+        "bioutils_collection/sequence_operations/__init__.py": "57c2c4e8d0759e59b082ddc2e3e79d6dba1afafcb5636abb4793e6196779518d",
+        "bioutils_collection/sequence_operations/_minimizer_window.py": "bc32b9a58ec1fbea6055b959ef7a5045ab1eb01b4fb26943fbd316f18ddb8406",
+        "bioutils_collection/sequence_operations/_syncmer_selection.py": "c0b9f2d513291066e0fc6ec7fe6cf3fc9f28559b2da6260404563c30f3e0ae97",
+        "bioutils_collection/sequence_operations/canonical_minimizer_sketch.py": "e384dd712a1e4d6c565f002c28d177bb9b1d9714877921754e5f4620378e5abc",
+        "bioutils_collection/sequence_operations/canonical_minimizers.py": "95a44828b14bde800a9ac622a4c084466d612c3f92e0d34736b3b5d3ae8e22c7",
+        "bioutils_collection/sequence_operations/find_cpg_islands.py": "122c57e4d26aa03f15d7cdf2376e17657fe5edc5be385e8a45f409873d065b16",
+        "bioutils_collection/sequence_operations/find_orfs.py": "0ca89f5029f479e7efffa0810cd40121911ab702aba3c2bc17ec8a7073b921b9",
+        "bioutils_collection/sequence_operations/generate_minimizers.py": "9280576a47ea91d7e455d5db4c431b875cdf9354dca9478d34df0e332a23ab3f",
+        "bioutils_collection/sequence_operations/generate_syncmers.py": "4c85506b1f5117c890f5e4fee4ea7b1ee73736a43018a72c6afd5d36d509a2af",
+        "bioutils_collection/sequence_operations/minimizer_density.py": "ebc1229c2dc84ff353e8cd7210f94b571bc06d634569974343c802bba8dcd948",
+        "bioutils_collection/sequence_operations/minimizer_positions.py": "331a102cbb466897f115f203b765a83f6532b6de68cf9d158397d6eb5826e9e0",
+        "bioutils_collection/sequence_operations/minimizer_sketch.py": "202ad72d5f45712098892bf2cbffafe9d4a06032c116d14a9593895e02021631",
+        "bioutils_collection/sequence_operations/minimizer_sketch_from_generator.py": "d6d2f0f01d1b8a18e2307fccf77ac8518ff3931df0670c2e9f689d1ac850cab8",
+        "bioutils_collection/sequence_operations/remove_low_complexity_regions.py": "cd1eb9672ad736dd1dd2cd2fb0a04901a131e241b746a0d78c57d28fc1ba7ad8",
+        "bioutils_collection/sequence_operations/reverse_complement.py": "7286e515868762395ff43c08a9e0de8204fd1b45218064aef79aeda23a13220a",
+        "bioutils_collection/sequence_operations/sequence_complement.py": "ea825dca151c8e36b8bff3a647e695563eb0a96b7775221554fdc592e3977839",
+        "bioutils_collection/sequence_operations/sequence_quality_filter.py": "29b78bd7174303c07f0ee61efd306270db45e6d196a31c462c376aad81c75725",
+        "bioutils_collection/sequence_operations/sequence_shuffling.py": "e1537e2ad9a06119aa40fc3136a868b32c9fe433e2b346a0c384e6c253a4d2e2",
+        "bioutils_collection/sequence_operations/sequence_to_kmers.py": "b04f50419baa298d58f8ae66ede6e6b06e94959372d751c0f1f196c651dbf8bc",
+        "bioutils_collection/sequence_operations/sequence_to_kmers_with_positions.py": "37bda4c6b36cc1de2aa5f1f1bdc45acfec0b2a6806202c5a663b10a7594ef986",
+        "bioutils_collection/sequence_operations/syncmer_density.py": "67f5c3fbe24d74838c7595cf756632888dfe6bb9bb4367319b1f01d8e4e72acf",
+        "bioutils_collection/sequence_operations/syncmer_positions.py": "182f782cb5a887b00dda11ee2db8bc24cf7b5c87b122f052ae1638f00ae9431c",
+        "bioutils_collection/sequence_operations/unique_minimizer_positions.py": "97801f7311bd2513edb80f9edb33ec7511617a67f46cde65880ff0e5c4ebb06c",
+        "bioutils_collection/sequence_statistics/__init__.py": "6f49d0367e50a086c288a07aa12118c73a0d8b3915252dc0a104f55209352489",
+        "bioutils_collection/sequence_statistics/amino_acid_composition.py": "144357a05e97dae651950b23db2e61f9480b0b481fbbc5f3d6913ef07bc4cdd8",
+        "bioutils_collection/sequence_statistics/calculate_isoelectric_point.py": "23e89f4f96ec57a971ca3dd2a39d1aa3b4f2119891ee8079c98d74d06604f3e1",
+        "bioutils_collection/sequence_statistics/calculate_molecular_weight.py": "e87ee6a571920c6e9fe8ee602bfcb34dabe19a85d1b5f04ae107affecec5ea18",
+        "bioutils_collection/sequence_statistics/codon_adaptation_index.py": "5b1c67540db760c8a96b8dc47eadf094fa79a641dd3a6b94d704d0e9d3731a17",
+        "bioutils_collection/sequence_statistics/codon_usage_frequency.py": "6556d2948440b08e07cda59b97f9d1488324a9df999ee0c7ff561a7567bf6225",
+        "bioutils_collection/sequence_statistics/effective_number_of_codons.py": "220b7c8fc0d9720ee69fec9f0a7353a6c92f423094be9cf5546e3722604e01f1",
+        "bioutils_collection/sequence_statistics/kmer_frequency.py": "508a131bf16ff9696d556468ad2ac35591b70783a968f8037ab1217ce6e94275",
+        "bioutils_collection/sequence_statistics/melting_temperature.py": "fe38f53222e9d20160c810b3c079a129fabcc3fefd52fc020ee85092ea1f6c23",
+        "bioutils_collection/sequence_statistics/relative_synonymous_codon_usage.py": "6e6669a53cc4bca79785661fae6c7fe207c81977452774530a7d2c5af2cbdf34",
+        "bioutils_collection/sequence_statistics/sequence_complexity.py": "062c7166a24b67d9326e837c339b47e5a9ddf62603246539768805b6d4942fd5",
+        "bioutils_collection/sequence_statistics/sequence_conservation.py": "4155781b895d3b5c1d7fb2223b05a9843e1d0f31be67a7deaf03b4f7fa0676a9",
+        "bioutils_collection/sequence_statistics/sequence_entropy.py": "e99ad4cbdb36648346753a27a6acd0870b93ef93f86453b1030411b5ea8edbf9",
+        "bioutils_collection/sequence_statistics/sequence_logo.py": "b14961bad99ce819ac8cf426b48b4aeb19243101a8a599e9c0e06b80ffd12fb1",
+        "bioutils_collection/sequence_statistics/sequence_statistics.py": "9cf9a491dbe2bf696039685eb0a2200fc5fded2804c68c5c3733bed05626fa0f",
+        "bioutils_collection/translation_functions/__init__.py": "8f31dba4fd00039ea7d64aedb8d24f1bab40d9e4468e8953f6859ba6c74d11e7",
+        "bioutils_collection/translation_functions/_atomic_output.py": "3aa27c797a0fa80b3a7e1aa78ba487fb20ad930206e33294962a35328dd4bb18",
+        "bioutils_collection/translation_functions/genetic_code_tables.py": "ca058b2f09fabcc2dec7c2ff0efc15a57fea44a8275e277b92927dc98a04696f",
+        "bioutils_collection/translation_functions/rna_to_dna.py": "6696cd1980152a3d8d10a2aa130911598790db95fe2e355a4d8b057dfea3b47b",
+        "bioutils_collection/translation_functions/transcribe_dna_to_rna.py": "f6bb383f6eecac0d6f143e34978ae39eb8c3c4dfa89b0005cfc6e8ea95bd72da",
+        "bioutils_collection/translation_functions/translate_batch.py": "4297a6da3488a79f9b1b3b68e9e1d36761c7b8067bd3cf76d42030fd4eb60060",
+        "bioutils_collection/translation_functions/translate_dna_fast.py": "2f9abe61244fcb4bf7aa3f45dd24acff7bc63dd348fe9d0fc5aff2279f3cabe0",
+        "bioutils_collection/translation_functions/translate_dna_to_protein.py": "4a6b4e30587cf98d838db1d4b081a5e524d7a45771710774518a3e09664c1cb2",
+        "bioutils_collection/translation_functions/translate_fasta.py": "44842c50d406b71c8c4425fa4ebb1e39693c415f4cb8bb5e194a21f85badb48e",
+        "bioutils_collection/translation_functions/translate_fasta_streaming.py": "bd13538bc4b2b4fbba49b1be09573e2a57ebff028cd75cdc39e74bbb744b3613",
+        "bioutils_collection/translation_functions/translate_large_sequence.py": "bbc5c47b6681ed074a871c84648c8fd434282edef9f94608d6dcd4bbf7b7d127",
+        "CHANGELOG.md": "88b9bbdcca4605719267db4d3c87698ffc9c8a8c6dc25127964f46d193850cf6",
+        "LICENSE": "671d046d66efc44081628c96c8c2c7a11fb211706c7cc4dd8a417372ec0787bc",
+        "MAJOR_CHECK_PLAN.md": "2c325909532c810567dabd8e0ed21aa759758b43ca7b96e3cfb32ee624db474f",
+        "pyproject.toml": "70f247ee1e030c9835fd820702d2e9049f366f2f74ad222b3b37d87d400cafdc",
+        "pytest/conftest.py": "b89f38ba0d6ea7adf8fa50f7b2df9fc54495ab583275815acd64a8fdc17be0fc",
+        "pytest/fixtures/ncbi_genetic_codes.json": "7f03849b9c4e68022bc90801ee077539f914a3899ea1238691baeeecc74fc935",
+        "pytest/unit/alignment_functions/test_blast_score_ratio.py": "24ddaf9617fa291638167f87691e0dad0dc81b50682eba11607665bca35752d5",
+        "pytest/unit/alignment_functions/test_hamming_distance.py": "f99138a8bae45f39ba5354425c039885a688c32548e887de53610a9c9e4c8781",
+        "pytest/unit/alignment_functions/test_levenshtein_distance.py": "f8848fe4ba00253cb22464df48970fd887df767df11590ef065801fc7225fd07",
+        "pytest/unit/alignment_functions/test_needleman_wunsch.py": "66c64eed8fe478b1d9a4bbf59b56311bd24f0ecebf8288ed0f54d1865efd64a3",
+        "pytest/unit/alignment_functions/test_pairwise_identity.py": "bc366c951713fba3fba365f4e0c63237cdb90858a4db8b824256de5528baca16",
+        "pytest/unit/alignment_functions/test_smith_waterman.py": "33e1f67d2f7686dd1d1b298b9e04f4b3916843e32079d526ad666125b299f89c",
+        "pytest/unit/annotation_functions/test_annotation_roundtrips.py": "66e5f91ace2d95c8115c1902dea434828a0004a54396f71fa721bead7b9a0646",
+        "pytest/unit/annotation_functions/test_annotation_statistics.py": "e09581c236e0ce8f6f81573ebd0027c0caae68f93befcd94254f19dc4f4d47c0",
+        "pytest/unit/annotation_functions/test_annotation_to_bed.py": "3d3ed25ec2f05d3dbf126ec4e062c808541d501af8b95c2cc234d374e3f7313d",
+        "pytest/unit/annotation_functions/test_annotation_to_gff.py": "a26b89aceb00ae39969986baa8f8d29217d8cf1dd3825a29442aef9a3ea1cc6f",
+        "pytest/unit/annotation_functions/test_annotation_to_gtf.py": "960a2c8be8f2de9723c186c9ba22ccc8b678f149240b1f0c3c44faf0928688aa",
+        "pytest/unit/annotation_functions/test_filter_annotations.py": "e35bd96d4a1dbf32da645de3f292c21583b903c4ced4927cc552bbdbf32e700b",
+        "pytest/unit/annotation_functions/test_merge_annotations.py": "a5daa3cd5afbbf09c409d2d03db332b502abe13face5c230d8e31bd42e4bea32",
+        "pytest/unit/annotation_functions/test_parse_bed.py": "d6c43878288cb69727a39a816c59db65d214c017ce03325ab04dbaca7f390b03",
+        "pytest/unit/annotation_functions/test_parse_gff.py": "ccff9e2cbb72245d54595004a4cd221fbc5faffc03038693ab1dfd4a208ad173",
+        "pytest/unit/annotation_functions/test_parse_gtf.py": "fcce4d9f2502aa9dbdd9173f6d3f16746c2ae6c1f449767f4255039262a0ec6d",
+        "pytest/unit/annotation_functions/test_parse_vcf.py": "6284343b8460749ae4d6431d6510287fcea0aaf146a21e28191fe05d3f872261",
+        "pytest/unit/annotation_functions/test_sort_annotations.py": "a87ff4a5d6023042df764e1c928d336d2fffa545af49a312a23ec37cd9299be2",
+        "pytest/unit/clustering_functions/test_motif_clustering.py": "cbbd3bfabc79b448417269a7da5c2fbcd2ce03ae20708803d6ce2763861297f0",
+        "pytest/unit/data_validation/test_validate_dna_sequence.py": "66d50e2504a51d3f8dee5799503050e2c878063762602e2c67b1f7252486b1a9",
+        "pytest/unit/data_validation/test_validate_protein_sequence.py": "9e5752bc32a7bf2b667fb3f99e13d35cc47cb4a0160fcba12a80f64e928f43b9",
+        "pytest/unit/fasta_misc/test_degenerate_primer_generator.py": "91f9387adbc6f3273f52d1b9d4557b6e4d522fad7a90fced4e799510d7fb54a8",
+        "pytest/unit/fasta_misc/test_fasta_concat.py": "62e4c69a9b3a4f22ab098622d38252b6438446d31fc7118e78182c88733ab856",
+        "pytest/unit/fasta_misc/test_fasta_filter.py": "a60cabd16f412a068518fb0f8bddae501de2c9c26c59c66af22d673a1fbb3ab4",
+        "pytest/unit/fasta_misc/test_fasta_parser.py": "c5b359872dd361d6aa71f70f174e19818a58c36743bf2885cb7aa290270dcb5c",
+        "pytest/unit/fasta_misc/test_fasta_rename_headers.py": "48fdfcc0e3d19fe7faa79760f79541bbb375c5fd917e9832c13ee6a958f6ae1b",
+        "pytest/unit/fasta_misc/test_fasta_reverse_complement.py": "87f8b2fce1cff3fa63fd3927c70b86a713cdebb3ef5ec07c521959e26af40a82",
+        "pytest/unit/fasta_misc/test_fasta_split.py": "ff881ad65726beec55f4f049814d94478b502f923e5269644004973d0d614c9b",
+        "pytest/unit/fasta_misc/test_fasta_stats.py": "25c22ce73dbe4c5c08fadc6b2706b1e9a797904370ea52c8927b20d56fb1e99f",
+        "pytest/unit/fasta_misc/test_fasta_subsample.py": "f0be5c101b1910fa9c249cba7b6fb63e37593b2adaddc28cbc123d20849e37d1",
+        "pytest/unit/fasta_misc/test_fasta_to_dict.py": "27d48a16299a17f5bbff89e7f2550d4d189cc1e3d626fcfceda981abda984b20",
+        "pytest/unit/fasta_misc/test_fastq_to_fasta.py": "efb1ac6d058015539ebf6a16f6081567f5e0807d97e02b795446d2d178536cad",
+        "pytest/unit/fasta_misc/test_format_audit.py": "091d4e34cb837fe6f41fdb946ee9dae85452539057317842b7643e9c5fbc0e5e",
+        "pytest/unit/fasta_misc/test_genbank_to_fasta.py": "24bead8b7b5cef03910ee86991add46d9f54ab8db76cb446382e054eaf95f700",
+        "pytest/unit/fasta_misc/test_generate_primers.py": "4f6e676771b3d8526a925ea3852b0c6c4a1776a19829377d4073f0000718275b",
+        "pytest/unit/fasta_misc/test_validate_fasta.py": "3127395ade0da842d32961eecf5569b0e292653875272cb87d0840496373b639",
+        "pytest/unit/fasta_misc/test_write_fasta.py": "226a3e86713636269733b8abcf45308192d36b2f3628ca5bfdd961a1e1e52d95",
+        "pytest/unit/gc_functions/test_gc_content.py": "9f86140b472064814c9fe9bfe243818d42c394aed43ad9cd52a24b81bded8b8d",
+        "pytest/unit/gc_functions/test_gc_content_windows.py": "71654827d207aeee972d5a08b73ed89587916e0bb5207a0bc40e3d2b823e4cd5",
+        "pytest/unit/gc_functions/test_gc_content_windows_regression.py": "17444392ad18df5765cb80d30483692683f8d5a3bf96798a23f3388f03b5cbcd",
+        "pytest/unit/gc_functions/test_gc_skew.py": "a4be84123782ee6d0e85a3e94554b55c4754d4684fbac4bbeb7d281c9c86d409",
+        "pytest/unit/motif_functions/test_find_motif_positions.py": "b7d0a385e9d7a5c84b6df2fb455c9a3d2e080d35038e7a3675c57dca78b6b3d5",
+        "pytest/unit/motif_functions/test_generate_consensus_sequence.py": "cb72d21486ad317774392fe3dac8a3490d888a3e5f4cae7e1503cf251243d16a",
+        "pytest/unit/motif_functions/test_motif_search.py": "05f7fbdf1a42b54ef40ee0c6797a0ed6453446176fb93147a58c60033eb5db22",
+        "pytest/unit/motif_functions/test_overlap_regressions.py": "eb2a6274bc5dbb998ab50a471a5accabb33ab4ab08d096ff1112573d1b6912e5",
+        "pytest/unit/motif_functions/test_sequence_pattern_match.py": "44e70b35779e2662f7005f477413bc496aa8f6ede44ed602a221c2015f24e469",
+        "pytest/unit/repeat_functions/test_palindromic_sequence_finder.py": "6b0cbdc415eca09f32d7242ecb7ff364ea79ac4e1261a7e0444bb6719040c132",
+        "pytest/unit/repeat_functions/test_tandem_repeat_finder.py": "a9a6bf711585850bcb5604abc31a2f010170bdf97924823afe64ddcef097c75f",
+        "pytest/unit/repository/test_distribution_verifier.py": "aa95e606f301ba5ef60b6b61c636b120d340fe87b7c160d3c5ee73975d3c8f6c",
+        "pytest/unit/restriction_functions/test_restriction_site_finder.py": "c5fbc900578a15222ffc46ab7ab6a8d928a12706792efc18b76893900e5b6f6d",
+        "pytest/unit/sequence_operations/test_canonical_minimizer_sketch.py": "5c75aa058893058a89715cb719c0298b3f97e14ba19d5f7549f83892845107a4",
+        "pytest/unit/sequence_operations/test_canonical_minimizers.py": "a47673b7e8ee8e1f45013413e484cba735f9d75442002bc158155a0ebc114048",
+        "pytest/unit/sequence_operations/test_find_cpg_islands.py": "e138999a02da947640ccacc85ba2bae4ac919035e9241dbd8e8223f63d990b4f",
+        "pytest/unit/sequence_operations/test_find_orfs.py": "7b728f2ce6b220d77620fcef2a0402c67e3de481213aaf22560a5aaf075c82ee",
+        "pytest/unit/sequence_operations/test_generate_minimizers.py": "c8c671e444c23d61adf4d228ee51dbdde35a0b56a326b1d7361f2d6a6f9e34eb",
+        "pytest/unit/sequence_operations/test_generate_syncmers.py": "af97b4fb8995b94c878fc3d89e47b005d57cd67ae6652094d09d51b7473c4bef",
+        "pytest/unit/sequence_operations/test_minimizer_audit.py": "0db0cf199bcdba0b63ece99bd5808a54802e8be4fb43f6bcfe70f500bfdb79b4",
+        "pytest/unit/sequence_operations/test_minimizer_density.py": "1933437b03370e929e2db84cee37eddb45af867e64b96e6435e2e16e0ccadff5",
+        "pytest/unit/sequence_operations/test_minimizer_positions.py": "3acb119ef2cc27afe44ce8610b0ca9d00dcbfb08f01aa9fb5b936290d1a86276",
+        "pytest/unit/sequence_operations/test_minimizer_sketch.py": "e2136285e148c665a1e0ffc6125f553a61e0f7bd3365ea588cdb346e8a215fa2",
+        "pytest/unit/sequence_operations/test_minimizer_sketch_from_generator.py": "0f73fb0d3a6af2a53c9586801645ad8f2b61ec037f33f5c2e3abd187c67927c0",
+        "pytest/unit/sequence_operations/test_remove_low_complexity_regions.py": "6d7f4119b11647dfd9db65d5125f735c5fe52c35c2cc330ad6e2e76c1503a65d",
+        "pytest/unit/sequence_operations/test_reverse_complement.py": "dfd43589b06a538c5d0128924ee4146ea3a7c85dcb8f4ff38ffb26c5eeffb635",
+        "pytest/unit/sequence_operations/test_sequence_complement.py": "3dcec7fdc9bc7db9f85117a5b8af2efba577518c741dda495e947af8c5833760",
+        "pytest/unit/sequence_operations/test_sequence_quality_filter.py": "c75d39f36fbf45036b891aa3ca1a1aa69036f5254a3d5f6cfabecfeb34bca7ce",
+        "pytest/unit/sequence_operations/test_sequence_shuffling.py": "e9cd6b18ee9062174d7e087995b0b2783a0dc45243595875aa982e3b62d3deae",
+        "pytest/unit/sequence_operations/test_sequence_to_kmers.py": "4fd4438c53bb9f9fa70fc5c49a4ccacd5106a3760e3bebef0811412a5a9c5cf5",
+        "pytest/unit/sequence_operations/test_sequence_to_kmers_with_positions.py": "448c6388a2511cdb194ab1a51e7227d685e9ef24c252e3b891dfbf31ff9f7a16",
+        "pytest/unit/sequence_operations/test_syncmer_density.py": "656c82951a74dc2665176f4bed8f3b95e6bea274e38e39ff282a5fab7f4d17f9",
+        "pytest/unit/sequence_operations/test_syncmer_positions.py": "6bea9f730148beac697ac93f17c55bcd99728cb971e2cfdd710c9b9491b800b5",
+        "pytest/unit/sequence_operations/test_syncmer_regressions.py": "ba7a57208dd68ab8ed7b33fe21520c14a7b24148a092bdefe396e0980f9142f2",
+        "pytest/unit/sequence_operations/test_unique_minimizer_positions.py": "8d5d026911ed33618f8fa55334d3e25846b39f44d6d081549384c9b12406caac",
+        "pytest/unit/sequence_statistics/test_amino_acid_composition.py": "ebdcce7417fdc373ac1805d453bfc379c8148a6f7a4d40cbd6916773cb41615e",
+        "pytest/unit/sequence_statistics/test_calculate_isoelectric_point.py": "051548bb16c9fcfa9320422e8d94c48b6a2189d0fa432269917971de51328787",
+        "pytest/unit/sequence_statistics/test_calculate_molecular_weight.py": "54c0ef9fb2a27206d0e4c9b8e2e0ee45302692bee73d0a3d529c09f5c3d6f5e3",
+        "pytest/unit/sequence_statistics/test_codon_adaptation_index.py": "ab06525539624c91850711d2c8f00b99638f08c8a8117990d07a2b2d7116f8ef",
+        "pytest/unit/sequence_statistics/test_codon_usage_frequency.py": "ced79710205afd7360f20295b5510a1ba1e37623ad8434b7efa28f217e165f2e",
+        "pytest/unit/sequence_statistics/test_effective_number_of_codons.py": "57c65bcd646fdb75b18958b753c57ffa79b0c889f03b77810f9f58afe14b1bc8",
+        "pytest/unit/sequence_statistics/test_kmer_frequency.py": "291f71501be2d49c28813e26cf5f5c081d39ddf20b88dc8fa3386ceb99ace2b3",
+        "pytest/unit/sequence_statistics/test_melting_temperature.py": "4068e11bb92c578c6ac9615af8cb0350fbe864a6e8adbf3260a85264f8aaf354",
+        "pytest/unit/sequence_statistics/test_relative_synonymous_codon_usage.py": "76731c4b3942d68d507dcbe18655b773c0163e5aed101bc8166a1536f33b50fe",
+        "pytest/unit/sequence_statistics/test_scientific_regressions.py": "da9baee83abd973b08162434e08a4af300299a1c88e9bbc251c89ac07a8135c8",
+        "pytest/unit/sequence_statistics/test_sequence_complexity.py": "93f17a40d5654d6aedf038a49860fc373c6d49cedc5f3460c15804b7c76471d3",
+        "pytest/unit/sequence_statistics/test_sequence_conservation.py": "6cab37438acd316c83dab76047165c1f48780276d61d8dbb223048cee22110f1",
+        "pytest/unit/sequence_statistics/test_sequence_entropy.py": "e6b10caa6dab20e302d9e549a49fd61d7e91a3b411c98ea1f40c52b63bd12c4c",
+        "pytest/unit/sequence_statistics/test_sequence_logo.py": "2e052dce927c398f64af380309611b2ff94069439594f8c1f9ff3001625a199b",
+        "pytest/unit/sequence_statistics/test_sequence_statistics.py": "3a4602e475c58b01b4be7af2ee75bc48a47a53cb4102d4714c24ef2d649ffbd0",
+        "pytest/unit/test_audit_reference_fixtures.py": "308c24024cfc31aa4e5c658e325f0d2ed9daf8a773831c51943a1ba4981d2bb3",
+        "pytest/unit/translation_functions/test_empty_configuration.py": "ba597be061bb21ecfdc772581f6164d2e5df70b7252041574ed75c9aa7b6fd08",
+        "pytest/unit/translation_functions/test_file_safety_audit.py": "d2ac0c1f212a363bf88345de57fe895aa6c5d9f008d3d88fdeaec1e2fca9ac0a",
+        "pytest/unit/translation_functions/test_ncbi_genetic_codes.py": "29a10eb2c127caa202ebaa270ece10ca4550e16a52a822377befcfd093e378ba",
+        "pytest/unit/translation_functions/test_rna_to_dna.py": "19fcbd56b2b835d1a1314a0db2c40196d614447c13c7affcb8ca26fc149dc4c9",
+        "pytest/unit/translation_functions/test_transcribe_dna_to_rna.py": "16617ebc25e6fe99fbbe7750753c86c40df4a3f8453276053c96b62da66841d9",
+        "pytest/unit/translation_functions/test_translate_batch.py": "fec8d761394982fac5393f992b6443fd424e746f9446a0036f147fb8e26e5eb1",
+        "pytest/unit/translation_functions/test_translate_dna_fast.py": "d505941d1565f21d910ac9d4861b95360283872f2a1538c0f30d8f711f253370",
+        "pytest/unit/translation_functions/test_translate_dna_to_protein.py": "73e8459c0c70056f9b0587f31b1cea27babf2a524fd7bddf84a3c86682659635",
+        "pytest/unit/translation_functions/test_translate_fasta_streaming.py": "483538e77822696def9359393be251c635404d2e9ab059d69bedb292fff7fecb",
+        "pytest/unit/translation_functions/test_translate_large_sequence.py": "09bc6b8854df9b418e2c53e7e65535dc35ff9db4020394ad9ce49d20de8f7a95",
+        "pytest/unit/translation_functions/test_translation_performance.py": "ee551b3dfd0a753c9b4cf42a03da86b6fa24a839c838783f393b6a26290e0581",
+        "pytest/unit/translation_functions/test_translation_regressions.py": "47ea6e58dc583c73007616888ae02d58e59149bdecf4cc2a03f76d72eac56e57",
+        "pytest.sh": "b3bdd4cb50c04791da3c8e064377eff9276e41ba87c566a765f2231446ccc2bd",
+        "README.md": "7630367f15e95baa12f24d229f6c4b5c90ef89ba5944859b86990f90f41f6f5a",
+        "requirements.txt": "71fb25cdf98bebd5ecdd14dbe8711f9f485a435b18dd7e548f9807ddfb9bef0c",
+        "requirements_dev.txt": "5ed4a7b6683909ff28c10d2173e1cf8b112046e6e8428617e2a4ab5e99a076dc",
+        "scripts/check_distribution.py": "60912427e17c029c5f46c9994bcf23508139a55bb81a8333d0c663b859bcdd4d"
+      }
+    },
+    "current": {
+      "tree_sha256": "8db3790bd22f5a469cfe9759c5c418f536cb262db973f811c27b180ae3ce0885",
+      "package_sha256": "f9c4912b050f7cb1d191dd0953b33f3a478131a36f1a49d9e41a7fbe910f61e9",
+      "files": {
+        ".agents/skills/documentation-maintenance/SKILL.md": "1c9b66d727685b0bd9cebbd3dfb9a2055b7688594404e1746f0197d379888c55",
+        ".agents/skills/major-check/SKILL.md": "b1669eee2c3b4cfa0a13f284fb2ab8898a53165f241f5d7db5093e8f6cf69bcf",
+        ".cursor/rules/repository.mdc": "1d91d0ef81f365c54e029f7e6d47cd953311730f3080c1120ed6bde98b9cab90",
+        ".github/copilot-instructions.md": "8bc33dbe0db3bf4fda134d4cf6d8ba6f6e29f9c7380d02a504d1929083e25921",
+        ".github/workflows/ci.yml": "4f36ae989b47452f331aa79a5464b4ec0f3552da0fd91e1d9dd14e6b032ac6a6",
+        ".github/workflows/publish-pypi.yml": "af238623c8bfb678f8411200bda3374530bb35307dd91af0503fea10a4dabee4",
+        ".gitignore": "2b0d7769cce3aa57f53e3d297d1512d7c317794c5a41d86a1fdebc0fe55e36dd",
+        "AGENTS.md": "293351a440686773035ec1786fba9bab7f9132fb0272d413b8edc0bf2c0e8b94",
+        "benchmarks/maintenance_alignment_results.json": "97d226e0247d4f16649d3c7db2d2c22e10d96b679031484bb4c5df6144da19e5",
+        "benchmarks/maintenance_paired_results.json": "515a424e58e6400a4b89c1562ecae128454995c3c5013aba5d2cd0ddaa1a18f1",
+        "benchmarks/maintenance_source_equivalence.json": "93f8b38a88d70625c47c8015f003a5b605a310736394870e932025ac142db251",
+        "benchmarks/major_audit.py": "1fc4cce5d3aedaa1f0f86123892764a381fc9e3a5f5ef3712a2e4676efe19f5f",
+        "benchmarks/major_audit_results.json": "12f68a5475d27aad3d395131ef158f8468f87e1b1d2455639a718884b7acd10b",
+        "benchmarks/paired_audit.py": "dab10a2d9752dd77ecdeb672bc938ac5bf81c2d357d55cc2401171dff38b43dd",
+        "benchmarks/paired_audit_results.json": "d3951a97b606b99ca97602f81fb701c5dec8c5f912a1b86485bba455f104cbcb",
+        "benchmarks/paired_candidate_results.json": "ac5007b7cab6c7aecbdc3e8f0698bd9ae1d276bdb64281335227413f25e4f134",
+        "benchmarks/paired_density_results.json": "9bd057c1120b8370d243684047baeaba94cf8e92fd2d5a8956094b7ff6ccdee4",
+        "bioutils_collection/__init__.py": "0b0ec3bc45c82871275439e1c90392197ce612450af316bda2c3c7c0d23a259b",
+        "bioutils_collection/_version.py": "428cd5f56b531a7cf343c7f26cb2a81bc483f5f409f5cb4734b79cb232a39924",
+        "bioutils_collection/alignment_functions/__init__.py": "032e82fcfe53a387cb9b8e75038e9ef9289a1217b3ecbd8eefa116a489a91123",
+        "bioutils_collection/alignment_functions/blast_score_ratio.py": "406603882dfd82cdcfda5380727dc20e8b2cb1d1211d92bbb16555b4a26288b9",
+        "bioutils_collection/alignment_functions/hamming_distance.py": "fa2b47a9a31a50979b257e074ab959feef47bce280a4a0f3fab6030d9cc7034e",
+        "bioutils_collection/alignment_functions/levenshtein_distance.py": "43d2b117b7f6d0538c0b7a20350806383a15091b31298d184a8e0639de8183f7",
+        "bioutils_collection/alignment_functions/needleman_wunsch.py": "b857841d635c16f1c5229c302261a0192c6eef3991056aa03e9ddbcca7d7e275",
+        "bioutils_collection/alignment_functions/pairwise_identity.py": "128f90b0bc2a2aaa7f2483132f3e0df7694c50b5d581f98773dcff746f2ca8b1",
+        "bioutils_collection/alignment_functions/smith_waterman.py": "1c1e8190c967c5ab9a5941ee77297a4b5c067fbef623c67c6213eeb0fbb99123",
+        "bioutils_collection/annotation_functions/__init__.py": "914a12b4bc968c635888e9a0ef7b885453ce99b064abce21073d8e9dbca6a5fa",
+        "bioutils_collection/annotation_functions/_annotation_fields.py": "4ee3e35b10b84f4fc7bb88f30b042c813e96eff5c788e99669fd6e0acd7abac8",
+        "bioutils_collection/annotation_functions/annotation_statistics.py": "653231465b816c78db2b1b15dc123773c60859c1168e9fb391e154353ac74b2b",
+        "bioutils_collection/annotation_functions/annotation_to_bed.py": "ed23af4546fb7c85753861bc0a72cbb28bc5f6e2fba3318aa6ecd7e40cd53717",
+        "bioutils_collection/annotation_functions/annotation_to_gff.py": "7b30b3a2c3f11626c4f1b378ae3a20e87b35bbc43c414a0d8880e74e6788a75a",
+        "bioutils_collection/annotation_functions/annotation_to_gtf.py": "b89bca3685895f8f3ee4d20a595705b6d603853417c23a81d3af7627e8f49507",
+        "bioutils_collection/annotation_functions/filter_annotations.py": "23f007dedb27d746fbd9b138dbdb1c31823214b450434d4a1c3dd19670feb7c4",
+        "bioutils_collection/annotation_functions/merge_annotations.py": "12532248bd5be8fbabdc06f1907aceadb227bfab3874264f770943654d9f8d01",
+        "bioutils_collection/annotation_functions/parse_bed.py": "6a12727ffff0b9db8334698d470b166901be2f5ff68f730267e810d03532b35a",
+        "bioutils_collection/annotation_functions/parse_gff.py": "a9a328f67e4f0c15c44c65745803a1fbae2886a776cdf2a50ffc166d12928736",
+        "bioutils_collection/annotation_functions/parse_gtf.py": "63d37eef47add6667a2002d4f4939e856f3c32b935ac2bb0e52454876b425d54",
+        "bioutils_collection/annotation_functions/parse_vcf.py": "9fc6ff2e0e767ef328d074af8843480c5191437e892d638d605fae3b7366baf0",
+        "bioutils_collection/annotation_functions/sort_annotations.py": "faaacf1431f9ee0249512115538a5203fdb20d4a71edd56603faba463476bf4d",
+        "bioutils_collection/clustering_functions/__init__.py": "1685fc48643d939aeb94463abd8d7d62e2585b8cda6c6dea017f26e6605170c1",
+        "bioutils_collection/clustering_functions/motif_clustering.py": "e6403953b744c0c5f9743d0793a0bfb9ab5f06c964197cce17f2f8a5decaf8f6",
+        "bioutils_collection/data_validation/__init__.py": "7b4e42d74881205a814129f60387451d85c625a4099694fa397ed733906327ff",
+        "bioutils_collection/data_validation/validate_dna_sequence.py": "e57865ff95ace9971ddee4871f4a2ba52e86358d4ba4e335e6c68965c321db99",
+        "bioutils_collection/data_validation/validate_protein_sequence.py": "7b0c10402b1508119e51b98d9a50116daf3e23231f7e88b606634d00602a531c",
+        "bioutils_collection/fasta_misc/__init__.py": "d05b82d8161313cb40acdc9250c405595487e55a1839a228f4d6c48d10b2f924",
+        "bioutils_collection/fasta_misc/degenerate_primer_generator.py": "45c1a7a74b607cde145bd1ce2b5f2a2b38bd80496ead84d39fcc6eea5efca7a4",
+        "bioutils_collection/fasta_misc/fasta_concat.py": "a1e79ff0671b58bea5ea938f09571d70d77affbccfa836c31b84fd052aff2cd3",
+        "bioutils_collection/fasta_misc/fasta_filter.py": "7c10622ca8708d41671b1b1bc883f9e912846fcd5736f43720d67d8ec5560975",
+        "bioutils_collection/fasta_misc/fasta_parser.py": "b8b813d6a4417f9a2a66681d2e7852d07fe50a46d64bf17f08d5e3cd641716b9",
+        "bioutils_collection/fasta_misc/fasta_rename_headers.py": "f9115cf805037ecb864b96deaba1af31d14b335fe780943381fa71ecde36b3f3",
+        "bioutils_collection/fasta_misc/fasta_reverse_complement.py": "db4885a5782161c65072f9e5235a1bedc3de9152a8b82a2191e2e62d95d7e1e9",
+        "bioutils_collection/fasta_misc/fasta_split.py": "b900e69c3aa1bc3525ac34cc1bcbe1bb092c93a843d8eea09bfa6afb94920f27",
+        "bioutils_collection/fasta_misc/fasta_stats.py": "ce37ddabde0afe882bfe225d1433ca79037fb1e829f493d2a9f89681c29dea46",
+        "bioutils_collection/fasta_misc/fasta_subsample.py": "b54977d8dd7da21345dc6fb09ab22b5f64387f03eba66471592c8776ad87a539",
+        "bioutils_collection/fasta_misc/fasta_to_dict.py": "e453814e36c99b784baf07b4172ff4906c5f12dc366b12ca8c0896b7b2be552d",
+        "bioutils_collection/fasta_misc/fastq_to_fasta.py": "3dccfc9da613e2815ea2b574bbdf601942659c24e2bd5664dfdef3e40729db34",
+        "bioutils_collection/fasta_misc/genbank_to_fasta.py": "b614c4adebe0d0a7f1f53d9e6c0a1e832e52864393cebdcfbde7bd62d2eac11f",
+        "bioutils_collection/fasta_misc/generate_primers.py": "8b284bbe30a815c1909810c64ef591e98b611b4508f87f18284d3be7d162923e",
+        "bioutils_collection/fasta_misc/validate_fasta.py": "e4f5da602659f762b6a5fdd911372b5f77b12b4ad97920e35cd21ea71bb2a35c",
+        "bioutils_collection/fasta_misc/write_fasta.py": "a455a16d6ec0cf1bf1632ba12e2d395528971939cb4312d7432e1664a0fd75a2",
+        "bioutils_collection/gc_functions/__init__.py": "26997936159a73fa7333ba69d18b467182be48aed7093f23b0dd76b693725443",
+        "bioutils_collection/gc_functions/gc_content.py": "16eab0a7531a3cdd68818b9bcdcbb5b0207cb183db651e48a583e38e01fde502",
+        "bioutils_collection/gc_functions/gc_content_windows.py": "09c360e870d2add05b7969ac814e60ca5cc61fcce73c64f3c21fd3b2728990e8",
+        "bioutils_collection/gc_functions/gc_skew.py": "ae5c59972d19f257909b23d006a842062988b86f9d7bd460b4d1c473c45c37a1",
+        "bioutils_collection/motif_functions/__init__.py": "70bf0fabfb58716560f11f8a047923a092a0b9be6446ae811530474d1ed7dfac",
+        "bioutils_collection/motif_functions/find_motif_positions.py": "24a0c1ca572d2dbce08b3b57ae867c41c5fcd350e252e05c56160b4581ccb9dd",
+        "bioutils_collection/motif_functions/generate_consensus_sequence.py": "6d323bdffff48df221de2702f2bf24fb063b66f4f2bc199cb3c246d28917f6e1",
+        "bioutils_collection/motif_functions/motif_search.py": "7d58d0590b252ccf8911378c24d6c5efd7bb03ba8a6379686a64062c05c143df",
+        "bioutils_collection/motif_functions/sequence_pattern_match.py": "9dc649d118dfb80a8b489aaee4e0176ef1e3c3c0834e4759f2901f9505bb2264",
+        "bioutils_collection/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bioutils_collection/repeat_functions/__init__.py": "63fb1d5730394f7dba11753204a2f7355f120649c1a895fd34d3c39af8300b19",
+        "bioutils_collection/repeat_functions/palindromic_sequence_finder.py": "63f13a2a4f043b1db73915229aa533d459fc66c4eac510a4afc3eab85ddb43bd",
+        "bioutils_collection/repeat_functions/tandem_repeat_finder.py": "55718e3b9cfc13e90ff50b6bf915a757a646113ef55ca541a837c3223f7234af",
+        "bioutils_collection/restriction_functions/__init__.py": "b61c44492c95cd79ed2a8ed933d98d6c1481ce287ad12a7a1bb4d3f7c6d09c72",
+        "bioutils_collection/restriction_functions/restriction_site_finder.py": "8ffb46cdf8b872264dbc9f656d9cd64509c0e1b6931605fadbff4039a2e54947",
+        "bioutils_collection/sequence_operations/__init__.py": "57c2c4e8d0759e59b082ddc2e3e79d6dba1afafcb5636abb4793e6196779518d",
+        "bioutils_collection/sequence_operations/_minimizer_window.py": "bc32b9a58ec1fbea6055b959ef7a5045ab1eb01b4fb26943fbd316f18ddb8406",
+        "bioutils_collection/sequence_operations/_syncmer_selection.py": "c0b9f2d513291066e0fc6ec7fe6cf3fc9f28559b2da6260404563c30f3e0ae97",
+        "bioutils_collection/sequence_operations/canonical_minimizer_sketch.py": "e384dd712a1e4d6c565f002c28d177bb9b1d9714877921754e5f4620378e5abc",
+        "bioutils_collection/sequence_operations/canonical_minimizers.py": "95a44828b14bde800a9ac622a4c084466d612c3f92e0d34736b3b5d3ae8e22c7",
+        "bioutils_collection/sequence_operations/find_cpg_islands.py": "122c57e4d26aa03f15d7cdf2376e17657fe5edc5be385e8a45f409873d065b16",
+        "bioutils_collection/sequence_operations/find_orfs.py": "0ca89f5029f479e7efffa0810cd40121911ab702aba3c2bc17ec8a7073b921b9",
+        "bioutils_collection/sequence_operations/generate_minimizers.py": "9280576a47ea91d7e455d5db4c431b875cdf9354dca9478d34df0e332a23ab3f",
+        "bioutils_collection/sequence_operations/generate_syncmers.py": "4c85506b1f5117c890f5e4fee4ea7b1ee73736a43018a72c6afd5d36d509a2af",
+        "bioutils_collection/sequence_operations/minimizer_density.py": "ebc1229c2dc84ff353e8cd7210f94b571bc06d634569974343c802bba8dcd948",
+        "bioutils_collection/sequence_operations/minimizer_positions.py": "331a102cbb466897f115f203b765a83f6532b6de68cf9d158397d6eb5826e9e0",
+        "bioutils_collection/sequence_operations/minimizer_sketch.py": "202ad72d5f45712098892bf2cbffafe9d4a06032c116d14a9593895e02021631",
+        "bioutils_collection/sequence_operations/minimizer_sketch_from_generator.py": "d6d2f0f01d1b8a18e2307fccf77ac8518ff3931df0670c2e9f689d1ac850cab8",
+        "bioutils_collection/sequence_operations/remove_low_complexity_regions.py": "ad4dde6d1e6615f59d84ccad7c95428d44b19a9a623f272cca7aa5deb4b4ab11",
+        "bioutils_collection/sequence_operations/reverse_complement.py": "7286e515868762395ff43c08a9e0de8204fd1b45218064aef79aeda23a13220a",
+        "bioutils_collection/sequence_operations/sequence_complement.py": "ea825dca151c8e36b8bff3a647e695563eb0a96b7775221554fdc592e3977839",
+        "bioutils_collection/sequence_operations/sequence_quality_filter.py": "29b78bd7174303c07f0ee61efd306270db45e6d196a31c462c376aad81c75725",
+        "bioutils_collection/sequence_operations/sequence_shuffling.py": "e1537e2ad9a06119aa40fc3136a868b32c9fe433e2b346a0c384e6c253a4d2e2",
+        "bioutils_collection/sequence_operations/sequence_to_kmers.py": "b04f50419baa298d58f8ae66ede6e6b06e94959372d751c0f1f196c651dbf8bc",
+        "bioutils_collection/sequence_operations/sequence_to_kmers_with_positions.py": "37bda4c6b36cc1de2aa5f1f1bdc45acfec0b2a6806202c5a663b10a7594ef986",
+        "bioutils_collection/sequence_operations/syncmer_density.py": "67f5c3fbe24d74838c7595cf756632888dfe6bb9bb4367319b1f01d8e4e72acf",
+        "bioutils_collection/sequence_operations/syncmer_positions.py": "182f782cb5a887b00dda11ee2db8bc24cf7b5c87b122f052ae1638f00ae9431c",
+        "bioutils_collection/sequence_operations/unique_minimizer_positions.py": "97801f7311bd2513edb80f9edb33ec7511617a67f46cde65880ff0e5c4ebb06c",
+        "bioutils_collection/sequence_statistics/__init__.py": "6f49d0367e50a086c288a07aa12118c73a0d8b3915252dc0a104f55209352489",
+        "bioutils_collection/sequence_statistics/amino_acid_composition.py": "144357a05e97dae651950b23db2e61f9480b0b481fbbc5f3d6913ef07bc4cdd8",
+        "bioutils_collection/sequence_statistics/calculate_isoelectric_point.py": "23e89f4f96ec57a971ca3dd2a39d1aa3b4f2119891ee8079c98d74d06604f3e1",
+        "bioutils_collection/sequence_statistics/calculate_molecular_weight.py": "e87ee6a571920c6e9fe8ee602bfcb34dabe19a85d1b5f04ae107affecec5ea18",
+        "bioutils_collection/sequence_statistics/codon_adaptation_index.py": "5b1c67540db760c8a96b8dc47eadf094fa79a641dd3a6b94d704d0e9d3731a17",
+        "bioutils_collection/sequence_statistics/codon_usage_frequency.py": "6556d2948440b08e07cda59b97f9d1488324a9df999ee0c7ff561a7567bf6225",
+        "bioutils_collection/sequence_statistics/effective_number_of_codons.py": "220b7c8fc0d9720ee69fec9f0a7353a6c92f423094be9cf5546e3722604e01f1",
+        "bioutils_collection/sequence_statistics/kmer_frequency.py": "508a131bf16ff9696d556468ad2ac35591b70783a968f8037ab1217ce6e94275",
+        "bioutils_collection/sequence_statistics/melting_temperature.py": "fe38f53222e9d20160c810b3c079a129fabcc3fefd52fc020ee85092ea1f6c23",
+        "bioutils_collection/sequence_statistics/relative_synonymous_codon_usage.py": "6e6669a53cc4bca79785661fae6c7fe207c81977452774530a7d2c5af2cbdf34",
+        "bioutils_collection/sequence_statistics/sequence_complexity.py": "062c7166a24b67d9326e837c339b47e5a9ddf62603246539768805b6d4942fd5",
+        "bioutils_collection/sequence_statistics/sequence_conservation.py": "4155781b895d3b5c1d7fb2223b05a9843e1d0f31be67a7deaf03b4f7fa0676a9",
+        "bioutils_collection/sequence_statistics/sequence_entropy.py": "e99ad4cbdb36648346753a27a6acd0870b93ef93f86453b1030411b5ea8edbf9",
+        "bioutils_collection/sequence_statistics/sequence_logo.py": "b14961bad99ce819ac8cf426b48b4aeb19243101a8a599e9c0e06b80ffd12fb1",
+        "bioutils_collection/sequence_statistics/sequence_statistics.py": "9cf9a491dbe2bf696039685eb0a2200fc5fded2804c68c5c3733bed05626fa0f",
+        "bioutils_collection/translation_functions/__init__.py": "8f31dba4fd00039ea7d64aedb8d24f1bab40d9e4468e8953f6859ba6c74d11e7",
+        "bioutils_collection/translation_functions/_atomic_output.py": "3aa27c797a0fa80b3a7e1aa78ba487fb20ad930206e33294962a35328dd4bb18",
+        "bioutils_collection/translation_functions/genetic_code_tables.py": "ca058b2f09fabcc2dec7c2ff0efc15a57fea44a8275e277b92927dc98a04696f",
+        "bioutils_collection/translation_functions/rna_to_dna.py": "6696cd1980152a3d8d10a2aa130911598790db95fe2e355a4d8b057dfea3b47b",
+        "bioutils_collection/translation_functions/transcribe_dna_to_rna.py": "f6bb383f6eecac0d6f143e34978ae39eb8c3c4dfa89b0005cfc6e8ea95bd72da",
+        "bioutils_collection/translation_functions/translate_batch.py": "4297a6da3488a79f9b1b3b68e9e1d36761c7b8067bd3cf76d42030fd4eb60060",
+        "bioutils_collection/translation_functions/translate_dna_fast.py": "2f9abe61244fcb4bf7aa3f45dd24acff7bc63dd348fe9d0fc5aff2279f3cabe0",
+        "bioutils_collection/translation_functions/translate_dna_to_protein.py": "4a6b4e30587cf98d838db1d4b081a5e524d7a45771710774518a3e09664c1cb2",
+        "bioutils_collection/translation_functions/translate_fasta.py": "44842c50d406b71c8c4425fa4ebb1e39693c415f4cb8bb5e194a21f85badb48e",
+        "bioutils_collection/translation_functions/translate_fasta_streaming.py": "bd13538bc4b2b4fbba49b1be09573e2a57ebff028cd75cdc39e74bbb744b3613",
+        "bioutils_collection/translation_functions/translate_large_sequence.py": "bbc5c47b6681ed074a871c84648c8fd434282edef9f94608d6dcd4bbf7b7d127",
+        "CHANGELOG.md": "a556fadaebf45ec55afa2fb4657a32e69093e793914f69b0bfc6999c8c02cb26",
+        "LICENSE": "671d046d66efc44081628c96c8c2c7a11fb211706c7cc4dd8a417372ec0787bc",
+        "MAJOR_CHECK_PLAN.md": "d0b27e4430fdf4997f95758078ac41d140ce41e32280ba50ffc8662c35afd836",
+        "pyproject.toml": "70f247ee1e030c9835fd820702d2e9049f366f2f74ad222b3b37d87d400cafdc",
+        "pytest/conftest.py": "b89f38ba0d6ea7adf8fa50f7b2df9fc54495ab583275815acd64a8fdc17be0fc",
+        "pytest/fixtures/ncbi_genetic_codes.json": "7f03849b9c4e68022bc90801ee077539f914a3899ea1238691baeeecc74fc935",
+        "pytest/unit/alignment_functions/test_blast_score_ratio.py": "24ddaf9617fa291638167f87691e0dad0dc81b50682eba11607665bca35752d5",
+        "pytest/unit/alignment_functions/test_hamming_distance.py": "f99138a8bae45f39ba5354425c039885a688c32548e887de53610a9c9e4c8781",
+        "pytest/unit/alignment_functions/test_levenshtein_distance.py": "f8848fe4ba00253cb22464df48970fd887df767df11590ef065801fc7225fd07",
+        "pytest/unit/alignment_functions/test_needleman_wunsch.py": "66c64eed8fe478b1d9a4bbf59b56311bd24f0ecebf8288ed0f54d1865efd64a3",
+        "pytest/unit/alignment_functions/test_pairwise_identity.py": "bc366c951713fba3fba365f4e0c63237cdb90858a4db8b824256de5528baca16",
+        "pytest/unit/alignment_functions/test_smith_waterman.py": "33e1f67d2f7686dd1d1b298b9e04f4b3916843e32079d526ad666125b299f89c",
+        "pytest/unit/annotation_functions/test_annotation_roundtrips.py": "66e5f91ace2d95c8115c1902dea434828a0004a54396f71fa721bead7b9a0646",
+        "pytest/unit/annotation_functions/test_annotation_statistics.py": "e09581c236e0ce8f6f81573ebd0027c0caae68f93befcd94254f19dc4f4d47c0",
+        "pytest/unit/annotation_functions/test_annotation_to_bed.py": "3d3ed25ec2f05d3dbf126ec4e062c808541d501af8b95c2cc234d374e3f7313d",
+        "pytest/unit/annotation_functions/test_annotation_to_gff.py": "a26b89aceb00ae39969986baa8f8d29217d8cf1dd3825a29442aef9a3ea1cc6f",
+        "pytest/unit/annotation_functions/test_annotation_to_gtf.py": "960a2c8be8f2de9723c186c9ba22ccc8b678f149240b1f0c3c44faf0928688aa",
+        "pytest/unit/annotation_functions/test_filter_annotations.py": "e35bd96d4a1dbf32da645de3f292c21583b903c4ced4927cc552bbdbf32e700b",
+        "pytest/unit/annotation_functions/test_merge_annotations.py": "a5daa3cd5afbbf09c409d2d03db332b502abe13face5c230d8e31bd42e4bea32",
+        "pytest/unit/annotation_functions/test_parse_bed.py": "d6c43878288cb69727a39a816c59db65d214c017ce03325ab04dbaca7f390b03",
+        "pytest/unit/annotation_functions/test_parse_gff.py": "ccff9e2cbb72245d54595004a4cd221fbc5faffc03038693ab1dfd4a208ad173",
+        "pytest/unit/annotation_functions/test_parse_gtf.py": "fcce4d9f2502aa9dbdd9173f6d3f16746c2ae6c1f449767f4255039262a0ec6d",
+        "pytest/unit/annotation_functions/test_parse_vcf.py": "6284343b8460749ae4d6431d6510287fcea0aaf146a21e28191fe05d3f872261",
+        "pytest/unit/annotation_functions/test_sort_annotations.py": "a87ff4a5d6023042df764e1c928d336d2fffa545af49a312a23ec37cd9299be2",
+        "pytest/unit/clustering_functions/test_motif_clustering.py": "cbbd3bfabc79b448417269a7da5c2fbcd2ce03ae20708803d6ce2763861297f0",
+        "pytest/unit/data_validation/test_validate_dna_sequence.py": "66d50e2504a51d3f8dee5799503050e2c878063762602e2c67b1f7252486b1a9",
+        "pytest/unit/data_validation/test_validate_protein_sequence.py": "9e5752bc32a7bf2b667fb3f99e13d35cc47cb4a0160fcba12a80f64e928f43b9",
+        "pytest/unit/fasta_misc/test_degenerate_primer_generator.py": "91f9387adbc6f3273f52d1b9d4557b6e4d522fad7a90fced4e799510d7fb54a8",
+        "pytest/unit/fasta_misc/test_fasta_concat.py": "62e4c69a9b3a4f22ab098622d38252b6438446d31fc7118e78182c88733ab856",
+        "pytest/unit/fasta_misc/test_fasta_filter.py": "a60cabd16f412a068518fb0f8bddae501de2c9c26c59c66af22d673a1fbb3ab4",
+        "pytest/unit/fasta_misc/test_fasta_parser.py": "c5b359872dd361d6aa71f70f174e19818a58c36743bf2885cb7aa290270dcb5c",
+        "pytest/unit/fasta_misc/test_fasta_rename_headers.py": "48fdfcc0e3d19fe7faa79760f79541bbb375c5fd917e9832c13ee6a958f6ae1b",
+        "pytest/unit/fasta_misc/test_fasta_reverse_complement.py": "87f8b2fce1cff3fa63fd3927c70b86a713cdebb3ef5ec07c521959e26af40a82",
+        "pytest/unit/fasta_misc/test_fasta_split.py": "ff881ad65726beec55f4f049814d94478b502f923e5269644004973d0d614c9b",
+        "pytest/unit/fasta_misc/test_fasta_stats.py": "25c22ce73dbe4c5c08fadc6b2706b1e9a797904370ea52c8927b20d56fb1e99f",
+        "pytest/unit/fasta_misc/test_fasta_subsample.py": "f0be5c101b1910fa9c249cba7b6fb63e37593b2adaddc28cbc123d20849e37d1",
+        "pytest/unit/fasta_misc/test_fasta_to_dict.py": "27d48a16299a17f5bbff89e7f2550d4d189cc1e3d626fcfceda981abda984b20",
+        "pytest/unit/fasta_misc/test_fastq_to_fasta.py": "efb1ac6d058015539ebf6a16f6081567f5e0807d97e02b795446d2d178536cad",
+        "pytest/unit/fasta_misc/test_format_audit.py": "091d4e34cb837fe6f41fdb946ee9dae85452539057317842b7643e9c5fbc0e5e",
+        "pytest/unit/fasta_misc/test_genbank_to_fasta.py": "24bead8b7b5cef03910ee86991add46d9f54ab8db76cb446382e054eaf95f700",
+        "pytest/unit/fasta_misc/test_generate_primers.py": "4f6e676771b3d8526a925ea3852b0c6c4a1776a19829377d4073f0000718275b",
+        "pytest/unit/fasta_misc/test_validate_fasta.py": "3127395ade0da842d32961eecf5569b0e292653875272cb87d0840496373b639",
+        "pytest/unit/fasta_misc/test_write_fasta.py": "226a3e86713636269733b8abcf45308192d36b2f3628ca5bfdd961a1e1e52d95",
+        "pytest/unit/gc_functions/test_gc_content.py": "9f86140b472064814c9fe9bfe243818d42c394aed43ad9cd52a24b81bded8b8d",
+        "pytest/unit/gc_functions/test_gc_content_windows.py": "71654827d207aeee972d5a08b73ed89587916e0bb5207a0bc40e3d2b823e4cd5",
+        "pytest/unit/gc_functions/test_gc_content_windows_regression.py": "17444392ad18df5765cb80d30483692683f8d5a3bf96798a23f3388f03b5cbcd",
+        "pytest/unit/gc_functions/test_gc_skew.py": "a4be84123782ee6d0e85a3e94554b55c4754d4684fbac4bbeb7d281c9c86d409",
+        "pytest/unit/motif_functions/test_find_motif_positions.py": "b7d0a385e9d7a5c84b6df2fb455c9a3d2e080d35038e7a3675c57dca78b6b3d5",
+        "pytest/unit/motif_functions/test_generate_consensus_sequence.py": "cb72d21486ad317774392fe3dac8a3490d888a3e5f4cae7e1503cf251243d16a",
+        "pytest/unit/motif_functions/test_motif_search.py": "05f7fbdf1a42b54ef40ee0c6797a0ed6453446176fb93147a58c60033eb5db22",
+        "pytest/unit/motif_functions/test_overlap_regressions.py": "eb2a6274bc5dbb998ab50a471a5accabb33ab4ab08d096ff1112573d1b6912e5",
+        "pytest/unit/motif_functions/test_sequence_pattern_match.py": "44e70b35779e2662f7005f477413bc496aa8f6ede44ed602a221c2015f24e469",
+        "pytest/unit/repeat_functions/test_palindromic_sequence_finder.py": "6b0cbdc415eca09f32d7242ecb7ff364ea79ac4e1261a7e0444bb6719040c132",
+        "pytest/unit/repeat_functions/test_tandem_repeat_finder.py": "a9a6bf711585850bcb5604abc31a2f010170bdf97924823afe64ddcef097c75f",
+        "pytest/unit/repository/test_distribution_verifier.py": "aa95e606f301ba5ef60b6b61c636b120d340fe87b7c160d3c5ee73975d3c8f6c",
+        "pytest/unit/restriction_functions/test_restriction_site_finder.py": "c5fbc900578a15222ffc46ab7ab6a8d928a12706792efc18b76893900e5b6f6d",
+        "pytest/unit/sequence_operations/test_canonical_minimizer_sketch.py": "5c75aa058893058a89715cb719c0298b3f97e14ba19d5f7549f83892845107a4",
+        "pytest/unit/sequence_operations/test_canonical_minimizers.py": "a47673b7e8ee8e1f45013413e484cba735f9d75442002bc158155a0ebc114048",
+        "pytest/unit/sequence_operations/test_find_cpg_islands.py": "e138999a02da947640ccacc85ba2bae4ac919035e9241dbd8e8223f63d990b4f",
+        "pytest/unit/sequence_operations/test_find_orfs.py": "7b728f2ce6b220d77620fcef2a0402c67e3de481213aaf22560a5aaf075c82ee",
+        "pytest/unit/sequence_operations/test_generate_minimizers.py": "c8c671e444c23d61adf4d228ee51dbdde35a0b56a326b1d7361f2d6a6f9e34eb",
+        "pytest/unit/sequence_operations/test_generate_syncmers.py": "af97b4fb8995b94c878fc3d89e47b005d57cd67ae6652094d09d51b7473c4bef",
+        "pytest/unit/sequence_operations/test_minimizer_audit.py": "0db0cf199bcdba0b63ece99bd5808a54802e8be4fb43f6bcfe70f500bfdb79b4",
+        "pytest/unit/sequence_operations/test_minimizer_density.py": "1933437b03370e929e2db84cee37eddb45af867e64b96e6435e2e16e0ccadff5",
+        "pytest/unit/sequence_operations/test_minimizer_positions.py": "3acb119ef2cc27afe44ce8610b0ca9d00dcbfb08f01aa9fb5b936290d1a86276",
+        "pytest/unit/sequence_operations/test_minimizer_sketch.py": "e2136285e148c665a1e0ffc6125f553a61e0f7bd3365ea588cdb346e8a215fa2",
+        "pytest/unit/sequence_operations/test_minimizer_sketch_from_generator.py": "0f73fb0d3a6af2a53c9586801645ad8f2b61ec037f33f5c2e3abd187c67927c0",
+        "pytest/unit/sequence_operations/test_remove_low_complexity_regions.py": "6d7f4119b11647dfd9db65d5125f735c5fe52c35c2cc330ad6e2e76c1503a65d",
+        "pytest/unit/sequence_operations/test_reverse_complement.py": "dfd43589b06a538c5d0128924ee4146ea3a7c85dcb8f4ff38ffb26c5eeffb635",
+        "pytest/unit/sequence_operations/test_sequence_complement.py": "3dcec7fdc9bc7db9f85117a5b8af2efba577518c741dda495e947af8c5833760",
+        "pytest/unit/sequence_operations/test_sequence_quality_filter.py": "c75d39f36fbf45036b891aa3ca1a1aa69036f5254a3d5f6cfabecfeb34bca7ce",
+        "pytest/unit/sequence_operations/test_sequence_shuffling.py": "e9cd6b18ee9062174d7e087995b0b2783a0dc45243595875aa982e3b62d3deae",
+        "pytest/unit/sequence_operations/test_sequence_to_kmers.py": "4fd4438c53bb9f9fa70fc5c49a4ccacd5106a3760e3bebef0811412a5a9c5cf5",
+        "pytest/unit/sequence_operations/test_sequence_to_kmers_with_positions.py": "448c6388a2511cdb194ab1a51e7227d685e9ef24c252e3b891dfbf31ff9f7a16",
+        "pytest/unit/sequence_operations/test_syncmer_density.py": "656c82951a74dc2665176f4bed8f3b95e6bea274e38e39ff282a5fab7f4d17f9",
+        "pytest/unit/sequence_operations/test_syncmer_positions.py": "6bea9f730148beac697ac93f17c55bcd99728cb971e2cfdd710c9b9491b800b5",
+        "pytest/unit/sequence_operations/test_syncmer_regressions.py": "ba7a57208dd68ab8ed7b33fe21520c14a7b24148a092bdefe396e0980f9142f2",
+        "pytest/unit/sequence_operations/test_unique_minimizer_positions.py": "8d5d026911ed33618f8fa55334d3e25846b39f44d6d081549384c9b12406caac",
+        "pytest/unit/sequence_statistics/test_amino_acid_composition.py": "ebdcce7417fdc373ac1805d453bfc379c8148a6f7a4d40cbd6916773cb41615e",
+        "pytest/unit/sequence_statistics/test_calculate_isoelectric_point.py": "051548bb16c9fcfa9320422e8d94c48b6a2189d0fa432269917971de51328787",
+        "pytest/unit/sequence_statistics/test_calculate_molecular_weight.py": "54c0ef9fb2a27206d0e4c9b8e2e0ee45302692bee73d0a3d529c09f5c3d6f5e3",
+        "pytest/unit/sequence_statistics/test_codon_adaptation_index.py": "ab06525539624c91850711d2c8f00b99638f08c8a8117990d07a2b2d7116f8ef",
+        "pytest/unit/sequence_statistics/test_codon_usage_frequency.py": "ced79710205afd7360f20295b5510a1ba1e37623ad8434b7efa28f217e165f2e",
+        "pytest/unit/sequence_statistics/test_effective_number_of_codons.py": "57c65bcd646fdb75b18958b753c57ffa79b0c889f03b77810f9f58afe14b1bc8",
+        "pytest/unit/sequence_statistics/test_kmer_frequency.py": "291f71501be2d49c28813e26cf5f5c081d39ddf20b88dc8fa3386ceb99ace2b3",
+        "pytest/unit/sequence_statistics/test_melting_temperature.py": "4068e11bb92c578c6ac9615af8cb0350fbe864a6e8adbf3260a85264f8aaf354",
+        "pytest/unit/sequence_statistics/test_relative_synonymous_codon_usage.py": "76731c4b3942d68d507dcbe18655b773c0163e5aed101bc8166a1536f33b50fe",
+        "pytest/unit/sequence_statistics/test_scientific_regressions.py": "da9baee83abd973b08162434e08a4af300299a1c88e9bbc251c89ac07a8135c8",
+        "pytest/unit/sequence_statistics/test_sequence_complexity.py": "93f17a40d5654d6aedf038a49860fc373c6d49cedc5f3460c15804b7c76471d3",
+        "pytest/unit/sequence_statistics/test_sequence_conservation.py": "6cab37438acd316c83dab76047165c1f48780276d61d8dbb223048cee22110f1",
+        "pytest/unit/sequence_statistics/test_sequence_entropy.py": "e6b10caa6dab20e302d9e549a49fd61d7e91a3b411c98ea1f40c52b63bd12c4c",
+        "pytest/unit/sequence_statistics/test_sequence_logo.py": "2e052dce927c398f64af380309611b2ff94069439594f8c1f9ff3001625a199b",
+        "pytest/unit/sequence_statistics/test_sequence_statistics.py": "3a4602e475c58b01b4be7af2ee75bc48a47a53cb4102d4714c24ef2d649ffbd0",
+        "pytest/unit/test_audit_reference_fixtures.py": "308c24024cfc31aa4e5c658e325f0d2ed9daf8a773831c51943a1ba4981d2bb3",
+        "pytest/unit/test_maintenance_regressions.py": "669a0e8b9ffebcdd0ae43a347ff76dc4eb5f71608048b2d463b20397a5cc0df3",
+        "pytest/unit/translation_functions/test_empty_configuration.py": "ba597be061bb21ecfdc772581f6164d2e5df70b7252041574ed75c9aa7b6fd08",
+        "pytest/unit/translation_functions/test_file_safety_audit.py": "d2ac0c1f212a363bf88345de57fe895aa6c5d9f008d3d88fdeaec1e2fca9ac0a",
+        "pytest/unit/translation_functions/test_ncbi_genetic_codes.py": "29a10eb2c127caa202ebaa270ece10ca4550e16a52a822377befcfd093e378ba",
+        "pytest/unit/translation_functions/test_rna_to_dna.py": "19fcbd56b2b835d1a1314a0db2c40196d614447c13c7affcb8ca26fc149dc4c9",
+        "pytest/unit/translation_functions/test_transcribe_dna_to_rna.py": "16617ebc25e6fe99fbbe7750753c86c40df4a3f8453276053c96b62da66841d9",
+        "pytest/unit/translation_functions/test_translate_batch.py": "fec8d761394982fac5393f992b6443fd424e746f9446a0036f147fb8e26e5eb1",
+        "pytest/unit/translation_functions/test_translate_dna_fast.py": "d505941d1565f21d910ac9d4861b95360283872f2a1538c0f30d8f711f253370",
+        "pytest/unit/translation_functions/test_translate_dna_to_protein.py": "73e8459c0c70056f9b0587f31b1cea27babf2a524fd7bddf84a3c86682659635",
+        "pytest/unit/translation_functions/test_translate_fasta_streaming.py": "483538e77822696def9359393be251c635404d2e9ab059d69bedb292fff7fecb",
+        "pytest/unit/translation_functions/test_translate_large_sequence.py": "09bc6b8854df9b418e2c53e7e65535dc35ff9db4020394ad9ce49d20de8f7a95",
+        "pytest/unit/translation_functions/test_translation_performance.py": "ee551b3dfd0a753c9b4cf42a03da86b6fa24a839c838783f393b6a26290e0581",
+        "pytest/unit/translation_functions/test_translation_regressions.py": "3745358233c51515ab141e31189dc99c7cd9bdfb7ca8352bdce3ac2ee5813d0c",
+        "pytest.sh": "b3bdd4cb50c04791da3c8e064377eff9276e41ba87c566a765f2231446ccc2bd",
+        "README.md": "3b78caefa3417cb5071ab9e461b790ba9aa9b3b00374fa334c7d47166ca384b7",
+        "requirements.txt": "71fb25cdf98bebd5ecdd14dbe8711f9f485a435b18dd7e548f9807ddfb9bef0c",
+        "requirements_dev.txt": "5ed4a7b6683909ff28c10d2173e1cf8b112046e6e8428617e2a4ab5e99a076dc",
+        "scripts/check_distribution.py": "60912427e17c029c5f46c9994bcf23508139a55bb81a8333d0c663b859bcdd4d"
+      }
+    }
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "dependencies": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "numba": "0.68.1"
+  },
+  "seed": 20261030,
+  "samples": 10,
+  "startup": [
+    {
+      "sample": 0,
+      "role": "baseline",
+      "import_seconds": 1.1391050999518484,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 0,
+      "role": "current",
+      "import_seconds": 1.0451960999052972,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 1,
+      "role": "current",
+      "import_seconds": 1.0533227000851184,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 1,
+      "role": "baseline",
+      "import_seconds": 0.9198974999599159,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 2,
+      "role": "baseline",
+      "import_seconds": 0.888566100038588,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 2,
+      "role": "current",
+      "import_seconds": 0.8993742999155074,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 3,
+      "role": "current",
+      "import_seconds": 1.0047963000833988,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 3,
+      "role": "baseline",
+      "import_seconds": 0.9543208000250161,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 4,
+      "role": "baseline",
+      "import_seconds": 0.9249170001130551,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 4,
+      "role": "current",
+      "import_seconds": 0.9694548000115901,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 5,
+      "role": "current",
+      "import_seconds": 0.9234337001107633,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 5,
+      "role": "baseline",
+      "import_seconds": 0.8731980000156909,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 6,
+      "role": "baseline",
+      "import_seconds": 1.0062216001097113,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 6,
+      "role": "current",
+      "import_seconds": 0.9978334000334144,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 7,
+      "role": "current",
+      "import_seconds": 1.0153574000578374,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 7,
+      "role": "baseline",
+      "import_seconds": 0.9576631998643279,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 8,
+      "role": "baseline",
+      "import_seconds": 0.8814572999253869,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 8,
+      "role": "current",
+      "import_seconds": 0.8646690999157727,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 9,
+      "role": "current",
+      "import_seconds": 0.9981123998295516,
+      "numba_first_call_seconds": null
+    },
+    {
+      "sample": 9,
+      "role": "baseline",
+      "import_seconds": 0.9920687000267208,
+      "numba_first_call_seconds": null
+    }
+  ],
+  "notes": "Complete Git-tracked/nonignored-untracked snapshots exclude only this generated report. Timing rounds counterbalance version and case order. Operation timings exclude imports, preparation, JIT warmup, output hashing and memory instrumentation. RSS is absolute process peak including imports, preparation and JIT; pre-operation peak is also recorded. Python allocations are separate un-timed calls. Non-equivalent old outputs have no speedup claim. Shared-host load is uncontrolled.",
+  "measurements": [
+    {
+      "id": "global_alignment/10000/random/implementation",
+      "name": "global_alignment",
+      "size": 10000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "646f2186d20c5783eba49a0bbbe7c04576a722c1492dfdfe559c4d764d37aeda",
+        "current": "646f2186d20c5783eba49a0bbbe7c04576a722c1492dfdfe559c4d764d37aeda"
+      },
+      "seconds": {
+        "baseline": [
+          0.0022186999364445605,
+          0.0023114333550135293,
+          0.002633800031617284,
+          0.0027488666431357465,
+          0.0022830333715925613,
+          0.002562133284906546,
+          0.002648233358437816,
+          0.00218983336041371,
+          0.00230983334283034,
+          0.0027354666187117496
+        ],
+        "current": [
+          0.0016756333255519469,
+          0.0017239000493039687,
+          0.00204453330176572,
+          0.0025361666145424047,
+          0.004085866656775276,
+          0.002335500049715241,
+          0.0017295666815092166,
+          0.002675800040985147,
+          0.0018445666258533795,
+          0.001857733353972435
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.0024367833199600377,
+        "current": 0.0019511333278690775
+      },
+      "runtime_ratio": 0.8007003790148544,
+      "python_memory_ratio": 0.9957121678640666,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67792896,
+          "peak_rss_bytes": 67969024,
+          "peak_python_bytes": 175380
+        },
+        "current": {
+          "rss_before_bytes": 67887104,
+          "peak_rss_bytes": 68116480,
+          "peak_python_bytes": 174628
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "global_alignment/10000/repetitive/implementation",
+      "name": "global_alignment",
+      "size": 10000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "9dcb979f25a790623d5008bfe0c392bc9fb04776ac47d7f2f5a656742a81b194",
+        "current": "9dcb979f25a790623d5008bfe0c392bc9fb04776ac47d7f2f5a656742a81b194"
+      },
+      "seconds": {
+        "baseline": [
+          0.002201066662867864,
+          0.0025516666937619448,
+          0.0021918666704247394,
+          0.0023610000498592854,
+          0.002388766733929515,
+          0.002485933325563868,
+          0.002596233350535234,
+          0.002077733321736256,
+          0.002411800048624476,
+          0.002542866704364618
+        ],
+        "current": [
+          0.0015255333079646032,
+          0.0017910666453341644,
+          0.0018538000682989757,
+          0.0019248333604385455,
+          0.0019992999732494354,
+          0.0033607666846364737,
+          0.0017560333168754976,
+          0.0019378000094244878,
+          0.0019569333332280316,
+          0.00313209998421371
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.0024002833912769956,
+        "current": 0.0019313166849315166
+      },
+      "runtime_ratio": 0.8046202760683271,
+      "python_memory_ratio": 0.9947179883402402,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67567616,
+          "peak_rss_bytes": 67739648,
+          "peak_python_bytes": 142370
+        },
+        "current": {
+          "rss_before_bytes": 67923968,
+          "peak_rss_bytes": 68104192,
+          "peak_python_bytes": 141618
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "global_alignment/100000/random/implementation",
+      "name": "global_alignment",
+      "size": 100000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "b4b38db7b52ca0a2c4d50ab9fac934a11277369c23904fc9f4f42772f84b6d16",
+        "current": "b4b38db7b52ca0a2c4d50ab9fac934a11277369c23904fc9f4f42772f84b6d16"
+      },
+      "seconds": {
+        "baseline": [
+          0.021437000017613173,
+          0.02192859980277717,
+          0.021664900006726384,
+          0.020675200037658215,
+          0.021286900155246258,
+          0.020935799926519394,
+          0.02386679989285767,
+          0.020732700126245618,
+          0.023365800036117435,
+          0.026249300222843885
+        ],
+        "current": [
+          0.016573600005358458,
+          0.016316100023686886,
+          0.014934200095012784,
+          0.025122399907559156,
+          0.015987299848347902,
+          0.017252600053325295,
+          0.016093699960038066,
+          0.03839279990643263,
+          0.016359100118279457,
+          0.017161899944767356
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.02155095001216978,
+        "current": 0.016466350061818957
+      },
+      "runtime_ratio": 0.7640660876908184,
+      "python_memory_ratio": 0.9702639346597766,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 69349376,
+          "peak_rss_bytes": 69734400,
+          "peak_python_bytes": 1698678
+        },
+        "current": {
+          "rss_before_bytes": 68251648,
+          "peak_rss_bytes": 69603328,
+          "peak_python_bytes": 1648166
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "global_alignment/100000/repetitive/implementation",
+      "name": "global_alignment",
+      "size": 100000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "e8705c44b7ee9c153863e3743af859bcc99fa400992e28479744d5fac7d17259",
+        "current": "e8705c44b7ee9c153863e3743af859bcc99fa400992e28479744d5fac7d17259"
+      },
+      "seconds": {
+        "baseline": [
+          0.021922099869698286,
+          0.02277799998410046,
+          0.01948009990155697,
+          0.02181380009278655,
+          0.020700700115412474,
+          0.020501699997112155,
+          0.020998500054702163,
+          0.023318400140851736,
+          0.019061899976804852,
+          0.031103800050914288
+        ],
+        "current": [
+          0.018935600062832236,
+          0.01473170006647706,
+          0.01457800017669797,
+          0.02109070005826652,
+          0.013764499919489026,
+          0.016405000118538737,
+          0.01565149985253811,
+          0.02473270008340478,
+          0.0162433001678437,
+          0.014953500125557184
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.021406150073744357,
+        "current": 0.015947400010190904
+      },
+      "runtime_ratio": 0.7449915073589592,
+      "python_memory_ratio": 0.9615398086431879,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67772416,
+          "peak_rss_bytes": 69079040,
+          "peak_python_bytes": 1313358
+        },
+        "current": {
+          "rss_before_bytes": 67784704,
+          "peak_rss_bytes": 69201920,
+          "peak_python_bytes": 1262846
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "local_alignment/10000/random/implementation",
+      "name": "local_alignment",
+      "size": 10000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "021dd83d4eb4fc1cb4df60bdb21151a739c51fcf44f95d54253307955890211e",
+        "current": "021dd83d4eb4fc1cb4df60bdb21151a739c51fcf44f95d54253307955890211e"
+      },
+      "seconds": {
+        "baseline": [
+          0.002538733339558045,
+          0.0032002333706865707,
+          0.0022878000357498727,
+          0.0023435333278030157,
+          0.002771999997397264,
+          0.0023955333357055983,
+          0.002213366717721025,
+          0.002994599984958768,
+          0.004977766657248139,
+          0.002815166643510262
+        ],
+        "current": [
+          0.004056133329868317,
+          0.0015517332746336858,
+          0.0016170666397859652,
+          0.0016574666369706392,
+          0.0015528000270326932,
+          0.00182666660596927,
+          0.001626433338969946,
+          0.0025675333260248103,
+          0.0017155999472985666,
+          0.0023826667262862125
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.0026553666684776545,
+        "current": 0.001686533292134603
+      },
+      "runtime_ratio": 0.6351413957837724,
+      "python_memory_ratio": 0.985140101964194,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67993600,
+          "peak_rss_bytes": 68030464,
+          "peak_python_bytes": 50606
+        },
+        "current": {
+          "rss_before_bytes": 68038656,
+          "peak_rss_bytes": 68079616,
+          "peak_python_bytes": 49854
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "local_alignment/10000/repetitive/implementation",
+      "name": "local_alignment",
+      "size": 10000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "d74bfa42464882527169d979a000627f4db88b9a7d9d884d0f43bf40841ea550",
+        "current": "d74bfa42464882527169d979a000627f4db88b9a7d9d884d0f43bf40841ea550"
+      },
+      "seconds": {
+        "baseline": [
+          0.0021397000333915153,
+          0.0021098666669179997,
+          0.0022200333575407663,
+          0.0023333000329633555,
+          0.0024907666568954787,
+          0.0021377333905547857,
+          0.002342966618016362,
+          0.0027671666660656533,
+          0.002350333301971356,
+          0.0031124334006259837
+        ],
+        "current": [
+          0.002354633373518785,
+          0.002183266682550311,
+          0.0015468999433020751,
+          0.002750733324016134,
+          0.0015526666926840942,
+          0.003084733383730054,
+          0.0015922000166028738,
+          0.00322200000906984,
+          0.0017085999716073275,
+          0.0017832666635513306
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.002338133325489859,
+        "current": 0.001983266673050821
+      },
+      "runtime_ratio": 0.8482265110503523,
+      "python_memory_ratio": 0.9850479182407444,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67653632,
+          "peak_rss_bytes": 67686400,
+          "peak_python_bytes": 50294
+        },
+        "current": {
+          "rss_before_bytes": 67608576,
+          "peak_rss_bytes": 67649536,
+          "peak_python_bytes": 49542
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "local_alignment/100000/random/implementation",
+      "name": "local_alignment",
+      "size": 100000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "aaa9643ac14328703c575ace56ac8df4af1a57360bf03a23ae4d3ec58eabc115",
+        "current": "aaa9643ac14328703c575ace56ac8df4af1a57360bf03a23ae4d3ec58eabc115"
+      },
+      "seconds": {
+        "baseline": [
+          0.021867699921131134,
+          0.022414499893784523,
+          0.02431129990145564,
+          0.02129489998333156,
+          0.023106099804863334,
+          0.021689799847081304,
+          0.02073800005018711,
+          0.029520400101318955,
+          0.022740800166502595,
+          0.021588200004771352
+        ],
+        "current": [
+          0.015960199991241097,
+          0.021362100029364228,
+          0.015068099834024906,
+          0.024008600041270256,
+          0.028496099868789315,
+          0.01427379995584488,
+          0.015538000036031008,
+          0.015242099994793534,
+          0.015469999983906746,
+          0.023211600026115775
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.02214109990745783,
+        "current": 0.015749100013636053
+      },
+      "runtime_ratio": 0.7113061265909041,
+      "python_memory_ratio": 0.8851561505302025,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 69152768,
+          "peak_rss_bytes": 69152768,
+          "peak_python_bytes": 439832
+        },
+        "current": {
+          "rss_before_bytes": 69148672,
+          "peak_rss_bytes": 69148672,
+          "peak_python_bytes": 389320
+        }
+      },
+      "verdict": "meets balanced gate",
+      "optimization_candidate": true
+    },
+    {
+      "id": "local_alignment/100000/repetitive/implementation",
+      "name": "local_alignment",
+      "size": 100000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "9def8d8e4f1c7667d74fce6f6542cd728776c6d06c098c670b188e00b43b5f13",
+        "current": "9def8d8e4f1c7667d74fce6f6542cd728776c6d06c098c670b188e00b43b5f13"
+      },
+      "seconds": {
+        "baseline": [
+          0.026240000035613775,
+          0.036153099965304136,
+          0.020605399971827865,
+          0.02206109999679029,
+          0.02091389987617731,
+          0.021421900019049644,
+          0.028072800021618605,
+          0.02821379993110895,
+          0.019826099975034595,
+          0.022131499834358692
+        ],
+        "current": [
+          0.06772579997777939,
+          0.02333779982291162,
+          0.018797699827700853,
+          0.017572700046002865,
+          0.025614599930122495,
+          0.024591700173914433,
+          0.014582799980416894,
+          0.023607100127264857,
+          0.017026999965310097,
+          0.020227900007739663
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.02209629991557449,
+        "current": 0.02178284991532564
+      },
+      "runtime_ratio": 0.9858143670457733,
+      "python_memory_ratio": 0.9091814608781954,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67735552,
+          "peak_rss_bytes": 68317184,
+          "peak_python_bytes": 556186
+        },
+        "current": {
+          "rss_before_bytes": 67567616,
+          "peak_rss_bytes": 67907584,
+          "peak_python_bytes": 505674
+        }
+      },
+      "verdict": "neutral",
+      "optimization_candidate": true
+    },
+    {
+      "id": "edit_distance/10000/random/implementation",
+      "name": "edit_distance",
+      "size": 10000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "39fa9ec190eee7b6f4dff1100d6343e10918d044c75eac8f9e9a2596173f80c9",
+        "current": "39fa9ec190eee7b6f4dff1100d6343e10918d044c75eac8f9e9a2596173f80c9"
+      },
+      "seconds": {
+        "baseline": [
+          0.0020059666906793914,
+          0.005129066683972876,
+          0.0016994332739462454,
+          0.00167216663248837,
+          0.001907533345123132,
+          0.0017441333426783483,
+          0.0017950666757921379,
+          0.0019539999775588512,
+          0.001514933304861188,
+          0.002120266668498516
+        ],
+        "current": [
+          0.005602200049906969,
+          0.001900633331388235,
+          0.0023562333080917597,
+          0.0017966666103651126,
+          0.0016660000352809827,
+          0.0027923999975124993,
+          0.0015730000256250303,
+          0.0026950666991372905,
+          0.0015384333673864603,
+          0.0015911666365961234
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.001851300010457635,
+        "current": 0.0018486499708766737
+      },
+      "runtime_ratio": 0.9985685520628792,
+      "python_memory_ratio": 1.0,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67801088,
+          "peak_rss_bytes": 67801088,
+          "peak_python_bytes": 1168
+        },
+        "current": {
+          "rss_before_bytes": 67850240,
+          "peak_rss_bytes": 67850240,
+          "peak_python_bytes": 1168
+        }
+      },
+      "verdict": "neutral",
+      "optimization_candidate": false
+    },
+    {
+      "id": "edit_distance/10000/repetitive/implementation",
+      "name": "edit_distance",
+      "size": 10000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "1a6562590ef19d1045d06c4055742d38288e9e6dcd71ccde5cee80f1d5a774eb",
+        "current": "1a6562590ef19d1045d06c4055742d38288e9e6dcd71ccde5cee80f1d5a774eb"
+      },
+      "seconds": {
+        "baseline": [
+          0.0017040999761472146,
+          0.005530466636021932,
+          0.001651900044331948,
+          0.00176623339454333,
+          0.0015637332883973916,
+          0.0025752000510692596,
+          0.0016042999923229218,
+          0.00178940004358689,
+          0.0016439332781980436,
+          0.0015787000302225351
+        ],
+        "current": [
+          0.002388599949578444,
+          0.0020490000024437904,
+          0.0029340666563560567,
+          0.0024576333040992417,
+          0.001697133295238018,
+          0.0030898666009306908,
+          0.0015788666593531768,
+          0.005434299974391858,
+          0.0017359333578497171,
+          0.0028215666146328053
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.0016780000102395813,
+        "current": 0.002423116626838843
+      },
+      "runtime_ratio": 1.4440504243458707,
+      "python_memory_ratio": 1.0,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67633152,
+          "peak_rss_bytes": 67633152,
+          "peak_python_bytes": 1168
+        },
+        "current": {
+          "rss_before_bytes": 67624960,
+          "peak_rss_bytes": 67624960,
+          "peak_python_bytes": 1168
+        }
+      },
+      "verdict": "runtime regression",
+      "optimization_candidate": false
+    },
+    {
+      "id": "edit_distance/100000/random/implementation",
+      "name": "edit_distance",
+      "size": 100000,
+      "pattern": "random",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "cba28b89eb859497f544956d64cf2ecf29b76fe2ef7175b33ea59e64293a4461",
+        "current": "cba28b89eb859497f544956d64cf2ecf29b76fe2ef7175b33ea59e64293a4461"
+      },
+      "seconds": {
+        "baseline": [
+          0.018069300102069974,
+          0.029909499920904636,
+          0.015048200031742454,
+          0.015366599895060062,
+          0.014491799985989928,
+          0.0150564000941813,
+          0.015945899998769164,
+          0.01559349987655878,
+          0.01605320000089705,
+          0.014150999952107668
+        ],
+        "current": [
+          0.016695600003004074,
+          0.015195599989965558,
+          0.014767899876460433,
+          0.01414779992774129,
+          0.02305949991568923,
+          0.015236599836498499,
+          0.014334799954667687,
+          0.015488300006836653,
+          0.015765799907967448,
+          0.019514800049364567
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.015480049885809422,
+        "current": 0.015362449921667576
+      },
+      "runtime_ratio": 0.9924031275732742,
+      "python_memory_ratio": 1.0,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 68775936,
+          "peak_rss_bytes": 68775936,
+          "peak_python_bytes": 5644
+        },
+        "current": {
+          "rss_before_bytes": 69197824,
+          "peak_rss_bytes": 69197824,
+          "peak_python_bytes": 5644
+        }
+      },
+      "verdict": "neutral",
+      "optimization_candidate": false
+    },
+    {
+      "id": "edit_distance/100000/repetitive/implementation",
+      "name": "edit_distance",
+      "size": 100000,
+      "pattern": "repetitive",
+      "comparison": "implementation",
+      "equivalent": true,
+      "digests": {
+        "baseline": "9ae2bdd7beedc2e766c6b76585530e16925115707dc7a06ab5ee4aa2776b2c7b",
+        "current": "9ae2bdd7beedc2e766c6b76585530e16925115707dc7a06ab5ee4aa2776b2c7b"
+      },
+      "seconds": {
+        "baseline": [
+          0.014383799862116575,
+          0.023751799948513508,
+          0.014978900086134672,
+          0.022015499882400036,
+          0.038333999924361706,
+          0.013785399962216616,
+          0.016448500100523233,
+          0.014594900188967586,
+          0.014707199996337295,
+          0.014832599787041545
+        ],
+        "current": [
+          0.015510000055655837,
+          0.019241100177168846,
+          0.014608500059694052,
+          0.01618800009600818,
+          0.017266799928620458,
+          0.017064200015738606,
+          0.016247200081124902,
+          0.019812599988654256,
+          0.015708999941125512,
+          0.01713449996896088
+        ]
+      },
+      "median_seconds": {
+        "baseline": 0.014905749936588109,
+        "current": 0.016655700048431754
+      },
+      "runtime_ratio": 1.1174010109714885,
+      "python_memory_ratio": 1.0,
+      "memory": {
+        "baseline": {
+          "rss_before_bytes": 67670016,
+          "peak_rss_bytes": 67670016,
+          "peak_python_bytes": 5644
+        },
+        "current": {
+          "rss_before_bytes": 67641344,
+          "peak_rss_bytes": 67809280,
+          "peak_python_bytes": 5644
+        }
+      },
+      "verdict": "runtime regression",
+      "optimization_candidate": false
+    }
+  ]
+}

@@ -4,7 +4,7 @@ from collections.abc import Sequence
 
 
 def fasta_concat(fasta_strs: Sequence[str]) -> str:
-    """
+    r"""
     Concatenate multiple FASTA strings into one.
 
     Parameters
