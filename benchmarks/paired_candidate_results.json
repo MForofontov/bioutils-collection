@@ -219,7 +219,6 @@
       "files": {
         ".agents/skills/documentation-maintenance/SKILL.md": "3d6817cf9f0baafe01e4b68b8392632b4b53d08444e2a3d8d012601730ca05c2",
         ".agents/skills/major-check/SKILL.md": "90d8c98b06d7d3fe7ae1bcad88abf9b85aeeed44c087181181c22281483a5e66",
-        ".cursor/rules/repository.mdc": "48be153df98d6d8d7ef8aa3da6cf5a892f6863cf4a3d35a1b0165d47d035ddb9",
         ".github/copilot-instructions.md": "8bc33dbe0db3bf4fda134d4cf6d8ba6f6e29f9c7380d02a504d1929083e25921",
         ".github/workflows/ci.yml": "a4c28c7566127a62ab49761dc33826215692dc4f256af5fedce547191364d052",
         ".github/workflows/publish-pypi.yml": "af238623c8bfb678f8411200bda3374530bb35307dd91af0503fea10a4dabee4",

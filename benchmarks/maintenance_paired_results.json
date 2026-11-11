@@ -7,7 +7,6 @@
       "files": {
         ".agents/skills/documentation-maintenance/SKILL.md": "1c9b66d727685b0bd9cebbd3dfb9a2055b7688594404e1746f0197d379888c55",
         ".agents/skills/major-check/SKILL.md": "b1669eee2c3b4cfa0a13f284fb2ab8898a53165f241f5d7db5093e8f6cf69bcf",
-        ".cursor/rules/repository.mdc": "1d91d0ef81f365c54e029f7e6d47cd953311730f3080c1120ed6bde98b9cab90",
         ".github/copilot-instructions.md": "8bc33dbe0db3bf4fda134d4cf6d8ba6f6e29f9c7380d02a504d1929083e25921",
         ".github/workflows/ci.yml": "4f36ae989b47452f331aa79a5464b4ec0f3552da0fd91e1d9dd14e6b032ac6a6",
         ".github/workflows/publish-pypi.yml": "af238623c8bfb678f8411200bda3374530bb35307dd91af0503fea10a4dabee4",
@@ -245,7 +244,6 @@
       "files": {
         ".agents/skills/documentation-maintenance/SKILL.md": "1c9b66d727685b0bd9cebbd3dfb9a2055b7688594404e1746f0197d379888c55",
         ".agents/skills/major-check/SKILL.md": "b1669eee2c3b4cfa0a13f284fb2ab8898a53165f241f5d7db5093e8f6cf69bcf",
-        ".cursor/rules/repository.mdc": "1d91d0ef81f365c54e029f7e6d47cd953311730f3080c1120ed6bde98b9cab90",
         ".github/copilot-instructions.md": "8bc33dbe0db3bf4fda134d4cf6d8ba6f6e29f9c7380d02a504d1929083e25921",
         ".github/workflows/ci.yml": "4f36ae989b47452f331aa79a5464b4ec0f3552da0fd91e1d9dd14e6b032ac6a6",
         ".github/workflows/publish-pypi.yml": "af238623c8bfb678f8411200bda3374530bb35307dd91af0503fea10a4dabee4",
