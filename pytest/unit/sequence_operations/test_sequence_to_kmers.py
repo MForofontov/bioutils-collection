@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_operations.sequence_to_kmers import (
+    sequence_to_kmers,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_operations.sequence_to_kmers import (
-        sequence_to_kmers,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    sequence_to_kmers = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_operations]
 
 
 def test_sequence_to_kmers_basic() -> None:
@@ -68,9 +57,9 @@ def test_sequence_to_kmers_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input types.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        sequence_to_kmers(12345, 3)
+        sequence_to_kmers(12345, 3)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="k must be int"):
-        sequence_to_kmers("ATGC", 3.5)
+        sequence_to_kmers("ATGC", 3.5)  # type: ignore[arg-type]
 
 
 def test_sequence_to_kmers_invalid_value_error() -> None:

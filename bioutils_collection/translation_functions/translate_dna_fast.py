@@ -6,9 +6,8 @@ for sequences larger than 30K bases.
 """
 
 from numba import njit
-from .genetic_code_tables import get_codon_table
 
-NUMBA_AVAILABLE = True
+from .genetic_code_tables import get_codon_table
 
 
 def translate_dna_fast(
@@ -17,47 +16,48 @@ def translate_dna_fast(
 ) -> str:
     """
     Translate DNA sequence to protein using Numba JIT compilation (fastest method).
-    
+
     This implementation uses Numba to compile the translation loop to
     machine code for maximum performance (~2.7x faster than default).
     Falls back to regular Python if Numba is not installed.
-    
+
     Note: First call will be slow due to JIT compilation (~50ms overhead),
     but subsequent calls will be very fast. Recommended for large sequences
     or repeated translations.
-    
+
     Parameters
     ----------
     dna_sequence : str
         DNA sequence to translate (must be multiple of 3)
     table : str, int, or dict[str, str], optional
         Genetic code table to use (default: "standard")
-        
+
     Returns
     -------
     str
         Translated protein sequence
-        
+
     Examples
     --------
     >>> translate_dna_fast('ATGGCC')
     'MA'
-    
+
     >>> translate_dna_fast('ATGGCC', table=2)  # Vertebrate mitochondrial
     'MA'
-    
+
     Raises
     ------
     TypeError
         If dna_sequence is not a string
     ValueError
         If dna_sequence length is not a multiple of 3
+        If dna_sequence contains invalid DNA bases
         If table name/number is unrecognized
-    
+
     Notes
     -----
     Requires: pip install numba
-    
+
     Performance characteristics:
     - Tiny sequences (<100 bases): Use translate_dna_to_protein() instead
     - Medium sequences (100-30K bases): ~1.8x faster (after JIT warmup)
@@ -66,91 +66,97 @@ def translate_dna_fast(
     # Input validation
     if not isinstance(dna_sequence, str):
         raise TypeError(f"dna_sequence must be str, got {type(dna_sequence).__name__}")
-    
+
     if not dna_sequence:
         return ""
-    
+
     if len(dna_sequence) % 3 != 0:
         raise ValueError("Sequence length must be a multiple of 3")
-    
+
     # Get the codon table
     codon_table = get_codon_table(table)
-    
+
     seq_upper = dna_sequence.upper()
-    
+
+    invalid_bases = set(seq_upper) - {"A", "T", "C", "G"}
+    if invalid_bases:
+        raise ValueError(
+            f"Invalid DNA bases found: {', '.join(sorted(invalid_bases))}"
+        )
+
     # Convert codon table to list-based lookup (simpler for Numba)
     # Each codon becomes a number: first_base*16 + second_base*4 + third_base
-    codon_to_aa = ['X'] * 64  # Initialize with 'X' for invalid codons
-    
-    base_map = {'A': 0, 'C': 1, 'G': 2, 'T': 3}
-    
+    codon_to_aa = ["X"] * 64  # Initialize with 'X' for invalid codons
+
+    base_map = {"A": 0, "C": 1, "G": 2, "T": 3}
+
     for codon, aa in codon_table.items():
         if len(codon) == 3 and all(b in base_map for b in codon):
             idx = base_map[codon[0]] * 16 + base_map[codon[1]] * 4 + base_map[codon[2]]
             codon_to_aa[idx] = aa
-    
+
     # Use the JIT-compiled function
-    return _translate_numba_core(seq_upper, codon_to_aa)
+    return _translate_numba_core(seq_upper, codon_to_aa)  # type: ignore[no-any-return]
 
 
-@njit
-def _translate_numba_core(sequence: str, codon_to_aa: list) -> str:
+@njit  # type: ignore[misc]
+def _translate_numba_core(sequence: str, codon_to_aa: list[str]) -> str:
     """
     JIT-compiled core translation function.
-    
+
     This function is compiled to machine code by Numba for maximum performance.
     """
     result = []
-    
+
     # Pre-compute base values for speed
     for i in range(0, len(sequence) - 2, 3):
         base1 = sequence[i]
-        base2 = sequence[i+1]
-        base3 = sequence[i+2]
-        
+        base2 = sequence[i + 1]
+        base3 = sequence[i + 2]
+
         # Manual mapping (Numba doesn't support dict in nopython mode well)
         # A=0, C=1, G=2, T=3
         idx = 0
-        
-        if base1 == 'A':
+
+        if base1 == "A":
             idx = 0
-        elif base1 == 'C':
+        elif base1 == "C":
             idx = 16
-        elif base1 == 'G':
+        elif base1 == "G":
             idx = 32
-        elif base1 == 'T':
+        elif base1 == "T":
             idx = 48
         else:
-            result.append('X')
+            result.append("X")
             continue
-            
-        if base2 == 'A':
+
+        if base2 == "A":
             idx += 0
-        elif base2 == 'C':
+        elif base2 == "C":
             idx += 4
-        elif base2 == 'G':
+        elif base2 == "G":
             idx += 8
-        elif base2 == 'T':
+        elif base2 == "T":
             idx += 12
         else:
-            result.append('X')
+            result.append("X")
             continue
-            
-        if base3 == 'A':
+
+        if base3 == "A":
             idx += 0
-        elif base3 == 'C':
+        elif base3 == "C":
             idx += 1
-        elif base3 == 'G':
+        elif base3 == "G":
             idx += 2
-        elif base3 == 'T':
+        elif base3 == "T":
             idx += 3
         else:
-            result.append('X')
+            result.append("X")
             continue
-        
+
         result.append(codon_to_aa[idx])
-    
-    return ''.join(result)
+
+    return "".join(result)
 
 
-__all__ = ["translate_dna_fast", "NUMBA_AVAILABLE"]
+__all__ = ["translate_dna_fast"]

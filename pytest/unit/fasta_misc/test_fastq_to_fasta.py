@@ -1,19 +1,8 @@
 import pytest
+import numpy
+from bioutils_collection.fasta_misc.fastq_to_fasta import fastq_to_fasta
 
-try:
-    import numpy
-    from bioutils_collection.fasta_misc.fastq_to_fasta import fastq_to_fasta
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    fastq_to_fasta = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.fasta]
 
 
 def test_fastq_to_fasta_single_sequence() -> None:
@@ -80,13 +69,13 @@ def test_fastq_to_fasta_length_mismatch() -> None:
 def test_fastq_to_fasta_type_error() -> None:
     """Test case 10: Test TypeError for non-string input."""
     with pytest.raises(TypeError, match="fastq_str must be a string"):
-        fastq_to_fasta(123)
+        fastq_to_fasta(123)  # type: ignore[arg-type]
 
 
 def test_fastq_to_fasta_quality_type_error() -> None:
     """Test case 11: Test TypeError for non-integer min_quality."""
     with pytest.raises(TypeError, match="min_quality must be an integer or None"):
-        fastq_to_fasta("@SEQ1\nATGC\n+\nIIII\n", min_quality="20")
+        fastq_to_fasta("@SEQ1\nATGC\n+\nIIII\n", min_quality="20")  # type: ignore[arg-type]
 
 
 def test_fastq_to_fasta_malformed_plus_line() -> None:

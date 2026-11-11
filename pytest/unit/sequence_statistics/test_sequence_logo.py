@@ -1,19 +1,11 @@
-try:
-    import numpy as np
-    from bioutils_collection.sequence_statistics.sequence_logo import (
-        sequence_logo_matrix,
-    )
-
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    np = None  # type: ignore
-    sequence_logo_matrix = None  # type: ignore
+import numpy as np
+from bioutils_collection.sequence_statistics.sequence_logo import (
+    sequence_logo_matrix,
+)
 
 import pytest
 
-pytestmark = pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed")
-pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.bioinformatics]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_statistics]
 
 
 def test_sequence_logo_matrix_basic() -> None:

@@ -30,11 +30,11 @@ def find_orfs(seq: str) -> Iterator[tuple[int, int, str]]:
     --------
     >>> list(find_orfs('ATGAAATAGATGTAA'))
     [(0, 9, 'ATGAAATAG'), (9, 15, 'ATGTAA')]
-    
+
     >>> # ORF without stop codon (reaches end)
     >>> list(find_orfs('ATGGCCAAA'))
     [(0, 9, 'ATGGCCAAA')]
-    
+
     Notes
     -----
     - Start codon: ATG
@@ -48,33 +48,38 @@ def find_orfs(seq: str) -> Iterator[tuple[int, int, str]]:
     seq = seq.upper()
     if not all(base in "ATCG" for base in seq):
         raise ValueError("Sequence contains invalid DNA bases")
-    
+
     start_codon = "ATG"
     stop_codons = {"TAA", "TAG", "TGA"}
     i = 0
-    
-    while i <= len(seq) - 3:  # Fixed: was len(seq) - 2
+
+    def _codon_aligned_end(start: int, end: int) -> int:
+        """Return end position truncated to the last complete codon boundary."""
+        return start + ((end - start) // 3) * 3
+
+    while i <= len(seq) - 3:
         if seq[i : i + 3] == start_codon:
-            # Search for stop codon
             found_stop = False
-            for j in range(i + 3, len(seq), 3):  # Fixed: removed - 2 to scan to end
+            for j in range(i + 3, len(seq), 3):
                 if j + 3 > len(seq):
-                    # Incomplete codon at end - yield ORF without stop
-                    yield (i, len(seq), seq[i:])
+                    end = _codon_aligned_end(i, len(seq))
+                    if end > i:
+                        yield (i, end, seq[i:end])
                     i = len(seq)
                     found_stop = True
                     break
-                    
+
                 codon = seq[j : j + 3]
                 if codon in stop_codons:
                     yield (i, j + 3, seq[i : j + 3])
                     i = j + 3
                     found_stop = True
                     break
-            
+
             if not found_stop:
-                # ORF reaches end without stop codon
-                yield (i, len(seq), seq[i:])
+                end = _codon_aligned_end(i, len(seq))
+                if end > i:
+                    yield (i, end, seq[i:end])
                 i = len(seq)
         else:
             i += 1

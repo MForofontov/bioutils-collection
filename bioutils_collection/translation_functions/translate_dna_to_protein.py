@@ -24,7 +24,7 @@ def translate_dna_to_protein(
         DNA sequence (A, T, C, G). Case-insensitive.
     table : str, int, or dict[str, str], optional
         Genetic code table. Options:
-        
+
         **By NCBI Number:**
         - 1: Standard (default)
         - 2: Vertebrate Mitochondrial
@@ -52,10 +52,10 @@ def translate_dna_to_protein(
         - 30: Peritrich Nuclear
         - 31: Blastocrithidia Nuclear
         - 33: Cephalodiscidae Mitochondrial UAA-Tyr
-        
+
         **By Name:**
         - "standard", "vertebrate_mitochondrial", "bacterial", "gracilibacteria", etc.
-        
+
         **Custom:**
         - dict mapping 64 codons to amino acids (use '*' for stop)
 
@@ -78,25 +78,25 @@ def translate_dna_to_protein(
     --------
     >>> translate_dna_to_protein('ATGGCC')
     'MA'
-    
+
     >>> # Mitochondrial code: AGA is stop codon
     >>> translate_dna_to_protein('ATGAGA', table=2)
     'M*'
-    
+
     >>> translate_dna_to_protein('ATGAGA', table='vertebrate_mitochondrial')
     'M*'
-    
+
     >>> # Bacterial code (same as standard)
     >>> translate_dna_to_protein('ATGGCC', table='bacterial')
     'MA'
-    
+
     >>> # Custom codon table
     >>> from bioutils_collection.translation_functions.genetic_code_tables import STANDARD_CODE
     >>> custom = STANDARD_CODE.copy()
     >>> custom['ATG'] = 'X'
     >>> translate_dna_to_protein('ATGGCC', table=custom)
     'XA'
-    
+
     Notes
     -----
     - Handles case-insensitive input
@@ -108,23 +108,23 @@ def translate_dna_to_protein(
     # Validate sequence
     if not isinstance(seq, str):
         raise TypeError(f"seq must be str, got {type(seq).__name__}")
-    
+
     seq = seq.upper()
-    
+
     if not all(base in "ATCG" for base in seq):
         raise ValueError("Sequence contains invalid DNA bases")
-    
+
     if len(seq) % 3 != 0:
         raise ValueError("Sequence length must be a multiple of 3")
-    
+
     # Get codon table
     codon_table = get_codon_table(table)
-    
+
     # Translate using optimized list comprehension + join
     # This approach is ~1.8x faster than string concatenation
-    result = [codon_table.get(seq[i:i+3], 'X') for i in range(0, len(seq), 3)]
-    
-    return ''.join(result)
+    result = [codon_table.get(seq[i : i + 3], "X") for i in range(0, len(seq), 3)]
+
+    return "".join(result)
 
 
 __all__ = ["translate_dna_to_protein"]

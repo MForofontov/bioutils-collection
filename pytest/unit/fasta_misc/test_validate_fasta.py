@@ -1,19 +1,8 @@
 import pytest
+import numpy
+from bioutils_collection.fasta_misc.validate_fasta import validate_fasta
 
-try:
-    import numpy
-    from bioutils_collection.fasta_misc.validate_fasta import validate_fasta
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    validate_fasta = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.fasta]
 
 
 def test_validate_fasta_valid_format() -> None:
@@ -92,6 +81,6 @@ def test_validate_fasta_invalid_type_error() -> None:
     Test case 9: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="fasta_str must be str"):
-        validate_fasta(12345)
+        validate_fasta(12345)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="fasta_str must be str"):
-        validate_fasta(None)
+        validate_fasta(None)  # type: ignore[arg-type]

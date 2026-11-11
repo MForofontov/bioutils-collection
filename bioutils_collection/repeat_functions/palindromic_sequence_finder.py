@@ -1,10 +1,6 @@
 """Find palindromic sequences in DNA (biological palindromes: reverse complements)."""
 
-
-def _reverse_complement(seq: str) -> str:
-    """Get reverse complement of DNA sequence."""
-    complement = {"A": "T", "T": "A", "G": "C", "C": "G"}
-    return "".join(complement.get(base, base) for base in reversed(seq))
+from ..sequence_operations.reverse_complement import reverse_complement
 
 
 def palindromic_sequence_finder(
@@ -22,7 +18,7 @@ def palindromic_sequence_finder(
     biological : bool, optional
         If True (default), finds biological palindromes (reverse complements).
         If False, finds string palindromes (simple reversals).
-        
+
         Biological palindrome: GAATTC (reverse complement = GAATTC)
         String palindrome: ABCCBA (simple reversal)
 
@@ -44,23 +40,23 @@ def palindromic_sequence_finder(
     >>> # Biological palindromes (restriction sites)
     >>> palindromic_sequence_finder("GAATTC", min_length=4)
     [(0, 6, 'GAATTC')]
-    
+
     >>> # EcoRI site is a biological palindrome
     >>> seq = "ATGAATTCGC"
     >>> palindromic_sequence_finder(seq, min_length=6)
     [(2, 8, 'GAATTC')]
-    
+
     >>> # String palindromes
     >>> palindromic_sequence_finder("ATGCAT", min_length=4, biological=False)
     [(0, 4, 'ATGC'), (2, 6, 'GCAT')]
-    
+
     Notes
     -----
     Biological palindromes are important for:
     - Restriction enzyme recognition sites
     - Hairpin structures in RNA
     - DNA-binding protein recognition
-    
+
     For restriction enzyme analysis, use biological=True (default).
 
     Complexity
@@ -74,30 +70,30 @@ def palindromic_sequence_finder(
         raise TypeError(f"min_length must be int, got {type(min_length).__name__}")
     if min_length <= 0:
         raise ValueError("min_length must be > 0")
-    
+
     sequence = sequence.upper()
-    
+
     if biological:
         # Validate DNA sequence
         if not all(base in "ATGC" for base in sequence):
             raise ValueError("Sequence contains invalid DNA bases (use ATGC only)")
-    
+
     n = len(sequence)
     results = []
-    
+
     for length in range(min_length, n + 1):
         for i in range(n - length + 1):
             substr = sequence[i : i + length]
-            
+
             if biological:
                 # Check if reverse complement equals original (biological palindrome)
-                if substr == _reverse_complement(substr):
+                if substr == reverse_complement(substr):
                     results.append((i, i + length, substr))
             else:
                 # Check if simple reversal equals original (string palindrome)
                 if substr == substr[::-1]:
                     results.append((i, i + length, substr))
-    
+
     return results
 
 

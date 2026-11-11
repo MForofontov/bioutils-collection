@@ -1,5 +1,7 @@
 """Calculate basic sequence statistics."""
 
+from ..gc_functions.gc_content import gc_content
+
 
 def sequence_statistics(seq: str) -> dict[str, float]:
     """
@@ -33,11 +35,9 @@ def sequence_statistics(seq: str) -> dict[str, float]:
     if not all(base in "ATCG" for base in seq):
         raise ValueError("Sequence contains invalid DNA bases")
     length = len(seq)
-    gc = seq.count("G") + seq.count("C")
-    at = seq.count("A") + seq.count("T")
-    gc_content = (gc / length) * 100 if length else 0.0
-    at_content = (at / length) * 100 if length else 0.0
-    return {"length": float(length), "gc_content": gc_content, "at_content": at_content}
+    gc = gc_content(seq)
+    at = (100.0 - gc) if length else 0.0
+    return {"length": float(length), "gc_content": gc, "at_content": at}
 
 
 __all__ = ["sequence_statistics"]

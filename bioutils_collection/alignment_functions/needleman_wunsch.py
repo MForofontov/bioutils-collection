@@ -51,6 +51,12 @@ def needleman_wunsch(
     For production use, consider using established bioinformatics libraries.
     Algorithm uses dynamic programming with O(n*m) time and space complexity.
 
+    References
+    ----------
+    Needleman, S.B., Wunsch, C.D. (1970).
+    A general method applicable to the search for similarities in the amino acid
+    sequence of two proteins. Journal of Molecular Biology 48(3):443-453.
+
     Complexity
     ----------
     Time: O(n*m), Space: O(n*m) where n, m are sequence lengths
@@ -60,11 +66,11 @@ def needleman_wunsch(
         raise TypeError(f"seq1 must be a string, got {type(seq1).__name__}")
     if not isinstance(seq2, str):
         raise TypeError(f"seq2 must be a string, got {type(seq2).__name__}")
-    if not isinstance(match, int):
+    if type(match) is not int:
         raise TypeError(f"match must be an integer, got {type(match).__name__}")
-    if not isinstance(mismatch, int):
+    if type(mismatch) is not int:
         raise TypeError(f"mismatch must be an integer, got {type(mismatch).__name__}")
-    if not isinstance(gap, int):
+    if type(gap) is not int:
         raise TypeError(f"gap must be an integer, got {type(gap).__name__}")
 
     if len(seq1) == 0:

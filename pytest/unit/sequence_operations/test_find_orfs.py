@@ -2,10 +2,7 @@ import pytest
 
 from bioutils_collection.sequence_operations.find_orfs import find_orfs
 
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_operations]
 
 
 def test_find_orfs_basic() -> None:
@@ -59,9 +56,9 @@ def test_find_orfs_invalid_type_error() -> None:
     Test case 6: TypeError for invalid input type.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        list(find_orfs(12345))
+        list(find_orfs(12345))  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="seq must be str"):
-        list(find_orfs(None))
+        list(find_orfs(None))  # type: ignore[arg-type]
 
 
 def test_find_orfs_invalid_base_error() -> None:
@@ -86,6 +83,13 @@ def test_find_orfs_no_stop_codon() -> None:
     assert result[0][0] == 0  # Start position
     assert result[0][1] == 12  # End position (full sequence)
     assert result[0][2] == "ATGAAACCCTTT"  # ORF sequence
+
+
+def test_find_orfs_partial_codon_truncated() -> None:
+    """
+    Test case 10: ORF truncated to last complete codon when sequence ends mid-codon.
+    """
+    assert list(find_orfs("ATGAA")) == [(0, 3, "ATG")]
 
 
 def test_find_orfs_with_stop_codon() -> None:

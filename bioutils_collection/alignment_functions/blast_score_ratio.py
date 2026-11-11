@@ -44,7 +44,7 @@ def blast_score_ratio(reference_score: float, target_score: float) -> float:
         raise ValueError("reference_score must be positive and non-zero")
     if target_score < 0:
         raise ValueError("target_score must be non-negative")
-    return target_score / reference_score
+    return min(target_score / reference_score, 1.0)
 
 
 __all__ = ["blast_score_ratio"]

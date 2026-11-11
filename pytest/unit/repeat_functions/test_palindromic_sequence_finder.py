@@ -4,10 +4,7 @@ from bioutils_collection.repeat_functions.palindromic_sequence_finder import (
     palindromic_sequence_finder,
 )
 
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-]
+pytestmark = [pytest.mark.unit, pytest.mark.repeat]
 
 
 def test_palindromic_sequence_finder_basic() -> None:
@@ -91,10 +88,10 @@ def test_palindromic_sequence_finder_type_errors() -> None:
     Test case 8: TypeError for invalid input types.
     """
     with pytest.raises(TypeError, match="sequence must be str"):
-        palindromic_sequence_finder(12345, min_length=4)
+        palindromic_sequence_finder(12345, min_length=4)  # type: ignore[arg-type]
     
     with pytest.raises(TypeError, match="min_length must be int"):
-        palindromic_sequence_finder("ATGC", min_length="4")
+        palindromic_sequence_finder("ATGC", min_length="4")  # type: ignore[arg-type]
 
 
 def test_palindromic_sequence_finder_invalid_bases() -> None:

@@ -3,6 +3,7 @@
 from collections.abc import Iterator
 
 from .fasta_parser import parse_fasta
+from ..sequence_operations.reverse_complement import reverse_complement
 
 
 def fasta_reverse_complement(fasta_str: str) -> Iterator[tuple[str, str]]:
@@ -24,10 +25,8 @@ def fasta_reverse_complement(fasta_str: str) -> Iterator[tuple[str, str]]:
     >>> list(fasta_reverse_complement('>seq1\nATGC'))
     [('seq1', 'GCAT')]
     """
-    complement = str.maketrans("ACGTacgt", "TGCAtgca")
     for header, seq in parse_fasta(fasta_str):
-        rc_seq = seq.translate(complement)[::-1]
-        yield (header, rc_seq)
+        yield (header, reverse_complement(seq))
 
 
 __all__ = ["fasta_reverse_complement"]

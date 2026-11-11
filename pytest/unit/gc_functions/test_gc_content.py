@@ -1,19 +1,8 @@
 import pytest
+import numpy
+from bioutils_collection.gc_functions.gc_content import gc_content
 
-try:
-    import numpy
-    from bioutils_collection.gc_functions.gc_content import gc_content
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    gc_content = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.gc_functions]
 
 
 def test_gc_content_typical() -> None:
@@ -58,7 +47,7 @@ def test_gc_content_type_error() -> None:
     Test case 5: TypeError for non-string input.
     """
     with pytest.raises(TypeError):
-        gc_content(123)
+        gc_content(123)  # type: ignore[arg-type]
 
 
 def test_gc_content_value_error() -> None:

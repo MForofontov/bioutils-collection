@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.alignment_functions.blast_score_ratio import (
+    blast_score_ratio,
+)
 
-try:
-    import numpy
-    from bioutils_collection.alignment_functions.blast_score_ratio import (
-        blast_score_ratio,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    blast_score_ratio = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.alignment]
 
 
 def test_blast_score_ratio_typical() -> None:
@@ -64,7 +53,7 @@ def test_blast_score_ratio_type_error_reference() -> None:
     Test case 5: TypeError for non-numeric reference_score.
     """
     with pytest.raises(TypeError):
-        blast_score_ratio("200", 150.0)
+        blast_score_ratio("200", 150.0)  # type: ignore[arg-type]
 
 
 def test_blast_score_ratio_type_error_target() -> None:
@@ -72,7 +61,7 @@ def test_blast_score_ratio_type_error_target() -> None:
     Test case 6: TypeError for non-numeric target_score.
     """
     with pytest.raises(TypeError):
-        blast_score_ratio(200.0, "150")
+        blast_score_ratio(200.0, "150")  # type: ignore[arg-type]
 
 
 def test_blast_score_ratio_value_error_reference() -> None:
@@ -83,3 +72,10 @@ def test_blast_score_ratio_value_error_reference() -> None:
         blast_score_ratio(0, 100.0)
     with pytest.raises(ValueError):
         blast_score_ratio(-10, 100.0)
+
+
+def test_blast_score_ratio_clamped_above_one() -> None:
+    """
+    Test case 8: BSR is clamped to 1.0 when target exceeds reference.
+    """
+    assert blast_score_ratio(100, 150) == 1.0

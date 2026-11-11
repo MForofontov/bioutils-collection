@@ -43,6 +43,12 @@ def effective_number_of_codons(seq: str) -> float:
 
     Stop codons are excluded from calculation.
 
+    References
+    ----------
+    Wright, F. (1990).
+    The 'effective number of codons' used in a gene.
+    Gene 87(1):23-29.
+
     Complexity
     ----------
     Time: O(n), Space: O(n) where n is sequence length

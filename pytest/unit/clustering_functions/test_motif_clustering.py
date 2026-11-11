@@ -1,19 +1,11 @@
-try:
-    import numpy as np
-    from bioutils_collection.clustering_functions.motif_clustering import (
-        motif_clustering,
-    )
-
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    np = None  # type: ignore
-    motif_clustering = None  # type: ignore
+import numpy as np
+from bioutils_collection.clustering_functions.motif_clustering import (
+    motif_clustering,
+)
 
 import pytest
 
-pytestmark = pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed")
-pytestmark = [pytestmark, pytest.mark.unit, pytest.mark.bioinformatics]
+pytestmark = [pytest.mark.unit, pytest.mark.clustering]
 
 
 def test_motif_clustering_two_clusters() -> None:

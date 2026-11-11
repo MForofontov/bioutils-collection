@@ -3,7 +3,6 @@ Bioinformatics functions package: unified exports for all submodules.
 """
 
 from ._version import __version__
-
 from .alignment_functions.blast_score_ratio import blast_score_ratio
 from .alignment_functions.hamming_distance import hamming_distance
 from .alignment_functions.levenshtein_distance import levenshtein_distance
@@ -46,7 +45,19 @@ from .motif_functions.sequence_pattern_match import sequence_pattern_match
 from .repeat_functions.palindromic_sequence_finder import palindromic_sequence_finder
 from .repeat_functions.tandem_repeat_finder import tandem_repeat_finder
 from .restriction_functions.restriction_site_finder import restriction_site_finder
+from .sequence_operations.canonical_minimizer_sketch import (
+    canonical_minimizer_sketch,
+)
+from .sequence_operations.canonical_minimizers import canonical_minimizers
 from .sequence_operations.find_orfs import find_orfs
+from .sequence_operations.generate_minimizers import generate_minimizers
+from .sequence_operations.generate_syncmers import generate_syncmers
+from .sequence_operations.minimizer_density import minimizer_density
+from .sequence_operations.minimizer_positions import minimizer_positions
+from .sequence_operations.minimizer_sketch import minimizer_sketch
+from .sequence_operations.minimizer_sketch_from_generator import (
+    minimizer_sketch_from_generator,
+)
 from .sequence_operations.remove_low_complexity_regions import (
     remove_low_complexity_regions,
 )
@@ -55,6 +66,12 @@ from .sequence_operations.sequence_complement import sequence_complement
 from .sequence_operations.sequence_quality_filter import sequence_quality_filter
 from .sequence_operations.sequence_shuffling import sequence_shuffling
 from .sequence_operations.sequence_to_kmers import sequence_to_kmers
+from .sequence_operations.sequence_to_kmers_with_positions import (
+    sequence_to_kmers_with_positions,
+)
+from .sequence_operations.syncmer_density import syncmer_density
+from .sequence_operations.syncmer_positions import syncmer_positions
+from .sequence_operations.unique_minimizer_positions import unique_minimizer_positions
 from .sequence_statistics.codon_adaptation_index import codon_adaptation_index
 from .sequence_statistics.codon_usage_frequency import codon_usage_frequency
 from .sequence_statistics.effective_number_of_codons import effective_number_of_codons
@@ -115,13 +132,25 @@ __all__ = [
     # Restriction functions
     "restriction_site_finder",
     # Sequence operations
+    "canonical_minimizer_sketch",
+    "canonical_minimizers",
     "find_orfs",
+    "generate_minimizers",
+    "generate_syncmers",
+    "minimizer_density",
+    "minimizer_positions",
+    "minimizer_sketch",
+    "minimizer_sketch_from_generator",
     "remove_low_complexity_regions",
     "reverse_complement",
     "sequence_complement",
     "sequence_quality_filter",
     "sequence_shuffling",
     "sequence_to_kmers",
+    "sequence_to_kmers_with_positions",
+    "syncmer_density",
+    "syncmer_positions",
+    "unique_minimizer_positions",
     # Sequence statistics
     "codon_adaptation_index",
     "codon_usage_frequency",

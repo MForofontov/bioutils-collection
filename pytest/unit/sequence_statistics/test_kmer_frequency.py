@@ -1,19 +1,8 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_statistics.kmer_frequency import kmer_frequency
 
-try:
-    import numpy
-    from bioutils_collection.sequence_statistics.kmer_frequency import kmer_frequency
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    kmer_frequency = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_statistics]
 
 
 def test_kmer_frequency_basic() -> None:
@@ -86,9 +75,9 @@ def test_kmer_frequency_invalid_type_error() -> None:
     Test case 7: TypeError for invalid input types.
     """
     with pytest.raises(TypeError, match="seq must be str"):
-        kmer_frequency(12345, 3)
+        kmer_frequency(12345, 3)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="k must be int"):
-        kmer_frequency("ATGC", 3.5)
+        kmer_frequency("ATGC", 3.5)  # type: ignore[arg-type]
 
 
 def test_kmer_frequency_invalid_value_error() -> None:

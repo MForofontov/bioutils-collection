@@ -1,19 +1,8 @@
 import pytest
+import numpy
+from bioutils_collection.fasta_misc.fasta_parser import parse_fasta
 
-try:
-    import numpy
-    from bioutils_collection.fasta_misc.fasta_parser import parse_fasta
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    parse_fasta = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.fasta]
 
 
 def test_parse_fasta_single_sequence() -> None:

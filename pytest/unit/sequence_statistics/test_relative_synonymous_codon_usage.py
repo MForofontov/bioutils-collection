@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_statistics.relative_synonymous_codon_usage import (
+    relative_synonymous_codon_usage,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_statistics.relative_synonymous_codon_usage import (
-        relative_synonymous_codon_usage,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    relative_synonymous_codon_usage = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_statistics]
 
 
 def test_relative_synonymous_codon_usage_single_codon() -> None:
@@ -82,4 +71,4 @@ def test_relative_synonymous_codon_usage_invalid_bases() -> None:
 def test_relative_synonymous_codon_usage_type_error() -> None:
     """Test case 9: Test TypeError for non-string input."""
     with pytest.raises(TypeError, match="seq must be a string"):
-        relative_synonymous_codon_usage(123)
+        relative_synonymous_codon_usage(123)  # type: ignore[arg-type]

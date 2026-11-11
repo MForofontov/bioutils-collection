@@ -33,16 +33,22 @@ def find_cpg_islands(
     Examples
     --------
     >>> find_cpg_islands('GCGCGCGCGC' * 20, window=50)
-    [(0, 50), (1, 51), ...]
+    [(0, 200)]
 
     Notes
     -----
     CpG islands are regions with high GC content and CpG dinucleotide frequency.
     Often found near gene promoters.
 
+    References
+    ----------
+    Gardiner-Garden, M., Frommer, M. (1987).
+    CpG islands in vertebrate genomes.
+    Journal of Molecular Biology 196(2):261-282.
+
     Complexity
     ----------
-    Time: O(n*w), Space: O(k) where k is number of islands
+    Time: O(n), Space: O(k) where k is number of islands
     """
     if not isinstance(seq, str):
         raise TypeError(f"seq must be str, got {type(seq).__name__}")
@@ -66,31 +72,69 @@ def find_cpg_islands(
     if min_obs_exp < 0:
         raise ValueError("min_obs_exp must be non-negative")
 
-    cpg_islands: list[tuple[int, int]] = []
+    gc_count = sum(1 for base in seq[:window] if base in "GC")
+    c_count = seq[:window].count("C")
+    g_count = seq[:window].count("G")
+    cpg_count = sum(
+        1 for i in range(window - 1) if seq[i : i + 2] == "CG"
+    )
 
-    for i in range(len(seq) - window + 1):
-        subseq = seq[i : i + window]
-
-        # Calculate GC content
-        gc_count = subseq.count("G") + subseq.count("C")
+    def _window_qualifies() -> bool:
         gc_content = gc_count / window
-
         if gc_content < min_gc:
-            continue
-
-        # Calculate observed/expected CpG ratio
-        cpg_count = subseq.count("CG")
-        c_count = subseq.count("C")
-        g_count = subseq.count("G")
-
+            return False
         if c_count > 0 and g_count > 0:
             expected_cpg = (c_count * g_count) / window
             obs_exp_ratio = cpg_count / expected_cpg if expected_cpg > 0 else 0
+            return obs_exp_ratio >= min_obs_exp
+        return False
 
-            if obs_exp_ratio >= min_obs_exp:
-                cpg_islands.append((i, i + window))
+    qualifying_starts: list[int] = []
+    if _window_qualifies():
+        qualifying_starts.append(0)
 
-    return cpg_islands
+    for start in range(1, len(seq) - window + 1):
+        left = start - 1
+        right = start + window - 1
+
+        left_base = seq[left]
+        right_base = seq[right]
+        if left_base in "GC":
+            gc_count -= 1
+        if right_base in "GC":
+            gc_count += 1
+        if left_base == "C":
+            c_count -= 1
+        elif left_base == "G":
+            g_count -= 1
+        if right_base == "C":
+            c_count += 1
+        elif right_base == "G":
+            g_count += 1
+
+        if seq[left : left + 2] == "CG":
+            cpg_count -= 1
+        if seq[right - 1 : right + 1] == "CG":
+            cpg_count += 1
+
+        if _window_qualifies():
+            qualifying_starts.append(start)
+
+    if not qualifying_starts:
+        return []
+
+    merged: list[tuple[int, int]] = []
+    island_start = qualifying_starts[0]
+    prev_start = qualifying_starts[0]
+    for start in qualifying_starts[1:]:
+        if start <= prev_start + 1:
+            prev_start = start
+        else:
+            merged.append((island_start, prev_start + window))
+            island_start = start
+            prev_start = start
+    merged.append((island_start, prev_start + window))
+    return merged
 
 
 __all__ = ["find_cpg_islands"]

@@ -1,19 +1,8 @@
 import pytest
+import numpy
+from bioutils_collection.fasta_misc.write_fasta import write_fasta
 
-try:
-    import numpy
-    from bioutils_collection.fasta_misc.write_fasta import write_fasta
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    write_fasta = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.fasta]
 
 
 def test_write_fasta_basic() -> None:
@@ -68,8 +57,8 @@ def test_write_fasta_invalid_type_error() -> None:
     Test case 6: TypeError for invalid record format.
     """
     with pytest.raises(TypeError, match="Each record must be a \\(str, str\\) tuple"):
-        write_fasta([("seq1",)])
+        write_fasta([("seq1",)])  # type: ignore[list-item]
     with pytest.raises(TypeError, match="Each record must be a \\(str, str\\) tuple"):
-        write_fasta([(123, "ATGC")])
+        write_fasta([(123, "ATGC")])  # type: ignore[list-item]
     with pytest.raises(TypeError, match="Each record must be a \\(str, str\\) tuple"):
-        write_fasta(["seq1", "ATGC"])
+        write_fasta(["seq1", "ATGC"])  # type: ignore[list-item]

@@ -34,6 +34,16 @@ def melting_temperature(seq: str) -> float:
     Uses Wallace rule for sequences < 14 bases: Tm = 2(A+T) + 4(G+C)
     For longer sequences, use more sophisticated nearest-neighbor parameters.
 
+    References
+    ----------
+    Wallace, R.B., et al. (1979).
+    Hybridization of synthetic oligodeoxyribonucleotides to phi chi 174 DNA:
+    the effect of single base pair mismatch. Nucleic Acids Research 6(11):3543-3557.
+
+    SantaLucia, J. (1998).
+    A unified view of polymer, dumbbell, and oligonucleotide DNA nearest-neighbor
+    thermodynamics. PNAS 95(4):1460-1465.
+
     Complexity
     ----------
     Time: O(n), Space: O(1)

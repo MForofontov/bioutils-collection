@@ -1,19 +1,8 @@
 import pytest
+import numpy
+from bioutils_collection.fasta_misc.genbank_to_fasta import genbank_to_fasta
 
-try:
-    import numpy
-    from bioutils_collection.fasta_misc.genbank_to_fasta import genbank_to_fasta
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    genbank_to_fasta = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.fasta]
 
 
 def test_genbank_to_fasta_simple() -> None:
@@ -79,4 +68,4 @@ def test_genbank_to_fasta_whitespace_only() -> None:
 def test_genbank_to_fasta_type_error() -> None:
     """Test case 9: Test TypeError for non-string input."""
     with pytest.raises(TypeError, match="genbank_str must be a string"):
-        genbank_to_fasta(123)
+        genbank_to_fasta(123)  # type: ignore[arg-type]

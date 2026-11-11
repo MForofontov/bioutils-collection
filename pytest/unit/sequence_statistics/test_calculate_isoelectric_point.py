@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.sequence_statistics.calculate_isoelectric_point import (
+    calculate_isoelectric_point,
+)
 
-try:
-    import numpy
-    from bioutils_collection.sequence_statistics.calculate_isoelectric_point import (
-        calculate_isoelectric_point,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    calculate_isoelectric_point = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.sequence_statistics]
 
 
 def test_calculate_isoelectric_point_acidic_protein() -> None:
@@ -141,12 +130,12 @@ def test_calculate_isoelectric_point_type_error_not_string() -> None:
     Test case 9: TypeError when input is not a string.
     """
     # Arrange
-    invalid_input = 12345  # type: ignore
+    invalid_input = 12345
     expected_message = "seq must be str, got int"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        calculate_isoelectric_point(invalid_input)  # type: ignore
+        calculate_isoelectric_point(invalid_input)  # type: ignore[arg-type]
 
 
 def test_calculate_isoelectric_point_type_error_list() -> None:
@@ -154,12 +143,12 @@ def test_calculate_isoelectric_point_type_error_list() -> None:
     Test case 10: TypeError when input is a list.
     """
     # Arrange
-    invalid_input = ["A", "C", "D"]  # type: ignore
+    invalid_input = ["A", "C", "D"]
     expected_message = "seq must be str, got list"
 
     # Act & Assert
     with pytest.raises(TypeError, match=expected_message):
-        calculate_isoelectric_point(invalid_input)  # type: ignore
+        calculate_isoelectric_point(invalid_input)  # type: ignore[arg-type]
 
 
 def test_calculate_isoelectric_point_value_error_empty_sequence() -> None:

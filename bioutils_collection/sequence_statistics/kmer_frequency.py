@@ -1,5 +1,9 @@
 """Calculate k-mer frequency distribution."""
 
+from collections import Counter
+
+from ..sequence_operations.sequence_to_kmers import sequence_to_kmers
+
 
 def kmer_frequency(seq: str, k: int) -> dict[str, int]:
     """
@@ -48,13 +52,8 @@ def kmer_frequency(seq: str, k: int) -> dict[str, int]:
     if k > len(seq):
         raise ValueError("k cannot be longer than sequence")
 
-    kmer_counts: dict[str, int] = {}
-
-    for i in range(len(seq) - k + 1):
-        kmer = seq[i : i + k]
-        kmer_counts[kmer] = kmer_counts.get(kmer, 0) + 1
-
-    return kmer_counts
+    # Count k-mer frequencies using Counter
+    return dict(Counter(sequence_to_kmers(seq, k)))
 
 
 __all__ = ["kmer_frequency"]

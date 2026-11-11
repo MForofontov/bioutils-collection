@@ -1,21 +1,10 @@
 import pytest
+import numpy
+from bioutils_collection.data_validation.validate_protein_sequence import (
+    validate_protein_sequence,
+)
 
-try:
-    import numpy
-    from bioutils_collection.data_validation.validate_protein_sequence import (
-        validate_protein_sequence,
-    )
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
-    numpy = None  # type: ignore
-    validate_protein_sequence = None  # type: ignore
-
-pytestmark = [
-    pytest.mark.unit,
-    pytest.mark.bioinformatics,
-    pytest.mark.skipif(not NUMPY_AVAILABLE, reason="numpy not installed"),
-]
+pytestmark = [pytest.mark.unit, pytest.mark.data_validation]
 
 
 def test_validate_protein_sequence_valid() -> None:
@@ -85,4 +74,4 @@ def test_validate_protein_sequence_empty() -> None:
 def test_validate_protein_sequence_type_error() -> None:
     """Test case 9: Test TypeError for non-string input."""
     with pytest.raises(TypeError, match="seq must be a string"):
-        validate_protein_sequence(123)
+        validate_protein_sequence(123)  # type: ignore[arg-type]
