@@ -3,7 +3,7 @@
 
 def melting_temperature(seq: str) -> float:
     """
-    Calculate melting temperature (Tm) of a DNA sequence using nearest-neighbor method.
+    Calculate melting temperature (Tm) of a DNA sequence using basic composition-based approximations.
 
     Parameters
     ----------
@@ -25,14 +25,16 @@ def melting_temperature(seq: str) -> float:
     Examples
     --------
     >>> melting_temperature('ATGC')
-    8.0
+    12.0
     >>> melting_temperature('GCGCGCGC')
     32.0
 
     Notes
     -----
     Uses Wallace rule for sequences < 14 bases: Tm = 2(A+T) + 4(G+C)
-    For longer sequences, use more sophisticated nearest-neighbor parameters.
+    For length >= 14, uses 81.5 + 0.41 * GC_percent - 675 / length.
+    This is not a nearest-neighbor thermodynamic calculation and does not
+    accept salt or strand concentrations.
 
     References
     ----------

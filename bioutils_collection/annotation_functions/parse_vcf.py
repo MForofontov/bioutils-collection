@@ -22,6 +22,8 @@ def parse_vcf(vcf_file: str) -> Iterator[dict[str, Any]]:
     ------
     TypeError
         If vcf_file is not a string.
+    ValueError
+        If a non-comment record has malformed columns or coordinates.
     FileNotFoundError
         If the file does not exist.
 
@@ -33,7 +35,10 @@ def parse_vcf(vcf_file: str) -> Iterator[dict[str, Any]]:
 
     Notes
     -----
-    This function parses standard VCF files and extracts fields as a dictionary.
+    POS is retained in native VCF one-based coordinates (including sentinel
+    positions); REF, ALT, INFO and other fields remain uninterpreted strings.
+    Sample columns are outside this minimal parser's returned fields.
+    Malformed records raise ValueError rather than being silently discarded.
 
     Complexity
     ----------
@@ -42,13 +47,15 @@ def parse_vcf(vcf_file: str) -> Iterator[dict[str, Any]]:
     if not isinstance(vcf_file, str):
         raise TypeError(f"vcf_file must be a string, got {type(vcf_file).__name__}")
     try:
-        with open(vcf_file) as f:
-            for line in f:
+        with open(vcf_file, encoding="utf-8") as f:
+            for line_number, line in enumerate(f, 1):
                 if line.startswith("#") or not line.strip():
                     continue
                 parts = line.strip().split("\t")
                 if len(parts) < 8:
-                    continue
+                    raise ValueError(
+                        f"Invalid VCF line {line_number}: expected 8 or more columns"
+                    )
                 record = {
                     "chrom": parts[0],
                     "pos": int(parts[1]),

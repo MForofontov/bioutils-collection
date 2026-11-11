@@ -64,7 +64,7 @@ def fastq_to_fasta(fastq_str: str, min_quality: int | None = None) -> str:
     if min_quality is not None and min_quality < 0:
         raise ValueError(f"min_quality must be non-negative, got {min_quality}")
 
-    lines = fastq_str.strip().splitlines()
+    lines = fastq_str.splitlines()
 
     if len(lines) % 4 != 0:
         raise ValueError(
@@ -88,10 +88,19 @@ def fastq_to_fasta(fastq_str: str, min_quality: int | None = None) -> str:
             raise ValueError(
                 f"FASTQ header must start with '@', got: {header_line[:20]}"
             )
+        if not header_line[1:].strip():
+            raise ValueError("FASTQ header must contain an identifier")
         if not plus_line.startswith("+"):
             raise ValueError(
                 f"FASTQ separator must start with '+', got: {plus_line[:20]}"
             )
+        if (
+            plus_line[1:].strip()
+            and plus_line[1:].split()[0] != header_line[1:].split()[0]
+        ):
+            raise ValueError("FASTQ separator identifier must match header")
+        if any(not 33 <= ord(char) <= 126 for char in quality_line):
+            raise ValueError("FASTQ quality must contain printable Phred+33 characters")
         if len(sequence_line) != len(quality_line):
             raise ValueError(
                 f"Sequence and quality lengths must match: {len(sequence_line)} vs {len(quality_line)}"

@@ -3,6 +3,8 @@
 from collections.abc import Sequence
 from typing import Any
 
+from ._annotation_fields import annotation_fields
+
 
 def annotation_to_gff(annotations: Sequence[dict[str, Any]]) -> list[str]:
     """
@@ -11,7 +13,9 @@ def annotation_to_gff(annotations: Sequence[dict[str, Any]]) -> list[str]:
     Parameters
     ----------
     annotations : Sequence[Dict[str, Any]]
-        List of annotation records.
+        Existing writer records or native parser records. Coordinates remain
+        one-based, inclusive. Existing writer field names take precedence.
+        GFF attribute dictionaries retain their existing percent encoding.
 
     Returns
     -------
@@ -36,26 +40,9 @@ def annotation_to_gff(annotations: Sequence[dict[str, Any]]) -> list[str]:
         raise TypeError(
             f"annotations must be a list or tuple, got {type(annotations).__name__}"
         )
-    result = []
-    for record in annotations:
-        for key in (
-            "seqid",
-            "source",
-            "feature",
-            "start",
-            "end",
-            "score",
-            "strand",
-            "frame",
-            "attribute",
-        ):
-            if key not in record:
-                raise KeyError(f"Missing required GFF key: {key}")
-        result.append(
-            f"{record['seqid']}\t{record['source']}\t{record['feature']}\t{record['start']}\t{record['end']}\t"
-            f"{record['score']}\t{record['strand']}\t{record['frame']}\t{record['attribute']}"
-        )
-    return result
+    return [
+        "\t".join(map(str, annotation_fields(record, "GFF"))) for record in annotations
+    ]
 
 
 __all__ = ["annotation_to_gff"]

@@ -1,6 +1,6 @@
 """Calculate syncmer density (ratio of syncmers to k-mers)."""
 
-from .syncmer_positions import syncmer_positions
+from ._syncmer_selection import iter_syncmer_positions, validate_syncmer_inputs
 
 
 def syncmer_density(seq: str, k: int, s: int, method: str = "open") -> float:
@@ -38,7 +38,7 @@ def syncmer_density(seq: str, k: int, s: int, method: str = "open") -> float:
     >>> round(syncmer_density('ATGCGATCG', 4, 2, method='open'), 2)
     0.33
     >>> round(syncmer_density('AAACCCGGG', 3, 2, method='closed'), 2)
-    0.71
+    1.0
 
     Notes
     -----
@@ -55,36 +55,11 @@ def syncmer_density(seq: str, k: int, s: int, method: str = "open") -> float:
 
     Complexity
     ----------
-    Time: O(n*k*s), Space: O(1)
+    Time: O(n*s), Space: O(n + (k-s)*s), including uppercase input
     """
-    if not isinstance(seq, str):
-        raise TypeError(f"seq must be str, got {type(seq).__name__}")
-    if not isinstance(k, int):
-        raise TypeError(f"k must be int, got {type(k).__name__}")
-    if not isinstance(s, int):
-        raise TypeError(f"s must be int, got {type(s).__name__}")
-    if not isinstance(method, str):
-        raise TypeError(f"method must be str, got {type(method).__name__}")
-    if not seq:
-        raise ValueError("seq cannot be empty")
-    if k <= 0:
-        raise ValueError("k must be positive")
-    if s <= 0:
-        raise ValueError("s must be positive")
-    if s >= k:
-        raise ValueError("s must be less than k")
-    if k > len(seq):
-        raise ValueError("k cannot be longer than sequence")
-    if method not in ("open", "closed"):
-        raise ValueError("method must be 'open' or 'closed'")
-
-    total_kmers = len(seq) - k + 1
-    if total_kmers == 0:
-        return 0.0
-
-    num_syncmers = len(syncmer_positions(seq, k, s, method))
-
-    return num_syncmers / total_kmers
+    validate_syncmer_inputs(seq, k, s, method)
+    count = sum(1 for _ in iter_syncmer_positions(seq.upper(), k, s, method))
+    return count / (len(seq) - k + 1)
 
 
 __all__ = ["syncmer_density"]

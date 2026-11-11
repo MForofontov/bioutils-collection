@@ -36,10 +36,9 @@ def test_sequence_pattern_match_iupac_y() -> None:
 def test_sequence_pattern_match_iupac_w() -> None:
     """Test case 5: Test IUPAC code W (A or T)."""
     # WW matches AA, AT, TA, or TT
-    # Note: regex finditer returns non-overlapping matches
+    # IUPAC matching includes overlaps, just like literal matching.
     result = sequence_pattern_match("AATTGGCC", "WW", use_iupac=True)
-    assert 0 in result  # AA at position 0-1
-    assert 2 in result  # TT at position 2-3 (pos 1 skipped, used by match at 0)
+    assert result == [0, 1, 2]
 
 
 def test_sequence_pattern_match_not_found() -> None:

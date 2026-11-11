@@ -48,7 +48,7 @@ def test_calculate_isoelectric_point_neutral_protein() -> None:
 
     # Assert
     assert isinstance(result, float)
-    assert result == 7.0  # Neutral proteins have pI ~7
+    assert result == pytest.approx(6.015, abs=0.0051)  # Terminal pKa midpoint
 
 
 def test_calculate_isoelectric_point_balanced_charges() -> None:

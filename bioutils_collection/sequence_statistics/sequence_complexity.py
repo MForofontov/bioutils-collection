@@ -15,7 +15,7 @@ def sequence_complexity(sequence: str, window: int = 10) -> float:
     Returns
     -------
     float
-        Linguistic complexity score (0-1).
+        Unique-substring fraction (0-1).
 
     Raises
     ------
@@ -26,6 +26,12 @@ def sequence_complexity(sequence: str, window: int = 10) -> float:
     --------
     >>> sequence_complexity("ATGCATGC", window=4)
     0.75
+
+    Notes
+    -----
+    Denominator is the total number of substring occurrences for lengths
+    1 through window, not the maximum attainable vocabulary for an alphabet.
+    This is a repetition measure, not alphabet-normalized linguistic complexity.
 
     Complexity
     ----------

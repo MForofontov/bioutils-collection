@@ -1,5 +1,6 @@
 """Create minimizer sketch representation of sequences."""
 
+from ._minimizer_window import sliding_window_minima
 from .sequence_to_kmers_with_positions import sequence_to_kmers_with_positions
 
 
@@ -54,10 +55,11 @@ def minimizer_sketch(
 
     The density parameter allows trade-off between accuracy and size.
     Density of 0.5 means approximately half of minimizers are kept.
+    Density zero returns an empty sketch. Equal minima use the leftmost position.
 
     Complexity
     ----------
-    Time: O(n*w*k), Space: O(m) where m is unique minimizers
+    Time: O(n*k), Space: O(n*k) including k-mers and repeated positions
     """
     if not isinstance(seq, str):
         raise TypeError(f"seq must be str, got {type(seq).__name__}")
@@ -78,6 +80,9 @@ def minimizer_sketch(
     if not 0.0 <= density <= 1.0:
         raise ValueError("density must be between 0.0 and 1.0")
 
+    if density == 0:
+        return {}
+
     seq = seq.upper()
     sketch: dict[str, list[int]] = {}
 
@@ -91,17 +96,11 @@ def minimizer_sketch(
             sketch[min_kmer[0]] = [min_kmer[1]]
         return sketch
 
-    # Slide window and collect minimizers with positions
-    minimizer_positions = []
-    for i in range(len(kmers) - w + 1):
-        window = kmers[i : i + w]
-        # Find minimum k-mer in window
-        min_kmer = min(window, key=lambda x: x[0])
-        minimizer_positions.append(min_kmer)
+    minimizer_positions = sliding_window_minima(kmers, w, key=lambda item: item[0])
 
     # Apply density sampling if needed
     if density < 1.0:
-        step = max(1, int(1.0 / density))
+        step = max(1, int(1.0 / density)) if density >= 1 / len(kmers) else len(kmers)
         minimizer_positions = minimizer_positions[::step]
 
     # Build sketch dictionary

@@ -6,7 +6,7 @@ from typing import Any
 
 def parse_bed(bed_file: str) -> Iterator[dict[str, Any]]:
     """
-    Parse a BED formatted file and yield annotation dictionaries.
+    Parse BED records, preserving zero-based, half-open start/end coordinates.
 
     Parameters
     ----------
@@ -38,7 +38,11 @@ def parse_bed(bed_file: str) -> Iterator[dict[str, Any]]:
     try:
         with open(bed_file) as f:
             for line in f:
-                if not line or line.startswith("#"):
+                if (
+                    not line.strip()
+                    or line.startswith("#")
+                    or line.split(maxsplit=1)[0] in ("track", "browser")
+                ):
                     continue
                 parts = line.strip().split("\t")
                 if len(parts) < 3:

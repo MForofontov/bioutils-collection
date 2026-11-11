@@ -1,5 +1,6 @@
 """Create minimizer sketch from k-mer generator (memory efficient)."""
 
+from collections import deque
 from collections.abc import Iterator
 
 
@@ -40,11 +41,13 @@ def minimizer_sketch_from_generator(
     Notes
     -----
     This function is designed for streaming applications where
-    the full sequence cannot fit in memory.
+    the full sequence cannot fit in memory. Selects one leftmost minimum per
+    complete window. If the entire input is shorter than w, selects one minimum;
+    incomplete trailing windows after a complete window are skipped.
 
     Complexity
     ----------
-    Time: O(n*w), Space: O(w + m) where m is unique minimizers
+    Time: O(n*k), Space: O(w*k + r) where k is k-mer length and r is output size
     """
     if not isinstance(w, int):
         raise TypeError(f"w must be int, got {type(w).__name__}")
@@ -52,28 +55,21 @@ def minimizer_sketch_from_generator(
         raise ValueError("w must be positive")
 
     sketch: dict[str, list[int]] = {}
-    window: list[tuple[str, int]] = []
-
-    for kmer, pos in kmers_with_pos:
-        window.append((kmer, pos))
-
-        if len(window) == w:
-            # Find minimizer in window
-            min_kmer = min(window, key=lambda x: x[0])
-            if min_kmer[0] not in sketch:
-                sketch[min_kmer[0]] = []
-            sketch[min_kmer[0]].append(min_kmer[1])
-
-            # Slide window
-            window.pop(0)
-
-    # Process last window if exists
-    if window and len(window) > 0:
-        min_kmer = min(window, key=lambda x: x[0])
-        if min_kmer[0] not in sketch:
-            sketch[min_kmer[0]] = []
-        sketch[min_kmer[0]].append(min_kmer[1])
-
+    candidates: deque[tuple[int, str, int]] = deque()
+    count = 0
+    for index, (kmer, pos) in enumerate(kmers_with_pos):
+        count += 1
+        while candidates and candidates[0][0] <= index - w:
+            candidates.popleft()
+        while candidates and candidates[-1][1] > kmer:
+            candidates.pop()
+        candidates.append((index, kmer, pos))
+        if count >= w:
+            _, minimum, position = candidates[0]
+            sketch.setdefault(minimum, []).append(position)
+    if 0 < count < w:
+        _, minimum, position = candidates[0]
+        sketch.setdefault(minimum, []).append(position)
     return sketch
 
 

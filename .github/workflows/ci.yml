@@ -62,8 +62,10 @@ jobs:
       - run: python -m pip install build twine
       - run: python -m build
       - run: python -m twine check dist/*
-      - name: Install wheel and smoke test outside checkout
-        run: |
-          python -m pip install dist/*.whl
-          cd "$RUNNER_TEMP"
-          python -c "from bioutils_collection import gc_content; assert gc_content('ATGC') == 50.0"
+      - name: Verify independent wheel and sdist installations
+        run: python scripts/check_distribution.py --artifact-dir dist --report distribution-report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: distribution-verification
+          path: distribution-report.json

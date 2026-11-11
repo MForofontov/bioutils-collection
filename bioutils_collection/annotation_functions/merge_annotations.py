@@ -1,4 +1,4 @@
-"""Merge overlapping genomic annotations."""
+"""Combine annotation dictionary fields."""
 
 from collections.abc import Sequence
 from typing import Any
@@ -6,7 +6,9 @@ from typing import Any
 
 def merge_annotations(annotations: Sequence[dict[str, Any]]) -> dict[str, Any]:
     """
-    Merge multiple annotation dictionaries (e.g., GFF, BED, custom) for a sequence.
+    Combine dictionary fields, with later values overwriting earlier keys.
+
+    This does not merge genomic intervals or reconcile coordinate systems.
 
     Parameters
     ----------
@@ -29,7 +31,7 @@ def merge_annotations(annotations: Sequence[dict[str, Any]]) -> dict[str, Any]:
     ...     {'gene': 'abc', 'start': 1, 'end': 100},
     ...     {'exon': 1, 'start': 1, 'end': 50}
     ... ])
-    {'gene': 'abc', 'start': 1, 'end': 100, 'exon': 1}
+    {'gene': 'abc', 'start': 1, 'end': 50, 'exon': 1}
     """
     if not all(isinstance(a, dict) for a in annotations):
         raise TypeError("All annotations must be dictionaries")

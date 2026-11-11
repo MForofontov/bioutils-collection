@@ -25,14 +25,17 @@ def calculate_isoelectric_point(seq: str) -> float:
     Examples
     --------
     >>> calculate_isoelectric_point('ACDEFGH')
-    3.57
+    4.06
     >>> calculate_isoelectric_point('KKKKK')
-    10.76
+    11.15
 
     Notes
     -----
-    Uses pKa values for charged amino acids to estimate pI.
-    The pI is the pH at which the protein has no net charge.
+    Solves Henderson-Hasselbalch net charge by bisection on pH [0, 14].
+    Uses fixed pKa values: N-terminus 9.69, C-terminus 2.34, C 8.33,
+    D 3.86, E 4.25, H 6.00, K 10.53, R 12.48, Y 10.07. This is a
+    fixed-pKa model; terminal sequence context and modifications are ignored.
+    Results need not match models using other pKa sets.
 
     Complexity
     ----------
@@ -65,32 +68,23 @@ def calculate_isoelectric_point(seq: str) -> float:
         "Y": 10.07,  # Tyrosine
     }
 
-    # Count ionizable residues
-    positive_charges = seq.count("K") + seq.count("R") + seq.count("H")
-    negative_charges = seq.count("D") + seq.count("E")
-
-    # Simplified pI calculation using average of pKa values
-    # This is an approximation; more accurate methods use iterative pH calculations
-
-    if positive_charges > negative_charges:
-        # Basic protein - estimate from positive pKa values
-        pka_values = [pka_nterm]
-        for aa in seq:
-            if aa in ["K", "R", "H"]:
-                pka_values.append(pka_side_chains[aa])
-        pi = sum(pka_values) / len(pka_values) if pka_values else 7.0
-    elif negative_charges > positive_charges:
-        # Acidic protein - estimate from negative pKa values
-        pka_values = [pka_cterm]
-        for aa in seq:
-            if aa in ["D", "E"]:
-                pka_values.append(pka_side_chains[aa])
-        pi = sum(pka_values) / len(pka_values) if pka_values else 7.0
-    else:
-        # Neutral protein
-        pi = 7.0
-
-    return round(pi, 2)
+    counts = {aa: seq.count(aa) for aa in pka_side_chains}
+    low, high = 0.0, 14.0
+    # Net charge is monotone decreasing in pH. Bisect well beyond 0.01-pH
+    # output precision, including terminal, cysteine and tyrosine charges.
+    for _ in range(60):
+        ph = (low + high) / 2
+        positive = 1 / (1 + 10 ** (ph - pka_nterm))
+        negative = 1 / (1 + 10 ** (pka_cterm - ph))
+        for aa in ("K", "R", "H"):
+            positive += counts[aa] / (1 + 10 ** (ph - pka_side_chains[aa]))
+        for aa in ("D", "E", "C", "Y"):
+            negative += counts[aa] / (1 + 10 ** (pka_side_chains[aa] - ph))
+        if positive > negative:
+            low = ph
+        else:
+            high = ph
+    return round((low + high) / 2, 2)
 
 
 __all__ = ["calculate_isoelectric_point"]

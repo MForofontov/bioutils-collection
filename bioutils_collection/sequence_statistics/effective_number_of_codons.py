@@ -37,7 +37,10 @@ def effective_number_of_codons(seq: str) -> float:
 
     Notes
     -----
-    ENC is calculated using the formula by Wright (1990).
+    Approximation using the Wright (1990) grouping formula with population
+    homozygosity sum(p_i**2), without finite-sample correction. Missing
+    degeneracy groups contribute zero; the final result is clamped to [20, 61].
+    Sparse sequences are therefore not reliable unbiased ENC estimates.
     ENC = 2 + 9/F2 + 1/F3 + 5/F4 + 3/F6
     where Fk is the average homozygosity for amino acids with k synonymous codons.
 

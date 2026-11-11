@@ -1,0 +1,1595 @@
+{
+  "seed": 20261030,
+  "baseline_commit": "9e1cc06420f14940f9e640af554539be29886fb5",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "dependencies": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "numba": "0.68.1"
+  },
+  "notes": "Times exclude tracemalloc. Peak Python allocations exclude native arrays, worker RSS and preallocated inputs. Numba first-process timings may use existing disk cache; they are not guaranteed cold compilation. References use corrected selection semantics. Alignment fixtures are capped due to quadratic cost.",
+  "import_fresh_process": {
+    "seconds": [
+      1.355334100080654,
+      1.509651199914515,
+      1.8110441998578608
+    ],
+    "median_seconds": 1.509651199914515,
+    "peak_python_bytes": 40579
+  },
+  "numba_first_process": {
+    "seconds": [
+      7.761790500022471,
+      9.636788100004196,
+      9.344441700028256
+    ],
+    "median_seconds": 9.344441700028256,
+    "peak_python_bytes": 40269
+  },
+  "numba_empty_cache_processes": [
+    {
+      "import_seconds": 1.380632600048557,
+      "first_call_seconds": 8.703256400069222
+    },
+    {
+      "import_seconds": 1.8424863000400364,
+      "first_call_seconds": 9.956304799998179
+    },
+    {
+      "import_seconds": 5.676624100189656,
+      "first_call_seconds": 11.805548599921167
+    }
+  ],
+  "measurements": [
+    {
+      "name": "syncmer_open_reference",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.0083383999299258,
+        0.009980599861592054,
+        0.009848600020632148
+      ],
+      "median_seconds": 0.009848600020632148,
+      "peak_python_bytes": 4764
+    },
+    {
+      "name": "syncmer_open",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.0005118001718074083,
+        0.0006917000282555819,
+        0.0012105000205338001
+      ],
+      "median_seconds": 0.0006917000282555819,
+      "peak_python_bytes": 5455
+    },
+    {
+      "name": "syncmer_closed_reference",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.004264399874955416,
+        0.006162000121548772,
+        0.004948599962517619
+      ],
+      "median_seconds": 0.004948599962517619,
+      "peak_python_bytes": 6204
+    },
+    {
+      "name": "syncmer_closed",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.0006804999429732561,
+        0.0005397999193519354,
+        0.0005729999393224716
+      ],
+      "median_seconds": 0.0005729999393224716,
+      "peak_python_bytes": 6767
+    },
+    {
+      "name": "syncmer_density_materialized",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.0013157001230865717,
+        0.0005262000486254692,
+        0.0010507998522371054
+      ],
+      "median_seconds": 0.0010507998522371054,
+      "peak_python_bytes": 6767
+    },
+    {
+      "name": "syncmer_density",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.0005931002087891102,
+        0.0008900999091565609,
+        0.0010505998507142067
+      ],
+      "median_seconds": 0.0008900999091565609,
+      "peak_python_bytes": 3991
+    },
+    {
+      "name": "minimizer_sketch_reference",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.0046318001113832,
+        0.006293300073593855,
+        0.007178599946200848
+      ],
+      "median_seconds": 0.006293300073593855,
+      "peak_python_bytes": 111280
+    },
+    {
+      "name": "minimizer_sketch",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.0008096001110970974,
+        0.0008268000092357397,
+        0.002223700052127242
+      ],
+      "median_seconds": 0.0008268000092357397,
+      "peak_python_bytes": 119649
+    },
+    {
+      "name": "canonical_sketch_reference",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.017356500029563904,
+        0.012557499809190631,
+        0.007387400139123201
+      ],
+      "median_seconds": 0.012557499809190631,
+      "peak_python_bytes": 144664
+    },
+    {
+      "name": "canonical_sketch",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.004502299940213561,
+        0.004592299927026033,
+        0.005652799969539046
+      ],
+      "median_seconds": 0.004592299927026033,
+      "peak_python_bytes": 119721
+    },
+    {
+      "name": "streaming_sketch",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.0004962999373674393,
+        0.0004771000239998102,
+        0.00048099993728101254
+      ],
+      "median_seconds": 0.00048099993728101254,
+      "peak_python_bytes": 11960
+    },
+    {
+      "name": "minimizers",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.0007654000073671341,
+        0.000822099857032299,
+        0.0009934999980032444
+      ],
+      "median_seconds": 0.000822099857032299,
+      "peak_python_bytes": 88421
+    },
+    {
+      "name": "kmer_frequency",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.0006307000294327736,
+        0.00044180010445415974,
+        0.0004389001987874508
+      ],
+      "median_seconds": 0.00044180010445415974,
+      "peak_python_bytes": 122000
+    },
+    {
+      "name": "kmer_list_reference",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.00020290003158152103,
+        0.00019649998284876347,
+        0.00019410019740462303
+      ],
+      "median_seconds": 0.00019649998284876347,
+      "peak_python_bytes": 121920
+    },
+    {
+      "name": "kmer_generator_candidate",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.00035310001112520695,
+        0.0002310001291334629,
+        0.00022499985061585903
+      ],
+      "median_seconds": 0.0002310001291334629,
+      "peak_python_bytes": 122000
+    },
+    {
+      "name": "gc_windows",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        0.00014060013927519321,
+        0.0001354999840259552,
+        0.00013369997031986713
+      ],
+      "median_seconds": 0.0001354999840259552,
+      "peak_python_bytes": 7393
+    },
+    {
+      "name": "fasta_parse",
+      "bases": 1000,
+      "pattern": "random",
+      "seconds": [
+        6.6999346017837524e-06,
+        4.899920895695686e-06,
+        4.299916326999664e-06
+      ],
+      "median_seconds": 4.899920895695686e-06,
+      "peak_python_bytes": 2236
+    },
+    {
+      "name": "translation_python",
+      "bases": 999,
+      "pattern": "random",
+      "seconds": [
+        0.0003301999531686306,
+        0.0005012000910937786,
+        0.0005134998355060816
+      ],
+      "median_seconds": 0.0005012000910937786,
+      "peak_python_bytes": 4230
+    },
+    {
+      "name": "translation_numba_warm",
+      "bases": 999,
+      "pattern": "random",
+      "seconds": [
+        0.0004741998855024576,
+        0.00022359983995556831,
+        0.00021430011838674545
+      ],
+      "median_seconds": 0.00022359983995556831,
+      "peak_python_bytes": 24170
+    },
+    {
+      "name": "syncmer_open_reference",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.0038419999182224274,
+        0.006727099884301424,
+        0.0040686000138521194
+      ],
+      "median_seconds": 0.0040686000138521194,
+      "peak_python_bytes": 10684
+    },
+    {
+      "name": "syncmer_open",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.0018787998706102371,
+        0.001261700177565217,
+        0.0012283001560717821
+      ],
+      "median_seconds": 0.001261700177565217,
+      "peak_python_bytes": 11307
+    },
+    {
+      "name": "syncmer_closed_reference",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.00484329997561872,
+        0.004089700058102608,
+        0.005106300115585327
+      ],
+      "median_seconds": 0.00484329997561872,
+      "peak_python_bytes": 10684
+    },
+    {
+      "name": "syncmer_closed",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.002009199932217598,
+        0.0021748000290244818,
+        0.0023817000910639763
+      ],
+      "median_seconds": 0.0021748000290244818,
+      "peak_python_bytes": 11307
+    },
+    {
+      "name": "syncmer_density_materialized",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.002351999981328845,
+        0.0019331998191773891,
+        0.0015414999797940254
+      ],
+      "median_seconds": 0.0019331998191773891,
+      "peak_python_bytes": 11307
+    },
+    {
+      "name": "syncmer_density",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.003059899900108576,
+        0.0017136000096797943,
+        0.0017130000051110983
+      ],
+      "median_seconds": 0.0017136000096797943,
+      "peak_python_bytes": 3827
+    },
+    {
+      "name": "minimizer_sketch_reference",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.008970199851319194,
+        0.008986999979242682,
+        0.006714799907058477
+      ],
+      "median_seconds": 0.008970199851319194,
+      "peak_python_bytes": 108736
+    },
+    {
+      "name": "minimizer_sketch",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.0019014999270439148,
+        0.0007834001444280148,
+        0.0007714999374002218
+      ],
+      "median_seconds": 0.0007834001444280148,
+      "peak_python_bytes": 117073
+    },
+    {
+      "name": "canonical_sketch_reference",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.014293899992480874,
+        0.011844000080600381,
+        0.006702900165691972
+      ],
+      "median_seconds": 0.011844000080600381,
+      "peak_python_bytes": 143584
+    },
+    {
+      "name": "canonical_sketch",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.004101199796423316,
+        0.003693699836730957,
+        0.004389300011098385
+      ],
+      "median_seconds": 0.004101199796423316,
+      "peak_python_bytes": 117145
+    },
+    {
+      "name": "streaming_sketch",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.0014021999668329954,
+        0.0005296999588608742,
+        0.00047600013203918934
+      ],
+      "median_seconds": 0.0005296999588608742,
+      "peak_python_bytes": 9584
+    },
+    {
+      "name": "minimizers",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.0007392000406980515,
+        0.0007340998854488134,
+        0.000731700100004673
+      ],
+      "median_seconds": 0.0007340998854488134,
+      "peak_python_bytes": 88357
+    },
+    {
+      "name": "kmer_frequency",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.0005073000211268663,
+        0.0005474002100527287,
+        0.0006375000812113285
+      ],
+      "median_seconds": 0.0005474002100527287,
+      "peak_python_bytes": 1072
+    },
+    {
+      "name": "kmer_list_reference",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.00020309980027377605,
+        0.00019900011830031872,
+        0.0002047999296337366
+      ],
+      "median_seconds": 0.00020309980027377605,
+      "peak_python_bytes": 77824
+    },
+    {
+      "name": "kmer_generator_candidate",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.00038670003414154053,
+        0.0003258001524955034,
+        0.00025269994512200356
+      ],
+      "median_seconds": 0.0003258001524955034,
+      "peak_python_bytes": 1072
+    },
+    {
+      "name": "gc_windows",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.00013369997031986713,
+        0.00012829992920160294,
+        0.00012800004333257675
+      ],
+      "median_seconds": 0.00012829992920160294,
+      "peak_python_bytes": 7393
+    },
+    {
+      "name": "fasta_parse",
+      "bases": 1000,
+      "pattern": "repetitive",
+      "seconds": [
+        5.7998113334178925e-06,
+        4.500150680541992e-06,
+        4.200031980872154e-06
+      ],
+      "median_seconds": 4.500150680541992e-06,
+      "peak_python_bytes": 2236
+    },
+    {
+      "name": "translation_python",
+      "bases": 999,
+      "pattern": "repetitive",
+      "seconds": [
+        0.00011470005847513676,
+        0.00011290004476904869,
+        0.00011239992454648018
+      ],
+      "median_seconds": 0.00011290004476904869,
+      "peak_python_bytes": 4230
+    },
+    {
+      "name": "translation_numba_warm",
+      "bases": 999,
+      "pattern": "repetitive",
+      "seconds": [
+        0.0002210000529885292,
+        0.000210900092497468,
+        0.00020430004224181175
+      ],
+      "median_seconds": 0.000210900092497468,
+      "peak_python_bytes": 24170
+    },
+    {
+      "name": "global_alignment",
+      "bases": 40,
+      "pattern": "uneven",
+      "seconds": [
+        0.0001906000543385744,
+        0.00016400008462369442,
+        0.00016649998724460602
+      ],
+      "median_seconds": 0.00016649998724460602,
+      "peak_python_bytes": 10202
+    },
+    {
+      "name": "local_alignment",
+      "bases": 40,
+      "pattern": "uneven",
+      "seconds": [
+        0.0001705000177025795,
+        0.0001579001545906067,
+        0.00015849992632865906
+      ],
+      "median_seconds": 0.00015849992632865906,
+      "peak_python_bytes": 4474
+    },
+    {
+      "name": "edit_distance",
+      "bases": 40,
+      "pattern": "uneven",
+      "seconds": [
+        0.00011319993063807487,
+        0.00017129979096353054,
+        0.0001705000177025795
+      ],
+      "median_seconds": 0.0001705000177025795,
+      "peak_python_bytes": 384
+    },
+    {
+      "name": "syncmer_open_reference",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.05343209998682141,
+        0.0437841999810189,
+        0.045815000077709556
+      ],
+      "median_seconds": 0.045815000077709556,
+      "peak_python_bytes": 24220
+    },
+    {
+      "name": "syncmer_open",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.006361600011587143,
+        0.009671400068327785,
+        0.005343500059098005
+      ],
+      "median_seconds": 0.006361600011587143,
+      "peak_python_bytes": 33711
+    },
+    {
+      "name": "syncmer_closed_reference",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.0878554000519216,
+        0.042009999975562096,
+        0.041871000081300735
+      ],
+      "median_seconds": 0.042009999975562096,
+      "peak_python_bytes": 40284
+    },
+    {
+      "name": "syncmer_closed",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.005824199877679348,
+        0.00544670014642179,
+        0.005612800130620599
+      ],
+      "median_seconds": 0.005612800130620599,
+      "peak_python_bytes": 49775
+    },
+    {
+      "name": "syncmer_density_materialized",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.0069234000984579325,
+        0.005580400116741657,
+        0.0063183000311255455
+      ],
+      "median_seconds": 0.0063183000311255455,
+      "peak_python_bytes": 49775
+    },
+    {
+      "name": "syncmer_density",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.0058883000165224075,
+        0.006355100078508258,
+        0.00542079983279109
+      ],
+      "median_seconds": 0.0058883000165224075,
+      "peak_python_bytes": 13155
+    },
+    {
+      "name": "minimizer_sketch_reference",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.1093701000791043,
+        0.058149199932813644,
+        0.04134589992463589
+      ],
+      "median_seconds": 0.058149199932813644,
+      "peak_python_bytes": 1697848
+    },
+    {
+      "name": "minimizer_sketch",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.009344799909740686,
+        0.0091905000153929,
+        0.009761500172317028
+      ],
+      "median_seconds": 0.009344799909740686,
+      "peak_python_bytes": 1792473
+    },
+    {
+      "name": "canonical_sketch_reference",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.10758080007508397,
+        0.09252070006914437,
+        0.07900659996084869
+      ],
+      "median_seconds": 0.09252070006914437,
+      "peak_python_bytes": 2560192
+    },
+    {
+      "name": "canonical_sketch",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.048364900052547455,
+        0.04716489999555051,
+        0.04838489997200668
+      ],
+      "median_seconds": 0.048364900052547455,
+      "peak_python_bytes": 1817849
+    },
+    {
+      "name": "streaming_sketch",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.005658400012180209,
+        0.0060541999991983175,
+        0.0054923000279814005
+      ],
+      "median_seconds": 0.005658400012180209,
+      "peak_python_bytes": 138724
+    },
+    {
+      "name": "minimizers",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.008999200072139502,
+        0.00833109999075532,
+        0.009373300010338426
+      ],
+      "median_seconds": 0.008999200072139502,
+      "peak_python_bytes": 900077
+    },
+    {
+      "name": "kmer_frequency",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.004925600020214915,
+        0.004823299823328853,
+        0.006291499827057123
+      ],
+      "median_seconds": 0.004925600020214915,
+      "peak_python_bytes": 1133168
+    },
+    {
+      "name": "kmer_list_reference",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.002425700193271041,
+        0.0028208999428898096,
+        0.0021172999404370785
+      ],
+      "median_seconds": 0.002425700193271041,
+      "peak_python_bytes": 1133088
+    },
+    {
+      "name": "kmer_generator_candidate",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.002686799969524145,
+        0.002438200172036886,
+        0.0033529000356793404
+      ],
+      "median_seconds": 0.002686799969524145,
+      "peak_python_bytes": 1133168
+    },
+    {
+      "name": "gc_windows",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        0.0014804999809712172,
+        0.0014647000934928656,
+        0.0014653000980615616
+      ],
+      "median_seconds": 0.0014653000980615616,
+      "peak_python_bytes": 103441
+    },
+    {
+      "name": "fasta_parse",
+      "bases": 10000,
+      "pattern": "random",
+      "seconds": [
+        3.3499905839562416e-05,
+        3.0300114303827286e-05,
+        2.9999995604157448e-05
+      ],
+      "median_seconds": 3.0300114303827286e-05,
+      "peak_python_bytes": 16056
+    },
+    {
+      "name": "translation_python",
+      "bases": 9999,
+      "pattern": "random",
+      "seconds": [
+        0.0012370999902486801,
+        0.0012465999461710453,
+        0.0012362999841570854
+      ],
+      "median_seconds": 0.0012370999902486801,
+      "peak_python_bytes": 42694
+    },
+    {
+      "name": "translation_numba_warm",
+      "bases": 9999,
+      "pattern": "random",
+      "seconds": [
+        0.0009682001546025276,
+        0.0029810001142323017,
+        0.0030400000978261232
+      ],
+      "median_seconds": 0.0029810001142323017,
+      "peak_python_bytes": 200906
+    },
+    {
+      "name": "syncmer_open_reference",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.049631800036877394,
+        0.09443679987452924,
+        0.07854770007543266
+      ],
+      "median_seconds": 0.07854770007543266,
+      "peak_python_bytes": 101020
+    },
+    {
+      "name": "syncmer_open",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.006529900012537837,
+        0.007597499992698431,
+        0.007308200001716614
+      ],
+      "median_seconds": 0.007308200001716614,
+      "peak_python_bytes": 110643
+    },
+    {
+      "name": "syncmer_closed_reference",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.06859200005419552,
+        0.06122760009020567,
+        0.06119220005348325
+      ],
+      "median_seconds": 0.06122760009020567,
+      "peak_python_bytes": 101020
+    },
+    {
+      "name": "syncmer_closed",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.017941900063306093,
+        0.021757399896159768,
+        0.01397159998305142
+      ],
+      "median_seconds": 0.017941900063306093,
+      "peak_python_bytes": 110643
+    },
+    {
+      "name": "syncmer_density_materialized",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.01028369995765388,
+        0.009664100129157305,
+        0.011123699834570289
+      ],
+      "median_seconds": 0.01028369995765388,
+      "peak_python_bytes": 110643
+    },
+    {
+      "name": "syncmer_density",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.005429700016975403,
+        0.0053952999878674746,
+        0.006651199888437986
+      ],
+      "median_seconds": 0.005429700016975403,
+      "peak_python_bytes": 12827
+    },
+    {
+      "name": "minimizer_sketch_reference",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.037453100085258484,
+        0.04563260008580983,
+        0.05368160014040768
+      ],
+      "median_seconds": 0.04563260008580983,
+      "peak_python_bytes": 1645800
+    },
+    {
+      "name": "minimizer_sketch",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.0169834999833256,
+        0.01116700004786253,
+        0.012846000026911497
+      ],
+      "median_seconds": 0.012846000026911497,
+      "peak_python_bytes": 1740425
+    },
+    {
+      "name": "canonical_sketch_reference",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.07727769995108247,
+        0.08299869997426867,
+        0.09510980010963976
+      ],
+      "median_seconds": 0.08299869997426867,
+      "peak_python_bytes": 2562856
+    },
+    {
+      "name": "canonical_sketch",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.04388120002113283,
+        0.04425849998369813,
+        0.06396259996108711
+      ],
+      "median_seconds": 0.04425849998369813,
+      "peak_python_bytes": 1740497
+    },
+    {
+      "name": "streaming_sketch",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.006617299979552627,
+        0.008306700037792325,
+        0.01115779997780919
+      ],
+      "median_seconds": 0.008306700037792325,
+      "peak_python_bytes": 86928
+    },
+    {
+      "name": "minimizers",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.008147499989718199,
+        0.008832699852064252,
+        0.012648200150579214
+      ],
+      "median_seconds": 0.008832699852064252,
+      "peak_python_bytes": 900045
+    },
+    {
+      "name": "kmer_frequency",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.009286100044846535,
+        0.00547600002028048,
+        0.0061888000927865505
+      ],
+      "median_seconds": 0.0061888000927865505,
+      "peak_python_bytes": 1200
+    },
+    {
+      "name": "kmer_list_reference",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.003320699790492654,
+        0.0027036000974476337,
+        0.003555099945515394
+      ],
+      "median_seconds": 0.003320699790492654,
+      "peak_python_bytes": 803312
+    },
+    {
+      "name": "kmer_generator_candidate",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.0026075001806020737,
+        0.002560699824243784,
+        0.002579999854788184
+      ],
+      "median_seconds": 0.002579999854788184,
+      "peak_python_bytes": 1200
+    },
+    {
+      "name": "gc_windows",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.0028327000327408314,
+        0.0028188000433146954,
+        0.0038662999868392944
+      ],
+      "median_seconds": 0.0028327000327408314,
+      "peak_python_bytes": 103441
+    },
+    {
+      "name": "fasta_parse",
+      "bases": 10000,
+      "pattern": "repetitive",
+      "seconds": [
+        3.419979475438595e-05,
+        3.060000017285347e-05,
+        3.1300121918320656e-05
+      ],
+      "median_seconds": 3.1300121918320656e-05,
+      "peak_python_bytes": 16056
+    },
+    {
+      "name": "translation_python",
+      "bases": 9999,
+      "pattern": "repetitive",
+      "seconds": [
+        0.0013156000059098005,
+        0.0014216999989002943,
+        0.002069300040602684
+      ],
+      "median_seconds": 0.0014216999989002943,
+      "peak_python_bytes": 42694
+    },
+    {
+      "name": "translation_numba_warm",
+      "bases": 9999,
+      "pattern": "repetitive",
+      "seconds": [
+        0.0014659999869763851,
+        0.0012858000118285418,
+        0.0014217998832464218
+      ],
+      "median_seconds": 0.0014217998832464218,
+      "peak_python_bytes": 200906
+    },
+    {
+      "name": "global_alignment",
+      "bases": 148,
+      "pattern": "uneven",
+      "seconds": [
+        0.004884599940851331,
+        0.0025608998257666826,
+        0.004017899977043271
+      ],
+      "median_seconds": 0.004017899977043271,
+      "peak_python_bytes": 141538
+    },
+    {
+      "name": "local_alignment",
+      "bases": 148,
+      "pattern": "uneven",
+      "seconds": [
+        0.005767799913883209,
+        0.007278200006112456,
+        0.004122500075027347
+      ],
+      "median_seconds": 0.005767799913883209,
+      "peak_python_bytes": 45722
+    },
+    {
+      "name": "edit_distance",
+      "bases": 148,
+      "pattern": "uneven",
+      "seconds": [
+        0.002051000017672777,
+        0.0024796000216156244,
+        0.0017501998227089643
+      ],
+      "median_seconds": 0.002051000017672777,
+      "peak_python_bytes": 960
+    },
+    {
+      "name": "syncmer_open_reference",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.8295279999729246,
+        0.9544311000499874,
+        0.5400026000570506
+      ],
+      "median_seconds": 0.8295279999729246,
+      "peak_python_bytes": 226524
+    },
+    {
+      "name": "syncmer_open",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.06531490013003349,
+        0.07514289999380708,
+        0.08267319994047284
+      ],
+      "median_seconds": 0.07514289999380708,
+      "peak_python_bytes": 326065
+    },
+    {
+      "name": "syncmer_closed_reference",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.8286488000303507,
+        0.5714864002075046,
+        0.7378328000195324
+      ],
+      "median_seconds": 0.7378328000195324,
+      "peak_python_bytes": 398716
+    },
+    {
+      "name": "syncmer_closed",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.06553889997303486,
+        0.06620709993876517,
+        0.08185050007887185
+      ],
+      "median_seconds": 0.06620709993876517,
+      "peak_python_bytes": 498193
+    },
+    {
+      "name": "syncmer_density_materialized",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.07836330006830394,
+        0.07729059993289411,
+        0.17648159991949797
+      ],
+      "median_seconds": 0.07836330006830394,
+      "peak_python_bytes": 498193
+    },
+    {
+      "name": "syncmer_density",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.0706271999515593,
+        0.0814058999530971,
+        0.08567139995284379
+      ],
+      "median_seconds": 0.0814058999530971,
+      "peak_python_bytes": 103401
+    },
+    {
+      "name": "minimizer_sketch_reference",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.4221028001047671,
+        0.45807369984686375,
+        0.44664749992080033
+      ],
+      "median_seconds": 0.44664749992080033,
+      "peak_python_bytes": 18176040
+    },
+    {
+      "name": "minimizer_sketch",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.15725489985197783,
+        0.16207359987311065,
+        0.15074299997650087
+      ],
+      "median_seconds": 0.15725489985197783,
+      "peak_python_bytes": 19081017
+    },
+    {
+      "name": "canonical_sketch_reference",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        1.0600785000715405,
+        0.9676498000044376,
+        1.223849899834022
+      ],
+      "median_seconds": 1.0600785000715405,
+      "peak_python_bytes": 26698088
+    },
+    {
+      "name": "canonical_sketch",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.6286471001803875,
+        0.6042999001219869,
+        0.7255961999762803
+      ],
+      "median_seconds": 0.6286471001803875,
+      "peak_python_bytes": 19083721
+    },
+    {
+      "name": "streaming_sketch",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.07702500000596046,
+        0.07212099991738796,
+        0.08367379987612367
+      ],
+      "median_seconds": 0.07702500000596046,
+      "peak_python_bytes": 1501192
+    },
+    {
+      "name": "minimizers",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.177261000033468,
+        0.120292300125584,
+        0.18558600009419024
+      ],
+      "median_seconds": 0.177261000033468,
+      "peak_python_bytes": 8901725
+    },
+    {
+      "name": "kmer_frequency",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.08586769993416965,
+        0.11040040012449026,
+        0.10226379986852407
+      ],
+      "median_seconds": 0.10226379986852407,
+      "peak_python_bytes": 14887664
+    },
+    {
+      "name": "kmer_list_reference",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.0529165999032557,
+        0.03900820016860962,
+        0.041041400050744414
+      ],
+      "median_seconds": 0.041041400050744414,
+      "peak_python_bytes": 14887584
+    },
+    {
+      "name": "kmer_generator_candidate",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.03955320012755692,
+        0.05579020013101399,
+        0.04325979994609952
+      ],
+      "median_seconds": 0.04325979994609952,
+      "peak_python_bytes": 14887664
+    },
+    {
+      "name": "gc_windows",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.021057400153949857,
+        0.016759400023147464,
+        0.016365300165489316
+      ],
+      "median_seconds": 0.016759400023147464,
+      "peak_python_bytes": 1573185
+    },
+    {
+      "name": "fasta_parse",
+      "bases": 100000,
+      "pattern": "random",
+      "seconds": [
+        0.000283100176602602,
+        0.00027760001830756664,
+        0.0002826000563800335
+      ],
+      "median_seconds": 0.0002826000563800335,
+      "peak_python_bytes": 154120
+    },
+    {
+      "name": "translation_python",
+      "bases": 99999,
+      "pattern": "random",
+      "seconds": [
+        0.014478599885478616,
+        0.013272800017148256,
+        0.013520699925720692
+      ],
+      "median_seconds": 0.013520699925720692,
+      "peak_python_bytes": 410694
+    },
+    {
+      "name": "translation_numba_warm",
+      "bases": 99999,
+      "pattern": "random",
+      "seconds": [
+        0.00940039986744523,
+        0.009772199904546142,
+        0.008982200175523758
+      ],
+      "median_seconds": 0.00940039986744523,
+      "peak_python_bytes": 1855370
+    },
+    {
+      "name": "syncmer_open_reference",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.7462877999059856,
+        0.7750421999953687,
+        0.5485382000915706
+      ],
+      "median_seconds": 0.7462877999059856,
+      "peak_python_bytes": 1019548
+    },
+    {
+      "name": "syncmer_open",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.12885580002330244,
+        0.14879600005224347,
+        0.09521129983477294
+      ],
+      "median_seconds": 0.12885580002330244,
+      "peak_python_bytes": 1119171
+    },
+    {
+      "name": "syncmer_closed_reference",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.600170100107789,
+        0.6688657000195235,
+        0.5283389000687748
+      ],
+      "median_seconds": 0.600170100107789,
+      "peak_python_bytes": 1019548
+    },
+    {
+      "name": "syncmer_closed",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.07120430003851652,
+        0.08260559989139438,
+        0.0709542001131922
+      ],
+      "median_seconds": 0.07120430003851652,
+      "peak_python_bytes": 1119171
+    },
+    {
+      "name": "syncmer_density_materialized",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.07015519984997809,
+        0.09439360001124442,
+        0.06984869996085763
+      ],
+      "median_seconds": 0.07015519984997809,
+      "peak_python_bytes": 1119171
+    },
+    {
+      "name": "syncmer_density",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.08559599984437227,
+        0.1034899998921901,
+        0.18013190012425184
+      ],
+      "median_seconds": 0.1034899998921901,
+      "peak_python_bytes": 102827
+    },
+    {
+      "name": "minimizer_sketch_reference",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.6573041998781264,
+        0.5555416999850422,
+        0.5134553001262248
+      ],
+      "median_seconds": 0.5555416999850422,
+      "peak_python_bytes": 17477416
+    },
+    {
+      "name": "minimizer_sketch",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.1807244000956416,
+        0.26640640012919903,
+        0.18247450003400445
+      ],
+      "median_seconds": 0.18247450003400445,
+      "peak_python_bytes": 18377849
+    },
+    {
+      "name": "canonical_sketch_reference",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        1.4779856000095606,
+        2.0122235999442637,
+        1.9282389997970313
+      ],
+      "median_seconds": 1.9282389997970313,
+      "peak_python_bytes": 26674472
+    },
+    {
+      "name": "canonical_sketch",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        1.0750439001712948,
+        0.7095813001506031,
+        0.6070826998911798
+      ],
+      "median_seconds": 0.7095813001506031,
+      "peak_python_bytes": 18377921
+    },
+    {
+      "name": "streaming_sketch",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.08341430011205375,
+        0.15073539991863072,
+        0.12252449989318848
+      ],
+      "median_seconds": 0.12252449989318848,
+      "peak_python_bytes": 803028
+    },
+    {
+      "name": "minimizers",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.16864740010350943,
+        0.2374038000125438,
+        0.14590589981526136
+      ],
+      "median_seconds": 0.16864740010350943,
+      "peak_python_bytes": 8901841
+    },
+    {
+      "name": "kmer_frequency",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.06464530015364289,
+        0.05714980000630021,
+        0.057308399816975
+      ],
+      "median_seconds": 0.057308399816975,
+      "peak_python_bytes": 1200
+    },
+    {
+      "name": "kmer_list_reference",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.03504420001991093,
+        0.05478090001270175,
+        0.049973699962720275
+      ],
+      "median_seconds": 0.049973699962720275,
+      "peak_python_bytes": 7999120
+    },
+    {
+      "name": "kmer_generator_candidate",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.045752499951049685,
+        0.05063219997100532,
+        0.052032999927178025
+      ],
+      "median_seconds": 0.05063219997100532,
+      "peak_python_bytes": 1200
+    },
+    {
+      "name": "gc_windows",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.03896769997663796,
+        0.038441999815404415,
+        0.03704099985770881
+      ],
+      "median_seconds": 0.038441999815404415,
+      "peak_python_bytes": 1573185
+    },
+    {
+      "name": "fasta_parse",
+      "bases": 100000,
+      "pattern": "repetitive",
+      "seconds": [
+        0.0003875000402331352,
+        0.00031800009310245514,
+        0.0003955001011490822
+      ],
+      "median_seconds": 0.0003875000402331352,
+      "peak_python_bytes": 154120
+    },
+    {
+      "name": "translation_python",
+      "bases": 99999,
+      "pattern": "repetitive",
+      "seconds": [
+        0.011618100106716156,
+        0.01434039999730885,
+        0.013158399844542146
+      ],
+      "median_seconds": 0.013158399844542146,
+      "peak_python_bytes": 410694
+    },
+    {
+      "name": "translation_numba_warm",
+      "bases": 99999,
+      "pattern": "repetitive",
+      "seconds": [
+        0.012596999993547797,
+        0.011011600028723478,
+        0.013501000124961138
+      ],
+      "median_seconds": 0.012596999993547797,
+      "peak_python_bytes": 1855324
+    },
+    {
+      "name": "global_alignment",
+      "bases": 448,
+      "pattern": "uneven",
+      "seconds": [
+        0.07198489992879331,
+        0.028612999944016337,
+        0.026623700046911836
+      ],
+      "median_seconds": 0.028612999944016337,
+      "peak_python_bytes": 1359470
+    },
+    {
+      "name": "local_alignment",
+      "bases": 448,
+      "pattern": "uneven",
+      "seconds": [
+        0.028923300094902515,
+        0.021818800130859017,
+        0.028299099998548627
+      ],
+      "median_seconds": 0.028299099998548627,
+      "peak_python_bytes": 433246
+    },
+    {
+      "name": "edit_distance",
+      "bases": 448,
+      "pattern": "uneven",
+      "seconds": [
+        0.014201699988916516,
+        0.022953199921175838,
+        0.01665380015037954
+      ],
+      "median_seconds": 0.01665380015037954,
+      "peak_python_bytes": 5436
+    },
+    {
+      "name": "batch_serial",
+      "bases": 270,
+      "pattern": "uneven",
+      "seconds": [
+        0.00011999998241662979,
+        8.839997462928295e-05,
+        6.229989230632782e-05
+      ],
+      "median_seconds": 8.839997462928295e-05,
+      "peak_python_bytes": 1192
+    },
+    {
+      "name": "batch_process_startup",
+      "bases": 270,
+      "pattern": "uneven",
+      "seconds": [
+        1.56706350017339,
+        1.465726399794221,
+        1.3899950000923127
+      ],
+      "median_seconds": 1.465726399794221,
+      "peak_python_bytes": 36059
+    },
+    {
+      "name": "fasta_stream_translate",
+      "bases": 99999,
+      "pattern": "many_records",
+      "seconds": [
+        0.14888580003753304,
+        0.12311839987523854,
+        0.14855709997937083
+      ],
+      "median_seconds": 0.14855709997937083,
+      "peak_python_bytes": 62281
+    },
+    {
+      "name": "fasta_stream_translate",
+      "bases": 999999,
+      "pattern": "many_records",
+      "seconds": [
+        0.5779958001803607,
+        0.5803324000444263,
+        0.7975310001056641
+      ],
+      "median_seconds": 0.5803324000444263,
+      "peak_python_bytes": 64480
+    },
+    {
+      "name": "fasta_stream_translate",
+      "bases": 99999,
+      "pattern": "one_record",
+      "seconds": [
+        0.17769769998267293,
+        0.13711920008063316,
+        0.10448030009865761
+      ],
+      "median_seconds": 0.13711920008063316,
+      "peak_python_bytes": 530766
+    },
+    {
+      "name": "fasta_stream_translate",
+      "bases": 999999,
+      "pattern": "one_record",
+      "seconds": [
+        0.4561548000201583,
+        0.43332960014231503,
+        0.47254659980535507
+      ],
+      "median_seconds": 0.4561548000201583,
+      "peak_python_bytes": 5280158
+    }
+  ]
+}

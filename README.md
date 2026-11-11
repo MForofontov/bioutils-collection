@@ -100,11 +100,66 @@ python -m ruff format --check .
 See [the major check plan](MAJOR_CHECK_PLAN.md) for the staged correctness,
 packaging, file safety, and performance audit.
 
+To reproduce performance measurements separately from functional tests:
+
+```bash
+python benchmarks/major_audit.py --output benchmarks/major_audit_results.json
+python benchmarks/paired_audit.py --output benchmarks/paired_audit_results.json
+python scripts/check_distribution.py --artifact-dir dist --report dist/distribution-report.json
+```
+
+The benchmark uses deterministic inputs, checks reference equivalence, and records
+repeated timings and peak Python allocations. Native allocations and worker memory
+are not included in that memory measurement. Timings depend on the machine.
+The paired runner additionally records immutable baseline/current source manifests,
+five counterbalanced timing samples, and separately measured process peak RSS.
+It labels corrected-reference comparisons and does not claim speedups when old
+outputs differ. Runtime/memory retention criteria are in [AGENTS.md](AGENTS.md).
+
+Use a fresh artifact directory for distribution checks. The verifier derives the
+version from package metadata and installs the wheel and sdist into separate
+temporary virtual environments, checks imports/examples outside the checkout,
+and rejects stale package sources. Default checks resolve dependencies freshly.
+For offline local checks, `--reuse-dependencies --no-build-isolation` can reuse
+available dependencies/build tools; the report explicitly records this limitation.
+
+## Conventions and scientific models
+
+- BED parsers retain zero-based, half-open coordinates; GFF/GTF parsers retain
+  one-based, inclusive coordinates. `annotation_to_bed` expects one-based,
+  inclusive input, including its legacy `chrom` alias. Convert a parsed BED start
+  by adding one before passing it to this converter or `annotation_statistics`.
+  Annotation statistics sum record lengths, including overlaps repeatedly.
+- GFF/GTF writers accept their corresponding parser records as well as existing
+  writer field names. Existing writer fields take precedence. GFF attribute
+  dictionaries retain percent-encoded values; writers do not decode them.
+- Closed syncmers select a k-mer when its leftmost minimum s-mer is first or last.
+  Open syncmers retain offset zero. Both pattern-matching modes include overlaps.
+- Translation uses the NCBI internal-codon AAs rows. Alternative initiation and
+  context-dependent termination are not modeled; table 32 is not implemented.
+  Empty records are skipped by file translation. Dictionary translation keeps the
+  last duplicate ID; streaming translation preserves each record. Output replaces
+  its destination only after successful processing; input aliases are rejected.
+  Streaming memory grows with the largest record, rather than total file size.
+- Protein pI solves zero net charge using the fixed pKa values in its docstring.
+  Approximate mass tables are rounded to 0.1 Da and include linear-chain bond and
+  terminal corrections. DNA/RNA masses assume a single strand, 5-prime phosphate,
+  and 3-prime hydroxyl. These models omit modifications and sequence context.
+- ENC uses population homozygosity without a finite-sample correction; sparse
+  sequences are unreliable unbiased estimates. Sequence complexity reports a
+  unique-substring fraction. Melting temperature uses composition approximations,
+  rather than nearest-neighbor thermodynamics. DNA validation computes GC over
+  standard A/T/G/C bases only; ambiguous symbols are excluded from its denominator.
+
 ## Contributing
 
 Fork the repository, create a branch, add regression tests for fixes, and run
 relevant checks before submitting a pull request. Include type hints and
 regression tests, and update documentation when behavior changes.
+Follow [AGENTS.md](AGENTS.md): always update documentation to reflect the change,
+add release notes, and update the package version once per completed changeset.
+Fixes, documentation, and tooling use a patch increment unless a larger change
+requires a minor or breaking-change increment. Version updates do not publish.
 
 ## Contact and related projects
 

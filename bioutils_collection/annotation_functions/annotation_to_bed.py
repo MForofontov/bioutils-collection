@@ -33,7 +33,9 @@ def annotation_to_bed(annotations: Sequence[dict[str, Any]]) -> list[str]:
 
     Notes
     -----
-    BED format uses 0-based start, 1-based end.
+    BED output uses zero-based, half-open intervals. Input start/end must
+    be one-based and inclusive, including records using the chrom alias.
+    Native parse_bed records must have start incremented before conversion.
 
     Complexity
     ----------
@@ -46,10 +48,14 @@ def annotation_to_bed(annotations: Sequence[dict[str, Any]]) -> list[str]:
     bed_lines = []
     for record in annotations:
         try:
-            chrom = record["seqname"] if "seqname" in record else record["chrom"]
+            chrom = (
+                record["seqname"]
+                if "seqname" in record
+                else (record["seqid"] if "seqid" in record else record["chrom"])
+            )
             start = int(record["start"]) - 1  # BED is 0-based
             end = int(record["end"])
-            name = record.get("feature", ".")
+            name = record.get("feature", record.get("type", "."))
             bed_lines.append(f"{chrom}\t{start}\t{end}\t{name}")
         except KeyError as e:
             raise KeyError(f"Missing required key in record: {e}") from e

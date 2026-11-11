@@ -41,7 +41,7 @@ def kmer_frequency(seq: str, k: int) -> dict[str, int]:
 
     Complexity
     ----------
-    Time: O(n*k), Space: O(m) where m is number of unique k-mers
+    Time: O(n*k), Space: O(n*k) including the intermediate k-mer list
     """
     if not isinstance(seq, str):
         raise TypeError(f"seq must be str, got {type(seq).__name__}")

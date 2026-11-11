@@ -58,7 +58,7 @@ def test_validate_protein_sequence_molecular_weight() -> None:
     """Test case 7: Test molecular weight calculation."""
     # Alanine (A) has MW of 89.1 Da
     result = validate_protein_sequence("AAA")
-    expected_weight = 89.1 * 3
+    expected_weight = 89.1 * 3 - 2 * 18.0153  # Two peptide bonds
     assert abs(result["molecular_weight"] - expected_weight) < 0.1
 
 

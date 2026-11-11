@@ -3,6 +3,7 @@
 from functools import partial
 from multiprocessing import Pool, cpu_count
 
+from .genetic_code_tables import get_codon_table
 from .translate_dna_fast import translate_dna_fast
 from .translate_dna_to_protein import translate_dna_to_protein
 
@@ -16,6 +17,8 @@ def translate_batch(
     """
     Translate multiple sequences in parallel using multiprocessing.
 
+    Table and process configuration are validated even when sequences is empty.
+
     Parameters
     ----------
     sequences : list[str]
@@ -25,7 +28,7 @@ def translate_batch(
     n_processes : int, optional
         Number of parallel processes (default: CPU count)
     use_fast : bool, optional
-        Use Numba JIT implementation for 2.7x speedup (default: False)
+        Use the Numba JIT implementation (default: False)
         Requires: pip install numba
 
     Returns
@@ -56,9 +59,6 @@ def translate_batch(
     if not isinstance(sequences, list):
         raise TypeError(f"sequences must be list, got {type(sequences).__name__}")
 
-    if not sequences:
-        return []
-
     # Validate all sequences are strings
     for i, seq in enumerate(sequences):
         if not isinstance(seq, str):
@@ -71,6 +71,10 @@ def translate_batch(
             )
         if n_processes < 1:
             raise ValueError(f"n_processes must be positive, got {n_processes}")
+
+    table = get_codon_table(table)
+    if not sequences:
+        return []
 
     if n_processes is None:
         n_processes = min(cpu_count(), len(sequences))

@@ -1,5 +1,7 @@
 """Generate syncmers - a variant of minimizers with different selection criteria."""
 
+from ._syncmer_selection import iter_syncmer_positions, validate_syncmer_inputs
+
 
 def generate_syncmers(seq: str, k: int, s: int, method: str = "open") -> list[str]:
     """
@@ -21,7 +23,7 @@ def generate_syncmers(seq: str, k: int, s: int, method: str = "open") -> list[st
     method : str, optional
         Selection method: "open" or "closed" (default: "open").
         - "open": s-mer must be minimum and at specific position
-        - "closed": s-mer must be minimum anywhere in k-mer
+        - "closed": leftmost minimum s-mer must be at the first or last position
 
     Returns
     -------
@@ -38,19 +40,19 @@ def generate_syncmers(seq: str, k: int, s: int, method: str = "open") -> list[st
     Examples
     --------
     >>> generate_syncmers('ATGCGATCG', 4, 2, method='open')
-    ['ATGC', 'GATC']
+    ['ATGC', 'ATCG']
     >>> generate_syncmers('AAACCCGGG', 3, 2, method='closed')
-    ['AAA', 'AAC', 'CCC', 'CCG', 'GGG']
+    ['AAA', 'AAC', 'ACC', 'CCC', 'CCG', 'CGG', 'GGG']
 
     Notes
     -----
     Syncmers were introduced by Edgar (2021) as an alternative to minimizers.
 
-    Open syncmers: The minimum s-mer must occur at a specific offset
-    (typically the first or last position). This provides more regular spacing.
+    Open syncmers use offset zero: the first s-mer must be the leftmost
+    minimum. Selection uses lexicographic ordering of uppercase s-mers.
 
-    Closed syncmers: The minimum s-mer can occur anywhere in the k-mer.
-    This produces more syncmers but with better sensitivity.
+    Closed syncmers: The leftmost minimum s-mer must be first or last.
+    Equal minima are resolved from left to right, including boundary ties.
 
     Advantages over minimizers:
     - More uniform distribution
@@ -65,54 +67,11 @@ def generate_syncmers(seq: str, k: int, s: int, method: str = "open") -> list[st
 
     Complexity
     ----------
-    Time: O(n*k*s), Space: O(m) where m is number of syncmers
+    Time: O(n*s + m*k), Space: O(n + (k-s)*s + m*k) for generated k-mers
     """
-    if not isinstance(seq, str):
-        raise TypeError(f"seq must be str, got {type(seq).__name__}")
-    if not isinstance(k, int):
-        raise TypeError(f"k must be int, got {type(k).__name__}")
-    if not isinstance(s, int):
-        raise TypeError(f"s must be int, got {type(s).__name__}")
-    if not isinstance(method, str):
-        raise TypeError(f"method must be str, got {type(method).__name__}")
-    if not seq:
-        raise ValueError("seq cannot be empty")
-    if k <= 0:
-        raise ValueError("k must be positive")
-    if s <= 0:
-        raise ValueError("s must be positive")
-    if s >= k:
-        raise ValueError("s must be less than k")
-    if k > len(seq):
-        raise ValueError("k cannot be longer than sequence")
-    if method not in ("open", "closed"):
-        raise ValueError("method must be 'open' or 'closed'")
-
+    validate_syncmer_inputs(seq, k, s, method)
     seq = seq.upper()
-    syncmers = []
-
-    # Generate all k-mers
-    for i in range(len(seq) - k + 1):
-        kmer = seq[i : i + k]
-
-        # Extract all s-mers from this k-mer
-        smers = [kmer[j : j + s] for j in range(k - s + 1)]
-
-        if not smers:
-            continue
-
-        min_smer = min(smers)
-
-        if method == "open":
-            # Open syncmer: minimum s-mer must be at first position
-            if smers[0] == min_smer:
-                syncmers.append(kmer)
-        else:  # closed
-            # Closed syncmer: minimum s-mer can be anywhere
-            if min_smer in smers:
-                syncmers.append(kmer)
-
-    return syncmers
+    return [seq[i : i + k] for i in iter_syncmer_positions(seq, k, s, method)]
 
 
 __all__ = ["generate_syncmers"]
