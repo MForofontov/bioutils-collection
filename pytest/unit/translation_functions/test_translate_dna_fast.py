@@ -1,11 +1,10 @@
 """Unit tests for translate_dna_fast function."""
 
+import pytest
 from bioutils_collection.translation_functions import (
     translate_dna_fast,
     translate_dna_to_protein,
 )
-
-import pytest
 
 pytestmark = [pytest.mark.unit, pytest.mark.translation]
 
@@ -122,7 +121,7 @@ def test_translate_dna_fast_all_codons() -> None:
     # Arrange
     seq = "GCTTGCGGCGGTTATTCATTAACACCCGGCGTAGCACTTCTTGG"  # 44 bases, need 45 for multiple of 3
     seq = seq + "A"  # Now 45 bases
-    
+
     # Act
     result = translate_dna_fast(seq)
 
@@ -200,8 +199,9 @@ def test_translate_dna_fast_custom_table() -> None:
     """
     # Arrange
     from bioutils_collection.translation_functions import STANDARD_CODE
+
     custom = STANDARD_CODE.copy()
-    custom['ATG'] = 'X'
+    custom["ATG"] = "X"
     seq = "ATGGCC"
     expected = "XA"
 

@@ -47,11 +47,11 @@ def gc_content_windows(
     GC content is calculated as: (G + C) / window_size * 100
     Non-overlapping windows when step_size == window_size.
     Overlapping windows when step_size < window_size.
-    Last window may be shorter if sequence length not divisible by step_size.
+    Incomplete trailing windows are skipped.
 
     Complexity
     ----------
-    Time: O(n*w), Space: O(n/s) where n is sequence length, w is window size, s is step size
+    Time: O(n), Space: O(n) including normalized input and results.
     """
     # Input validation
     if not isinstance(seq, str):
@@ -88,22 +88,26 @@ def gc_content_windows(
 
     results = []
 
-    # Slide window across sequence
-    for start in range(0, len(seq), step_size):
-        end = min(start + window_size, len(seq))
+    gc_count = seq_upper.count("G", 0, window_size) + seq_upper.count(
+        "C", 0, window_size
+    )
+    results.append((0, window_size, round(gc_count / window_size * 100.0, 2)))
 
-        if end - start < window_size:
-            # Skip incomplete window at end
-            break
-
-        window = seq_upper[start:end]
-
-        # Calculate GC content for this window
-        gc_count = sum(1 for base in window if base in "GC")
-        window_length = len(window)
-        gc_content = (gc_count / window_length * 100.0) if window_length > 0 else 0.0
-
-        results.append((start, end, round(gc_content, 2)))
+    for start in range(step_size, len(seq) - window_size + 1, step_size):
+        end = start + window_size
+        if step_size < window_size:
+            # Update only the outgoing and incoming bases of overlapping windows.
+            previous_start = start - step_size
+            previous_end = end - step_size
+            gc_count -= seq_upper.count("G", previous_start, start)
+            gc_count -= seq_upper.count("C", previous_start, start)
+            gc_count += seq_upper.count("G", previous_end, end)
+            gc_count += seq_upper.count("C", previous_end, end)
+        else:
+            gc_count = seq_upper.count("G", start, end) + seq_upper.count(
+                "C", start, end
+            )
+        results.append((start, end, round(gc_count / window_size * 100.0, 2)))
 
     return results
 

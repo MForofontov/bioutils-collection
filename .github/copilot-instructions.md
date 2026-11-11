@@ -62,7 +62,9 @@ Time: O(notation), Space: O(notation) with explanation
 ```python
 # 1. Type validation
 if not isinstance(param, expected_type):
-    raise TypeError(f"param must be {expected_type.__name__}, got {type(param).__name__}")
+    raise TypeError(
+        f"param must be {expected_type.__name__}, got {type(param).__name__}"
+    )
 
 # 2. Empty/None checks
 if not param:
@@ -142,6 +144,7 @@ if not all(base in valid_bases for base in seq):
 ```python
 from collections.abc import Iterator
 
+
 def parse_format(data: str) -> Iterator[tuple[str, str]]:
     """Parse and yield results."""
     for item in data.splitlines():
@@ -152,6 +155,7 @@ def parse_format(data: str) -> Iterator[tuple[str, str]]:
 ### Dictionary Return Pattern
 ```python
 from typing import Any
+
 
 def analyze_sequence(seq: str) -> dict[str, Any]:
     """Return structured analysis results."""
@@ -210,10 +214,12 @@ def test_function_name_basic_case() -> None:
     assert result == expected_value
     assert isinstance(result, ExpectedType)
 
+
 def test_function_name_with_options() -> None:
     """Test case 2: Test function with non-default parameters."""
     result = function("ATGC", option=True, threshold=0.5)
     assert result == expected_with_options
+
 
 def test_function_name_multiple_inputs() -> None:
     """Test case 3: Test function with multiple valid inputs."""
@@ -228,10 +234,12 @@ def test_function_name_empty_input() -> None:
     result = function("")
     assert result == ""  # or appropriate default
 
+
 def test_function_name_single_character() -> None:
     """Test case 5: Test function with minimal valid input."""
     result = function("A")
     assert result is not None
+
 
 def test_function_name_very_long_input() -> None:
     """Test case 6: Test function with large input."""
@@ -239,12 +247,14 @@ def test_function_name_very_long_input() -> None:
     result = function(long_seq)
     assert len(result) == expected_length
 
+
 def test_function_name_boundary_values() -> None:
     """Test case 7: Test function at parameter boundaries."""
     result = function("ATGC", window=1)  # Minimum
     assert result is not None
     result = function("ATGC", threshold=1.0)  # Maximum
     assert result is not None
+
 
 def test_function_name_lowercase() -> None:
     """Test case 8: Test function handles lowercase input."""
@@ -260,20 +270,24 @@ def test_function_name_type_error_not_string() -> None:
     with pytest.raises(TypeError, match="must be str, got int"):
         function(12345)  # int instead of str
 
+
 def test_function_name_type_error_none() -> None:
     """Test case 10: TypeError when input is None."""
     with pytest.raises(TypeError, match="must be str, got NoneType"):
         function(None)
+
 
 def test_function_name_value_error_invalid_chars() -> None:
     """Test case 11: ValueError for invalid characters."""
     with pytest.raises(ValueError, match="Invalid DNA bases"):
         function("ATGCX")  # Invalid character
 
+
 def test_function_name_value_error_negative() -> None:
     """Test case 12: ValueError for negative parameter."""
     with pytest.raises(ValueError, match="must be positive"):
         function("ATGC", window=-1)
+
 
 def test_function_name_value_error_empty() -> None:
     """Test case 13: ValueError when empty input not allowed."""
@@ -288,10 +302,12 @@ def test_function_name_validates_sequence_content() -> None:
     with pytest.raises(ValueError, match="Invalid.*bases"):
         function("ATGCXYZ")  # Invalid bases
 
+
 def test_function_name_handles_mixed_case() -> None:
     """Test case 15: Handle mixed case input correctly."""
     result = function("AtGc")
     assert result == expected_value
+
 
 def test_function_name_preserves_case() -> None:
     """Test case 16: Verify case preservation when expected."""
@@ -307,6 +323,7 @@ def test_function_name_returns_correct_type() -> None:
     result = function("ATGC")
     assert isinstance(result, str)  # or expected type
 
+
 def test_function_name_dict_return_has_required_keys() -> None:
     """Test case 18: Dictionary return contains all documented keys."""
     result = function("ATGC")
@@ -314,6 +331,7 @@ def test_function_name_dict_return_has_required_keys() -> None:
     assert "is_valid" in result
     assert "length" in result
     assert "gc_content" in result
+
 
 def test_function_name_iterator_yields_correct_types() -> None:
     """Test case 19: Iterator yields documented types."""
@@ -329,11 +347,13 @@ Use markers to categorize tests:
 ```python
 import pytest
 
+
 @pytest.mark.unit
 @pytest.mark.alignment
 def test_needleman_wunsch_basic():
     """Basic alignment test."""
     pass
+
 
 @pytest.mark.unit
 @pytest.mark.slow
@@ -341,6 +361,7 @@ def test_needleman_wunsch_basic():
 def test_needleman_wunsch_large_sequences():
     """Test with large sequences (slow)."""
     pass
+
 
 @pytest.mark.unit
 @pytest.mark.fasta
@@ -366,30 +387,36 @@ def test_parse_fasta_large_file():
 ```python
 import pytest
 
+
 @pytest.fixture
 def dna_sequence():
     """Standard DNA sequence for testing."""
     return "ATGCATGCATGC"
+
 
 @pytest.fixture
 def protein_sequence():
     """Standard protein sequence for testing."""
     return "MHACHM"
 
+
 @pytest.fixture
 def fasta_data():
     """Sample FASTA formatted data."""
     return ">seq1\nATGC\n>seq2\nGGTT\n"
+
 
 @pytest.fixture
 def bed_data():
     """Sample BED format data."""
     return "chr1\t1000\t2000\tfeature1\t100\t+\n"
 
+
 @pytest.fixture
 def long_sequence():
     """Long sequence for performance testing."""
     return "ATGC" * 10000
+
 
 @pytest.fixture
 def invalid_sequence():
@@ -405,6 +432,7 @@ def test_function_with_fixture(dna_sequence):
     result = function(dna_sequence)
     assert result is not None
 
+
 def test_function_with_multiple_fixtures(dna_sequence, long_sequence):
     """Test using multiple fixtures."""
     result1 = function(dna_sequence)
@@ -417,34 +445,45 @@ def test_function_with_multiple_fixtures(dna_sequence, long_sequence):
 Use parametrization for testing multiple inputs:
 
 ```python
-@pytest.mark.parametrize("sequence,expected", [
-    ("ATGC", "GCAT"),
-    ("AAAA", "TTTT"),
-    ("CCCC", "GGGG"),
-    ("ATCG", "TAGC"),
-])
+@pytest.mark.parametrize(
+    "sequence,expected",
+    [
+        ("ATGC", "GCAT"),
+        ("AAAA", "TTTT"),
+        ("CCCC", "GGGG"),
+        ("ATCG", "TAGC"),
+    ],
+)
 def test_reverse_complement_various_inputs(sequence, expected):
     """Test reverse complement with various inputs."""
     assert reverse_complement(sequence) == expected
 
-@pytest.mark.parametrize("invalid_input", [
-    12345,
-    None,
-    [],
-    {},
-    12.34,
-])
+
+@pytest.mark.parametrize(
+    "invalid_input",
+    [
+        12345,
+        None,
+        [],
+        {},
+        12.34,
+    ],
+)
 def test_function_rejects_non_string_types(invalid_input):
     """Test function rejects various non-string types."""
     with pytest.raises(TypeError):
         function(invalid_input)
 
-@pytest.mark.parametrize("sequence,gc", [
-    ("ATGC", 50.0),
-    ("AAAA", 0.0),
-    ("GGGG", 100.0),
-    ("ATATATAT", 0.0),
-])
+
+@pytest.mark.parametrize(
+    "sequence,gc",
+    [
+        ("ATGC", 50.0),
+        ("AAAA", 0.0),
+        ("GGGG", 100.0),
+        ("ATATATAT", 0.0),
+    ],
+)
 def test_gc_content_exact_values(sequence, gc):
     """Test GC content calculation with known values."""
     assert gc_content(sequence) == gc
@@ -517,6 +556,7 @@ def test_with_inline_data():
 def test_data():
     return "ATGCATGC"
 
+
 def test_with_fixture_data(test_data):
     result = function(test_data)
     assert result is not None
@@ -529,7 +569,7 @@ def test_with_fixture_data(test_data):
 def large_fasta_file(tmp_path):
     """Create temporary large FASTA file."""
     file_path = tmp_path / "test.fasta"
-    with open(file_path, 'w') as f:
+    with open(file_path, "w") as f:
         for i in range(1000):
             f.write(f">seq{i}\n")
             f.write("ATGC" * 100 + "\n")
@@ -564,27 +604,29 @@ if __name__ == "__main__":  # pragma: no cover
 import time
 import pytest
 
+
 @pytest.mark.slow
 def test_function_performance_large_input():
     """Test function completes in reasonable time."""
     large_seq = "ATGC" * 100000
-    
+
     start = time.time()
     result = function(large_seq)
     elapsed = time.time() - start
-    
+
     assert elapsed < 5.0  # Should complete in <5 seconds
     assert result is not None
+
 
 @pytest.mark.slow
 def test_function_memory_efficiency():
     """Test function uses generators for large data."""
     large_data = "\n".join([f">seq{i}\nATGC" for i in range(10000)])
-    
+
     # Should return generator/iterator, not list
     result = function(large_data)
-    assert hasattr(result, '__iter__')
-    assert hasattr(result, '__next__')
+    assert hasattr(result, "__iter__")
+    assert hasattr(result, "__next__")
 ```
 
 ### Testing Generators/Iterators
@@ -595,6 +637,7 @@ def test_generator_yields_correct_count():
     result = list(parse_fasta(fasta_data))
     assert len(result) == 2
 
+
 def test_generator_yields_correct_format():
     """Test generator yields correct tuple format."""
     results = list(parse_fasta(fasta_data))
@@ -603,15 +646,16 @@ def test_generator_yields_correct_format():
         assert isinstance(sequence, str)
         assert len(sequence) > 0
 
+
 def test_generator_can_be_consumed_multiple_times():
     """Test generator behavior."""
     gen1 = parse_fasta(fasta_data)
     list1 = list(gen1)
-    
+
     # Should create new generator
     gen2 = parse_fasta(fasta_data)
     list2 = list(gen2)
-    
+
     assert list1 == list2
 ```
 
@@ -753,13 +797,13 @@ codon_table = get_codon_table(table)  # Supports string, int, or dict
 ### Window/Sliding Pattern
 ```python
 for i in range(len(seq) - window + 1):
-    subseq = seq[i:i + window]
+    subseq = seq[i : i + window]
     # Process window
 ```
 
 ### Codon Extraction
 ```python
-codons = [seq[i:i + 3] for i in range(0, len(seq), 3)]
+codons = [seq[i : i + 3] for i in range(0, len(seq), 3)]
 ```
 
 ## Ruff Configuration

@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.sequence_statistics.sequence_statistics import (
     sequence_statistics,
 )

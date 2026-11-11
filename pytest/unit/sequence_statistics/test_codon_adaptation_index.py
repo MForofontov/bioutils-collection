@@ -1,10 +1,10 @@
 import pytest
-import numpy
 from bioutils_collection.sequence_statistics.codon_adaptation_index import (
     codon_adaptation_index,
 )
 
 pytestmark = [pytest.mark.unit, pytest.mark.sequence_statistics]
+
 
 UNIFORM_ATG_WEIGHTS = {"ATG": 1.0}
 
@@ -26,17 +26,13 @@ def test_codon_adaptation_index_with_weights() -> None:
 
 def test_codon_adaptation_index_stop_codon() -> None:
     """Test case 3: Test CAI excludes stop codons."""
-    result = codon_adaptation_index(
-        "ATGATGTAA", reference_weights=UNIFORM_ATG_WEIGHTS
-    )
+    result = codon_adaptation_index("ATGATGTAA", reference_weights=UNIFORM_ATG_WEIGHTS)
     assert result > 0.0
 
 
 def test_codon_adaptation_index_lowercase() -> None:
     """Test case 4: Test CAI with lowercase sequence."""
-    result = codon_adaptation_index(
-        "atgatgatg", reference_weights=UNIFORM_ATG_WEIGHTS
-    )
+    result = codon_adaptation_index("atgatgatg", reference_weights=UNIFORM_ATG_WEIGHTS)
     assert result == 1.0
 
 

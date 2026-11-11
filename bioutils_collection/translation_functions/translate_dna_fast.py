@@ -19,7 +19,7 @@ def translate_dna_fast(
 
     This implementation uses Numba to compile the translation loop to
     machine code for maximum performance (~2.7x faster than default).
-    Falls back to regular Python if Numba is not installed.
+    Requires Numba to be installed.
 
     Note: First call will be slow due to JIT compilation (~50ms overhead),
     but subsequent calls will be very fast. Recommended for large sequences
@@ -80,11 +80,9 @@ def translate_dna_fast(
 
     invalid_bases = set(seq_upper) - {"A", "T", "C", "G"}
     if invalid_bases:
-        raise ValueError(
-            f"Invalid DNA bases found: {', '.join(sorted(invalid_bases))}"
-        )
+        raise ValueError(f"Invalid DNA bases found: {', '.join(sorted(invalid_bases))}")
 
-    # Convert codon table to list-based lookup (simpler for Numba)
+    # Construct the lookup in Python, then pass an immutable tuple to Numba.
     # Each codon becomes a number: first_base*16 + second_base*4 + third_base
     codon_to_aa = ["X"] * 64  # Initialize with 'X' for invalid codons
 
@@ -96,11 +94,11 @@ def translate_dna_fast(
             codon_to_aa[idx] = aa
 
     # Use the JIT-compiled function
-    return _translate_numba_core(seq_upper, codon_to_aa)  # type: ignore[no-any-return]
+    return _translate_numba_core(seq_upper, tuple(codon_to_aa))
 
 
-@njit  # type: ignore[misc]
-def _translate_numba_core(sequence: str, codon_to_aa: list[str]) -> str:
+@njit()
+def _translate_numba_core(sequence: str, codon_to_aa: tuple[str, ...]) -> str:
     """
     JIT-compiled core translation function.
 

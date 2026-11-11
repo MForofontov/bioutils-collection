@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.sequence_statistics.sequence_entropy import (
     sequence_entropy,
 )

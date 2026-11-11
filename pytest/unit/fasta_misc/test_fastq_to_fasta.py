@@ -1,8 +1,19 @@
 import pytest
-import numpy
 from bioutils_collection.fasta_misc.fastq_to_fasta import fastq_to_fasta
 
 pytestmark = [pytest.mark.unit, pytest.mark.fasta]
+
+
+@pytest.mark.parametrize("newline", ["\n", "\r\n", "\r"])
+@pytest.mark.parametrize("min_quality", [None, 20])
+def test_fastq_to_fasta_line_endings(newline: str, min_quality: int | None) -> None:
+    records = ["@low", "ATGC", "+", "!!!!", "@high", "GGCC", "+", "IIII"]
+    text = newline.join(records) + newline
+    expected = ">high\nGGCC\n"
+    if min_quality is None:
+        expected = ">low\nATGC\n" + expected
+
+    assert fastq_to_fasta(text, min_quality=min_quality) == expected
 
 
 def test_fastq_to_fasta_single_sequence() -> None:

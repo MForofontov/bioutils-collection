@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.fasta_misc.genbank_to_fasta import genbank_to_fasta
 
 pytestmark = [pytest.mark.unit, pytest.mark.fasta]

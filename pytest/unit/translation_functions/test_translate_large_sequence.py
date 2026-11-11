@@ -1,12 +1,11 @@
 """Unit tests for translate_large_sequence function."""
 
-from bioutils_collection.translation_functions import (
-    translate_large_sequence,
-    translate_dna_to_protein,
-    translate_dna_fast,
-)
-
 import pytest
+from bioutils_collection.translation_functions import (
+    translate_dna_fast,
+    translate_dna_to_protein,
+    translate_large_sequence,
+)
 
 pytestmark = [pytest.mark.unit, pytest.mark.translation]
 
@@ -139,8 +138,9 @@ def test_translate_large_sequence_custom_table() -> None:
     """
     # Arrange
     from bioutils_collection.translation_functions import STANDARD_CODE
+
     custom = STANDARD_CODE.copy()
-    custom['ATG'] = 'X'
+    custom["ATG"] = "X"
     seq = "ATGGCC" * 1000
 
     # Act

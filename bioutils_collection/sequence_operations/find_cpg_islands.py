@@ -75,9 +75,7 @@ def find_cpg_islands(
     gc_count = sum(1 for base in seq[:window] if base in "GC")
     c_count = seq[:window].count("C")
     g_count = seq[:window].count("G")
-    cpg_count = sum(
-        1 for i in range(window - 1) if seq[i : i + 2] == "CG"
-    )
+    cpg_count = sum(1 for i in range(window - 1) if seq[i : i + 2] == "CG")
 
     def _window_qualifies() -> bool:
         gc_content = gc_count / window

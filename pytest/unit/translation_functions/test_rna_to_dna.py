@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.translation_functions.rna_to_dna import rna_to_dna
 
 pytestmark = [pytest.mark.unit, pytest.mark.translation]

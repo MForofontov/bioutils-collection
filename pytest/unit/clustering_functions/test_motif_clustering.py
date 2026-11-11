@@ -1,9 +1,9 @@
 import numpy as np
+
+import pytest
 from bioutils_collection.clustering_functions.motif_clustering import (
     motif_clustering,
 )
-
-import pytest
 
 pytestmark = [pytest.mark.unit, pytest.mark.clustering]
 

@@ -1,7 +1,6 @@
 """Unit tests for unique_minimizer_positions function."""
 
 import pytest
-
 from bioutils_collection import unique_minimizer_positions
 
 

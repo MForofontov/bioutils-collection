@@ -1,9 +1,9 @@
 import pytest
-
-pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 from bioutils_collection.annotation_functions.annotation_to_gtf import (
     annotation_to_gtf,
 )
+
+pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 
 
 def test_annotation_to_gtf_basic_conversion() -> None:

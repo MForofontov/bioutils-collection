@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.sequence_operations.remove_low_complexity_regions import (
     remove_low_complexity_regions,
 )

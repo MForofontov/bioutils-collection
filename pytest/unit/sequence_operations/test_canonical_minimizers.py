@@ -1,7 +1,6 @@
 """Unit tests for canonical_minimizers function."""
 
 import pytest
-
 from bioutils_collection import canonical_minimizers
 
 

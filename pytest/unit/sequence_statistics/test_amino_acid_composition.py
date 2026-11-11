@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.sequence_statistics.amino_acid_composition import (
     amino_acid_composition,
 )

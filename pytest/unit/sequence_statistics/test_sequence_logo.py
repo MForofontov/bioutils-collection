@@ -1,9 +1,9 @@
 import numpy as np
+
+import pytest
 from bioutils_collection.sequence_statistics.sequence_logo import (
     sequence_logo_matrix,
 )
-
-import pytest
 
 pytestmark = [pytest.mark.unit, pytest.mark.sequence_statistics]
 

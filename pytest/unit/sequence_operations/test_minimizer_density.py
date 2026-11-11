@@ -1,7 +1,6 @@
 """Unit tests for minimizer_density function."""
 
 import pytest
-
 from bioutils_collection import minimizer_density
 
 

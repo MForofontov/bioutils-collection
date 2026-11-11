@@ -1,9 +1,9 @@
 import pytest
-
-pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 from bioutils_collection.annotation_functions.filter_annotations import (
     filter_annotations,
 )
+
+pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 
 
 def test_filter_annotations_typical() -> None:

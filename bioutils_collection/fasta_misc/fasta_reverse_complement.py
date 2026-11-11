@@ -2,8 +2,11 @@
 
 from collections.abc import Iterator
 
+from bioutils_collection.sequence_operations.reverse_complement import (
+    reverse_complement,
+)
+
 from .fasta_parser import parse_fasta
-from ..sequence_operations.reverse_complement import reverse_complement
 
 
 def fasta_reverse_complement(fasta_str: str) -> Iterator[tuple[str, str]]:

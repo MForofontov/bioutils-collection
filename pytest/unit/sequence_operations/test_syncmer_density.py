@@ -1,7 +1,6 @@
 """Unit tests for syncmer_density function."""
 
 import pytest
-
 from bioutils_collection import syncmer_density
 
 

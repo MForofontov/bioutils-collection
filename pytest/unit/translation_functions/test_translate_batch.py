@@ -1,11 +1,10 @@
 """Unit tests for translate_batch function."""
 
+import pytest
 from bioutils_collection.translation_functions import (
     translate_batch,
     translate_dna_to_protein,
 )
-
-import pytest
 
 pytestmark = [pytest.mark.unit, pytest.mark.translation]
 
@@ -181,8 +180,9 @@ def test_translate_batch_custom_table() -> None:
     """
     # Arrange
     from bioutils_collection.translation_functions import STANDARD_CODE
+
     custom = STANDARD_CODE.copy()
-    custom['ATG'] = 'X'
+    custom["ATG"] = "X"
     sequences = ["ATGGCC", "ATGAAA"]
     expected = ["XA", "XK"]
 
@@ -290,7 +290,11 @@ def test_translate_batch_fast_vs_default() -> None:
     Test case 19: use_fast=True and False give same results (Numba is always available).
     """
     # Arrange
-    sequences = ["ATGGCC", "ATGAAATTCTGA", "GCTTGCGGCGGTTATTCA"]  # Fixed: all multiples of 3
+    sequences = [
+        "ATGGCC",
+        "ATGAAATTCTGA",
+        "GCTTGCGGCGGTTATTCA",
+    ]  # Fixed: all multiples of 3
 
     # Act
     result_default = translate_batch(sequences, use_fast=False, n_processes=1)

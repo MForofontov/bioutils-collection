@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.fasta_misc.fasta_reverse_complement import (
     fasta_reverse_complement,
 )

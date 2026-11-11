@@ -1,9 +1,9 @@
 import pytest
-
-pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 from bioutils_collection.annotation_functions.sort_annotations import (
     sort_annotations,
 )
+
+pytestmark = [pytest.mark.unit, pytest.mark.annotation]
 
 
 def test_sort_annotations_typical() -> None:

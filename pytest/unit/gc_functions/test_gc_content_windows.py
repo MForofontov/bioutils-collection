@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.gc_functions.gc_content_windows import gc_content_windows
 
 pytestmark = [pytest.mark.unit, pytest.mark.gc_functions]

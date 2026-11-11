@@ -1,9 +1,9 @@
 import pytest
-
-pytestmark = [pytest.mark.unit, pytest.mark.alignment]
 from bioutils_collection.alignment_functions.pairwise_identity import (
     pairwise_identity,
 )
+
+pytestmark = [pytest.mark.unit, pytest.mark.alignment]
 
 
 def test_pairwise_identity_identical() -> None:

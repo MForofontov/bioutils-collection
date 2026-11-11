@@ -2,9 +2,9 @@ import os
 import tempfile
 
 import pytest
+from bioutils_collection.annotation_functions.parse_bed import parse_bed
 
 pytestmark = [pytest.mark.unit, pytest.mark.annotation]
-from bioutils_collection.annotation_functions.parse_bed import parse_bed
 
 
 def test_parse_bed_typical() -> None:

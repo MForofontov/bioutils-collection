@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.motif_functions.sequence_pattern_match import (
     sequence_pattern_match,
 )

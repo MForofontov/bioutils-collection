@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.fasta_misc.generate_primers import generate_primers
 
 pytestmark = [pytest.mark.unit, pytest.mark.fasta]

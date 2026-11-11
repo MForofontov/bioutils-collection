@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.sequence_statistics.calculate_isoelectric_point import (
     calculate_isoelectric_point,
 )

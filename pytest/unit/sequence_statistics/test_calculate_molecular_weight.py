@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.sequence_statistics.calculate_molecular_weight import (
     calculate_molecular_weight,
 )

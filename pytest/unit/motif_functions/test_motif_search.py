@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.motif_functions.motif_search import motif_search
 
 pytestmark = [pytest.mark.unit, pytest.mark.motif]

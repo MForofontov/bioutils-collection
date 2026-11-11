@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+from .genetic_code_tables import get_codon_table
 from .translate_dna_fast import translate_dna_fast
 from .translate_dna_to_protein import translate_dna_to_protein
 
@@ -71,6 +72,9 @@ def translate_fasta(
     if not fasta_file.exists():
         raise FileNotFoundError(f"FASTA file not found: {fasta_file}")
 
+    # Configuration errors must not be converted into per-record errors or
+    # overwrite an existing output, including when the input file is empty.
+    table = get_codon_table(table)
     translate_func = translate_dna_fast if use_fast else translate_dna_to_protein
 
     results = {}

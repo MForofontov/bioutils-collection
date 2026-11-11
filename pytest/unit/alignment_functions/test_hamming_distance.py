@@ -1,5 +1,4 @@
 import pytest
-import numpy
 from bioutils_collection.alignment_functions.hamming_distance import (
     hamming_distance,
 )

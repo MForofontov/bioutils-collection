@@ -3,7 +3,6 @@
 from collections.abc import Sequence
 
 import numpy as np
-from sklearn.cluster import KMeans
 
 
 def motif_clustering(motifs: Sequence[str], n_clusters: int = 2) -> list[int]:
@@ -41,6 +40,10 @@ def motif_clustering(motifs: Sequence[str], n_clusters: int = 2) -> list[int]:
     length = len(motifs[0])
     if any(len(m) != length for m in motifs):
         raise ValueError("All motifs must be the same length")
+
+    # Load the clustering stack only when this functionality is requested.
+    from sklearn.cluster import KMeans
+
     # One-hot encoding
     alphabet = sorted(set("".join(motifs)))
     char_to_idx = {c: i for i, c in enumerate(alphabet)}

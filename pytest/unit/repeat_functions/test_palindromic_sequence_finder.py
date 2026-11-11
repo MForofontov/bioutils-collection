@@ -1,5 +1,4 @@
 import pytest
-
 from bioutils_collection.repeat_functions.palindromic_sequence_finder import (
     palindromic_sequence_finder,
 )
@@ -54,7 +53,7 @@ def test_palindromic_sequence_finder_entire_palindrome() -> None:
     # ATTA is a string palindrome but not a biological one
     result = palindromic_sequence_finder(sequence, min_length=4, biological=False)
     assert len(result) >= 1  # ATTA is a string palindrome
-    
+
     # With biological=True (default), ATTA is NOT a palindrome
     result_bio = palindromic_sequence_finder(sequence, min_length=4, biological=True)
     # ATTA reverse complement is TAAT, not ATTA
@@ -89,7 +88,7 @@ def test_palindromic_sequence_finder_type_errors() -> None:
     """
     with pytest.raises(TypeError, match="sequence must be str"):
         palindromic_sequence_finder(12345, min_length=4)  # type: ignore[arg-type]
-    
+
     with pytest.raises(TypeError, match="min_length must be int"):
         palindromic_sequence_finder("ATGC", min_length="4")  # type: ignore[arg-type]
 
@@ -100,7 +99,7 @@ def test_palindromic_sequence_finder_invalid_bases() -> None:
     """
     with pytest.raises(ValueError, match="Sequence contains invalid DNA bases"):
         palindromic_sequence_finder("ATGCX", min_length=4, biological=True)
-    
+
     # Should work fine with biological=False
     result = palindromic_sequence_finder("XYZYX", min_length=5, biological=False)
     assert len(result) >= 1  # XYZYX is a string palindrome
