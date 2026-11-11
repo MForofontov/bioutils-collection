@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-04
+
 ### Added
 - **generate_minimizers** - Core minimizer generation using sliding window (Roberts et al. 2004)
 - **canonical_minimizers** - Strand-independent minimizers using reverse complement
@@ -29,6 +31,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **minimizer_positions** - Refactored to use `sequence_to_kmers_with_positions`
 - **unique_minimizer_positions** - Refactored to use `sequence_to_kmers_with_positions`
 - **minimizer_sketch** - Refactored to use `sequence_to_kmers_with_positions`
+- **find_cpg_islands** - O(n) sliding-window detection with merged overlapping islands
+- **levenshtein_distance** - Two-row DP for O(min(n,m)) space complexity
+- **codon_adaptation_index** - `reference_weights` is now required (breaking)
 - Added academic References sections to 9 algorithmic functions:
   - **needleman_wunsch** - Needleman & Wunsch (1970)
   - **smith_waterman** - Smith & Waterman (1981)
@@ -41,6 +46,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **find_cpg_islands** - Gardiner-Garden & Frommer (1987)
 
 ### Fixed
+- **translate_large_sequence** - Raise `ValueError` when `chunk_size` rounds below 3 (was crashing with `range(..., 0)`)
+- **translate_dna_fast** - Reject invalid DNA bases instead of silently mapping to `X`
+- **find_orfs** - Truncate ORF sequences to last complete codon boundary
+- **blast_score_ratio** - Clamp result to documented 0–1 range
+- **needleman_wunsch** / **smith_waterman** - Reject `bool` values for score parameters
 - **pairwise_identity** - Added strict=True to zip() calls (B905 linting)
 - **canonical_minimizers** - Replaced inline reverse complement dict with `reverse_complement` function
 - **canonical_minimizer_sketch** - Replaced inline reverse complement dict with `reverse_complement` function
